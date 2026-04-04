@@ -62,6 +62,10 @@ The repository includes `.github/copilot-instructions.md`. Follow these rules:
 - Add `data-tina-field={tinaField(object, 'fieldName')}` to user-editable elements
 - Import generated Tina query types from `@/tina/__generated__/types` when needed
 - Do not invent alternative content-fetching patterns when an existing Tina query already fits
+## TinaCMS Skill
+- Treat `docs/tina-skill.md` as the implementation playbook for Tina-related work in this repository
+- Read that file before changing Tina collections, block schemas, generated query usage, visual editing wiring, or content structure
+- Prefer the repository's existing Tina patterns over generic examples when there is any conflict
 ## Cursor Rules
 - No `.cursorrules` file is present
 - No `.cursor/rules/` directory is present
