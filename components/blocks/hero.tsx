@@ -1,5 +1,6 @@
 'use client';
 import { iconSchema } from '@/tina/fields/icon';
+import { Transition } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
@@ -12,7 +13,6 @@ import { AnimatedGroup } from '../motion-primitives/animated-group';
 import { TextEffect } from '../motion-primitives/text-effect';
 import { Button } from '../ui/button';
 import HeroVideoDialog from '../ui/hero-video-dialog';
-import { Transition } from 'motion/react';
 const transitionVariants = {
   container: {
     visible: {
@@ -138,9 +138,8 @@ export const heroBlockSchema: Template = {
   ui: {
     previewSrc: '/blocks/hero.png',
     defaultItem: {
-      tagline: "Here's some text above the other text",
-      headline: 'This Big Text is Totally Awesome',
-      text: 'Phasellus scelerisque, libero eu finibus rutrum, risus risus accumsan libero, nec molestie urna dui a leo.',
+      tagline: 'Add a short supporting message here.',
+      headline: 'Describe your project clearly',
     },
   },
   fields: [
@@ -165,9 +164,9 @@ export const heroBlockSchema: Template = {
           label: 'Action Label',
           type: 'button',
           icon: {
-              name: "Tina",
-              color: "white",
-              style: "float",
+            name: 'BiRightArrowAlt',
+            color: 'white',
+            style: 'float',
           },
           link: '/',
         },
