@@ -1,3 +1,5 @@
+import ClientPage from './client-page';
+
 export default function Home() {
-  return <main className='min-h-screen' />;
+  return <ClientPage />;
 }
