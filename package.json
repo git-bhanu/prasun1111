@@ -6,7 +6,7 @@
     "dev": "tinacms dev -c \"next dev --turbopack\"",
     "build": "tinacms build && next build",
     "build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && next build",
-    "build:netlify": "NODE_OPTIONS=--max-old-space-size=4096 pnpm run build-local",
+    "build:netlify": "NODE_OPTIONS=--max-old-space-size=4096 pnpm run build",
     "start": "tinacms build && next start",
     "export": "npm run build && next export",
     "lint": "biome lint",
