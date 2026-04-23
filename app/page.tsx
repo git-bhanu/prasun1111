@@ -1,4 +1,4 @@
-import client from '@/tina/__generated__/client';
+import client from '@/tina/client';
 import ClientPage from './client-page';
 
 export default async function Home() {

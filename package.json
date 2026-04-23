@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "tinacms dev -c \"next dev --turbopack\"",
-    "build": "tinacms build && next build",
-    "build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && next build",
+    "dev": "TINA_LOCAL=true tinacms dev -c \"next dev --turbopack\"",
+    "build": "tinacms build && rm -f \"tina/__generated__/client.ts\" && next build",
+    "build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && rm -f \"tina/__generated__/client.ts\" && next build",
     "build:netlify": "NODE_OPTIONS=--max-old-space-size=4096 pnpm run build",
-    "start": "tinacms build && next start",
+    "start": "tinacms build && rm -f \"tina/__generated__/client.ts\" && next start",
     "export": "npm run build && next export",
     "lint": "biome lint",
     "dev:build": "next build"
