@@ -31,17 +31,9 @@ Follow this skill when implementing TinaCMS-backed changes in this repository.
 - `tina/config.tsx`: Tina config and collection registration.
 - `tina/collection/*.ts`: collections.
 - `tina/fields/*.tsx`: custom fields and shared schema fragments.
-- `components/blocks/*.tsx`: block renderers and many block template schemas.
-- `components/blocks/index.tsx`: block union dispatch.
 - `content/`: Tina-managed content.
 
 ## Common Tasks
-
-### Add or update a block
-- Define or update the block template in `components/blocks/<block>.tsx`.
-- Register the template in `tina/collection/page.ts`.
-- Render the generated `__typename` in `components/blocks/index.tsx`.
-- Add sensible `ui.defaultItem` and `ui.itemProps` when useful for editor UX.
 
 ### Add a field
 - Update the collection or template schema first.
@@ -92,7 +84,6 @@ Follow this skill when implementing TinaCMS-backed changes in this repository.
 ## Anti-Patterns
 - Do not bypass Tina for content that should be editor-managed.
 - Do not invent a second content-fetching pattern when the existing split works.
-- Do not forget renderer updates after schema changes.
 - Do not hand-edit generated Tina files.
 
 See `references/repo-guide.md` for the fuller repo-specific guide.

@@ -29,21 +29,11 @@ Use this guide when implementing or modifying TinaCMS-backed features in this re
 - `tina/config.tsx`: Tina config, media, build settings, collection registration.
 - `tina/collection/*.ts`: collection definitions.
 - `tina/fields/*.tsx`: reusable custom fields and shared schema fragments.
-- `components/blocks/*.tsx`: block renderers and block template schemas.
-- `components/blocks/index.tsx`: block dispatch for `PageBlocks` unions.
 - `content/`: Markdown, MDX, and JSON content edited through Tina.
 
 ## Common Change Patterns
 
-### 1. Add or update a page block
-- Define or update the block template in `components/blocks/<block>.tsx`.
-- Export the Tina `Template` schema from the same file when the block already follows that pattern.
-- Register the template in `tina/collection/page.ts` inside the `blocks.templates` array.
-- Render the new block in `components/blocks/index.tsx` by handling its generated `__typename`.
-- If the block needs starter content, add `ui.defaultItem` values.
-- Add `ui.itemProps` for list items when labels should be readable in the editor.
-
-### 2. Add a new editable field to an existing document
+### 1. Add a new editable field to an existing document
 - Update the relevant collection or template schema first.
 - Regenerate Tina generated files if the change requires it.
 - Update the UI component to render the field.
@@ -51,14 +41,14 @@ Use this guide when implementing or modifying TinaCMS-backed features in this re
 - Update existing content files in `content/` if the field is required or if useful starter data is needed.
 - If adding a markdown body field, use a `rich-text` or `string` field and only one `isBody` field per markdown or MDX collection.
 
-### 3. Add a Tina-backed route
+### 2. Add a Tina-backed route
 - Prefer an async server `page.tsx`.
 - Fetch with the matching `client.queries.<collection or query>()` call.
 - For editable pages, pass `query`, `data`, and `variables` into a colocated `client-page.tsx`.
 - In `client-page.tsx`, use `useTina()` and render from the returned `data`.
 - Use `notFound()` or an existing fallback pattern when content is missing.
 
-### 4. Work with global content
+### 3. Work with global content
 - Use the existing `global` collection in `tina/collection/global.ts` for shared site settings.
 - Keep shared layout data flow aligned with `components/layout/layout.tsx`.
 - Prefer extending the current `header`, `footer`, or `theme` objects instead of creating duplicate global documents.
@@ -66,7 +56,6 @@ Use this guide when implementing or modifying TinaCMS-backed features in this re
 ## Schema Design Guidance
 - Prefer explicit field names that match rendered usage.
 - Use `object` plus `list: true` for repeatable structured content.
-- Use `templates` for page-builder style blocks with multiple variants.
 - Use `ui.defaultItem` for editor-friendly defaults.
 - Use `ui.router` only when a collection needs route resolution behavior.
 - Keep naming aligned with generated Tina types and existing collection names.
@@ -104,7 +93,7 @@ Use this guide when implementing or modifying TinaCMS-backed features in this re
 
 ## When To Touch Content Files
 - Update `content/` when a schema change introduces required data.
-- Add example or starter values when a new block or field would otherwise render poorly.
+- Add example or starter values when a new field would otherwise render poorly.
 - Do not move editable copy into code if it belongs in Tina-managed content.
 
 ## Verification

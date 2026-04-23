@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 interface NotFoundProps {
@@ -23,9 +22,12 @@ export default function NotFound({ title = 'Page not found', description = 'The 
       <h1 className='mt-4 text-balance text-5xl font-semibold tracking-tight text-primary sm:text-7xl'>{title}</h1>
       <p className='mt-6 text-pretty text-lg font-medium text-muted-foreground sm:text-xl/8'>{description}</p>
       <div className='mt-10 mx-auto'>
-        <Button asChild>
-          <Link href='/'>Take me home</Link>
-        </Button>
+        <Link
+          href='/'
+          className='inline-flex items-center justify-center rounded-md bg-black px-5 py-3 text-sm font-medium text-white transition-opacity duration-150 hover:opacity-85'
+        >
+          Take me home
+        </Link>
       </div>
     </div>
   );

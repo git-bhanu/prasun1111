@@ -44,7 +44,6 @@ Use this file as the operating guide for coding agents making changes here.
 - Many routes use a server/client split:
   - `page.tsx` fetches Tina data on the server
   - `client-page.tsx` renders interactive UI on the client
-- `components/blocks/` contains Tina-driven content block renderers
 - `components/ui/` contains UI primitives, including shadcn-style components
 - `components/layout/` contains layout shell pieces
 - `tina/collection/` defines Tina collections and schema
@@ -64,7 +63,7 @@ The repository includes `.github/copilot-instructions.md`. Follow these rules:
 - Do not invent alternative content-fetching patterns when an existing Tina query already fits
 ## TinaCMS Skill
 - Treat `docs/tina-skill.md` as the implementation playbook for Tina-related work in this repository
-- Read that file before changing Tina collections, block schemas, generated query usage, visual editing wiring, or content structure
+- Read that file before changing Tina collections, generated query usage, visual editing wiring, or content structure
 - Prefer the repository's existing Tina patterns over generic examples when there is any conflict
 ## Cursor Rules
 - No `.cursorrules` file is present
@@ -119,7 +118,7 @@ The repository includes `.github/copilot-instructions.md`. Follow these rules:
 - In route-level server code, use patterns like `notFound()` when content is missing
 - Logging with `console.error` is already used for unexpected failures; keep logs concise and actionable
 - Do not swallow errors silently in async code
-- In UI surfaces that can fail independently, reuse existing boundaries such as `components/error-boundary.tsx`
+- In UI surfaces that can fail independently, use an appropriate local error boundary or fallback UI.
 ### Content and TinaCMS
 - Content changes often belong in `content/` rather than hardcoded JSX
 - Keep Tina collection definitions and renderers in sync
