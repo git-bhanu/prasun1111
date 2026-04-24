@@ -20,6 +20,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
+  /* Brand-colors */
+  --color-brand-orange: var(--brand-orange);
 
   /* surface-colors */
   --color-surface-grey: var(--surface-grey);

@@ -1,8 +1,7 @@
 :root {
   --brand-black: #000000;
   --brand-white: #ffffff;
+  --brand-orange: #ff6a00;
 
   --surface-grey: #f6f6f6;
-
-  --header-button-active: #ff6a00;
 }
