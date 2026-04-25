@@ -1,4 +1,4 @@
-import { fontSans, lato, nunito } from '@/app/fonts';
+import { fontSans, lato, nunito, spaceGrotesk } from '@/app/fonts';
 import { BaseLayout } from '@/components/base-layout';
 import { cn } from '@/lib/utils';
 import { Metadata } from 'next';
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={cn(fontSans.variable, nunito.variable, lato.variable)}>
+    <html lang='en' className={cn(fontSans.variable, nunito.variable, lato.variable, spaceGrotesk.variable)}>
       <body className='min-h-screen bg-background font-sans antialiased'>
         <BaseLayout>{children}</BaseLayout>
       </body>

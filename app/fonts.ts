@@ -18,5 +18,6 @@ export const lato = Lato({
 
 export const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  weight: '400',
+  variable: '--font-space-grotesk',
+  weight: ['400', '500', '700'],
 });
