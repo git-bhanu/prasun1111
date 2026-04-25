@@ -29,7 +29,7 @@ export function MenuLink({ index, label, href }: MenuLinkProps) {
       >
         ({index})
       </span>
-      <span className="relative block text-[22px] leading-none tracking-[-0.05em] sm:text-[28px] md:text-[40px]">
+      <span className="relative block text-[24px] leading-none tracking-[-0.05em] sm:text-[28px] md:text-[40px]">
         <span className="invisible font-bold">{label}</span>
         <span
           className={cn(
