@@ -29,24 +29,34 @@ const utilityLinks = [
 export default function Header() {
   return (
     <header className="px-8 py-9 sm:px-10 md:px-[58px] md:py-9">
-      <div className={spaceGrotesk.className + " flex items-center gap-x-6"}>
-        <div className="min-w-0 flex-[1_1_0%] overflow-hidden">
+      <div className={"font-s flex items-center gap-x-6"}>
+        <motion.div
+          className="min-w-0 flex-[1_1_0%] overflow-hidden"
+          initial={{ opacity: 0, y: -10, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+        >
           <div className="flex min-w-0 items-center gap-x-10 lg:gap-x-14">
             {primaryLinks.slice(0, 2).map((link) => (
               <MenuLink key={link.label} {...link} />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         <CenterMenu />
 
-        <div className="min-w-0 flex-[1_1_0%] overflow-hidden">
+        <motion.div
+          className="min-w-0 flex-[1_1_0%] overflow-hidden"
+          initial={{ opacity: 0, y: -10, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+        >
           <div className="flex min-w-0 items-center justify-end gap-x-10 lg:gap-x-14">
             {primaryLinks.slice(2).map((link) => (
               <MenuLink key={link.label} {...link} />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </header>
   );
@@ -61,7 +71,7 @@ function CenterMenu() {
     >
       <motion.div
         className="flex w-full items-center justify-between rounded-[12px] bg-surface-grey px-5 py-3 md:h-20"
-        initial={{ opacity: 0, y: -5, scale: 0.96 }}
+        initial={{ opacity: 0, y: 0, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
       >
