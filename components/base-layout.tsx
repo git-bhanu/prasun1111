@@ -1,5 +1,6 @@
 'use client';
 import Header from '@/components/shared/Header/index';
+import { ViewTransitionProvider } from '@/components/view-transition-provider';
 import type React from 'react';
 
 type BaseLayoutProps = {
@@ -10,7 +11,9 @@ export function BaseLayout({ children }: BaseLayoutProps) {
   return (
     <div className='flex min-h-screen flex-col bg-white text-black'>
       <Header />
-      <main className='flex-1'>{children}</main>
+      <ViewTransitionProvider>
+        <main className='flex-1'>{children}</main>
+      </ViewTransitionProvider>
     </div>
   );
 }
