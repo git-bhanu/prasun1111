@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 type MenuLinkProps = {
   index: string;
@@ -16,21 +16,27 @@ export function MenuLink({ index, label, href }: MenuLinkProps) {
   const isActive = pathname === href;
 
   return (
-    <Link href={href} aria-current={isActive ? 'page' : undefined} className='font-space-grotesk group flex items-start gap-[10px] whitespace-nowrap uppercase'>
+    <Link
+      href={href}
+      aria-current={isActive ? "page" : undefined}
+      className="font-space-grotesk group flex items-start gap-1 md:gap-1.5 whitespace-nowrap uppercase"
+    >
       <span
         className={cn(
-          'pt-[4px] text-[12px] font-normal leading-none tracking-[-0.04em] text-black transition-all duration-100 md:text-[15px]',
-          isActive ? 'text-brand-orange' : 'group-hover:text-brand-orange'
+          "text-[9px] font-normal leading-none tracking-[-0.04em] text-black transition-all duration-100 md:text-[15px] md:pt-1",
+          isActive ? "text-brand-orange" : "group-hover:text-brand-orange",
         )}
       >
         ({index})
       </span>
-      <span className='relative block text-[22px] leading-none tracking-[-0.05em] sm:text-[28px] md:text-[40px]'>
-        <span className='invisible font-bold'>{label}</span>
+      <span className="relative block text-[22px] leading-none tracking-[-0.05em] sm:text-[28px] md:text-[40px]">
+        <span className="invisible font-bold">{label}</span>
         <span
           className={cn(
-            'absolute inset-0 transition-all duration-100',
-            isActive ? 'font-bold text-black' : 'font-normal text-black/12 group-hover:font-bold group-hover:text-black'
+            "absolute inset-0 transition-all duration-100",
+            isActive
+              ? "font-bold text-black"
+              : "font-normal text-black/12 group-hover:font-bold group-hover:text-black",
           )}
         >
           {label}

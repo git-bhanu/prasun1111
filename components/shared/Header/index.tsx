@@ -1,14 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import { Icon, IconCircle } from "@/components/icons";
+import { cn } from "@/lib/utils";
 import animationData from "@/public/uploads/assets/1111.json";
 import Lottie from "lottie-react";
-import { cn } from "@/lib/utils";
-import { AnimatePresence } from "motion/react";
+import { AnimatePresence, useReducedMotion } from "motion/react";
 import * as motion from "motion/react-client";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { MenuLink } from "./menu-link";
 
 const primaryLinks = [
@@ -28,10 +29,10 @@ const utilityLinks = [
 
 export default function Header() {
   return (
-    <header className="px-8 py-9 sm:px-10 md:px-[58px] md:py-9">
-      <div className={"font-s flex items-center gap-x-6"}>
+    <header className="p-4 md:px-[58px] md:py-9">
+      <div className="font-s flex flex-col gap-y-4 md:flex-row md:items-center md:gap-x-6 md:gap-y-0">
         <motion.div
-          className="min-w-0 flex-[1_1_0%] overflow-hidden"
+          className="hidden min-w-0 flex-[1_1_0%] overflow-hidden md:block"
           initial={{ opacity: 0, y: -10, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
@@ -46,7 +47,7 @@ export default function Header() {
         <CenterMenu />
 
         <motion.div
-          className="min-w-0 flex-[1_1_0%] overflow-hidden"
+          className="hidden min-w-0 flex-[1_1_0%] overflow-hidden md:block"
           initial={{ opacity: 0, y: -10, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
@@ -57,18 +58,69 @@ export default function Header() {
             ))}
           </div>
         </motion.div>
+
+        <MobilePrimaryNav />
       </div>
     </header>
+  );
+}
+
+function MobilePrimaryNav() {
+  const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
+  const itemRefs = useRef<Record<string, HTMLLIElement | null>>({});
+
+  useEffect(() => {
+    if (!pathname) {
+      return;
+    }
+
+    const activeItem = itemRefs.current[pathname];
+
+    if (!activeItem) {
+      return;
+    }
+
+    activeItem.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [pathname, reduceMotion]);
+
+  return (
+    <motion.nav
+      className="md:hidden"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+      aria-label="Primary navigation"
+    >
+      <motion.ul
+        layoutScroll
+        className="-mx-8 flex snap-x snap-mandatory gap-x-8 overflow-x-auto px-8 sm:-mx-10 sm:px-10"
+      >
+        {primaryLinks.map((link) => (
+          <motion.li
+            key={link.href}
+            layout
+            ref={(element) => {
+              itemRefs.current[link.href] = element;
+            }}
+            className="shrink-0 snap-center"
+          >
+            <MenuLink {...link} />
+          </motion.li>
+        ))}
+      </motion.ul>
+    </motion.nav>
   );
 }
 
 function CenterMenu() {
   const [menuExpanded, setMenuExpanded] = useState(false);
   return (
-    <div
-      className="shrink-0 grow-0"
-      style={{ flexBasis: 354, width: 354, maxWidth: 354 }}
-    >
+    <div className="w-full shrink-0 grow-0 md:w-[354px] md:max-w-[354px] md:basis-[354px]">
       <motion.div
         className="flex w-full items-center justify-between rounded-[12px] bg-surface-grey px-5 py-3 md:h-20"
         initial={{ opacity: 0, y: 0, scale: 0.96 }}
