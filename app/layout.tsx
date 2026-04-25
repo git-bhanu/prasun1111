@@ -7,8 +7,8 @@ import React from 'react';
 import '@/styles.css';
 
 export const metadata: Metadata = {
-  title: 'Your Project',
-  description: 'A clean starting point for your TinaCMS site.',
+  title: 'Prasun1111',
+  description: 'Official website of Prasun1111 featuring artworks, installations, films, design, and writings.',
 };
 
 export default function RootLayout({
