@@ -1,6 +1,6 @@
 "use client";
 
-import { spaceGrotesk } from "@/app/fonts";
+import Link from "next/link";
 import { Icon, IconCircle } from "@/components/icons";
 import animationData from "@/public/uploads/assets/1111.json";
 import Lottie from "lottie-react";
@@ -75,10 +75,11 @@ function CenterMenu() {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
       >
-        <div
+        <Link
+          href={"/"}
           role="img"
           aria-label="Prasun 1111 logo animation"
-          className="flex h-[50px] min-w-0 flex-1 items-center"
+          className="flex h-[50px] min-w-0 flex-1 items-center cursor-pointer"
         >
           <Image
             src="/uploads/11-logo.svg"
@@ -96,7 +97,7 @@ function CenterMenu() {
               className="h-full w-full"
             />
           </div>
-        </div>
+        </Link>
         <motion.button
           layout
           type="button"
