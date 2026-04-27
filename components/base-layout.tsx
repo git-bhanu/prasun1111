@@ -1,4 +1,5 @@
 'use client';
+import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header/index';
 import { ViewTransitionProvider } from '@/components/view-transition-provider';
 import type React from 'react';
@@ -14,6 +15,7 @@ export function BaseLayout({ children }: BaseLayoutProps) {
       <ViewTransitionProvider>
         <main className='flex-1'>{children}</main>
       </ViewTransitionProvider>
+      <Footer />
     </div>
   );
 }
