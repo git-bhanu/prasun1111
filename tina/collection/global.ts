@@ -2,6 +2,41 @@ import type { Collection } from 'tinacms';
 import { ColorPickerInput } from '../fields/color';
 import { iconSchema } from '../fields/icon';
 
+const navigationLinkFields = [
+  {
+    type: 'string',
+    label: 'Index',
+    name: 'index',
+  },
+  {
+    type: 'string',
+    label: 'Label',
+    name: 'label',
+    required: true,
+  },
+  {
+    type: 'string',
+    label: 'Link',
+    name: 'href',
+    required: true,
+  },
+  {
+    type: 'string',
+    label: 'Group',
+    name: 'group',
+    required: true,
+    options: [
+      { label: 'Primary', value: 'primary' },
+      { label: 'Utility', value: 'utility' },
+    ],
+  },
+  {
+    type: 'boolean',
+    label: 'Show in footer',
+    name: 'showInFooter',
+  },
+] as const;
+
 const Global: Collection = {
   label: 'Global',
   name: 'global',
@@ -13,50 +48,81 @@ const Global: Collection = {
   fields: [
     {
       type: 'object',
-      label: 'Header',
-      name: 'header',
+      label: 'Brand',
+      name: 'brand',
       fields: [
-        iconSchema as any,
         {
-          type: 'string',
-          label: 'Name',
-          name: 'name',
+          type: 'image',
+          label: 'Logo',
+          name: 'logo',
         },
         {
           type: 'string',
-          label: 'Color',
-          name: 'color',
-          options: [
-            { label: 'Default', value: 'default' },
-            { label: 'Primary', value: 'primary' },
-          ],
+          label: 'Logo Alt Text',
+          name: 'logoAlt',
         },
+        {
+          type: 'string',
+          label: 'Home Link Label',
+          name: 'homeAriaLabel',
+        },
+      ],
+    },
+    {
+      type: 'object',
+      label: 'Navigation',
+      name: 'navigation',
+      fields: [
         {
           type: 'object',
-          label: 'Nav Links',
-          name: 'nav',
+          label: 'Links',
+          name: 'links',
           list: true,
           ui: {
             itemProps: (item) => {
-              return { label: item?.label };
+              return { label: item?.label || item?.href };
             },
             defaultItem: {
-              href: '/',
-              label: 'Home',
+              index: '01',
+              label: 'ARTWORKS',
+              href: '/artworks',
+              group: 'primary',
+              showInFooter: true,
             },
           },
-          fields: [
-            {
-              type: 'string',
-              label: 'Link',
-              name: 'href',
-            },
-            {
-              type: 'string',
-              label: 'Label',
-              name: 'label',
-            },
-          ],
+          fields: navigationLinkFields as any,
+        },
+      ],
+    },
+    {
+      type: 'object',
+      label: 'Site Meta',
+      name: 'siteMeta',
+      fields: [
+        {
+          type: 'string',
+          label: 'Established Label',
+          name: 'establishedLabel',
+        },
+        {
+          type: 'string',
+          label: 'Time Zone',
+          name: 'timeZone',
+        },
+        {
+          type: 'string',
+          label: 'Time Zone Suffix',
+          name: 'timeZoneSuffix',
+        },
+        {
+          type: 'string',
+          label: 'Issue Label',
+          name: 'issueLabel',
+        },
+        {
+          type: 'string',
+          label: 'Location',
+          name: 'location',
         },
       ],
     },
@@ -90,14 +156,13 @@ const Global: Collection = {
       type: 'object',
       label: 'Theme',
       name: 'theme',
-      // @ts-ignore
       fields: [
         {
           type: 'string',
           label: 'Primary Color',
           name: 'color',
           ui: {
-            component: ColorPickerInput,
+            component: ColorPickerInput as any,
           },
         },
         {

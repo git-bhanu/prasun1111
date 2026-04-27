@@ -1,0 +1,89 @@
+{
+  "brand": {
+    "logo": "/uploads/11-logo.svg",
+    "logoAlt": "Prasun 1111 Logo",
+    "homeAriaLabel": "Prasun 1111 home"
+  },
+  "navigation": {
+    "links": [
+      {
+        "index": "01",
+        "label": "ARTWORKS",
+        "href": "/artworks",
+        "group": "primary",
+        "showInFooter": true
+      },
+      {
+        "index": "02",
+        "label": "INSTALLATIONS",
+        "href": "/installations",
+        "group": "primary",
+        "showInFooter": true
+      },
+      {
+        "index": "03",
+        "label": "FILMS",
+        "href": "/films",
+        "group": "primary",
+        "showInFooter": true
+      },
+      {
+        "index": "04",
+        "label": "DESIGN",
+        "href": "/design",
+        "group": "primary",
+        "showInFooter": true
+      },
+      {
+        "index": "05",
+        "label": "WRITINGS",
+        "href": "/writings",
+        "group": "primary",
+        "showInFooter": true
+      },
+      {
+        "index": "06",
+        "label": "SHOP",
+        "href": "/shop",
+        "group": "utility",
+        "showInFooter": true
+      },
+      {
+        "index": "07",
+        "label": "CART",
+        "href": "/cart",
+        "group": "utility",
+        "showInFooter": true
+      },
+      {
+        "index": "08",
+        "label": "ABOUT",
+        "href": "/about",
+        "group": "utility",
+        "showInFooter": true
+      },
+      {
+        "index": "09",
+        "label": "CONTACT",
+        "href": "/contact",
+        "group": "utility",
+        "showInFooter": true
+      }
+    ]
+  },
+  "siteMeta": {
+    "establishedLabel": "EST. 1991",
+    "timeZone": "Asia/Kolkata",
+    "timeZoneSuffix": "IST",
+    "issueLabel": "ISSUE 11.11",
+    "location": "GURUGRAM, HARYANA - 122022."
+  },
+  "footer": {
+    "social": []
+  },
+  "theme": {
+    "color": "#ff5a1f",
+    "font": "sans",
+    "darkMode": "light"
+  }
+}

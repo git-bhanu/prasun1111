@@ -7,7 +7,7 @@ import { queries } from '@/tina/__generated__/types';
 const branch = process.env.NEXT_PUBLIC_TINA_BRANCH || process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || process.env.HEAD || 'main';
 const clientId = process.env.NEXT_PUBLIC_TINA_CLIENT_ID;
 const isLocalTina = process.env.TINA_LOCAL === 'true';
-const localTinaUrl = 'http://127.0.0.1:4001/graphql';
+const localTinaUrl = process.env.TINA_LOCAL_URL || 'http://localhost:4001/graphql';
 
 function getHostedTinaUrl() {
   if (!clientId) {
