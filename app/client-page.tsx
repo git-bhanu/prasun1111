@@ -1,5 +1,6 @@
 'use client';
 
+import { FeaturedWorkSliderBlock } from '@/components/page-blocks/featured-work-slider-block';
 import { HeroStatementBlock } from '@/components/page-blocks/hero-statement-block';
 import type { PageQuery, PageQueryVariables } from '@/tina/__generated__/types';
 import { useTina } from 'tinacms/dist/react';
@@ -19,6 +20,8 @@ export default function ClientPage(props: ClientPageProps) {
         switch (block?.__typename) {
           case 'PageBlocksHeroStatement':
             return <HeroStatementBlock key={`${block.__typename}-${index}`} block={block} />;
+          case 'PageBlocksFeaturedWorkSlider':
+            return <FeaturedWorkSliderBlock key={`${block.__typename}-${index}`} block={block} />;
           default:
             return null;
         }

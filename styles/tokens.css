@@ -1,10 +1,10 @@
 :root {
-    --brand-black: #000000;
-    --brand-white: #ffffff;
-    --brand-orange: #ff6a00;
-    --brand-blue: #0000ff;
+  --brand-black: #000000;
+  --brand-white: #ffffff;
+  --brand-orange: #ff6400;
+  --brand-blue: #0000ff;
 
-    --surface-grey: #f6f6f6;
+  --surface-grey: #f6f6f6;
 
-    --text-grey: #bfbfbf;
+  --text-grey: #bfbfbf;
 }
