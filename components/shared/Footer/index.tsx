@@ -42,7 +42,7 @@ function FooterWordmark({ brand }: { brand: SiteSettings['brand'] }) {
           <Image src={brand.logo} alt={brand.logoAlt} fill priority className='object-fill object-left-bottom' />
         </div>
 
-        <div className='relative min-w-0 overflow-hidden'>
+        <div className='relative min-w-0'>
           <Lottie
             animationData={animationData}
             autoplay

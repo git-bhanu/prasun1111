@@ -261,7 +261,7 @@ function MenuMeta({ meta }: { meta: SiteSettings['meta'] }) {
   }, [meta]);
 
   return (
-    <div className='flex items-center justify-center gap-x-4 text-center text-[10px] uppercase tracking-[-0.04em] text-black md:gap-x-5 md:text-[12px]'>
+    <div className='font-space-grotesk flex items-center justify-center gap-x-4 text-center text-[10px] uppercase text-black md:gap-x-5 md:text-[12px]'>
       <span>{meta.establishedLabel}</span>
       <span className='text-black/50'>|</span>
       <span>{timeLabel}</span>
@@ -271,7 +271,7 @@ function MenuMeta({ meta }: { meta: SiteSettings['meta'] }) {
 
 function MenuFooter({ meta }: { meta: SiteSettings['meta'] }) {
   return (
-    <div className='mt-auto flex items-center justify-center gap-x-4 pt-8 text-center text-[10px] uppercase tracking-[-0.04em] text-black md:gap-x-5 md:pt-0 md:text-[12px]'>
+    <div className=' font-space-grotesk mt-auto flex items-center justify-center gap-x-4 pt-8 text-center text-[10px] uppercase text-black md:gap-x-5 md:pt-0 md:text-[12px]'>
       <span>{meta.issueLabel}</span>
       <span className='text-black/50'>|</span>
       <span>{meta.location}</span>
