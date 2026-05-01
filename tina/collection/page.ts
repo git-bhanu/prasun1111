@@ -1,4 +1,26 @@
-import type { Collection } from 'tinacms';
+import type { Collection, Template } from 'tinacms';
+
+const heroStatementBlock: Template = {
+  name: 'heroStatement',
+  label: 'Hero Statement',
+  fields: [
+    {
+      type: 'string',
+      label: 'Eyebrow',
+      name: 'eyebrow',
+    },
+    {
+      type: 'rich-text',
+      label: 'Statement',
+      name: 'statement',
+      description: 'Use Shift+Enter for line breaks. For underline, use Raw Markdown and wrap text in <u>...</u>.',
+      required: true,
+      overrides: {
+        toolbar: ['bold', 'italic', 'raw'],
+      },
+    },
+  ],
+};
 
 const Page: Collection = {
   label: 'Pages',
@@ -29,6 +51,16 @@ const Page: Collection = {
       label: 'Body',
       name: 'body',
       isBody: true,
+    },
+    {
+      type: 'object',
+      label: 'Page Blocks',
+      name: 'blocks',
+      list: true,
+      ui: {
+        visualSelector: true,
+      },
+      templates: [heroStatementBlock],
     },
   ],
 };

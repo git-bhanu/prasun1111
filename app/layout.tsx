@@ -1,4 +1,4 @@
-import { fontSans, lato, nunito, spaceGrotesk } from '@/app/fonts';
+import { fontSans, lato, nunito, sedan, spaceGrotesk } from '@/app/fonts';
 import { BaseLayout } from '@/components/base-layout';
 import { cn } from '@/lib/utils';
 import client from '@/tina/client';
@@ -29,7 +29,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang='en' className={cn(fontSans.variable, nunito.variable, lato.variable, spaceGrotesk.variable)}>
+    <html lang='en' className={cn(fontSans.variable, nunito.variable, lato.variable, sedan.variable, spaceGrotesk.variable)}>
       <body className='min-h-screen bg-background font-sans antialiased'>
         <BaseLayout siteSettingsQuery={siteSettings.query} siteSettingsData={siteSettings.data} siteSettingsVariables={siteSettings.variables}>
           {children}
