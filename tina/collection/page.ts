@@ -101,6 +101,132 @@ const featuredWorkSliderBlock: Template = {
   ],
 };
 
+const installationSliderBlock: Template = {
+  name: 'installationSlider',
+  label: 'Installation Slider',
+  fields: [
+    {
+      type: 'object',
+      label: 'Slides',
+      name: 'slides',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.title || item?.eyebrow || 'Installation slide' };
+        },
+        defaultItem: {
+          eyebrow: 'INSTALLATIONS',
+          title: 'REPEAT / BIODIVERSITY OF THE BALANCE',
+          medium: 'EPOXY',
+          artists: ['PRASUN MAZUMDAR', 'MANAS MATHUR'],
+          dimensions: '6.4ft (H) x 5.6ft (W)',
+          weight: '32 kg',
+          year: '2023',
+          backgroundType: 'image',
+          readMoreLabel: 'READ MORE',
+          watchFilmLabel: 'WATCH FILM',
+          filmDuration: '8MIN. 23 SEC.',
+        },
+      },
+      fields: [
+        {
+          type: 'string',
+          label: 'Eyebrow',
+          name: 'eyebrow',
+        },
+        {
+          type: 'string',
+          label: 'Title',
+          name: 'title',
+          required: true,
+        },
+        {
+          type: 'string',
+          label: 'Medium',
+          name: 'medium',
+        },
+        {
+          type: 'string',
+          label: 'Artists',
+          name: 'artists',
+          list: true,
+        },
+        {
+          type: 'string',
+          label: 'Dimensions',
+          name: 'dimensions',
+        },
+        {
+          type: 'string',
+          label: 'Weight',
+          name: 'weight',
+        },
+        {
+          type: 'string',
+          label: 'Year',
+          name: 'year',
+        },
+        {
+          type: 'string',
+          label: 'Read More Label',
+          name: 'readMoreLabel',
+        },
+        {
+          type: 'string',
+          label: 'Read More Link',
+          name: 'readMoreHref',
+        },
+        {
+          type: 'string',
+          label: 'Watch Film Label',
+          name: 'watchFilmLabel',
+        },
+        {
+          type: 'string',
+          label: 'Watch Film Link',
+          name: 'watchFilmHref',
+        },
+        {
+          type: 'string',
+          label: 'Film Duration',
+          name: 'filmDuration',
+        },
+        {
+          type: 'string',
+          label: 'Background Type',
+          name: 'backgroundType',
+          options: [
+            { label: 'Image', value: 'image' },
+            { label: 'Video', value: 'video' },
+          ],
+        },
+        {
+          type: 'image',
+          label: 'Image',
+          name: 'image',
+        },
+        {
+          type: 'string',
+          label: 'Image Alt Text',
+          name: 'imageAlt',
+        },
+        {
+          type: 'image',
+          label: 'Video',
+          name: 'videoUrl',
+          description: 'Select a Cloudinary video or local public video file.',
+        },
+        {
+          type: 'image',
+          label: 'Video Poster',
+          name: 'videoPoster',
+          description: 'Fallback image shown before the video loads.',
+        },
+      ],
+    },
+  ],
+};
+
 const Page: Collection = {
   label: 'Pages',
   name: 'page',
@@ -139,7 +265,7 @@ const Page: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [heroStatementBlock, featuredWorkSliderBlock],
+      templates: [heroStatementBlock, featuredWorkSliderBlock, installationSliderBlock],
     },
   ],
 };

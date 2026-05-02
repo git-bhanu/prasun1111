@@ -114,30 +114,17 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
   return (
     <section className='mx-auto w-full bg-white'>
       <div className='md:hidden'>
-        <AnimatePresence initial={false} mode='wait' custom={direction}>
-          {activeSlide.eyebrow ? (
-            <motion.div
-              key={`mobile-eyebrow-${activeIndex}`}
-              data-tina-field={tinaField(activeSlide, 'eyebrow')}
-              custom={direction}
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: direction * 18 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * -18 }}
-              transition={contentTransition}
-              className='px-4'
-            >
-              <SectionMasthead
-                index={1}
-                title={activeSlide.eyebrow}
-                size='sm'
-                className='w-fit items-center gap-3 rounded-lg border border-black/4 p-3'
-                titleClassName='text-black'
-              />
-            </motion.div>
-          ) : (
-            <motion.span key={`mobile-eyebrow-empty-${activeIndex}`} />
-          )}
-        </AnimatePresence>
+        {activeSlide.eyebrow ? (
+          <div data-tina-field={tinaField(activeSlide, 'eyebrow')} className='px-4'>
+            <SectionMasthead
+              index={1}
+              title={activeSlide.eyebrow}
+              size='sm'
+              className='w-fit items-center gap-3 rounded-lg border border-black/4 p-3'
+              titleClassName='text-black'
+            />
+          </div>
+        ) : null}
 
         <div className='relative mt-7 overflow-hidden bg-black h-[165px]' data-tina-field={tinaField(activeSlide, mediaField)}>
           {renderMedia()}
@@ -180,28 +167,16 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
         {renderMedia()}
 
         <div className='relative z-10 flex min-h-[34rem] flex-col justify-between p-6 sm:p-8 md:min-h-[42rem] md:p-10'>
-          <AnimatePresence initial={false} mode='wait' custom={direction}>
-            {activeSlide.eyebrow ? (
-              <motion.div
-                key={`eyebrow-${activeIndex}`}
-                data-tina-field={tinaField(activeSlide, 'eyebrow')}
-                custom={direction}
-                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: direction * 18 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * -18 }}
-                transition={contentTransition}
-              >
-                <SectionMasthead
-                  index={1}
-                  title={activeSlide.eyebrow}
-                  size='sm'
-                  className='w-fit items-center gap-2 rounded-lg border border-white/4 bg-black/5 px-3 py-3'
-                />
-              </motion.div>
-            ) : (
-              <motion.span key={`eyebrow-empty-${activeIndex}`} />
-            )}
-          </AnimatePresence>
+          {activeSlide.eyebrow ? (
+            <div data-tina-field={tinaField(activeSlide, 'eyebrow')}>
+              <SectionMasthead
+                index={1}
+                title={activeSlide.eyebrow}
+                size='sm'
+                className='w-fit items-center gap-2 rounded-lg border border-white/5 px-3 py-3'
+              />
+            </div>
+          ) : null}
 
           <div className='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
             <AnimatePresence initial={false} mode='wait' custom={direction}>
@@ -223,12 +198,7 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
 
                 {tags.length ? (
                   <div className='mt-3' data-tina-field={tinaField(activeSlide, 'tags')}>
-                    <ArtworkTabs
-                      items={tagItems}
-                      className='bg-transparent p-0'
-                      listClassName='flex-row flex-wrap gap-2'
-                      tabClassName='min-h-0 flex-none'
-                    />
+                    <ArtworkTabs items={tagItems} className='bg-transparent p-0' listClassName='flex-row flex-wrap gap-2' tabClassName='min-h-0 flex-none' />
                   </div>
                 ) : null}
               </motion.div>
