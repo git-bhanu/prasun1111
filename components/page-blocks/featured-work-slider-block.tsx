@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { AnimatePresence, useReducedMotion } from "motion/react";
 import * as motion from "motion/react-client";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { tinaField } from "tinacms/dist/react";
 
+import { Icon, IconCircleButton } from "@/components/icons";
 import { SectionMasthead } from "@/components/shared/section-masthead";
 import { cn } from "@/lib/utils";
 import type { PageBlocksFeaturedWorkSlider } from "@/tina/__generated__/types";
@@ -125,22 +126,22 @@ export function FeaturedWorkSliderBlock({
 
   const renderControls = () => (
     <>
-      <button
-        type="button"
-        onClick={goToPrevious}
-        className="inline-flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-neutral-100 text-black transition hover:scale-105 hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black md:h-11 md:w-11 md:bg-white md:shadow-[0_16px_45px_rgba(0,0,0,0.22)] md:focus-visible:outline-white"
-        aria-label="Show previous slide"
-      >
-        <ArrowLeft className="h-6 w-6 md:h-4 md:w-4" aria-hidden="true" />
-      </button>
-      <button
-        type="button"
-        onClick={goToNext}
-        className="inline-flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-neutral-100 text-black transition hover:scale-105 hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black md:h-11 md:w-11 md:bg-white md:shadow-[0_16px_45px_rgba(0,0,0,0.22)] md:focus-visible:outline-white"
-        aria-label="Show next slide"
-      >
-        <ArrowRight className="h-6 w-6 md:h-4 md:w-4" aria-hidden="true" />
-      </button>
+      <IconCircleButton onClick={goToPrevious} aria-label="Show previous slide">
+        <Icon
+          name="keyboardBackspace"
+          color="currentColor"
+          className="rotate-180"
+          aria-hidden="true"
+        />
+      </IconCircleButton>
+      <IconCircleButton onClick={goToNext} aria-label="Show next slide">
+        <Icon
+          name="keyboardBackspace"
+          color="currentColor"
+          className=""
+          aria-hidden="true"
+        />
+      </IconCircleButton>
     </>
   );
 
