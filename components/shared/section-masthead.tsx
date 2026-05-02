@@ -12,8 +12,8 @@ type SectionMastheadProps = {
 
 const sizeClasses = {
   sm: {
-    index: "text-[10px] font-space-grotesk",
-    title: "text-md",
+    index: "text-[8px] md:text-[10px] font-space-grotesk",
+    title: "text-xs md:text-md",
   },
   md: {
     index: "text-[1.35rem] sm:text-[1.65rem]",
@@ -42,7 +42,7 @@ export function SectionMasthead({
   titleClassName,
 }: SectionMastheadProps) {
   return (
-    <div className={cn("flex w-full items-start gap-1", className)}>
+    <div className={cn("flex w-full items-start gap-0.5 md:gap-1", className)}>
       {index !== undefined ? (
         <span
           className={cn(

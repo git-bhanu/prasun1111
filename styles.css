@@ -28,6 +28,7 @@
 
     /* surface-colors */
     --color-surface-grey: var(--surface-grey);
+    --color-surface-grey-1: var(--surface-grey-1);
 
     /* text-colors */
     --color-text-grey: var(--text-grey);
