@@ -88,7 +88,7 @@ export function ActionButton({
       {renderIcon()}
       <span>{label}</span>
       {subLabel ? (
-        <span className="inline-flex items-center gap-2 text-[14px]">
+        <span className="inline-flex items-center gap-2 text-[10px] md:text-[14px]">
           <span className="size-1 rounded-full bg-current" aria-hidden="true" />
           {subLabel}
         </span>
