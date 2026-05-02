@@ -1,6 +1,6 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
-export type ArtworkTabColor = 'orange' | 'blue';
+export type ArtworkTabColor = "orange" | "blue";
 
 export interface ArtworkTabItem {
   value: string;
@@ -16,25 +16,37 @@ export interface ArtworkTabsProps {
 }
 
 const colorClassNames = {
-  orange: 'text-brand-orange',
-  blue: 'text-brand-blue',
+  orange: "text-brand-orange",
+  blue: "text-brand-blue",
 } satisfies Record<ArtworkTabColor, string>;
 
-export function ArtworkTabs({ items, ariaLabel = 'Artwork categories', className, listClassName, tabClassName }: ArtworkTabsProps) {
+export function ArtworkTabs({
+  items,
+  ariaLabel = "Artwork categories",
+  className,
+  listClassName,
+  tabClassName,
+}: ArtworkTabsProps) {
   if (items.length === 0) {
     return null;
   }
 
   return (
-    <div className={cn('w-full bg-white', className)}>
-      <ul aria-label={ariaLabel} className={cn('flex flex-col flex-wrap gap-2 md:flex-row md:gap-2', listClassName)}>
+    <div className={cn("w-full bg-white", className)}>
+      <ul
+        aria-label={ariaLabel}
+        className={cn(
+          "flex flex-col flex-wrap gap-2 md:flex-row md:gap-2",
+          listClassName,
+        )}
+      >
         {items.map((item) => (
           <li
             key={item.value}
             className={cn(
-              'flex min-w-0 flex-1 items-center justify-center whitespace-normal break-words rounded-[4px] bg-white px-2 py-2 text-center font-space-grotesk text-[10px] uppercase',
-              colorClassNames[item.color ?? 'orange'],
-              tabClassName
+              "flex min-w-0 flex-1 items-center justify-center whitespace-normal break-words rounded-[4px] bg-white px-3 py-1 text-center font-space-grotesk text-[10px] uppercase",
+              colorClassNames[item.color ?? "orange"],
+              tabClassName,
             )}
           >
             {item.value}

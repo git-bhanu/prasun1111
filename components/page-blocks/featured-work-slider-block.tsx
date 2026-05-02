@@ -186,7 +186,7 @@ export function FeaturedWorkSliderBlock({
                 : { opacity: 0, y: 12, x: direction * -10 }
             }
             transition={contentTransition}
-            className="mx-4 mt-7 rounded-lg bg-neutral-50 p-4"
+            className="mx-4 mt-7 rounded-lg bg-neutral-50 p-2"
           >
             <ArtworkTitle
               title={activeSlide.title}
@@ -197,14 +197,14 @@ export function FeaturedWorkSliderBlock({
 
             {tags.length ? (
               <div
-                className="mt-4"
+                className="mt-2"
                 data-tina-field={tinaField(activeSlide, "tags")}
               >
                 <ArtworkTabs
                   items={tagItems}
                   className="bg-transparent p-0"
                   listClassName="flex-row flex-wrap gap-2"
-                  tabClassName="min-h-0 flex-none rounded-[4px] px-5 py-2 text-[10px] font-medium md:min-h-0"
+                  tabClassName="min-h-0 flex-none rounded-[4px] text-[10px] font-medium md:min-h-0"
                 />
               </div>
             ) : null}
