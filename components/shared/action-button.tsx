@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Icon, type IconName } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
-type ActionButtonColor = 'black' | 'orange';
+type ActionButtonColor = 'black' | 'orange' | 'white';
 
 const buttonHover = {
   y: -1,
@@ -46,6 +46,10 @@ const colorClassNames: Record<ActionButtonColor, { button: string; icon: string 
   orange: {
     button: 'bg-brand-orange text-white hover:bg-brand-orange/90',
     icon: 'text-white',
+  },
+  white: {
+    button: 'bg-white text-black hover:bg-white/90',
+    icon: 'text-black',
   },
 };
 

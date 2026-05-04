@@ -16,10 +16,10 @@ export default function Footer() {
   const { brand, footerLinks, meta } = useSiteSettings();
 
   return (
-    <footer className='mt-12 bg-surface-grey text-black md:mt-20'>
-      <div className='px-4 py-8 md:px-[58px] md:py-14'>
-        <div className='flex flex-col gap-10 xl:flex-row xl:items-start xl:justify-between xl:gap-12'>
-          <div className='min-w-0 flex-1'>
+    <footer className="bg-surface-grey text-black">
+      <div className="px-4 py-8 md:px-[58px] md:py-14">
+        <div className="flex flex-col gap-10 xl:flex-row xl:items-start xl:justify-between xl:gap-12">
+          <div className="min-w-0 flex-1">
             <FooterWordmark brand={brand} />
           </div>
 

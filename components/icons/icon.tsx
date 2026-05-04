@@ -1,3 +1,4 @@
+import ArrowOutwardIcon from './arrow_outward.svg';
 import ArticlePersonIcon from './article_person.svg';
 import ErrorIcon from './error.svg';
 import HamburgerIcon from './hamburger.svg';
@@ -8,6 +9,7 @@ import { SvgIcon, type SvgIconProps } from './svg-icon';
 
 export const icons = {
   articlePerson: ArticlePersonIcon,
+  arrowOutward: ArrowOutwardIcon,
   error: ErrorIcon,
   hamburger: HamburgerIcon,
   keyboardBackspace: KeyboardBackspaceIcon,

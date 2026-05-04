@@ -22,6 +22,77 @@ const heroStatementBlock: Template = {
   ],
 };
 
+const artistIntroBlock: Template = {
+  name: 'artistIntro',
+  label: 'Artist Intro',
+  fields: [
+    {
+      type: 'image',
+      label: 'Portrait Image',
+      name: 'image',
+      required: true,
+    },
+    {
+      type: 'string',
+      label: 'Image Alt Text',
+      name: 'imageAlt',
+    },
+    {
+      type: 'string',
+      label: 'Name Label',
+      name: 'nameLabel',
+    },
+    {
+      type: 'string',
+      label: 'Role Label',
+      name: 'roleLabel',
+    },
+    {
+      type: 'object',
+      label: 'Social Links',
+      name: 'socialLinks',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.label || 'Social link' };
+        },
+      },
+      fields: [
+        {
+          type: 'string',
+          label: 'Label',
+          name: 'label',
+          required: true,
+        },
+        {
+          type: 'string',
+          label: 'Link',
+          name: 'href',
+        },
+      ],
+    },
+    {
+      type: 'rich-text',
+      label: 'Statement',
+      name: 'statement',
+      required: true,
+      overrides: {
+        toolbar: ['italic'],
+      },
+    },
+    {
+      type: 'string',
+      label: 'Button Label',
+      name: 'buttonLabel',
+    },
+    {
+      type: 'string',
+      label: 'Button Link',
+      name: 'buttonHref',
+    },
+  ],
+};
+
 const featuredWorkSliderBlock: Template = {
   name: 'featuredWorkSlider',
   label: 'Featured Work Slider',
@@ -265,7 +336,7 @@ const Page: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [heroStatementBlock, featuredWorkSliderBlock, installationSliderBlock],
+      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, installationSliderBlock],
     },
   ],
 };
