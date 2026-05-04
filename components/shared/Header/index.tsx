@@ -246,7 +246,7 @@ function CenterMenuPanel({
 }
 
 function MenuMeta({ meta }: { meta: SiteSettings['meta'] }) {
-  const [timeLabel, setTimeLabel] = useState(() => formatSiteTime(new Date(), meta));
+  const [timeLabel, setTimeLabel] = useState('');
 
   useEffect(() => {
     setTimeLabel(formatSiteTime(new Date(), meta));
