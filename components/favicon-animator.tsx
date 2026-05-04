@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 
 const FRAME_COUNT = 38;
-const FRAME_RATE = 24;
+const FRAME_RATE = 10;
 const FRAME_INTERVAL_MS = 1000 / FRAME_RATE;
 const FAVICON_FRAMES = Array.from({ length: FRAME_COUNT }, (_, index) => `/favicon/favicon_${index.toString().padStart(2, '0')}.png`);
 
