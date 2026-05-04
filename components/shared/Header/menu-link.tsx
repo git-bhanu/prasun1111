@@ -22,17 +22,17 @@ export function MenuLink({ index, label, href, source }: MenuLinkProps) {
     <Link
       href={href}
       aria-current={isActive ? 'page' : undefined}
-      className='font-space-grotesk group flex items-start gap-1 md:gap-1.5 whitespace-nowrap uppercase'
+      className='font-space-grotesk group flex items-start gap-1 whitespace-nowrap uppercase md:gap-[4.8px]'
     >
       <span
         className={cn(
-          'text-[9px] font-normal leading-none tracking-[-0.04em] text-black transition-all duration-100 md:text-[15px] md:pt-1',
+          'text-[9px] font-normal leading-none tracking-[-0.04em] text-black transition-all duration-100 md:pt-[3.2px] md:text-[12px]',
           isActive ? 'text-brand-orange' : 'group-hover:text-brand-orange'
         )}
       >
         ({index})
       </span>
-      <span className='relative block text-[24px] leading-none tracking-[-0.05em] sm:text-[28px] md:text-[40px]'>
+      <span className='relative block text-[24px] leading-none tracking-[-0.05em] sm:text-[28px] md:text-[32px]'>
         <span className='invisible font-bold'>{label}</span>
         <span
           data-tina-field={source ? tinaField(source, 'label') : undefined}

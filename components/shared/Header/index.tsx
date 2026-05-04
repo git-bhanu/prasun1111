@@ -22,49 +22,65 @@ export default function Header() {
   return (
     <header className='p-4 md:px-[58px] md:py-9'>
       <div className='font-s flex flex-col gap-y-4'>
-        <div className='flex flex-col gap-y-4 md:flex-row md:items-center md:gap-x-6 md:gap-y-0'>
-          <motion.div
-            className='hidden min-w-0 flex-[1_1_0%] overflow-hidden md:block'
-            initial={{ opacity: 0, y: -10, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{
-              duration: 0.55,
-              ease: [0.22, 1, 0.36, 1],
-              delay: 0.08,
-            }}
-          >
-            <div className='flex min-w-0 items-center gap-x-10 lg:gap-x-14'>
-              {primaryLinks.slice(0, 2).map((link) => (
-                <MenuLink key={link.label} {...link} />
-              ))}
-            </div>
-          </motion.div>
-
-          <CenterMenu brand={brand} menuExpanded={menuExpanded} onToggle={() => setMenuExpanded((current) => !current)} />
-
-          <motion.div
-            className='hidden min-w-0 flex-[1_1_0%] overflow-hidden md:block'
-            initial={{ opacity: 0, y: -10, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{
-              duration: 0.55,
-              ease: [0.22, 1, 0.36, 1],
-              delay: 0.08,
-            }}
-          >
-            <div className='flex min-w-0 items-center justify-end gap-x-10 lg:gap-x-14'>
-              {primaryLinks.slice(2).map((link) => (
-                <MenuLink key={link.label} {...link} />
-              ))}
-            </div>
-          </motion.div>
-
+        <div className='flex flex-col gap-y-4'>
+          <DesktopPrimaryNav brand={brand} links={primaryLinks} menuExpanded={menuExpanded} onToggle={() => setMenuExpanded((current) => !current)} />
+          <div className='md:hidden'>
+            <CenterMenu brand={brand} menuExpanded={menuExpanded} onToggle={() => setMenuExpanded((current) => !current)} />
+          </div>
           <MobilePrimaryNav menuExpanded={menuExpanded} links={primaryLinks} />
         </div>
 
         <CenterMenuPanel menuExpanded={menuExpanded} links={utilityLinks} meta={meta} onNavigate={() => setMenuExpanded(false)} />
       </div>
     </header>
+  );
+}
+
+function DesktopPrimaryNav({
+  brand,
+  links,
+  menuExpanded,
+  onToggle,
+}: {
+  brand: SiteSettings['brand'];
+  links: SiteNavigationLink[];
+  menuExpanded: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <motion.nav
+      className='relative hidden min-w-0 [--header-center-menu-half:141.6px] [--header-menu-gap:clamp(32px,5vw,140px)] md:block md:h-16'
+      initial={{ opacity: 0, y: -10, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{
+        duration: 0.55,
+        ease: [0.22, 1, 0.36, 1],
+        delay: 0.08,
+      }}
+      aria-label='Primary navigation'
+    >
+      {links[0] ? (
+        <div className='absolute top-1/2 left-0 -translate-y-1/2'>
+          <MenuLink {...links[0]} />
+        </div>
+      ) : null}
+
+      {links[1] ? (
+        <div className='absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2'>
+          <MenuLink {...links[1]} />
+        </div>
+      ) : null}
+
+      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+        <CenterMenu brand={brand} menuExpanded={menuExpanded} onToggle={onToggle} />
+      </div>
+
+      <div className='absolute top-1/2 right-0 left-[calc(50%_+_var(--header-center-menu-half)_+_var(--header-menu-gap))] flex -translate-y-1/2 items-center justify-between'>
+        {links.slice(2).map((link) => (
+          <MenuLink key={link.label} {...link} />
+        ))}
+      </div>
+    </motion.nav>
   );
 }
 
@@ -134,16 +150,16 @@ function CenterMenu({
   onToggle: () => void;
 }) {
   return (
-    <div className='w-full shrink-0 grow-0 md:w-[354px] md:max-w-[354px] md:basis-[354px]'>
+    <div className='w-full shrink-0 grow-0 md:w-[283.2px] md:max-w-[283.2px] md:basis-[283.2px]'>
       <motion.div
-        className='flex w-full items-center justify-between rounded-[12px] bg-surface-grey px-5 py-3 md:h-20'
+        className='flex w-full items-center justify-between rounded-[12px] bg-surface-grey px-5 py-3 md:h-16 md:px-4'
         initial={{ opacity: 0, y: 0, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
       >
-        <Link href={'/'} role='img' aria-label={brand.homeAriaLabel} className='inline-flex h-[50px] shrink-0 items-center cursor-pointer'>
-          <Image src={brand.logo} width={80} height={30} priority alt={brand.logoAlt} className='h-auto w-20 shrink-0' />
-          <div className='h-full shrink-0 overflow-hidden w-[50px]'>
+        <Link href={'/'} role='img' aria-label={brand.homeAriaLabel} className='inline-flex h-[50px] shrink-0 cursor-pointer items-center md:h-10'>
+          <Image src={brand.logo} width={80} height={30} priority alt={brand.logoAlt} className='h-auto w-20 shrink-0 md:w-16' />
+          <div className='h-full w-[50px] shrink-0 overflow-hidden md:w-10'>
             <Lottie animationData={animationData} autoplay loop className='h-full w-full' />
           </div>
         </Link>
@@ -155,11 +171,11 @@ function CenterMenu({
           aria-controls='center-menu-panel'
           onClick={onToggle}
           className={cn(
-            'flex size-[38px] items-center justify-center rounded-full cursor-pointer',
+            'flex size-[38px] cursor-pointer items-center justify-center rounded-full [--header-menu-circle-size:35px] [--header-menu-icon-size:24px] md:size-[30.4px] md:[--header-menu-circle-size:28px] md:[--header-menu-icon-size:19.2px]',
             menuExpanded ? 'bg-brand-orange text-brand-white' : 'bg-brand-white text-brand-black'
           )}
         >
-          <IconCircle size={35} className={menuExpanded ? 'bg-brand-orange' : 'bg-brand-white'}>
+          <IconCircle size='var(--header-menu-circle-size)' className={menuExpanded ? 'bg-brand-orange' : 'bg-brand-white'}>
             <AnimatePresence mode='wait' initial={false}>
               {menuExpanded ? (
                 <motion.span
@@ -169,7 +185,7 @@ function CenterMenu({
                   transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
                   className='inline-flex'
                 >
-                  <Icon name='pinchInZoom' size={24} color='#fff' />
+                  <Icon name='pinchInZoom' size='var(--header-menu-icon-size)' color='#fff' />
                 </motion.span>
               ) : (
                 <motion.span
@@ -179,7 +195,7 @@ function CenterMenu({
                   transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
                   className='inline-flex'
                 >
-                  <Icon name='hamburger' size={24} />
+                  <Icon name='hamburger' size='var(--header-menu-icon-size)' />
                 </motion.span>
               )}
             </AnimatePresence>
