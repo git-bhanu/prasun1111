@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import * as motion from "motion/react-client";
-import Link from "next/link";
+import * as motion from 'motion/react-client';
+import Link from 'next/link';
 
-import { Icon, type IconName } from "@/components/icons";
-import { cn } from "@/lib/utils";
+import { Icon, type IconName } from '@/components/icons';
+import { cn } from '@/lib/utils';
 
-type ActionButtonColor = "black" | "orange";
+type ActionButtonColor = 'black' | 'orange';
 
 const buttonHover = {
   y: -1,
   scale: 1.01,
-  boxShadow: "0 18px 40px rgba(0, 0, 0, 0.18)",
+  boxShadow: '0 18px 40px rgba(0, 0, 0, 0.18)',
 };
 
 const buttonTap = {
@@ -20,7 +20,7 @@ const buttonTap = {
 };
 
 const buttonTransition = {
-  type: "spring",
+  type: 'spring',
   stiffness: 420,
   damping: 28,
   mass: 0.7,
@@ -29,6 +29,7 @@ const buttonTransition = {
 export interface ActionButtonProps {
   color?: ActionButtonColor;
   icon?: IconName;
+  iconPosition?: 'left' | 'right';
   label?: string | null;
   subLabel?: string | null;
   href?: string | null;
@@ -37,23 +38,21 @@ export interface ActionButtonProps {
   dataTinaField?: string;
 }
 
-const colorClassNames: Record<
-  ActionButtonColor,
-  { button: string; icon: string }
-> = {
+const colorClassNames: Record<ActionButtonColor, { button: string; icon: string }> = {
   black: {
-    button: "bg-black text-white hover:bg-black/85",
-    icon: "text-white",
+    button: 'bg-black text-white hover:bg-black/85',
+    icon: 'text-white',
   },
   orange: {
-    button: "bg-brand-orange text-white hover:bg-brand-orange/90",
-    icon: "text-white",
+    button: 'bg-brand-orange text-white hover:bg-brand-orange/90',
+    icon: 'text-white',
   },
 };
 
 export function ActionButton({
-  color = "black",
+  color = 'black',
   icon,
+  iconPosition = 'left',
   label,
   subLabel,
   href,
@@ -71,55 +70,38 @@ export function ActionButton({
     }
 
     return (
-      <span
-        className={cn(
-          "inline-flex size-4 md:size-6 shrink-0 items-center justify-center",
-          colorClassNames[color].icon,
-        )}
-        aria-hidden="true"
-      >
-        <Icon name={icon} size={24} color="currentColor" />
+      <span className={cn('inline-flex size-4 md:size-6 shrink-0 items-center justify-center', colorClassNames[color].icon)} aria-hidden='true'>
+        <Icon name={icon} size={24} color='currentColor' />
       </span>
     );
   };
 
   const content = (
     <>
-      {renderIcon()}
+      {iconPosition === 'left' ? renderIcon() : null}
       <span>{label}</span>
       {subLabel ? (
-        <span className="inline-flex items-center gap-2 text-[10px] md:text-[14px]">
-          <span className="size-1 rounded-full bg-current" aria-hidden="true" />
+        <span className='inline-flex items-center gap-2 text-[10px] md:text-[14px]'>
+          <span className='size-1 rounded-full bg-current' aria-hidden='true' />
           {subLabel}
         </span>
       ) : null}
+      {iconPosition === 'right' ? renderIcon() : null}
     </>
   );
 
   const buttonClassName = cn(
-    "inline-flex items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[12px] leading-none uppercase transition-colors md:rounded-[8px] py-3 md:py-[15px] md:text-[20px]",
-    fullWidth ? "w-full" : "w-full md:w-auto",
+    'inline-flex items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[12px] leading-none uppercase transition-colors md:rounded-[8px] py-3 md:py-[15px] md:text-[20px]',
+    fullWidth ? 'w-full' : 'w-full md:w-auto',
     colorClassNames[color].button,
-    className,
+    className
   );
-  const motionClassName = cn(
-    "inline-flex transform-gpu rounded-[10px] md:rounded-[8px]",
-    fullWidth ? "w-full" : "w-full md:w-auto",
-  );
+  const motionClassName = cn('inline-flex transform-gpu rounded-[10px] md:rounded-[8px]', fullWidth ? 'w-full' : 'w-full md:w-auto');
 
   if (href) {
     return (
-      <motion.span
-        className={motionClassName}
-        whileHover={buttonHover}
-        whileTap={buttonTap}
-        transition={buttonTransition}
-      >
-        <Link
-          href={href}
-          className={buttonClassName}
-          data-tina-field={dataTinaField}
-        >
+      <motion.span className={motionClassName} whileHover={buttonHover} whileTap={buttonTap} transition={buttonTransition}>
+        <Link href={href} className={buttonClassName} data-tina-field={dataTinaField}>
           {content}
         </Link>
       </motion.span>
@@ -127,13 +109,7 @@ export function ActionButton({
   }
 
   return (
-    <motion.span
-      className={buttonClassName}
-      data-tina-field={dataTinaField}
-      whileHover={buttonHover}
-      whileTap={buttonTap}
-      transition={buttonTransition}
-    >
+    <motion.span className={buttonClassName} data-tina-field={dataTinaField} whileHover={buttonHover} whileTap={buttonTap} transition={buttonTransition}>
       {content}
     </motion.span>
   );

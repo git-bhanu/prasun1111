@@ -222,7 +222,7 @@ function CenterMenuPanel({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className='flex min-h-[calc(100dvh-6rem)] flex-col rounded-[12px] bg-white px-5 py-6 md:min-h-[calc(100vh-9.5rem)] md:px-0 md:py-4'
+          className='fixed inset-x-4 bottom-4 top-[106px] z-50 flex flex-col overflow-y-auto overscroll-contain rounded-[12px] bg-white px-5 py-6 md:left-[58px] md:right-[58px] md:bottom-9 md:top-[132px] md:px-0 md:py-4'
         >
           <MenuMeta meta={meta} />
 
