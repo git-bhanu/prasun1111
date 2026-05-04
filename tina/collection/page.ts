@@ -172,6 +172,110 @@ const featuredWorkSliderBlock: Template = {
   ],
 };
 
+const featuredSliderBlock: Template = {
+  name: 'featuredSlider',
+  label: 'Featured Slider',
+  fields: [
+    {
+      type: 'object',
+      label: 'Slides',
+      name: 'slides',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.title || item?.eyebrow || 'Featured slide' };
+        },
+        defaultItem: {
+          eyebrow: 'ARTWORKS',
+          title: 'The eye belongs to the tiger',
+          desktopAssetType: 'image',
+          mobileAssetType: 'image',
+        },
+      },
+      fields: [
+        {
+          type: 'string',
+          label: 'Eyebrow',
+          name: 'eyebrow',
+        },
+        {
+          type: 'string',
+          label: 'Title',
+          name: 'title',
+          required: true,
+        },
+        {
+          type: 'string',
+          label: 'Link',
+          name: 'href',
+        },
+        {
+          type: 'string',
+          label: 'Desktop Asset Type',
+          name: 'desktopAssetType',
+          options: [
+            { label: 'Image', value: 'image' },
+            { label: 'Video', value: 'video' },
+          ],
+        },
+        {
+          type: 'image',
+          label: 'Desktop Image',
+          name: 'desktopImage',
+        },
+        {
+          type: 'string',
+          label: 'Desktop Image Alt Text',
+          name: 'desktopImageAlt',
+        },
+        {
+          type: 'image',
+          label: 'Desktop Video',
+          name: 'desktopVideoUrl',
+          description: 'Select a Cloudinary video or local public video file.',
+        },
+        {
+          type: 'image',
+          label: 'Desktop Video Poster',
+          name: 'desktopVideoPoster',
+          description: 'Fallback image shown before the video loads.',
+        },
+        {
+          type: 'string',
+          label: 'Mobile Asset Type',
+          name: 'mobileAssetType',
+          options: [
+            { label: 'Image', value: 'image' },
+            { label: 'Video', value: 'video' },
+          ],
+        },
+        {
+          type: 'image',
+          label: 'Mobile Image',
+          name: 'mobileImage',
+        },
+        {
+          type: 'string',
+          label: 'Mobile Image Alt Text',
+          name: 'mobileImageAlt',
+        },
+        {
+          type: 'image',
+          label: 'Mobile Video',
+          name: 'mobileVideoUrl',
+          description: 'Select a Cloudinary video or local public video file.',
+        },
+        {
+          type: 'image',
+          label: 'Mobile Video Poster',
+          name: 'mobileVideoPoster',
+          description: 'Fallback image shown before the video loads.',
+        },
+      ],
+    },
+  ],
+};
+
 const installationSliderBlock: Template = {
   name: 'installationSlider',
   label: 'Installation Slider',
@@ -336,7 +440,7 @@ const Page: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, installationSliderBlock],
+      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock],
     },
   ],
 };

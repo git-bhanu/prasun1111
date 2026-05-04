@@ -1,6 +1,7 @@
 'use client';
 
 import { ArtistIntroBlock } from '@/components/page-blocks/artist-intro-block';
+import { FeaturedSliderBlock } from '@/components/page-blocks/featured-slider-block';
 import { FeaturedWorkSliderBlock } from '@/components/page-blocks/featured-work-slider-block';
 import { HeroStatementBlock } from '@/components/page-blocks/hero-statement-block';
 import { InstallationSliderBlock } from '@/components/page-blocks/installation-slider-block';
@@ -26,6 +27,8 @@ export default function ClientPage(props: ClientPageProps) {
             return <ArtistIntroBlock key={`${block.__typename}-${index}`} block={block} />;
           case 'PageBlocksFeaturedWorkSlider':
             return <FeaturedWorkSliderBlock key={`${block.__typename}-${index}`} block={block} />;
+          case 'PageBlocksFeaturedSlider':
+            return <FeaturedSliderBlock key={`${block.__typename}-${index}`} block={block} />;
           case 'PageBlocksInstallationSlider':
             return <InstallationSliderBlock key={`${block.__typename}-${index}`} block={block} />;
           default:
