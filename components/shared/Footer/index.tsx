@@ -72,7 +72,7 @@ function FooterMeta({ meta }: { meta: SiteSettings['meta'] }) {
   }, [meta]);
 
   return (
-    <div className='flex items-center gap-x-3 text-[10px] uppercase tracking-[-0.04em] md:justify-start md:text-[11px]'>
+    <div className='font-space-grotesk flex items-center gap-x-3 text-[10px] uppercase tracking-[-0.04em] md:justify-start md:text-[11px]'>
       <span>{meta.establishedLabel}</span>
       <span className='text-black/50'>|</span>
       <span>{timeLabel}</span>
@@ -130,7 +130,7 @@ function FooterNavLink({
 
 function FooterIssue({ meta }: { meta: SiteSettings['meta'] }) {
   return (
-    <div className='text-[10px] uppercase tracking-[-0.04em] md:text-[11px]'>
+    <div className='text-[10px] uppercase md:text-[11px] font-space-grotesk'>
       <div className='flex items-center gap-x-3 md:justify-start'>
         <span>{meta.issueLabel}</span>
         <span className='text-black/50'>|</span>
