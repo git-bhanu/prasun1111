@@ -110,7 +110,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
   };
 
   return (
-    <section className='bg-white px-4 md:px-0'>
+    <section className='bg-white px-4 md:px-0 py-8 md:py-0'>
       <div className='mx-auto max-w-[536px] md:hidden'>
         {activeSlide.eyebrow ? (
           <div data-tina-field={tinaField(activeSlide, 'eyebrow')}>

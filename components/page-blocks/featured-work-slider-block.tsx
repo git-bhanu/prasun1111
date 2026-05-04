@@ -145,7 +145,7 @@ export function FeaturedWorkSliderBlock({
   );
 
   return (
-    <section className="mx-auto w-full bg-white">
+    <section className="mx-auto w-full bg-white py-8 md:py-0">
       <div className="md:hidden">
         {activeSlide.eyebrow ? (
           <div
