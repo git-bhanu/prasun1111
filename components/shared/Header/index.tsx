@@ -19,8 +19,25 @@ export default function Header() {
   const [menuExpanded, setMenuExpanded] = useState(false);
   const { brand, primaryLinks, utilityLinks, meta } = useSiteSettings();
 
+  useEffect(() => {
+    if (!menuExpanded) {
+      return;
+    }
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [menuExpanded]);
+
   return (
-    <header className='p-4 md:px-[58px] md:py-9'>
+    <header className='p-4 md:pt-4'>
       <div className='font-s flex flex-col gap-y-4'>
         <div className='flex flex-col gap-y-4'>
           <DesktopPrimaryNav brand={brand} links={primaryLinks} menuExpanded={menuExpanded} onToggle={() => setMenuExpanded((current) => !current)} />
@@ -49,7 +66,7 @@ function DesktopPrimaryNav({
 }) {
   return (
     <motion.nav
-      className='relative hidden min-w-0 [--header-center-menu-half:141.6px] [--header-menu-gap:clamp(32px,5vw,140px)] md:block md:h-16'
+      className='hidden min-w-0 items-center justify-between gap-8 bg-white px-[42px] py-5 md:flex'
       initial={{ opacity: 0, y: -10, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{
@@ -59,26 +76,14 @@ function DesktopPrimaryNav({
       }}
       aria-label='Primary navigation'
     >
-      {links[0] ? (
-        <div className='absolute top-1/2 left-0 -translate-y-1/2'>
-          <MenuLink {...links[0]} />
-        </div>
-      ) : null}
-
-      {links[1] ? (
-        <div className='absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2'>
-          <MenuLink {...links[1]} />
-        </div>
-      ) : null}
-
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-        <CenterMenu brand={brand} menuExpanded={menuExpanded} onToggle={onToggle} />
-      </div>
-
-      <div className='absolute top-1/2 right-0 left-[calc(50%_+_var(--header-center-menu-half)_+_var(--header-menu-gap))] flex -translate-y-1/2 items-center justify-between'>
-        {links.slice(2).map((link) => (
+      <div className='flex min-w-0 flex-1 items-center gap-x-[clamp(28px,3.8vw,64px)] overflow-hidden'>
+        {links.map((link) => (
           <MenuLink key={link.label} {...link} />
         ))}
+      </div>
+
+      <div className='shrink-0'>
+        <CenterMenu brand={brand} menuExpanded={menuExpanded} onToggle={onToggle} />
       </div>
     </motion.nav>
   );
@@ -238,7 +243,7 @@ function CenterMenuPanel({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className='fixed inset-x-4 bottom-4 top-[106px] z-50 flex flex-col overflow-y-auto overscroll-contain rounded-[12px] bg-white px-5 py-6 md:left-[58px] md:right-[58px] md:bottom-9 md:top-[132px] md:px-0 md:py-4'
+          className='fixed inset-x-0 bottom-0 top-[106px] z-50 flex flex-col overflow-y-auto overscroll-contain bg-white px-5 py-6 md:top-[140px] md:px-0 md:py-4'
         >
           <MenuMeta meta={meta} />
 
