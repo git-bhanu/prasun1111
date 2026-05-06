@@ -188,7 +188,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                 index='02'
                 title={activeSlide.eyebrow}
                 size='sm'
-                className='w-fit items-center gap-2 rounded-lg border border-white/5 px-3 py-3'
+                className='w-fit items-center gap-2 rounded-[4px] border border-white/5 px-3 py-3'
                 indexClassName='-mt-2'
               />
             </div>
