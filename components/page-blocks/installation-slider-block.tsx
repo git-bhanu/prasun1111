@@ -178,8 +178,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
               />
               <ActionButton
                 color='black'
-                icon='articlePerson'
-                iconPosition='right'
+                icon='error'
                 label={activeSlide.readMoreLabel}
                 href={activeSlide.readMoreHref}
                 fullWidth

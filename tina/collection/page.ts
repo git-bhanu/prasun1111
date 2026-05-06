@@ -402,6 +402,109 @@ const installationSliderBlock: Template = {
   ],
 };
 
+const movieListBlock: Template = {
+  name: 'movieList',
+  label: 'Movie List',
+  fields: [
+    {
+      type: 'object',
+      label: 'Movies',
+      name: 'movies',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.title || item?.eyebrow || 'Movie' };
+        },
+        defaultItem: {
+          eyebrow: 'FILMS',
+          eyebrowIndex: '03',
+          title: 'CROW: The movie / Life',
+          italicTitle: 'always',
+          titleSuffix: 'finds its way.',
+          desktopImage: 'https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778094048/crow-film_yx48ho.jpg',
+          readMoreLabel: 'READ MORE',
+          watchFilmLabel: 'WATCH FILM',
+          filmDuration: '8MIN. 23 SEC.',
+        },
+      },
+      fields: [
+        {
+          type: 'string',
+          label: 'Eyebrow',
+          name: 'eyebrow',
+        },
+        {
+          type: 'string',
+          label: 'Eyebrow Index',
+          name: 'eyebrowIndex',
+        },
+        {
+          type: 'string',
+          label: 'Title',
+          name: 'title',
+          required: true,
+        },
+        {
+          type: 'string',
+          label: 'Italic Title Text',
+          name: 'italicTitle',
+        },
+        {
+          type: 'string',
+          label: 'Title Suffix',
+          name: 'titleSuffix',
+        },
+        {
+          type: 'image',
+          label: 'Desktop Image',
+          name: 'desktopImage',
+          required: true,
+        },
+        {
+          type: 'string',
+          label: 'Desktop Image Alt Text',
+          name: 'desktopImageAlt',
+        },
+        {
+          type: 'image',
+          label: 'Mobile Image',
+          name: 'mobileImage',
+        },
+        {
+          type: 'string',
+          label: 'Mobile Image Alt Text',
+          name: 'mobileImageAlt',
+        },
+        {
+          type: 'string',
+          label: 'Read More Label',
+          name: 'readMoreLabel',
+        },
+        {
+          type: 'string',
+          label: 'Read More Link',
+          name: 'readMoreHref',
+        },
+        {
+          type: 'string',
+          label: 'Watch Film Label',
+          name: 'watchFilmLabel',
+        },
+        {
+          type: 'string',
+          label: 'Watch Film Link',
+          name: 'watchFilmHref',
+        },
+        {
+          type: 'string',
+          label: 'Film Duration',
+          name: 'filmDuration',
+        },
+      ],
+    },
+  ],
+};
+
 const Page: Collection = {
   label: 'Pages',
   name: 'page',
@@ -440,7 +543,7 @@ const Page: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock],
+      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock],
     },
   ],
 };

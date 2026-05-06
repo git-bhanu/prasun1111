@@ -1,0 +1,151 @@
+'use client';
+
+import Image from 'next/image';
+import { tinaField } from 'tinacms/dist/react';
+
+import { ActionButton } from '@/components/shared/action-button';
+import { SectionMasthead } from '@/components/shared/section-masthead';
+import { cn } from '@/lib/utils';
+import type { PageBlocksMovieList } from '@/tina/__generated__/types';
+
+type MovieListBlockProps = {
+  block: PageBlocksMovieList;
+};
+
+type MovieListItem = NonNullable<NonNullable<PageBlocksMovieList['movies']>[number]>;
+
+export function MovieListBlock({ block }: MovieListBlockProps) {
+  const movies = block.movies?.filter((movie): movie is MovieListItem => Boolean(movie?.title && movie.desktopImage)) ?? [];
+
+  if (movies.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className='bg-white px-4 py-8 md:px-8 md:py-11'>
+      <div className='flex w-full flex-col gap-8 md:gap-10'>
+        {movies.map((movie, index) => (
+          <MovieCard key={`${movie.title}-${index}`} movie={movie} priority={index === 0} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MovieCard({ movie, priority }: { movie: MovieListItem; priority: boolean }) {
+  const eyebrowIndex = movie.eyebrowIndex || '03';
+  const desktopImageAlt = movie.desktopImageAlt || movie.title;
+  const mobileImage = movie.mobileImage || movie.desktopImage;
+  const mobileImageAlt = movie.mobileImageAlt || movie.desktopImageAlt || movie.title;
+
+  return (
+    <article>
+      <div className='mx-auto md:hidden'>
+        {movie.eyebrow ? (
+          <div data-tina-field={tinaField(movie, 'eyebrow')}>
+            <SectionMasthead
+              index={eyebrowIndex}
+              title={movie.eyebrow}
+              size='sm'
+              className='w-fit items-center gap-2 rounded-[4px] border border-black/[0.06] px-3 py-2'
+              titleClassName='text-black leading-none'
+              indexClassName='-mt-2'
+            />
+          </div>
+        ) : null}
+
+        <MovieTitle movie={movie} className='mt-5 text-black' />
+
+        <div
+          className='relative mt-8 aspect-video overflow-hidden bg-neutral-100'
+          data-tina-field={tinaField(movie, movie.mobileImage ? 'mobileImage' : 'desktopImage')}
+        >
+          <Image src={mobileImage} alt={mobileImageAlt} fill sizes='(max-width: 767px) calc(100vw - 32px), 0vw' className='object-cover' priority={priority} />
+        </div>
+
+        <MovieActions movie={movie} className='mt-8 flex-col gap-3' fullWidth />
+      </div>
+
+      <div
+        className='relative isolate hidden h-[85svh] overflow-hidden rounded-[8px] bg-neutral-100 md:block'
+        data-tina-field={tinaField(movie, 'desktopImage')}
+      >
+        <Image src={movie.desktopImage} alt={desktopImageAlt} fill sizes='calc(100vw - 64px)' className='object-cover' priority={priority} />
+        <div className='absolute inset-0 bg-black/[0.08]' />
+
+        <div className='absolute left-1/2 top-[34%] z-10 flex w-full max-w-[850px] -translate-x-1/2 flex-col items-center px-8 text-center text-white'>
+          {movie.eyebrow ? (
+            <div className='mb-9' data-tina-field={tinaField(movie, 'eyebrow')}>
+              <SectionMasthead index={eyebrowIndex} title={movie.eyebrow} size='sm' className='w-fit items-center gap-2' indexClassName='-mt-2' />
+            </div>
+          ) : null}
+
+          <MovieTitle movie={movie} />
+
+          <MovieActions movie={movie} className='mt-14 gap-3' buttonClassName='md:min-h-[43px] md:rounded-[5px] md:px-6 md:py-3 md:text-[14px]' readMoreFirst />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function MovieTitle({ movie, className }: { movie: MovieListItem; className?: string }) {
+  return (
+    <h2 className={cn('font-sedan text-[24px] leading-[1.08] md:text-[64px] md:leading-[0.96]', className)}>
+      <span data-tina-field={tinaField(movie, 'title')}>{movie.title}</span>
+      {(movie.italicTitle || movie.titleSuffix) && <br />}
+      {movie.italicTitle ? (
+        <em className='italic' data-tina-field={tinaField(movie, 'italicTitle')}>
+          {movie.italicTitle}
+        </em>
+      ) : null}
+      {movie.italicTitle && movie.titleSuffix ? ' ' : null}
+      {movie.titleSuffix ? <span data-tina-field={tinaField(movie, 'titleSuffix')}>{movie.titleSuffix}</span> : null}
+    </h2>
+  );
+}
+
+function MovieActions({
+  movie,
+  className,
+  buttonClassName,
+  fullWidth = false,
+  readMoreFirst = false,
+}: {
+  movie: MovieListItem;
+  className?: string;
+  buttonClassName?: string;
+  fullWidth?: boolean;
+  readMoreFirst?: boolean;
+}) {
+  const watchFilmButton = (
+    <ActionButton
+      color='orange'
+      icon='playCircle'
+      label={movie.watchFilmLabel}
+      subLabel={movie.filmDuration}
+      href={movie.watchFilmHref}
+      fullWidth={fullWidth}
+      className={cn('md:min-w-[245px]', buttonClassName)}
+      dataTinaField={tinaField(movie, 'watchFilmLabel')}
+    />
+  );
+  const readMoreButton = (
+    <ActionButton
+      color='black'
+      icon='error'
+      label={movie.readMoreLabel}
+      href={movie.readMoreHref}
+      fullWidth={fullWidth}
+      className={cn('md:min-w-[156px]', buttonClassName)}
+      dataTinaField={tinaField(movie, 'readMoreLabel')}
+    />
+  );
+
+  return (
+    <div className={cn('flex', className)}>
+      {readMoreFirst ? readMoreButton : watchFilmButton}
+      {readMoreFirst ? watchFilmButton : readMoreButton}
+    </div>
+  );
+}
