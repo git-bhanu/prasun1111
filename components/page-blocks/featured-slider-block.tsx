@@ -172,7 +172,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
 }
 
 function FeaturedSlideTitle({ slide }: { slide: FeaturedSliderSlide }) {
-  const className = 'font-serif text-[22px] leading-tight text-black md:text-[32px]';
+  const className = 'font-sedan text-[22px] leading-tight text-black md:text-[32px]';
 
   if (slide.href) {
     return (
