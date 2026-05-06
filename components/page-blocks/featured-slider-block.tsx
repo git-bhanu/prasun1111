@@ -42,6 +42,19 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
     }
   }, [activeIndex, slides.length]);
 
+  useEffect(() => {
+    if (slides.length <= 1 || shouldReduceMotion) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setDirection(1);
+      setActiveIndex((currentIndex) => (currentIndex === slides.length - 1 ? 0 : currentIndex + 1));
+    }, 4000);
+
+    return () => window.clearInterval(timer);
+  }, [slides.length, shouldReduceMotion]);
+
   if (slides.length === 0) {
     return null;
   }
