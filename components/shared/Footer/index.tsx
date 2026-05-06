@@ -16,10 +16,10 @@ export default function Footer() {
   const { brand, footerLinks, meta } = useSiteSettings();
 
   return (
-    <footer className="bg-surface-grey text-black">
-      <div className="px-4 py-8 md:px-[58px] md:py-14">
-        <div className="flex flex-col gap-10 xl:flex-row xl:items-start xl:justify-between xl:gap-12">
-          <div className="min-w-0 flex-1">
+    <footer className='bg-surface-grey text-black'>
+      <div className='px-4 py-8 md:px-[58px] md:py-14'>
+        <div className='flex flex-col gap-10 xl:flex-row xl:items-start xl:justify-between xl:gap-12'>
+          <div className='min-w-0 flex-1'>
             <FooterWordmark brand={brand} />
           </div>
 
@@ -37,18 +37,18 @@ export default function Footer() {
 function FooterWordmark({ brand }: { brand: SiteSettings['brand'] }) {
   return (
     <Link href='/' aria-label={brand.homeAriaLabel} className='block w-full'>
-      <div className='flex items-start`'>
-        <div className='relative w-[60%]'>
-          <Image src={brand.logo} alt={brand.logoAlt} fill priority className='object-contain' />
+      <div className='flex aspect-[2327/700] w-full items-stretch gap-[20px] overflow-hidden'>
+        <div className='flex w-[calc(70.78%_-_10px)] shrink-0 items-stretch'>
+          <Image src={brand.logo} alt={brand.logoAlt} width={80} height={34} priority className='h-full w-auto object-contain' />
         </div>
 
-        <div className='w-[40%]'>
+        <div className='h-full w-[calc(29.22%_-_10px)] shrink-0 overflow-hidden'>
           <Lottie
             animationData={animationData}
             autoplay
             loop
             rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
-            className=''
+            className='h-full w-full brightness-0'
           />
         </div>
       </div>

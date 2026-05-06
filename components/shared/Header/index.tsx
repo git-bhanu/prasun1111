@@ -162,10 +162,16 @@ function CenterMenu({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
       >
-        <Link href={'/'} role='img' aria-label={brand.homeAriaLabel} className='inline-flex h-[50px] shrink-0 cursor-pointer items-center md:h-10'>
-          <Image src={brand.logo} width={80} height={30} priority alt={brand.logoAlt} className='h-auto w-20 shrink-0 md:w-16' />
-          <div className='h-full w-[50px] shrink-0 overflow-hidden md:w-10'>
-            <Lottie animationData={animationData} autoplay loop className='h-full w-full' />
+        <Link href={'/'} role='img' aria-label={brand.homeAriaLabel} className='inline-flex h-[34px] shrink-0 cursor-pointer items-stretch gap-2 md:h-[30px]'>
+          <Image src={brand.logo} width={80} height={34} priority alt={brand.logoAlt} className='h-full w-auto shrink-0 object-contain' />
+          <div className='aspect-[680/700] h-full shrink-0 overflow-hidden'>
+            <Lottie
+              animationData={animationData}
+              autoplay
+              loop
+              rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
+              className='h-full w-full brightness-0'
+            />
           </div>
         </Link>
         <motion.button
