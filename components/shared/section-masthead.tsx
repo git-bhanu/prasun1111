@@ -6,6 +6,7 @@ type SectionMastheadProps = {
   as?: "h1" | "h2" | "h3" | "p";
   size?: "sm" | "md" | "lg";
   color?: "white" | "black";
+  mobileColor?: "white" | "black";
   className?: string;
   indexClassName?: string;
   titleClassName?: string;
@@ -29,6 +30,21 @@ const sizeClasses = {
   },
 } as const;
 
+const colorTokens = {
+  white: {
+    border: "border-white/5",
+    mdBorder: "md:border-white/5",
+    text: "text-white",
+    mdText: "md:text-white",
+  },
+  black: {
+    border: "border-black/5",
+    mdBorder: "md:border-black/5",
+    text: "text-black",
+    mdText: "md:text-black",
+  },
+} as const;
+
 function formatIndex(index: string | number) {
   if (typeof index === "number") {
     return `(${String(index).padStart(2, "0")})`;
@@ -42,12 +58,23 @@ export function SectionMasthead({
   index,
   size = "lg",
   color = "white",
+  mobileColor,
   className,
   indexClassName,
   titleClassName,
 }: SectionMastheadProps) {
+  const mobile = mobileColor ?? color;
+
   return (
-    <div className={cn("flex", sizeClasses[size].container, size === "sm" && (color === "black" ? "border-black/5" : "border-white/5"), className)}>
+    <div
+      className={cn(
+        "flex",
+        sizeClasses[size].container,
+        size === "sm" && colorTokens[mobile].border,
+        size === "sm" && mobileColor && colorTokens[color].mdBorder,
+        className,
+      )}
+    >
       {index !== undefined ? (
         <span
           className={cn(
@@ -62,7 +89,8 @@ export function SectionMasthead({
       <span
         className={cn(
           "font-space-grotesk font-normal uppercase",
-          color === "black" ? "text-black" : "text-white",
+          colorTokens[mobile].text,
+          mobileColor && colorTokens[color].mdText,
           sizeClasses[size].title,
           titleClassName,
         )}

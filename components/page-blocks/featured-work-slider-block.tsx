@@ -135,7 +135,7 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
               index='01'
               title={activeSlide.eyebrow}
               size='sm'
-
+              mobileColor='black'
             />
           </div>
         ) : null}
@@ -152,13 +152,13 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
             animate={{ opacity: 1, y: 0, x: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 12, x: direction * -10 }}
             transition={contentTransition}
-            className='mx-4 mt-7 rounded-lg bg-neutral-50 p-2'
+            className='mx-4 mt-7 rounded-[4px] bg-surface-grey-1 p-2'
           >
             <ArtworkTitle
               title={activeSlide.title}
               href={activeSlide.href}
               dataTinaField={tinaField(activeSlide, 'title')}
-              className={activeSlide.href ? 'text-[18px]' : 'text-[1.8rem]'}
+              className={'text-[18px]'}
             />
 
             {tags.length ? (

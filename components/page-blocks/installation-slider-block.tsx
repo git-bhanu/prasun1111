@@ -133,7 +133,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
               index='02'
               title={activeSlide.eyebrow}
               size='sm'
-
+              mobileColor='black'
             />
           </div>
         ) : null}

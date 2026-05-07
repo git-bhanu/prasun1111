@@ -47,7 +47,7 @@ function MovieCard({ movie, priority }: { movie: MovieListItem; priority: boolea
               index={eyebrowIndex}
               title={movie.eyebrow}
               size='sm'
-
+              mobileColor='black'
             />
           </div>
         ) : null}
