@@ -74,7 +74,7 @@ export function ActionButton({
     }
 
     return (
-      <span className={cn('inline-flex size-4 md:size-6 shrink-0 items-center justify-center', colorClassNames[color].icon)} aria-hidden='true'>
+      <span className={cn('inline-flex size-[15px] md:size-[18px] shrink-0 items-center justify-center', colorClassNames[color].icon)} aria-hidden='true'>
         <Icon name={icon} size={24} color='currentColor' />
       </span>
     );
@@ -95,7 +95,7 @@ export function ActionButton({
   );
 
   const buttonClassName = cn(
-    'inline-flex items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[12px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px]',
+    'inline-flex items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px]',
     fullWidth ? 'w-full' : 'w-full md:w-auto',
     colorClassNames[color].button,
     className

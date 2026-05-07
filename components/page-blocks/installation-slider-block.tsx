@@ -239,7 +239,6 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                 <ActionButton
                   color='black'
                   icon='error'
-                  iconPosition='right'
                   label={activeSlide.readMoreLabel}
                   href={activeSlide.readMoreHref}
                   dataTinaField={tinaField(activeSlide, 'readMoreLabel')}
