@@ -32,7 +32,7 @@ export function HeroStatementBlock({ block }: HeroStatementBlockProps) {
   }
 
   return (
-    <section className='mx-auto flex min-h-[calc(100svh-10rem)] w-full max-w-[65em] flex-col items-center justify-center px-6 py-24 text-center sm:px-10'>
+    <section className='mx-auto flex min-h-[calc(80svh-10rem)] w-full max-w-[65em] flex-col items-center justify-center px-6 py-24 text-center sm:px-10'>
       {block.eyebrow ? (
         <p
           data-tina-field={tinaField(block, 'eyebrow')}
