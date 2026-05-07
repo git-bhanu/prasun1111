@@ -155,14 +155,14 @@ function CenterMenu({
   onToggle: () => void;
 }) {
   return (
-    <div className='w-full shrink-0 grow-0 md:w-[283.2px] md:max-w-[283.2px] md:basis-[283.2px]'>
+    <div className='w-full shrink-0 grow-0 md:w-[300px] md:max-w-[350px] md:basis-[283.2px]'>
       <motion.div
-        className='flex w-full items-center justify-between rounded-[12px] bg-surface-grey px-5 py-3 md:h-16 md:px-4'
+        className='flex w-full items-center justify-between rounded-[12px] bg-surface-grey px-5 py-3 md:h-20 md:px-5'
         initial={{ opacity: 0, y: 0, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
       >
-        <Link href={'/'} role='img' aria-label={brand.homeAriaLabel} className='inline-flex h-[34px] shrink-0 cursor-pointer items-stretch gap-2 md:h-[30px]'>
+        <Link href={'/'} role='img' aria-label={brand.homeAriaLabel} className='inline-flex h-[34px] shrink-0 cursor-pointer items-stretch gap-2 md:h-[35px]'>
           <Image src={brand.logo} width={80} height={34} priority alt={brand.logoAlt} className='h-full w-auto shrink-0 object-contain' />
           <div className='aspect-[680/700] h-full shrink-0 overflow-hidden'>
             <Lottie
@@ -182,7 +182,7 @@ function CenterMenu({
           aria-controls='center-menu-panel'
           onClick={onToggle}
           className={cn(
-            'flex size-[38px] cursor-pointer items-center justify-center rounded-full [--header-menu-circle-size:35px] [--header-menu-icon-size:24px] md:size-[30.4px] md:[--header-menu-circle-size:28px] md:[--header-menu-icon-size:19.2px]',
+            'flex size-[38px] cursor-pointer items-center justify-center rounded-full [--header-menu-circle-size:35px] [--header-menu-icon-size:24px] md:size-[30.4px] md:[--header-menu-circle-size:40px] md:[--header-menu-icon-size:22px]',
             menuExpanded ? 'bg-brand-orange text-brand-white' : 'bg-brand-white text-brand-black'
           )}
         >
