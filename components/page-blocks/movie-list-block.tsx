@@ -61,7 +61,7 @@ function MovieCard({ movie, priority }: { movie: MovieListItem; priority: boolea
           <Image src={mobileImage} alt={mobileImageAlt} fill sizes='(max-width: 767px) calc(100vw - 32px), 0vw' className='object-cover' priority={priority} />
         </div>
 
-        <MovieActions movie={movie} className='mt-8 flex-col gap-3' fullWidth />
+        <MovieActions movie={movie} className='mt-8 flex-col gap-1.5' fullWidth />
       </div>
 
       <div

@@ -166,7 +166,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
 
             <InstallationDetails slide={activeSlide} artists={artists} className='mt-7 border-t border-black/25 pt-6' />
 
-            <div className='mt-18 flex flex-col gap-3'>
+            <div className='mt-18 flex flex-col gap-1.5'>
               <ActionButton
                 color='orange'
                 icon='playCircle'
