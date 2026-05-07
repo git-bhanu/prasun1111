@@ -167,9 +167,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
                     index='01'
                     title={activeSlide.eyebrow}
                     size='sm'
-                    className='w-fit items-center gap-2 rounded-[4px] border border-black/[0.06] px-3 py-2'
-                    titleClassName='text-black leading-none'
-                    indexClassName='-mt-2'
+                    color='black'
                   />
                 </div>
               ) : null}

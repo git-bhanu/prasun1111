@@ -5,6 +5,7 @@ type SectionMastheadProps = {
   index?: string | number;
   as?: "h1" | "h2" | "h3" | "p";
   size?: "sm" | "md" | "lg";
+  color?: "white" | "black";
   className?: string;
   indexClassName?: string;
   titleClassName?: string;
@@ -12,14 +13,17 @@ type SectionMastheadProps = {
 
 const sizeClasses = {
   sm: {
+    container: "w-fit items-center gap-2 rounded-[4px] border px-2.5 py-2 pb-1.5",
     index: "text-[8px] md:text-[10px] font-space-grotesk",
     title: "text-xs md:text-md",
   },
   md: {
+    container: "w-full items-start gap-0.5 md:gap-1",
     index: "text-[1.35rem] sm:text-[1.65rem]",
     title: "text-[clamp(3.25rem,8vw,6rem)]",
   },
   lg: {
+    container: "w-full items-start gap-0.5 md:gap-1",
     index: "text-[1.75rem] sm:text-[2rem]",
     title: "text-[clamp(3.75rem,10vw,7rem)]",
   },
@@ -37,16 +41,17 @@ export function SectionMasthead({
   title,
   index,
   size = "lg",
+  color = "white",
   className,
   indexClassName,
   titleClassName,
 }: SectionMastheadProps) {
   return (
-    <div className={cn("flex w-full items-start gap-0.5 md:gap-1", className)}>
+    <div className={cn("flex", sizeClasses[size].container, size === "sm" && (color === "black" ? "border-black/5" : "border-white/5"), className)}>
       {index !== undefined ? (
         <span
           className={cn(
-            "font-space-grotesk font-medium leading-none text-brand-orange -mt-4",
+            "font-space-grotesk font-medium leading-none text-brand-orange -mt-2 -mr-1",
             sizeClasses[size].index,
             indexClassName,
           )}
@@ -56,7 +61,8 @@ export function SectionMasthead({
       ) : null}
       <span
         className={cn(
-          "font-space-grotesk font-normal uppercase text-white",
+          "font-space-grotesk font-normal uppercase",
+          color === "black" ? "text-black" : "text-white",
           sizeClasses[size].title,
           titleClassName,
         )}

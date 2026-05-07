@@ -40,15 +40,15 @@ export interface ActionButtonProps {
 
 const colorClassNames: Record<ActionButtonColor, { button: string; icon: string }> = {
   black: {
-    button: 'bg-black text-white hover:bg-black/85',
+    button: 'bg-black text-white hover:bg-black/95',
     icon: 'text-white',
   },
   orange: {
-    button: 'bg-brand-orange text-white hover:bg-brand-orange/90',
+    button: 'bg-brand-orange text-white hover:bg-brand-orange/95',
     icon: 'text-white',
   },
   white: {
-    button: 'bg-white text-black hover:bg-white/90',
+    button: 'bg-white text-black hover:bg-white/95',
     icon: 'text-black',
   },
 };
@@ -95,7 +95,7 @@ export function ActionButton({
   );
 
   const buttonClassName = cn(
-    'inline-flex items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[12px] leading-none uppercase transition-colors md:rounded-[8px] py-3 md:py-[15px] md:text-[20px]',
+    'inline-flex items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[12px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px]',
     fullWidth ? 'w-full' : 'w-full md:w-auto',
     colorClassNames[color].button,
     className

@@ -131,9 +131,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
               index='02'
               title={activeSlide.eyebrow}
               size='sm'
-              className='w-fit items-center gap-2 rounded-[4px] border border-black/[0.06] px-3 py-2'
-              titleClassName='text-black leading-none'
-              indexClassName='-mt-2'
+
             />
           </div>
         ) : null}
@@ -200,8 +198,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                 index='02'
                 title={activeSlide.eyebrow}
                 size='sm'
-                className='w-fit items-center gap-2 rounded-[4px] border border-white/5 px-3 py-3'
-                indexClassName='-mt-2'
+
               />
             </div>
           ) : null}
@@ -243,7 +240,6 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                   iconPosition='right'
                   label={activeSlide.readMoreLabel}
                   href={activeSlide.readMoreHref}
-                  className='md:min-w-[220px]'
                   dataTinaField={tinaField(activeSlide, 'readMoreLabel')}
                 />
                 <ActionButton
@@ -252,7 +248,6 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                   label={activeSlide.watchFilmLabel}
                   subLabel={activeSlide.filmDuration}
                   href={activeSlide.watchFilmHref}
-                  className='md:min-w-[320px]'
                   dataTinaField={tinaField(activeSlide, 'watchFilmLabel')}
                 />
               </motion.div>

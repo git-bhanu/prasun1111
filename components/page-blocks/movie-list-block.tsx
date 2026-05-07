@@ -47,9 +47,7 @@ function MovieCard({ movie, priority }: { movie: MovieListItem; priority: boolea
               index={eyebrowIndex}
               title={movie.eyebrow}
               size='sm'
-              className='w-fit items-center gap-2 rounded-[4px] border border-black/[0.06] px-3 py-2'
-              titleClassName='text-black leading-none'
-              indexClassName='-mt-2'
+
             />
           </div>
         ) : null}
@@ -76,13 +74,13 @@ function MovieCard({ movie, priority }: { movie: MovieListItem; priority: boolea
         <div className='absolute left-1/2 top-[34%] z-10 flex w-full max-w-[850px] -translate-x-1/2 flex-col items-center px-8 text-center text-white'>
           {movie.eyebrow ? (
             <div className='mb-9' data-tina-field={tinaField(movie, 'eyebrow')}>
-              <SectionMasthead index={eyebrowIndex} title={movie.eyebrow} size='sm' className='w-fit items-center gap-2' indexClassName='-mt-2' />
+              <SectionMasthead index={eyebrowIndex} title={movie.eyebrow} size='sm' />
             </div>
           ) : null}
 
           <MovieTitle movie={movie} />
 
-          <MovieActions movie={movie} className='mt-14 gap-3' buttonClassName='md:min-h-[43px] md:rounded-[5px] md:px-6 md:py-3 md:text-[14px]' readMoreFirst />
+          <MovieActions movie={movie} className='mt-14 gap-3' readMoreFirst />
         </div>
       </div>
     </article>
@@ -108,13 +106,11 @@ function MovieTitle({ movie, className }: { movie: MovieListItem; className?: st
 function MovieActions({
   movie,
   className,
-  buttonClassName,
   fullWidth = false,
   readMoreFirst = false,
 }: {
   movie: MovieListItem;
   className?: string;
-  buttonClassName?: string;
   fullWidth?: boolean;
   readMoreFirst?: boolean;
 }) {
@@ -126,7 +122,6 @@ function MovieActions({
       subLabel={movie.filmDuration}
       href={movie.watchFilmHref}
       fullWidth={fullWidth}
-      className={cn('md:min-w-[245px]', buttonClassName)}
       dataTinaField={tinaField(movie, 'watchFilmLabel')}
     />
   );
@@ -137,7 +132,6 @@ function MovieActions({
       label={movie.readMoreLabel}
       href={movie.readMoreHref}
       fullWidth={fullWidth}
-      className={cn('md:min-w-[156px]', buttonClassName)}
       dataTinaField={tinaField(movie, 'readMoreLabel')}
     />
   );

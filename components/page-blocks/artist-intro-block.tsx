@@ -46,7 +46,6 @@ export function ArtistIntroBlock({ block }: ArtistIntroBlockProps) {
               icon='articlePerson'
               label={block.buttonLabel}
               href={block.buttonHref}
-              className=' text-[16px] md:min-w-[196px] md:px-7 md:text-[16px]'
               dataTinaField={tinaField(block, 'buttonLabel')}
             />
           </div>
