@@ -37,12 +37,12 @@ export default function Footer() {
 function FooterWordmark({ brand }: { brand: SiteSettings['brand'] }) {
   return (
     <Link href='/' aria-label={brand.homeAriaLabel} className='block w-full'>
-      <div className='flex aspect-[2327/700] w-full items-stretch gap-[var(--footer-wordmark-gap)] overflow-hidden [--footer-wordmark-gap:clamp(8px,1.2vw,20px)] [--footer-wordmark-half-gap:clamp(4px,0.6vw,10px)]'>
-        <div className='flex w-[calc(70.78%_-_var(--footer-wordmark-half-gap))] shrink-0 items-stretch'>
+      <div className='flex aspect-[2327/700] w-full items-stretch gap-[20px] overflow-hidden'>
+        <div className='flex w-[calc(70.78%_-_10px)] shrink-0 items-stretch'>
           <Image src={brand.logo} alt={brand.logoAlt} width={80} height={34} priority className='h-full w-auto object-contain' />
         </div>
 
-        <div className='h-full w-[calc(29.22%_-_var(--footer-wordmark-half-gap))] shrink-0 overflow-hidden'>
+        <div className='h-full w-[calc(29.22%_-_10px)] shrink-0 overflow-hidden'>
           <Lottie
             animationData={animationData}
             autoplay
