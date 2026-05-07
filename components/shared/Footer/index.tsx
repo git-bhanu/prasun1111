@@ -115,14 +115,24 @@ function FooterNavLink({
       data-tina-field={tinaField(source, 'label')}
       className='group flex items-start gap-2.5 uppercase font-space-grotesk'
     >
-      <span className='pt-1 text-[9px] leading-none tracking-[-0.04em] text-brand-orange -mt-1'>({index})</span>
       <span
         className={cn(
-          'text-sm leading-none tracking-[-0.05em] transition-opacity duration-150 md:text-sm',
-          isActive ? 'font-bold text-black' : 'text-black group-hover:opacity-60'
+          'pt-1 text-[9px] leading-none tracking-[-0.04em] -mt-1 transition-all duration-100',
+          isActive ? 'text-brand-orange' : 'text-black group-hover:text-brand-orange'
         )}
       >
-        {label}
+        ({index})
+      </span>
+      <span className='relative block text-sm leading-none tracking-[-0.05em]'>
+        <span className='invisible font-bold'>{label}</span>
+        <span
+          className={cn(
+            'absolute inset-0 transition-all duration-100',
+            isActive ? 'font-bold text-black' : 'font-normal text-black group-hover:font-bold group-hover:text-black'
+          )}
+        >
+          {label}
+        </span>
       </span>
     </Link>
   );
