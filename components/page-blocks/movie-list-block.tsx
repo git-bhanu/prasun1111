@@ -65,13 +65,13 @@ function MovieCard({ movie, priority }: { movie: MovieListItem; priority: boolea
       </div>
 
       <div
-        className='relative isolate hidden h-[85svh] overflow-hidden rounded-[8px] bg-neutral-100 md:block'
+        className='relative isolate hidden aspect-video overflow-hidden rounded-[8px] bg-neutral-100 md:block'
         data-tina-field={tinaField(movie, 'desktopImage')}
       >
         <Image src={movie.desktopImage} alt={desktopImageAlt} fill sizes='calc(100vw - 64px)' className='object-cover' priority={priority} />
         <div className='absolute inset-0 bg-black/[0.08]' />
 
-        <div className='absolute left-1/2 top-[34%] z-10 flex w-full max-w-[850px] -translate-x-1/2 flex-col items-center px-8 text-center text-white'>
+        <div className='absolute left-1/2 top-1/2 z-10 flex w-full max-w-[850px] -translate-x-1/2 -translate-y-1/2 flex-col items-center px-8 text-center text-white'>
           {movie.eyebrow ? (
             <div className='mb-9' data-tina-field={tinaField(movie, 'eyebrow')}>
               <SectionMasthead index={eyebrowIndex} title={movie.eyebrow} size='sm' />
