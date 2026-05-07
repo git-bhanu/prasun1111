@@ -1,9 +1,9 @@
 'use client';
 
-import { AnimatePresence, useReducedMotion } from 'motion/react';
+import { AnimatePresence, useInView, useReducedMotion } from 'motion/react';
 import * as motion from 'motion/react-client';
 import Image from 'next/image';
-import { type ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 
 import { Icon, IconCircleButton } from '@/components/icons';
@@ -26,6 +26,8 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.4 });
 
   useEffect(() => {
     if (activeIndex > slides.length - 1) {
@@ -34,7 +36,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
   }, [activeIndex, slides.length]);
 
   useEffect(() => {
-    if (slides.length <= 1 || shouldReduceMotion) {
+    if (slides.length <= 1 || shouldReduceMotion || !isInView) {
       return;
     }
 
@@ -44,7 +46,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
     }, 4000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, shouldReduceMotion]);
+  }, [slides.length, shouldReduceMotion, isInView]);
 
   if (slides.length === 0) {
     return null;
@@ -123,7 +125,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
   };
 
   return (
-    <section className='bg-white px-4 md:px-0 py-8 md:py-0'>
+    <section ref={sectionRef} className='bg-white px-4 md:px-0 py-8 md:py-0'>
       <div className='mx-auto max-w-[536px] md:hidden'>
         {activeSlide.eyebrow ? (
           <div data-tina-field={tinaField(activeSlide, 'eyebrow')}>

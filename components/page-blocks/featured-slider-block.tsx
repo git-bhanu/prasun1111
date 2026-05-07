@@ -1,10 +1,10 @@
 'use client';
 
-import { AnimatePresence, useReducedMotion } from 'motion/react';
+import { AnimatePresence, useInView, useReducedMotion } from 'motion/react';
 import * as motion from 'motion/react-client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 
 import { Icon, IconCircleButton } from '@/components/icons';
@@ -35,6 +35,8 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.4 });
 
   useEffect(() => {
     if (activeIndex > slides.length - 1) {
@@ -43,7 +45,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   }, [activeIndex, slides.length]);
 
   useEffect(() => {
-    if (slides.length <= 1 || shouldReduceMotion) {
+    if (slides.length <= 1 || shouldReduceMotion || !isInView) {
       return;
     }
 
@@ -53,7 +55,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
     }, 4000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, shouldReduceMotion]);
+  }, [slides.length, shouldReduceMotion, isInView]);
 
   if (slides.length === 0) {
     return null;
@@ -132,7 +134,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   };
 
   return (
-    <section className='bg-white px-4 py-10 md:px-12 md:py-20'>
+    <section ref={sectionRef} className='bg-white px-4 py-10 md:px-12 md:py-20'>
       <div className='mx-auto max-w-[1780px]'>
         <div className='hidden md:block'>
           <div className='relative aspect-[2.75/1] overflow-hidden bg-neutral-50' data-tina-field={tinaField(activeSlide, desktopMedia.field)}>

@@ -1,9 +1,9 @@
 'use client';
 
-import { AnimatePresence, useReducedMotion } from 'motion/react';
+import { AnimatePresence, useInView, useReducedMotion } from 'motion/react';
 import * as motion from 'motion/react-client';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 
 import { ArtworkTabs, ArtworkTitle } from '@/components/artwork';
@@ -24,6 +24,8 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.4 });
 
   useEffect(() => {
     if (activeIndex > slides.length - 1) {
@@ -32,7 +34,7 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
   }, [activeIndex, slides.length]);
 
   useEffect(() => {
-    if (slides.length <= 1 || shouldReduceMotion) {
+    if (slides.length <= 1 || shouldReduceMotion || !isInView) {
       return;
     }
 
@@ -42,7 +44,7 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
     }, 4000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, shouldReduceMotion]);
+  }, [slides.length, shouldReduceMotion, isInView]);
 
   if (slides.length === 0) {
     return null;
@@ -125,7 +127,7 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
   );
 
   return (
-    <section className='mx-auto w-full bg-white py-8 md:py-0'>
+    <section ref={sectionRef} className='mx-auto w-full bg-white py-8 md:py-0'>
       <div className='md:hidden'>
         {activeSlide.eyebrow ? (
           <div data-tina-field={tinaField(activeSlide, 'eyebrow')} className='px-4'>
