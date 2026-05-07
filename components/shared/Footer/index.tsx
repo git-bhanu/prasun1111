@@ -37,17 +37,17 @@ export default function Footer() {
 function FooterWordmark({ brand }: { brand: SiteSettings['brand'] }) {
   return (
     <Link href='/' aria-label={brand.homeAriaLabel} className='block w-full'>
-      <div className='flex aspect-[2327/700] w-full items-stretch gap-[20px] overflow-hidden'>
-        <div className='flex w-[calc(70.78%_-_10px)] shrink-0 items-stretch'>
-          <Image src={brand.logo} alt={brand.logoAlt} width={80} height={34} priority className='h-full w-auto object-contain' />
+      <div className='flex aspect-[2327/700] w-full items-stretch gap-[10px] md:gap-[30px]'>
+        <div className='relative w-[70%] md:w-[calc(70.78%_-_20px)] shrink-0'>
+          <Image src={brand.logo} alt={brand.logoAlt} fill priority className='object-contain object-left' />
         </div>
 
-        <div className='h-full w-[calc(29.22%_-_10px)] shrink-0 overflow-hidden'>
+        <div className='h-full w-[28%] md:w-[29%] shrink-0'>
           <Lottie
             animationData={animationData}
             autoplay
             loop
-            rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
+            rendererSettings={{ preserveAspectRatio: 'xMidYMid meet' }}
             className='h-full w-full brightness-0'
           />
         </div>
