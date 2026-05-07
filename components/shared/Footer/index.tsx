@@ -18,12 +18,12 @@ export default function Footer() {
   return (
     <footer className='bg-surface-grey text-black'>
       <div className='px-4 py-8 md:px-[58px] md:py-14'>
-        <div className='flex flex-col gap-10 xl:flex-row xl:items-start xl:justify-between xl:gap-12'>
+        <div className='flex flex-col gap-10 xl:flex-row xl:items-stretch xl:justify-between xl:gap-12'>
           <div className='min-w-0 flex-1'>
             <FooterWordmark brand={brand} />
           </div>
 
-          <div className='flex w-full shrink-0 flex-col gap-6 xl:w-[25%] md:px-16'>
+          <div className='flex w-full shrink-0 flex-col justify-between xl:w-[25%] md:pl-16'>
             <FooterMeta meta={meta} />
             <FooterNav links={footerLinks} />
             <FooterIssue meta={meta} />
@@ -72,7 +72,7 @@ function FooterMeta({ meta }: { meta: SiteSettings['meta'] }) {
   }, [meta]);
 
   return (
-    <div className='font-space-grotesk flex items-center gap-x-3 text-[10px] uppercase tracking-[-0.04em] md:justify-start md:text-[11px]'>
+    <div className='font-space-grotesk flex items-center gap-x-3 text-[10px] uppercase tracking-[-0.04em] md:justify-start md:text-[11px] mb-6 md:mb-0'>
       <span>{meta.establishedLabel}</span>
       <span className='text-black/50'>|</span>
       <span>{timeLabel}</span>
@@ -113,9 +113,9 @@ function FooterNavLink({
       href={href}
       aria-current={isActive ? 'page' : undefined}
       data-tina-field={tinaField(source, 'label')}
-      className='group flex items-start gap-4 uppercase font-space-grotesk'
+      className='group flex items-start gap-2.5 uppercase font-space-grotesk'
     >
-      <span className='pt-1 text-[9px] leading-none tracking-[-0.04em] text-black'>{index}</span>
+      <span className='pt-1 text-[9px] leading-none tracking-[-0.04em] text-brand-orange -mt-1'>({index})</span>
       <span
         className={cn(
           'text-sm leading-none tracking-[-0.05em] transition-opacity duration-150 md:text-sm',
@@ -130,7 +130,7 @@ function FooterNavLink({
 
 function FooterIssue({ meta }: { meta: SiteSettings['meta'] }) {
   return (
-    <div className='text-[10px] uppercase md:text-[11px] font-space-grotesk'>
+    <div className='text-[10px] uppercase md:text-[11px] font-space-grotesk pt-6 md:pt-0'>
       <div className='flex items-center gap-x-3 md:justify-start'>
         <span>{meta.issueLabel}</span>
         <span className='text-black/50'>|</span>
