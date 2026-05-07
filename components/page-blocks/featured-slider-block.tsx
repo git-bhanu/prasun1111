@@ -34,6 +34,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   const slides = block.slides?.filter((slide): slide is FeaturedSliderSlide => Boolean(slide?.title)) ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [autoplayResetKey, setAutoplayResetKey] = useState(0);
   const shouldReduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { amount: 0.4 });
@@ -55,7 +56,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
     }, 4000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, shouldReduceMotion, isInView]);
+  }, [slides.length, shouldReduceMotion, isInView, autoplayResetKey]);
 
   if (slides.length === 0) {
     return null;
@@ -71,11 +72,13 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   const goToPrevious = () => {
     setDirection(-1);
     setActiveIndex((currentIndex) => (currentIndex === 0 ? slides.length - 1 : currentIndex - 1));
+    setAutoplayResetKey((k) => k + 1);
   };
 
   const goToNext = () => {
     setDirection(1);
     setActiveIndex((currentIndex) => (currentIndex === slides.length - 1 ? 0 : currentIndex + 1));
+    setAutoplayResetKey((k) => k + 1);
   };
 
   const renderMedia = (variant: MediaVariant, media: SlideMedia) => (
@@ -83,9 +86,9 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
       <motion.div
         key={`${variant}-${activeIndex}-${media.src ?? activeSlide.title}`}
         className='absolute inset-0'
-        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.025 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.01 }}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
         transition={mediaTransition}
       >
         {media.isVideo && media.src ? (
@@ -157,9 +160,9 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
             <motion.div
               key={`featured-slider-title-${activeIndex}`}
               custom={direction}
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 14, x: direction * 8 }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
-              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 10, x: direction * -8 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
               transition={contentTransition}
               className='min-h-[84px] min-w-0 text-center md:min-h-[96px]'
             >
