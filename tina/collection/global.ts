@@ -47,6 +47,11 @@ const Global: Collection = {
   },
   fields: [
     {
+      type: 'boolean',
+      label: 'Show Announcement Banner',
+      name: 'showAnnouncementBanner',
+    },
+    {
       type: 'object',
       label: 'Brand',
       name: 'brand',
