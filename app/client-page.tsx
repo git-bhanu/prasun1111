@@ -7,6 +7,7 @@ import { FeaturedWorkSliderBlock } from '@/components/page-blocks/featured-work-
 import { HeroStatementBlock } from '@/components/page-blocks/hero-statement-block';
 import { InstallationSliderBlock } from '@/components/page-blocks/installation-slider-block';
 import { MovieListBlock } from '@/components/page-blocks/movie-list-block';
+import { ShopBlock } from '@/components/page-blocks/shop-block';
 import type { PageQuery, PageQueryVariables } from '@/tina/__generated__/types';
 import { useTina } from 'tinacms/dist/react';
 
@@ -37,6 +38,8 @@ export default function ClientPage(props: ClientPageProps) {
             return <MovieListBlock key={`${block.__typename}-${index}`} block={block} />;
           case 'PageBlocksDesignSlider':
             return <DesignSliderBlock key={`${block.__typename}-${index}`} block={block} />;
+          case 'PageBlocksShop':
+            return <ShopBlock key={`${block.__typename}-${index}`} block={block} />;
           default:
             return null;
         }

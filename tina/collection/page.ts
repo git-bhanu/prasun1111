@@ -508,6 +508,75 @@ const designSliderBlock: Template = {
   ],
 };
 
+const shopBlock: Template = {
+  name: 'shop',
+  label: 'Shop',
+  fields: [
+    {
+      type: 'string',
+      label: 'Eyebrow',
+      name: 'eyebrow',
+    },
+    {
+      type: 'string',
+      label: 'Eyebrow Index',
+      name: 'eyebrowIndex',
+    },
+    {
+      type: 'rich-text',
+      label: 'Heading',
+      name: 'heading',
+      overrides: {
+        toolbar: ['bold', 'italic'],
+      },
+    },
+    {
+      type: 'string',
+      label: 'Description',
+      name: 'description',
+    },
+    {
+      type: 'string',
+      label: 'Button Label',
+      name: 'buttonLabel',
+    },
+    {
+      type: 'string',
+      label: 'Button Link',
+      name: 'buttonHref',
+    },
+    {
+      type: 'object',
+      label: 'Products',
+      name: 'items',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.imageAlt || 'Product' };
+        },
+      },
+      fields: [
+        {
+          type: 'image',
+          label: 'Image',
+          name: 'image',
+          required: true,
+        },
+        {
+          type: 'string',
+          label: 'Image Alt Text',
+          name: 'imageAlt',
+        },
+        {
+          type: 'string',
+          label: 'Link',
+          name: 'href',
+        },
+      ],
+    },
+  ],
+};
+
 const movieListBlock: Template = {
   name: 'movieList',
   label: 'Movie List',
@@ -649,7 +718,7 @@ const Page: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock, designSliderBlock],
+      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock, designSliderBlock, shopBlock],
     },
   ],
 };

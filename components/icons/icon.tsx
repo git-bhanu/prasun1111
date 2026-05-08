@@ -6,6 +6,7 @@ import HamburgerIcon from './hamburger.svg';
 import KeyboardBackspaceIcon from './keyboard_backspace.svg';
 import PinchInZoom from './pinch_zoom_in.svg';
 import PlayCircleIcon from './play_circle.svg';
+import ShoppingBagIcon from './shopping_bag.svg';
 import { SvgIcon, type SvgIconProps } from './svg-icon';
 
 export const icons = {
@@ -17,6 +18,7 @@ export const icons = {
   keyboardBackspace: KeyboardBackspaceIcon,
   pinchInZoom: PinchInZoom,
   playCircle: PlayCircleIcon,
+  shoppingBag: ShoppingBagIcon,
 };
 
 export type IconName = keyof typeof icons;
