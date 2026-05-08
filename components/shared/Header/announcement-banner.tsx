@@ -6,7 +6,7 @@ import { useSiteSettings } from "@/components/site-settings-provider";
 function BannerContent({ label, index }: { label: string; index: string }) {
   return (
     <span className="flex shrink-0 items-center gap-2 px-6">
-      <span className="font-space-grotesk text-[12px] md:text-[16px] leading-none text-white">
+      <span className="text-[12px] md:text-[16px] leading-none text-white font-sedan">
         Selective Access Active, only the
       </span>
       <SectionMasthead
@@ -16,10 +16,10 @@ function BannerContent({ label, index }: { label: string; index: string }) {
         title={label}
         index={index}
       />
-      <span className="font-space-grotesk text-[12px] md:text-[16px] leading-none text-white">
+      <span className="text-[12px] md:text-[16px] leading-none text-white font-sedan">
         section is functional.
       </span>
-      <span className="font-space-grotesk text-[12px] md:text-[16px] leading-none text-brand-orange">
+      <span className="text-[12px] md:text-[16px] leading-none text-brand-orange">
         Additional pages will open soon.
       </span>
     </span>
@@ -35,7 +35,7 @@ export function AnnouncementBanner() {
   if (!activeLink) return null;
 
   return (
-    <div className="w-full bg-brand-blue py-1.5">
+    <div className="w-full bg-brand-blue py-1.5 font-sedan">
       {/* mobile: marquee */}
       <div className="overflow-hidden md:hidden">
         <div className="flex w-max animate-marquee items-center">
