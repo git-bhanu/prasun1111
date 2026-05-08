@@ -150,7 +150,7 @@ function DesignCard({
   const inner = (
     <>
       <div
-        className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100"
+        className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100 mt-6 md:mt-0"
         data-tina-field={tinaField(item, "image")}
       >
         {item.image ? (
