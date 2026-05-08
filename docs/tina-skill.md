@@ -108,3 +108,145 @@ Use this guide when implementing or modifying TinaCMS-backed features in this re
 - Do not forget to update renderers after schema edits.
 - Do not attach `tinaField()` to derived strings instead of the source object.
 - Do not create new global content structures when the existing `global` document can be extended.
+
+---
+
+## General TinaCMS Reference
+
+### Field Types
+
+| Type | Use Case | Notes |
+|------|----------|-------|
+| `string` | Short text, slugs | `ui: { component: 'textarea' }` for multi-line |
+| `rich-text` | Long formatted content | `isBody: true` for main content area |
+| `number` | Numeric values | — |
+| `datetime` | Dates/times | — |
+| `boolean` | Toggles | — |
+| `image` | Image uploads | Points at Cloudinary or Tina media |
+| `reference` | Link to another document | `collections: ['collectionName']` |
+| `object` | Nested fields group | Can use `list: true` for repeatable |
+
+### Common Errors & Solutions
+
+#### ESbuild Compilation Errors
+`ERROR: Schema Not Successfully Built` or `ERROR: Config Not Successfully Executed`
+- **Cause:** Importing UI components, React hooks, `window`, or DOM APIs in `tina/config.ts`
+- **Fix:** Only import type definitions and simple utilities from `tina/config.ts`; create separate `.schema.ts` files if needed
+
+#### Module Resolution: "Could not resolve 'tinacms'"
+```bash
+rm -rf node_modules pnpm-lock.yaml && pnpm install
+```
+
+#### Field Naming Constraints
+Field names: letters, numbers, underscores **only** — no hyphens or spaces.
+```ts
+// ❌  name: 'hero-image'
+// ✅  name: 'heroImage'  or  name: 'hero_image'
+```
+
+#### Missing `_template` Key Error
+`GetCollection failed: template name was not provided`
+- Collections using `templates` array require `_template` in frontmatter
+- Switch to `fields` (no `_template` needed) if you have a single schema
+
+#### Build Script Ordering
+`Cannot find module '../tina/__generated__/client'`
+```json
+{ "build": "tinacms build && next build" }
+```
+Tina must run first — it generates the TypeScript types the framework build needs.
+
+#### Failed Loading TinaCMS Assets in Production
+Never use `tinacms dev` in a build pipeline — it outputs `localhost:4001` asset paths.  
+Always `tinacms build`. For subdirectory deploys set `build.basePath` in `tina/config.ts`.
+
+#### Reference Field 503 Service Unavailable
+Caused by 100s+ items in a referenced collection (no pagination support currently).
+- Split into smaller collections by status/category
+- Or replace `reference` with `string` + `ui: { component: 'select', options: [...] }`
+
+#### Docker Binding Issues
+TinaCMS binds to `127.0.0.1` by default. For Docker containers:
+```bash
+tinacms dev -c "next dev --hostname 0.0.0.0"
+```
+
+#### Path Mismatch
+Files not appearing in admin? Verify `path` in collection config matches the actual directory exactly (`content/posts` not `posts` or `content/posts/`).
+
+### Deployment Patterns
+
+#### TinaCloud (Managed — easiest)
+```bash
+npx @tinacms/cli@latest init backend
+```
+Env vars: `NEXT_PUBLIC_TINA_CLIENT_ID`, `TINA_TOKEN`  
+Sign up at https://app.tina.io — free tier available.
+
+#### Self-Hosted: Cloudflare Workers
+Install: `npm install @tinacms/datalayer tinacms-authjs`
+
+```ts
+// workers/src/index.ts
+import { TinaNodeBackend, LocalBackendAuthProvider } from '@tinacms/datalayer'
+import { AuthJsBackendAuthProvider, TinaAuthJSOptions } from 'tinacms-authjs'
+import databaseClient from '../../tina/__generated__/databaseClient'
+
+const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === 'true'
+export default {
+  async fetch(request: Request, env: Env) {
+    const handler = TinaNodeBackend({
+      authProvider: isLocal
+        ? LocalBackendAuthProvider()
+        : AuthJsBackendAuthProvider({
+            authOptions: TinaAuthJSOptions({ databaseClient, secret: env.NEXTAUTH_SECRET }),
+          }),
+      databaseClient,
+    })
+    return handler(request)
+  }
+}
+```
+
+#### Self-Hosted: Vercel Functions
+```ts
+// api/tina/backend.ts
+import { TinaNodeBackend, LocalBackendAuthProvider } from '@tinacms/datalayer'
+import { AuthJsBackendAuthProvider, TinaAuthJSOptions } from 'tinacms-authjs'
+import databaseClient from '../../../tina/__generated__/databaseClient'
+
+const handler = TinaNodeBackend({
+  authProvider: process.env.TINA_PUBLIC_IS_LOCAL === 'true'
+    ? LocalBackendAuthProvider()
+    : AuthJsBackendAuthProvider({
+        authOptions: TinaAuthJSOptions({ databaseClient, secret: process.env.NEXTAUTH_SECRET }),
+      }),
+  databaseClient,
+})
+export default handler
+```
+
+Add `vercel.json` rewrite: `{ "source": "/api/tina/:path*", "destination": "/api/tina/backend" }`
+
+### Authentication Options
+
+| Method | Use For |
+|--------|---------|
+| `LocalBackendAuthProvider()` | Local dev only — no auth check |
+| `AuthJsBackendAuthProvider` | Self-hosted with OAuth (GitHub, Discord, Google, etc.) |
+| `TinaCloudBackendAuthProvider` | TinaCloud managed service |
+| Custom `isAuthorized` fn | Existing auth systems |
+
+Set `TINA_PUBLIC_IS_LOCAL=true` in local `.env` to bypass auth during development.
+
+### GraphQL API
+
+```ts
+// Single document
+const response = await client.queries.post({ relativePath: 'hello-world.md' })
+
+// Collection list
+const posts = await client.queries.postConnection()
+const items = posts.data.postConnection.edges?.map(e => e!.node)
+```

@@ -402,6 +402,112 @@ const installationSliderBlock: Template = {
   ],
 };
 
+const designSliderBlock: Template = {
+  name: 'designSlider',
+  label: 'Design Slider',
+  fields: [
+    {
+      type: 'string',
+      label: 'Eyebrow',
+      name: 'eyebrow',
+    },
+    {
+      type: 'string',
+      label: 'Eyebrow Index',
+      name: 'eyebrowIndex',
+    },
+    {
+      type: 'rich-text',
+      label: 'Heading',
+      name: 'heading',
+      overrides: {
+        toolbar: ['bold', 'italic'],
+      },
+    },
+    {
+      type: 'string',
+      label: 'Button Label',
+      name: 'buttonLabel',
+    },
+    {
+      type: 'string',
+      label: 'Button Link',
+      name: 'buttonHref',
+    },
+    {
+      type: 'object',
+      label: 'Design Items',
+      name: 'items',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.title || 'Design item' };
+        },
+        defaultItem: {
+          date: '27th September 2025',
+          category: 'Brand Identity',
+          title: 'A deep dive into the future of interface',
+          italicTitle: 'paradigms.',
+        },
+      },
+      fields: [
+        {
+          type: 'image',
+          label: 'Image',
+          name: 'image',
+          required: true,
+        },
+        {
+          type: 'string',
+          label: 'Image Alt Text',
+          name: 'imageAlt',
+        },
+        {
+          type: 'string',
+          label: 'Date',
+          name: 'date',
+        },
+        {
+          type: 'string',
+          label: 'Category',
+          name: 'category',
+        },
+        {
+          type: 'rich-text',
+          label: 'Title',
+          name: 'title',
+          required: true,
+          overrides: {
+            toolbar: ['bold', 'italic'],
+          },
+        },
+        {
+          type: 'rich-text',
+          label: 'Subtitle',
+          name: 'description',
+          overrides: {
+            toolbar: ['bold', 'italic'],
+          },
+        },
+        {
+          type: 'string',
+          label: 'Accent Color',
+          name: 'accentColor',
+          description: 'Hex color used as hover background (desktop) and card background (mobile). e.g. #d4f0fb',
+          ui: {
+            component: 'color',
+          },
+        },
+        {
+          type: 'string',
+          label: 'Link',
+          name: 'href',
+        },
+      ],
+    },
+  ],
+};
+
 const movieListBlock: Template = {
   name: 'movieList',
   label: 'Movie List',
@@ -543,7 +649,7 @@ const Page: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock],
+      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock, designSliderBlock],
     },
   ],
 };
