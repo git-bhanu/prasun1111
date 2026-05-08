@@ -150,26 +150,24 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
 
         {renderControls('mt-6')}
 
-        <AnimatePresence initial={false} mode='wait' custom={direction}>
-          <motion.div
-            key={`mobile-installation-content-${activeIndex}`}
-            custom={direction}
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
-            transition={contentTransition}
-            className='mt-12'
-          >
-            <h2
+        <div className='mt-12'>
+          <AnimatePresence initial={false} mode='wait'>
+            <motion.h2
+              key={`title-mobile-${activeIndex}`}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={contentTransition}
               className='font-space-grotesk text-[20px] md:text-[30px] font-bold leading-[1.25] uppercase text-black'
               data-tina-field={tinaField(activeSlide, 'title')}
             >
               {activeSlide.title}
-            </h2>
+            </motion.h2>
+          </AnimatePresence>
 
-            <InstallationDetails slide={activeSlide} artists={artists} className='mt-7 border-t border-black/25 pt-6' />
+          <InstallationDetails slide={activeSlide} artists={artists} className='mt-7 border-t border-black/25 pt-6' slideKey={activeIndex} />
 
-            <div className='mt-18 flex flex-col gap-1.5'>
+          <div className='mt-18 flex flex-col gap-1.5'>
               <ActionButton
                 color='orange'
                 icon='playCircle'
@@ -188,8 +186,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                 dataTinaField={tinaField(activeSlide, 'readMoreLabel')}
               />
             </div>
-          </motion.div>
-        </AnimatePresence>
+        </div>
       </div>
 
       <div className='relative isolate hidden min-h-[650px] overflow-hidden bg-black md:block' data-tina-field={tinaField(activeSlide, mediaField)}>
@@ -208,37 +205,28 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
             </div>
           ) : null}
 
-          <AnimatePresence initial={false} mode='wait' custom={direction}>
-            <motion.div
-              key={`installation-body-${activeIndex}`}
-              custom={direction}
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
-              transition={contentTransition}
-              className='max-w-[930px]'
-            >
-              <h2 className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase' data-tina-field={tinaField(activeSlide, 'title')}>
-                {activeSlide.title}
-              </h2>
-
-              <div className='mt-8 border-t border-white/20 pt-9'>
-                <InstallationDetails slide={activeSlide} artists={artists} variant='desktop' />
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <div className='flex items-end justify-between gap-6'>
-            <AnimatePresence initial={false} mode='wait' custom={direction}>
-              <motion.div
-                key={`installation-actions-${activeIndex}`}
-                custom={direction}
+          <div className='max-w-[930px]'>
+            <AnimatePresence initial={false} mode='wait'>
+              <motion.h2
+                key={`title-desktop-${activeIndex}`}
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
+                exit={{ opacity: 0 }}
                 transition={contentTransition}
-                className='flex items-center gap-3'
+                className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase'
+                data-tina-field={tinaField(activeSlide, 'title')}
               >
+                {activeSlide.title}
+              </motion.h2>
+            </AnimatePresence>
+
+            <div className='mt-8 border-t border-white/20 pt-9'>
+              <InstallationDetails slide={activeSlide} artists={artists} variant='desktop' slideKey={activeIndex} />
+            </div>
+          </div>
+
+          <div className='flex items-end justify-between gap-6'>
+            <div className='flex items-center gap-3'>
                 <ActionButton
                   color='black'
                   icon='error'
@@ -254,8 +242,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                   href={activeSlide.watchFilmHref}
                   dataTinaField={tinaField(activeSlide, 'watchFilmLabel')}
                 />
-              </motion.div>
-            </AnimatePresence>
+              </div>
 
             {renderControls()}
           </div>
@@ -270,18 +257,22 @@ function InstallationDetails({
   artists,
   variant = 'mobile',
   className,
+  slideKey,
 }: {
   slide: InstallationSlide;
   artists: string[];
   variant?: 'mobile' | 'desktop';
   className?: string;
+  slideKey: number;
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <div className={cn('grid grid-cols-[1fr_1px_1.28fr] gap-x-8', variant === 'desktop' && 'max-w-[520px] gap-x-7', className)}>
       <div className='space-y-6'>
-        <DetailItem label='MEDIUM' value={slide.medium} field='medium' slide={slide} variant={variant} />
-        <DetailItem label='DIMENSIONS' value={slide.dimensions} field='dimensions' slide={slide} variant={variant} />
-        <DetailItem label='WEIGHT' value={slide.weight} field='weight' slide={slide} variant={variant} withBorder={false} />
+        <DetailItem label='MEDIUM' value={slide.medium} field='medium' slide={slide} variant={variant} slideKey={slideKey} />
+        <DetailItem label='DIMENSIONS' value={slide.dimensions} field='dimensions' slide={slide} variant={variant} slideKey={slideKey} />
+        <DetailItem label='WEIGHT' value={slide.weight} field='weight' slide={slide} variant={variant} withBorder={false} slideKey={slideKey} />
       </div>
 
       <div className={cn('bg-black/25', variant === 'desktop' && 'bg-white/[0.18]')} />
@@ -290,18 +281,27 @@ function InstallationDetails({
         {artists.length ? (
           <div data-tina-field={tinaField(slide, 'artists')}>
             <DetailLabel variant={variant}>ARTISTS</DetailLabel>
-            <p className={cn('mt-3 font-space-grotesk text-[14px] leading-[1.35] uppercase', variant === 'desktop' && 'text-[20px] text-white')}>
-              {artists.map((artist, index) => (
-                <span key={artist} className='md:block'>
-                  {artist}
-                  {index < artists.length - 1 ? <span className='md:hidden'>, </span> : null}
-                </span>
-              ))}
-            </p>
+            <AnimatePresence initial={false} mode='wait'>
+              <motion.p
+                key={`artists-${slideKey}`}
+                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.45, ease: slideEase }}
+                className={cn('mt-3 font-space-grotesk text-[14px] leading-[1.35] uppercase', variant === 'desktop' && 'text-[20px] text-white')}
+              >
+                {artists.map((artist, index) => (
+                  <span key={artist} className='md:block'>
+                    {artist}
+                    {index < artists.length - 1 ? <span className='md:hidden'>, </span> : null}
+                  </span>
+                ))}
+              </motion.p>
+            </AnimatePresence>
           </div>
         ) : null}
 
-        <DetailItem label='YEAR' value={slide.year} field='year' slide={slide} variant={variant} withBorder={false} />
+        <DetailItem label='YEAR' value={slide.year} field='year' slide={slide} variant={variant} withBorder={false} slideKey={slideKey} />
       </div>
     </div>
   );
@@ -314,6 +314,7 @@ function DetailItem({
   slide,
   variant,
   withBorder = true,
+  slideKey,
 }: {
   label: string;
   value?: string | null;
@@ -321,7 +322,10 @@ function DetailItem({
   slide: InstallationSlide;
   variant: 'mobile' | 'desktop';
   withBorder?: boolean;
+  slideKey: number;
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   if (!value) {
     return null;
   }
@@ -332,7 +336,18 @@ function DetailItem({
       data-tina-field={tinaField(slide, field)}
     >
       <DetailLabel variant={variant}>{label}</DetailLabel>
-      <p className={cn('mt-1 font-space-grotesk text-[14px]', variant === 'desktop' && 'text-[20px] text-white')}>{value}</p>
+      <AnimatePresence initial={false} mode='wait'>
+        <motion.p
+          key={`${field}-${slideKey}`}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.45, ease: slideEase }}
+          className={cn('mt-1 font-space-grotesk text-[14px]', variant === 'desktop' && 'text-[20px] text-white')}
+        >
+          {value}
+        </motion.p>
+      </AnimatePresence>
     </div>
   );
 }
