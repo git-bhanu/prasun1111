@@ -13,19 +13,19 @@ export function AnnotationPanel({
   return (
     <div>
       {annotations.map((a, i) => (
-        <div key={a.id ?? i} className="w-[200px]">
-          <hr className="border-black/25 w-[200px]" />
-          <div className="py-3">
-            <span className="font-space-grotesk text-[14px] text-brand-orange">
+        <div key={a.id ?? i} className="w-60">
+          <hr className="border-black/25 w-60" />
+          <div className="py-6 px-4">
+            <span className="font-space-grotesk text-[12px] text-brand-orange">
               [{a.id}]
             </span>
-            <p className="font-space-grotesk mt-3 mb-4 text-[10px] text-black leading-6">
+            <p className="font-space-grotesk mt-3 text-[14px] text-black leading-normal">
               {a.text}
             </p>
           </div>
         </div>
       ))}
-      <hr className="border-black/25" />
+      <hr className="border-black/25 w-60" />
     </div>
   );
 }
