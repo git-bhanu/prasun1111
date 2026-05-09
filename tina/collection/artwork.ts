@@ -1,4 +1,17 @@
-import type { Collection } from 'tinacms';
+import type { Collection, Template } from 'tinacms';
+
+const headerH2Block: Template = {
+  name: 'headerH2',
+  label: 'Header H2',
+  fields: [
+    {
+      type: 'rich-text',
+      name: 'heading',
+      label: 'Heading',
+      overrides: { toolbar: ['bold', 'italic'] },
+    },
+  ],
+};
 
 const Artwork: Collection = {
   name: 'artwork',
@@ -37,7 +50,11 @@ const Artwork: Collection = {
       ui: {
         itemProps: (item) => {
           if (item?.tag) {
-            const name = (item.tag as string).split('/').pop()?.replace(/\.json$/, '') ?? 'Tag';
+            const name =
+              (item.tag as string)
+                .split('/')
+                .pop()
+                ?.replace(/\.json$/, '') ?? 'Tag';
             return { label: name };
           }
           return { label: 'Select Tag Item' };
@@ -51,6 +68,14 @@ const Artwork: Collection = {
           collections: ['tag'],
         },
       ],
+    },
+    {
+      type: 'object',
+      name: 'blocks',
+      label: 'Artwork Blocks',
+      list: true,
+      ui: { visualSelector: true },
+      templates: [headerH2Block],
     },
   ],
 };
