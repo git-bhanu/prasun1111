@@ -16,7 +16,14 @@
   ],
   "blocks": [
     {
-      "heading": "Heya\n",
+      "width": "full",
+      "heading": "The *touch-through* yet deep analysis of all that has gone often brings us to a moment —a moment that *reflects the past* and at times defines<ref n=\"01\"/> it to be the *pivot* of a lifetime.\n",
+      "annotations": [
+        {
+          "id": "01",
+          "text": "Not the absence of movement, but the presence of focus. A charged pause — like the moment before a strike, or the breath held before something begins."
+        }
+      ],
       "_template": "headerH2"
     }
   ]
