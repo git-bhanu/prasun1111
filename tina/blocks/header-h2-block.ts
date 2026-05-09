@@ -17,7 +17,20 @@ export const headerH2Block: Template = {
       type: 'rich-text',
       name: 'heading',
       label: 'Heading',
-      overrides: { toolbar: ['bold', 'italic'] },
+      overrides: { toolbar: ['bold', 'italic', 'raw'] },
+    },
+    {
+      type: 'object',
+      name: 'annotations',
+      label: 'Annotations',
+      list: true,
+      ui: {
+        itemProps: (item) => ({ label: item?.id ? `[${item.id}]` : 'Annotation' }),
+      },
+      fields: [
+        { type: 'string', name: 'id', label: 'ID (e.g. 01)' },
+        { type: 'string', name: 'text', label: 'Annotation Text', ui: { component: 'textarea' } },
+      ],
     },
   ],
 };
