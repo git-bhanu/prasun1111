@@ -19,7 +19,7 @@ function BannerContent({ label, index }: { label: string; index: string }) {
       <span className="text-[12px] md:text-[16px] leading-none text-white font-sedan">
         section is functional.
       </span>
-      <span className="text-[12px] md:text-[16px] leading-none text-brand-orange">
+      <span className="text-[12px] md:text-[16px] leading-none text-brand-orange font-space-grotesk font-bold">
         Additional pages will open soon.
       </span>
     </span>
