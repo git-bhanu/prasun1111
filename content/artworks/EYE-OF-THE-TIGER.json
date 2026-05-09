@@ -1,0 +1,17 @@
+{
+  "title": "EYE OF THE TIGER",
+  "slug": "eye-of-the-tiger",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778311239/eye-of-the-tiger_v5kevq.jpg",
+  "coverImageAlt": "EYE OF THE TIGER",
+  "tags": [
+    {
+      "tag": "content/tags/illustration.json"
+    },
+    {
+      "tag": "content/tags/MYTHOLOGY.json"
+    },
+    {
+      "tag": "content/tags/PRINTS-AVAILABLE.json"
+    }
+  ]
+}

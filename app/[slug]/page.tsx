@@ -7,11 +7,6 @@ const pageCopy = {
     title: 'About',
     description: 'A minimal route placeholder so App Router navigations stay client-side and view transitions can run.',
   },
-  artworks: {
-    eyebrow: 'Collection',
-    title: 'Artworks',
-    description: 'Selected works will live here. This page currently exists to validate route-to-route transitions.',
-  },
   installations: {
     eyebrow: 'Collection',
     title: 'Installations',
