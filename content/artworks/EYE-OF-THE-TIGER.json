@@ -13,5 +13,11 @@
     {
       "tag": "content/tags/PRINTS-AVAILABLE.json"
     }
+  ],
+  "blocks": [
+    {
+      "heading": "Heya\n",
+      "_template": "headerH2"
+    }
   ]
 }

@@ -2,11 +2,15 @@
 
 import { tinaField } from 'tinacms/dist/react';
 import { type Components, TinaMarkdown } from 'tinacms/dist/rich-text';
+import type { TinaMarkdownContent } from 'tinacms/dist/rich-text';
 
-import type { ArtworkBlocksHeaderH2 } from '@/tina/__generated__/types';
+type HeaderH2BlockData = {
+  heading?: TinaMarkdownContent | null;
+  width?: string | null;
+};
 
 type Props = {
-  block: ArtworkBlocksHeaderH2;
+  block: HeaderH2BlockData;
 };
 
 const components: Components<{}> = {

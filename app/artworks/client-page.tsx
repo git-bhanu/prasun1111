@@ -1,7 +1,7 @@
 'use client';
 
 import { ArtworkDetailActions, ArtworkInfoCard } from '@/components/artwork';
-import { HeaderH2Block } from '@/components/artwork-blocks/header-h2-block';
+import { HeaderH2Block } from '@/components/blocks/header-h2-block';
 import { Icon } from '@/components/icons';
 import { SectionMasthead } from '@/components/shared/section-masthead';
 import type { ArtworkConnectionQuery, ArtworkConnectionQueryVariables } from '@/tina/__generated__/types';
@@ -171,60 +171,67 @@ function DetailPanel({
   const tags = (artwork.tags ?? []).map((t) => t?.tag).filter((t): t is TagItem => t != null);
 
   return (
-    <div className='flex min-h-full flex-col md:flex-row'>
-      {/* Info panel — second on mobile, left on desktop */}
-      <div className='order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:px-[58px]'>
-        <SectionMasthead index={'04'} title={'Artworks'} size='sm' color='black' className='md:hidden mb-3' />
-        <div className='hidden md:block'>
-          <ArtworkDetailActions mode='close-only' onClose={onClose} />
-        </div>
-
-        <div className='w-full md:max-w-[450px]'>
-          <ArtworkInfoCard
-            title={artwork.title}
-            as='h1'
-            arrow='down'
-            titleClassName='inline-block font-space-grotesk font-bold uppercase text-black text-[1.4rem] leading-[1.15em] sm:text-[1.65rem]'
-            tags={tags}
-            className='mb-10 md:my-20'
-          />
-
-          {/* Mobile: all actions; Desktop: secondary only */}
-          <div className='mt-4 md:hidden'>
-            <ArtworkDetailActions mode='all' onClose={onClose} />
-          </div>
-          <div className='mt-4 hidden md:block'>
-            <ArtworkDetailActions mode='secondary' onClose={onClose} />
+    <>
+      <div className='flex min-h-full flex-col md:flex-row'>
+        {/* Info panel — second on mobile, left on desktop */}
+        <div className='order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:px-[58px]'>
+          <SectionMasthead index={'04'} title={'Artworks'} size='sm' color='black' className='md:hidden mb-3' />
+          <div className='hidden md:block'>
+            <ArtworkDetailActions mode='close-only' onClose={onClose} />
           </div>
 
-          {artwork.blocks && artwork.blocks.length > 0 && (
-            <div className='mt-8 space-y-6'>
-              {artwork.blocks.map((block, i) => {
-                switch (block?.__typename) {
-                  case 'ArtworkBlocksHeaderH2':
-                    return <HeaderH2Block key={`${block.__typename}-${i}`} block={block} />;
-                  default:
-                    return null;
-                }
-              })}
+          <div className='w-full md:max-w-[450px]'>
+            <ArtworkInfoCard
+              title={artwork.title}
+              as='h1'
+              arrow='down'
+              titleClassName='inline-block font-space-grotesk font-bold uppercase text-black text-[1.4rem] leading-[1.15em] sm:text-[1.65rem]'
+              tags={tags}
+              className='mb-10 md:my-20'
+            />
+
+            {/* Mobile: all actions; Desktop: secondary only */}
+            <div className='mt-4 md:hidden'>
+              <ArtworkDetailActions mode='all' onClose={onClose} />
             </div>
-          )}
+            <div className='mt-4 hidden md:block'>
+              <ArtworkDetailActions mode='secondary' onClose={onClose} />
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Image — first on mobile (top), right on desktop */}
-      {artwork.coverImage && (
-        <div className='relative order-1 aspect-[4/3] h-[500px] md:h-auto w-full flex-shrink-0 bg-[var(--surface-grey)] md:order-2 md:aspect-auto md:min-h-full md:flex-1'>
-          <Image
-            src={artwork.coverImage}
-            alt={artwork.coverImageAlt ?? artwork.title}
-            fill
-            className='object-cover'
-            sizes='(max-width: 768px) 100vw, 60vw'
-            priority
-          />
+        {/* Image — first on mobile (top), right on desktop */}
+        {artwork.coverImage && (
+          <div className='relative order-1 aspect-[4/3] h-[500px] md:h-auto w-full flex-shrink-0 bg-[var(--surface-grey)] md:order-2 md:aspect-auto md:min-h-full md:flex-1'>
+            <Image
+              src={artwork.coverImage}
+              alt={artwork.coverImageAlt ?? artwork.title}
+              fill
+              className='object-cover'
+              sizes='(max-width: 768px) 100vw, 60vw'
+              priority
+            />
+          </div>
+        )}
+      </div>
+      {artwork.blocks && artwork.blocks.length > 0 && (
+        <div className='mt-8'>
+          {artwork.blocks.map((block, i) => {
+            switch (block?.__typename) {
+              case 'ArtworkBlocksHeaderH2': {
+                const isFull = block.width === 'full';
+                return (
+                  <div key={`${block.__typename}-${i}`} className={isFull ? 'w-full py-4' : 'px-6 py-4 md:px-[58px] md:w-[50%]'}>
+                    <HeaderH2Block block={block} />
+                  </div>
+                );
+              }
+              default:
+                return null;
+            }
+          })}
         </div>
       )}
-    </div>
+    </>
   );
 }

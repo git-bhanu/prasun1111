@@ -1,17 +1,5 @@
-import type { Collection, Template } from 'tinacms';
-
-const headerH2Block: Template = {
-  name: 'headerH2',
-  label: 'Header H2',
-  fields: [
-    {
-      type: 'rich-text',
-      name: 'heading',
-      label: 'Heading',
-      overrides: { toolbar: ['bold', 'italic'] },
-    },
-  ],
-};
+import type { Collection } from 'tinacms';
+import { headerH2Block } from '../blocks/header-h2-block';
 
 const Artwork: Collection = {
   name: 'artwork',
