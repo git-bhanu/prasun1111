@@ -1,14 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTina } from "tinacms/dist/react";
+import { ArtworkDetailActions, ArtworkInfoCard } from "@/components/artwork";
+import { Icon } from "@/components/icons";
 import type {
   ArtworkConnectionQuery,
   ArtworkConnectionQueryVariables,
 } from "@/tina/__generated__/types";
+import { SectionMasthead } from "@/components/shared/section-masthead";
 
 type ArtworkNode = NonNullable<
   NonNullable<
@@ -61,6 +64,13 @@ function ArtworksContent({ query, data, variables }: Props) {
     selectedIndex < artworks.length - 1 &&
     goTo(artworkSlug(artworks[selectedIndex + 1]));
 
+  useEffect(() => {
+    document.body.style.overflow = selectedSlug ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedSlug]);
+
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -95,16 +105,29 @@ function ArtworksContent({ query, data, variables }: Props) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ ease: "easeOut", duration: 0.3 }}
+              transition={{ ease: "easeInOut", duration: 0.3 }}
               onClick={close}
               className="fixed inset-0 z-[99] bg-black/60"
             />
+            <motion.button
+              key="artwork-close-btn"
+              type="button"
+              onClick={close}
+              aria-label="Close overlay"
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.7 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed right-6 md:right-36 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white"
+            >
+              <Icon name="pinchInZoom" size={28} color="#fff" />
+            </motion.button>
             <motion.div
               key="artwork-detail"
               initial={{ y: prefersReducedMotion ? 0 : "100%" }}
               animate={{ y: 0 }}
               exit={{ y: prefersReducedMotion ? 0 : "100%" }}
-              transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.5 }}
+              transition={{ ease: "easeInOut", duration: 0.2 }}
               className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
             >
               <DetailPanel
@@ -112,8 +135,6 @@ function ArtworksContent({ query, data, variables }: Props) {
                 onClose={close}
                 onPrev={selectedIndex > 0 ? prev : undefined}
                 onNext={selectedIndex < artworks.length - 1 ? next : undefined}
-                index={selectedIndex}
-                total={artworks.length}
               />
             </motion.div>
           </>
@@ -177,82 +198,64 @@ function DetailPanel({
   onClose,
   onPrev,
   onNext,
-  index,
-  total,
 }: {
   artwork: ArtworkNode;
   onClose: () => void;
   onPrev?: (() => void) | false;
   onNext?: (() => void) | false;
-  index: number;
-  total: number;
 }) {
   const tags = (artwork.tags ?? [])
     .map((t) => t?.tag)
     .filter((t): t is TagItem => t != null);
 
   return (
-    <div className="w-full">
-      <div className="flex min-h-screen flex-col md:flex-row">
-        <div className="flex flex-1 flex-col justify-between px-8 py-12 sm:px-10 md:max-w-md md:px-[58px]">
-          <div>
-            <p className="mb-4 font-space-grotesk text-xs tracking-[0.2em] text-black/40">
-              {String(index + 1).padStart(2, "0")} /{" "}
-              {String(total).padStart(2, "0")}
-            </p>
-            <h1 className="font-space-grotesk text-4xl tracking-[-0.05em] text-black sm:text-5xl">
-              {artwork.title}
-            </h1>
-            {tags.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-3">
-                {tags.map((tag) => (
-                  <span
-                    key={tag.id}
-                    style={{ color: tag.color ?? "currentColor" }}
-                    className="font-space-grotesk text-[10px] uppercase tracking-widest"
-                  >
-                    {tag.title}
-                  </span>
-                ))}
-              </div>
-            )}
+    <div className="flex min-h-full flex-col md:flex-row">
+      {/* Info panel — second on mobile, left on desktop */}
+      <div className="order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:px-[58px]">
+        <SectionMasthead
+          index={"04"}
+          title={"Artworks"}
+          size="sm"
+          color="black"
+          className="md:hidden mb-3"
+        />
+        <div className="hidden md:block">
+          <ArtworkDetailActions mode="close-only" onClose={onClose} />
+        </div>
+
+        <div className="w-full md:max-w-[450px]">
+          <ArtworkInfoCard
+            title={artwork.title}
+            as="h1"
+            arrow="down"
+            titleClassName="inline-block font-space-grotesk font-bold uppercase text-black text-[1.4rem] leading-[1.15em] sm:text-[1.65rem]"
+            tags={tags}
+            className="mb-10 md:my-20"
+          />
+
+          {/* Mobile: all actions; Desktop: secondary only */}
+          <div className="mt-4 md:hidden">
+            <ArtworkDetailActions mode="all" onClose={onClose} />
           </div>
-          <div className="mt-8 flex items-center gap-3">
-            <button
-              onClick={onPrev || undefined}
-              disabled={!onPrev}
-              className="rounded-full border border-black/20 px-4 py-2 text-xs uppercase tracking-widest transition hover:border-black disabled:opacity-30"
-            >
-              ← Prev
-            </button>
-            <button
-              onClick={onNext || undefined}
-              disabled={!onNext}
-              className="rounded-full border border-black/20 px-4 py-2 text-xs uppercase tracking-widest transition hover:border-black disabled:opacity-30"
-            >
-              Next →
-            </button>
-            <button
-              onClick={onClose}
-              className="ml-auto rounded-full border border-black/20 px-4 py-2 text-xs uppercase tracking-widest transition hover:border-black"
-            >
-              Close
-            </button>
+          <div className="mt-4 hidden md:block">
+            <ArtworkDetailActions mode="secondary" onClose={onClose} />
           </div>
         </div>
-        {artwork.coverImage && (
-          <div className="relative min-h-[50vh] flex-1 bg-[var(--surface-grey)] md:min-h-screen">
-            <Image
-              src={artwork.coverImage}
-              alt={artwork.coverImageAlt ?? artwork.title}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 60vw"
-              priority
-            />
-          </div>
-        )}
       </div>
+
+      {/* Image — first on mobile (top), right on desktop */}
+      {artwork.coverImage && (
+        <div className="relative order-1 aspect-[4/3] h-[500px] md:h-auto w-full flex-shrink-0 bg-[var(--surface-grey)] md:order-2 md:aspect-auto md:min-h-full md:flex-1">
+          <Image
+            src={artwork.coverImage}
+            alt={artwork.coverImageAlt ?? artwork.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 60vw"
+            priority
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -24,7 +24,7 @@ export function SvgIcon({
     <Icon
       width={size}
       height={size}
-      className={cn("shrink-0", className)}
+      className={cn("block shrink-0", className)}
       style={{ color, ...style }}
       aria-hidden={label ? undefined : true}
       aria-label={label}

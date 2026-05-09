@@ -3,12 +3,11 @@
 import { AnimatePresence, useInView, useReducedMotion } from 'motion/react';
 import * as motion from 'motion/react-client';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 
 import { Icon, IconCircleButton } from '@/components/icons';
-import { SectionMasthead } from '@/components/shared/section-masthead';
+import { ArtworkInfoCard } from '@/components/artwork';
 import { cn } from '@/lib/utils';
 import type { PageBlocksFeaturedSlider } from '@/tina/__generated__/types';
 
@@ -166,18 +165,16 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
               transition={contentTransition}
               className='min-h-[84px] min-w-0 text-center md:min-h-[96px]'
             >
-              {activeSlide.eyebrow ? (
-                <div className='mb-3 flex justify-center' data-tina-field={tinaField(activeSlide, 'eyebrow')}>
-                  <SectionMasthead
-                    index='01'
-                    title={activeSlide.eyebrow}
-                    size='sm'
-                    color='black'
-                  />
-                </div>
-              ) : null}
-
-              <FeaturedSlideTitle slide={activeSlide} />
+              <ArtworkInfoCard
+                title={activeSlide.title ?? ''}
+                href={activeSlide.href}
+                eyebrow={activeSlide.eyebrow}
+                eyebrowTinaField={tinaField(activeSlide, 'eyebrow')}
+                titleTinaField={tinaField(activeSlide, 'title')}
+                asCard={false}
+                titleClassName='font-sedan text-[22px] leading-tight text-black md:text-[32px]'
+                className='text-center'
+              />
             </motion.div>
           </AnimatePresence>
           <div className='flex justify-start pt-0 md:pt-9'>{renderControl('next')}</div>
@@ -187,23 +184,6 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   );
 }
 
-function FeaturedSlideTitle({ slide }: { slide: FeaturedSliderSlide }) {
-  const className = 'font-sedan text-[22px] leading-tight text-black md:text-[32px]';
-
-  if (slide.href) {
-    return (
-      <Link href={slide.href} className={className} data-tina-field={tinaField(slide, 'title')}>
-        {slide.title}
-      </Link>
-    );
-  }
-
-  return (
-    <h2 className={className} data-tina-field={tinaField(slide, 'title')}>
-      {slide.title}
-    </h2>
-  );
-}
 
 function getSlideMedia(slide: FeaturedSliderSlide, variant: MediaVariant): SlideMedia {
   const isMobile = variant === 'mobile';

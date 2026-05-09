@@ -25,7 +25,7 @@ const arrowIcons = {
 
 export function ArtworkTitle({ title, href, arrow = 'up', showArrow, as: Tag = 'h2', className, dataTinaField }: ArtworkTitleProps) {
   const ArrowIcon = arrowIcons[arrow];
-  const shouldShowArrow = showArrow ?? Boolean(href);
+  const shouldShowArrow = showArrow ?? true;
   const titleClassName = cn('inline-block font-space-grotesk font-bold uppercase text-black', className);
   const content = (
     <span>
