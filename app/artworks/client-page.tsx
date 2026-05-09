@@ -1,14 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTina } from "tinacms/dist/react";
 import type {
   ArtworkConnectionQuery,
   ArtworkConnectionQueryVariables,
-  ArtworkQuery,
 } from "@/tina/__generated__/types";
 
 type ArtworkNode = NonNullable<
@@ -16,9 +15,8 @@ type ArtworkNode = NonNullable<
     NonNullable<ArtworkConnectionQuery["artworkConnection"]["edges"]>[number]
   >["node"]
 >;
-type ArtworkDetail = ArtworkQuery["artwork"];
 type TagItem = NonNullable<
-  NonNullable<NonNullable<ArtworkDetail["tags"]>[number]>["tag"]
+  NonNullable<NonNullable<ArtworkNode["tags"]>[number]>["tag"]
 >;
 
 type Props = {
@@ -41,24 +39,9 @@ function ArtworksContent({ query, data, variables }: Props) {
   const searchParams = useSearchParams();
   const selectedSlug = searchParams?.get("artwork") ?? null;
 
-  const [detail, setDetail] = useState<ArtworkDetail | null>(null);
-  const [loading, setLoading] = useState(false);
-
   const artworks: ArtworkNode[] = (tinaData.artworkConnection.edges ?? [])
     .map((e) => e?.node)
     .filter((n): n is ArtworkNode => n != null);
-
-  useEffect(() => {
-    if (!selectedSlug) {
-      setDetail(null);
-      return;
-    }
-    setLoading(true);
-    fetch(`/api/artwork?slug=${encodeURIComponent(selectedSlug)}`)
-      .then((r) => r.json())
-      .then((d: ArtworkDetail) => setDetail(d))
-      .finally(() => setLoading(false));
-  }, [selectedSlug]);
 
   const artworkSlug = (a: ArtworkNode) =>
     (a.slug ?? a._sys.filename).toLowerCase();
@@ -66,6 +49,8 @@ function ArtworksContent({ query, data, variables }: Props) {
   const selectedIndex = selectedSlug
     ? artworks.findIndex((a) => artworkSlug(a) === selectedSlug)
     : -1;
+
+  const selectedArtwork = selectedIndex >= 0 ? artworks[selectedIndex] : null;
 
   const goTo = (slug: string) =>
     router.push(`/artworks?artwork=${encodeURIComponent(slug)}`);
@@ -103,9 +88,8 @@ function ArtworksContent({ query, data, variables }: Props) {
       </div>
 
       <AnimatePresence>
-        {selectedSlug && (
+        {selectedSlug && selectedArtwork && (
           <>
-            {/* Black transparent backdrop */}
             <motion.div
               key="artwork-backdrop"
               initial={{ opacity: 0 }}
@@ -115,8 +99,6 @@ function ArtworksContent({ query, data, variables }: Props) {
               onClick={close}
               className="fixed inset-0 z-[99] bg-black/60"
             />
-
-            {/* Slide-up panel — starts 200px from top */}
             <motion.div
               key="artwork-detail"
               initial={{ y: prefersReducedMotion ? 0 : "100%" }}
@@ -125,22 +107,14 @@ function ArtworksContent({ query, data, variables }: Props) {
               transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.5 }}
               className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
             >
-              {loading || !detail ? (
-                <div className="flex min-h-full items-center justify-center">
-                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-black border-t-transparent" />
-                </div>
-              ) : (
-                <DetailPanel
-                  artwork={detail}
-                  onClose={close}
-                  onPrev={selectedIndex > 0 ? prev : undefined}
-                  onNext={
-                    selectedIndex < artworks.length - 1 ? next : undefined
-                  }
-                  index={selectedIndex}
-                  total={artworks.length}
-                />
-              )}
+              <DetailPanel
+                artwork={selectedArtwork}
+                onClose={close}
+                onPrev={selectedIndex > 0 ? prev : undefined}
+                onNext={selectedIndex < artworks.length - 1 ? next : undefined}
+                index={selectedIndex}
+                total={artworks.length}
+              />
             </motion.div>
           </>
         )}
@@ -206,7 +180,7 @@ function DetailPanel({
   index,
   total,
 }: {
-  artwork: ArtworkDetail;
+  artwork: ArtworkNode;
   onClose: () => void;
   onPrev?: (() => void) | false;
   onNext?: (() => void) | false;
