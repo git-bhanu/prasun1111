@@ -269,7 +269,7 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className="w-full py-4 px-4 md:px-[58px]"
+                    className="w-full py-4 px-2 md:px-[58px]"
                   >
                     <HeaderBlock block={block} />
                   </div>
@@ -278,7 +278,7 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className="w-full py-4 px-4 md:px-[58px]"
+                    className="w-full py-4 px-2 md:px-[58px]"
                   >
                     <TwoColumnTextBlock block={block} />
                   </div>
@@ -287,7 +287,7 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className="w-full max-w-[calc(85svw)] py-10 pl-[82px] pr-[58px]"
+                    className="w-full py-10 px-2 md:max-w-[calc(85svw)] md:pl-[82px] md:pr-[58px]"
                   >
                     <VideoBlock block={block} />
                   </div>

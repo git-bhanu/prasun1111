@@ -29,41 +29,52 @@ export function VideoBlock({ block }: Props) {
 
   const videoId = block.youtubeUrl ? extractYouTubeId(block.youtubeUrl) : null;
 
+  const button = videoId && !playing ? (
+    <ActionButton
+      variant="solid"
+      color="orange"
+      icon="playCircle"
+      iconPosition="left"
+      label="Watch Film"
+      subLabel={block.duration ?? undefined}
+      onClick={() => setPlaying(true)}
+    />
+  ) : null;
+
   return (
-    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-black">
-      {playing && videoId ? (
-        <iframe
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
-          allow="autoplay; fullscreen"
-          allowFullScreen
-          className="absolute inset-0 h-full w-full border-0"
-        />
-      ) : (
-        <>
-          {block.posterImage && (
-            <Image
-              src={block.posterImage}
-              alt=""
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, calc(100vw - 116px)"
-              data-tina-field={tinaField(block, "posterImage")}
-            />
-          )}
-          {videoId && (
-            <div className="absolute left-5 top-5" data-tina-field={tinaField(block, "youtubeUrl")}>
-              <ActionButton
-                variant="solid"
-                color="orange"
-                icon="playCircle"
-                iconPosition="left"
-                label="Watch Film"
-                subLabel={block.duration ?? undefined}
-                onClick={() => setPlaying(true)}
+    <div className="flex flex-col gap-4 w-full">
+      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-black">
+        {playing && videoId ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0"
+          />
+        ) : (
+          <>
+            {block.posterImage && (
+              <Image
+                src={block.posterImage}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, calc(100vw - 116px)"
+                data-tina-field={tinaField(block, "posterImage")}
               />
-            </div>
-          )}
-        </>
+            )}
+            {videoId && (
+              <div className="hidden md:block absolute left-5 top-5" data-tina-field={tinaField(block, "youtubeUrl")}>
+                {button}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+      {videoId && (
+        <div className="md:hidden px-6" data-tina-field={tinaField(block, "youtubeUrl")}>
+          {button}
+        </div>
       )}
     </div>
   );
