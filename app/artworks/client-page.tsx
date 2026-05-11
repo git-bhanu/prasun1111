@@ -1,7 +1,9 @@
 "use client";
 
 import { ArtworkDetailActions, ArtworkInfoCard } from "@/components/artwork";
-import { HeaderH2Block } from "@/components/blocks/header-h2-block";
+import { HeaderBlock } from "@/components/blocks/header-block";
+import { TwoColumnTextBlock } from "@/components/blocks/two-column-text-block";
+import { VideoBlock } from "@/components/blocks/video-block";
 import { Icon } from "@/components/icons";
 import { SectionMasthead } from "@/components/shared/section-masthead";
 import type {
@@ -263,13 +265,31 @@ function DetailPanel({
         <div className="mt-8 mb-20">
           {artwork.blocks.map((block, i) => {
             switch (block?.__typename) {
-              case "ArtworkBlocksHeaderH2":
+              case "ArtworkBlocksHeader":
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className="w-full py-4 px-[58px]"
+                    className="w-full py-4 px-4 md:px-[58px]"
                   >
-                    <HeaderH2Block block={block} />
+                    <HeaderBlock block={block} />
+                  </div>
+                );
+              case "ArtworkBlocksTwoColumnText":
+                return (
+                  <div
+                    key={`${block.__typename}-${i}`}
+                    className="w-full py-4 px-4 md:px-[58px]"
+                  >
+                    <TwoColumnTextBlock block={block} />
+                  </div>
+                );
+              case "ArtworkBlocksVideo":
+                return (
+                  <div
+                    key={`${block.__typename}-${i}`}
+                    className="w-full max-w-[calc(85svw)] py-10 pl-[82px] pr-[58px]"
+                  >
+                    <VideoBlock block={block} />
                   </div>
                 );
               default:

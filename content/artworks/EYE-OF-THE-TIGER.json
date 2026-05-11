@@ -16,15 +16,58 @@
   ],
   "blocks": [
     {
-      "width": "full",
-      "heading": "The *touch-through* yet deep analysis of all that has gone often brings us to a moment —a moment that *reflects the past* and at times defines<ref n=\"01\"/> it to be the *pivot* of a lifetime.\n",
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "1.0 INTRODUCTION\n",
+      "_template": "header"
+    },
+    {
+      "level": "h2",
+      "heading": "The *touch-through* yet deep analysis of all that has gone often brings us to a moment —a moment that *reflects the past* and at times defines it to be the *pivot* of a lifetime.\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "A stare that holds stillness<ref n=\"01\"/> , not silence. This is not just an eye, it’s a threshold. Between predator and prey. Between instinct and intention. What does it see… or what does it know? <color text=\"Step closer, if you dare.\" />\n",
+      "rightColumn": "Millions of stories, one silent gaze. Only the eyes remain untouched:\n\nclear, direct, and entirely belonging to the tiger.\n",
       "annotations": [
         {
           "id": "01",
           "text": "Not the absence of movement, but the presence of focus. A charged pause — like the moment before a strike, or the breath held before something begins."
         }
       ],
-      "_template": "headerH2"
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "2.0 DETAILED STORIES\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Emperor Penguins / *the ritual of resilience*.\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*The Emperor Penguin does not fear the cold, it understands it, & through this understanding, it lives.*\n",
+      "rightColumn": "The Emperor<ref n=\"02\"/> Penguin family is a marvel of shared survival. The mother lays a single egg, then passes it, gently, precisely onto the father’s feet.\n\nHe will carry it for nearly five months, never letting it touch the frozen ground, balancing life on a patch of warm thin a world built on ice. In a crowd of 6,000 nearly identical bodies, the mother finds her family. Always. By sound, by memory, by the rhythm<ref n=\"03\"/> of survival passed down in silence.\n",
+      "annotations": [
+        {
+          "id": "02",
+          "text": "Not the absence of movement, but the presence of focus. A charged pause — like the moment before a strike, or the breath held before something begins."
+        },
+        {
+          "id": "03",
+          "text": "Not the absence of movement, but the presence of focus. A charged pause — like the moment before a strike, or the breath held before something begins."
+        }
+      ],
+      "_template": "twoColumnText"
+    },
+    {
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778525544/Biodiversity_The_Eye_Belongs_to_the_Tiger__1_uykbph.png",
+      "youtubeUrl": "https://www.youtube.com/watch?v=k_l-Vyvltjg",
+      "duration": "8 min 2sec",
+      "_template": "video"
     }
   ]
 }

@@ -197,7 +197,7 @@ export function ActionButton({
   );
 
   const solidClassName = cn(
-    "inline-flex items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px]",
+    "inline-flex cursor-pointer items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px]",
     fullWidth ? "w-full" : "w-full md:w-auto",
     solidColors[color].button,
     className,
