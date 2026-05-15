@@ -21,8 +21,8 @@
       "_template": "header"
     },
     {
-      "leftColumn": "*Ram stands at such a moment.* He puts forward the first step towards the war — a step from land to water — \n",
-      "rightColumn": "and recalls everything that has brought him here, keeping himself as a part of his own inception. \n",
+      "leftColumn": "*Ram stands at such a moment.* He puts forward the first step towards the war — a step from land to water —\n",
+      "rightColumn": "and recalls everything that has brought him here, keeping himself as a part of his own inception.\n",
       "_template": "twoColumnText"
     },
     {
@@ -88,6 +88,82 @@
       "leftColumn": "*He is about to step into the ocean, where the team of Nala and Neer are  constructing a divine floating bridge for their master — the prince of Ayodhya.*\n",
       "rightColumn": "He looks at the floating stones and recalls — How Lakshmana cut off the nose and left ear of शूपर्णखा Shurpanakha, Ravana’s sister, who was smitten by the beauty and youth of both brothers.\n\nHow he crossed that first trap — yet eventually they were drawn into the greater one — the illusion of Maarich, the golden deer.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830425/Frame_196_pfvuqp.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "5.0 THE SKY\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "जटायू Jaṭāyū — a divine bird, younger son of Aruṇa. His brother, Sampati, a demi-god in the form of a vulture, an old friend of Dasharatha. Jatayu fought valiantly with Ravana while he was flying Seeta towards Lanka on the Pushpak Vimana.\n",
+      "rightColumn": "The calm of birds still remains with Ram — adding dimension to his attack, forming his silent Air Force.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778848578/Rama_Thumbnail_com3tq.jpg",
+      "youtubeUrl": "https://www.youtube.com/watch?v=uxmjRWVwX6A",
+      "duration": "1MIN. 42SEC.",
+      "_template": "video"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "6.0 THE INCARNATION\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "orientation": "portrait",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830365/Layer_1_az74tx.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830419/Layer_1_t3cd1c.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Physically, Ram looks around. He looks across. But in his mind, he looks back — at everything that has brought him to this great war. The war — perhaps the greatest reason for his incarnation.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "DIFFERENT PRINT VERSIONS\n",
+      "_template": "header"
+    },
+    {
+      "width": "wide",
+      "orientation": "portrait",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778833476/Layer_1_da6rbg.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778833459/Layer_1-1_oxae0g.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778833449/Layer_1-2_brzu6h.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778833432/Layer_1-3_mrgyqh.jpg"
+        }
+      ],
+      "_template": "image"
     }
   ]
 }
