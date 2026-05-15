@@ -22,13 +22,13 @@
       "_template": "header"
     },
     {
-      "level": "h2",
+      "level": "h3",
       "heading": "The piece presents the tiger’s face built from the marks of the living world, species, habitats, and ecosystems forming its stripes & structure.\n",
       "_template": "header"
     },
     {
       "leftColumn": "A stare that holds stillness<ref n=\"01\"/> , not silence. This is not just an eye, it’s a threshold. Between predator and prey. Between instinct and intention. What does it see… or what does it know? <color text=\"Step closer, if you dare.\" />\n",
-      "rightColumn": "Millions of stories, one silent gaze. Only the eyes remain untouched:\n\nclear, direct, and entirely belonging to the tiger.\n",
+      "rightColumn": "Millions of stories, one silent gaze. Only the eyes remain untouched: clear, direct, and entirely belonging to the tiger.\n",
       "annotations": [
         {
           "id": "01",
@@ -88,7 +88,7 @@
       "_template": "image"
     },
     {
-      "level": "h2",
+      "level": "h3",
       "font": "sedan",
       "heading": "Dream Walkers / *the calm within the current.*\n",
       "_template": "header"
