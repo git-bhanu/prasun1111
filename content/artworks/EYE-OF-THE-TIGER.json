@@ -1,5 +1,5 @@
 {
-  "title": "EYE OF THE TIGER",
+  "title": "THE EYE BELONGS TO THE TIGER",
   "slug": "eye-of-the-tiger",
   "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778311239/eye-of-the-tiger_v5kevq.jpg",
   "coverImageAlt": "EYE OF THE TIGER",
@@ -23,7 +23,7 @@
     },
     {
       "level": "h2",
-      "heading": "The *touch-through* yet deep analysis of all that has gone often brings us to a moment —a moment that *reflects the past* and at times defines it to be the *pivot* of a lifetime.\n",
+      "heading": "The piece presents the tiger’s face built from the marks of the living world, species, habitats, and ecosystems forming its stripes & structure.\n",
       "_template": "header"
     },
     {
@@ -38,13 +38,10 @@
       "_template": "twoColumnText"
     },
     {
-      "width": "narrow",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830492/Layer_1_w1ia3x.jpg"
-        }
-      ],
-      "_template": "image"
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778525544/Biodiversity_The_Eye_Belongs_to_the_Tiger__1_uykbph.png",
+      "youtubeUrl": "https://www.youtube.com/watch?v=v2qOG4145CU",
+      "duration": "5 min 36 sec",
+      "_template": "video"
     },
     {
       "level": "h6",
@@ -58,10 +55,10 @@
       "_template": "header"
     },
     {
-      "width": "full",
+      "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830444/Frame_194_e2a4ft.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778841985/Layer_1_mhmkbh.jpg"
         }
       ],
       "_template": "image"
@@ -83,22 +80,37 @@
     },
     {
       "width": "narrow",
-      "orientation": "portrait",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830419/Layer_1_t3cd1c.jpg"
-        },
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830365/Layer_1_az74tx.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778842144/Layer_2_f7moop.jpg"
         }
       ],
       "_template": "image"
     },
     {
-      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778525544/Biodiversity_The_Eye_Belongs_to_the_Tiger__1_uykbph.png",
-      "youtubeUrl": "https://www.youtube.com/watch?v=v2qOG4145CU",
-      "duration": "5 min 36 sec",
-      "_template": "video"
+      "level": "h2",
+      "font": "sedan",
+      "heading": "Dream Walkers / *the calm within the current.*\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*Balance is quiet. Change is loud. Even drift has purpose. Even peace can vanish.*\n",
+      "rightColumn": "Tropical turtles drift like thoughts, unhurried, gentle, grazing the reef with quiet grace.\u0003 Omnivores of balance , they tend to the underwater garden. But as the seas warm, even their calm rhythm begins to break.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778842343/Layer_3_nzwtaz.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*Two lives, caught in the thaw, searching for balance on a disappearing stage.*\n",
+      "rightColumn": "The Polar Bear Family emerges from winter’s stillness into a vast, melting silence. Once ice meant survival, now it’s a map of loss. Prey is scarce, and what remains floats in the memory of a frozen past, a dead whale, a drifting meal.\n\nThe Atlantic Walrus hauls out on shrinking slabs, evolution wrapped in skin and tusk, looking for ground to rest, to raise, to remember. But the boundary between ice and ocean is no longer where it used to be.\n",
+      "_template": "twoColumnText"
     }
   ]
 }
