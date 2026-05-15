@@ -38,7 +38,6 @@ export function VideoBlock({ block }: Props) {
       label="Watch Film"
       subLabel={block.duration ?? undefined}
       onClick={() => setPlaying(true)}
-      fullWidth
     />
   ) : null;
 
