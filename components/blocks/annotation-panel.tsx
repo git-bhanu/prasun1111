@@ -17,10 +17,12 @@ export function AnnotatedLayout({
   className?: string;
 }) {
   return (
-    <section className={`w-full align-top flex flex-col md:flex-row gap-[10svw] ${className ?? ''}`}>
+    <section
+      className={`w-full align-top flex flex-col md:flex-row gap-[10svw] ${className ?? ""}`}
+    >
       <div className="md:w-[55svw]">{children}</div>
       {annotations.length > 0 ? (
-        <div className="flex md:justify-end">
+        <div className="flex md:justify-end md:h-0 md:overflow-visible">
           <AnnotationPanel annotations={annotations} />
         </div>
       ) : null}
@@ -35,14 +37,14 @@ export function AnnotationPanel({
 }) {
   return (
     <div className="w-full md:w-60 px-6 md:px-0 pt-4 pb-6">
+      <hr className="border-black/25 w-full md:w-60" />
       {annotations.map((a, i) => (
         <div key={a.id ?? i} className="w-full md:w-60">
-          <hr className="border-black/25 w-full md:w-60" />
           <div className="py-6 px-4">
-            <span className="font-space-grotesk text-[12px] text-brand-orange">
+            <span className="font-space-grotesk text-[10px] text-brand-orange">
               [{a.id}]
             </span>
-            <p className="font-space-grotesk mt-3 text-[14px] text-black leading-normal">
+            <p className="font-space-grotesk mt-3 text-[12px] text-black leading-normal">
               {a.text}
             </p>
           </div>
