@@ -203,10 +203,10 @@ function blockWrapperClass(width: string, verticalPadding: string) {
     case "full":
       return `w-full ${verticalPadding}`;
     case "wide":
-      return `w-full pl-[10svw] pr-[10svw] ${verticalPadding}`;
+      return `w-full px-[5svw] md:pl-[10svw] md:pr-[10svw] ${verticalPadding}`;
     case "narrow":
     default:
-      return `pl-[10svw] pr-[10svw] max-w-[75svw] ${verticalPadding}`;
+      return `w-full px-[5svw] md:pl-[10svw] md:pr-[10svw] md:max-w-[75svw] ${verticalPadding}`;
   }
 }
 

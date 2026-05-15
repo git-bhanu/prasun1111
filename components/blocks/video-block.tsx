@@ -38,6 +38,7 @@ export function VideoBlock({ block }: Props) {
       label="Watch Film"
       subLabel={block.duration ?? undefined}
       onClick={() => setPlaying(true)}
+      fullWidth
     />
   ) : null;
 
@@ -72,7 +73,7 @@ export function VideoBlock({ block }: Props) {
         )}
       </div>
       {videoId && (
-        <div className="md:hidden px-6" data-tina-field={tinaField(block, "youtubeUrl")}>
+        <div className="md:hidden w-full" data-tina-field={tinaField(block, "youtubeUrl")}>
           {button}
         </div>
       )}
