@@ -15,6 +15,16 @@ export const imageBlock: Template = {
       ],
     },
     {
+      type: 'string',
+      name: 'orientation',
+      label: 'Orientation',
+      options: [
+        { label: 'Landscape (16:9)', value: 'landscape' },
+        { label: 'Portrait (9:16)', value: 'portrait' },
+      ],
+      ui: { defaultValue: 'landscape' },
+    },
+    {
       type: 'object',
       name: 'images',
       label: 'Images',

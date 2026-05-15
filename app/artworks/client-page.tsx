@@ -309,6 +309,7 @@ function DetailPanel({
                 const b = block as unknown as {
                   __typename: "ArtworkBlocksImage";
                   width?: string | null;
+                  orientation?: string | null;
                   images?: Array<{ src?: string | null; alt?: string | null } | null> | null;
                 };
                 return (

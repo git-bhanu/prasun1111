@@ -82,6 +82,19 @@
       "_template": "twoColumnText"
     },
     {
+      "width": "narrow",
+      "orientation": "portrait",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830419/Layer_1_t3cd1c.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830365/Layer_1_az74tx.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778525544/Biodiversity_The_Eye_Belongs_to_the_Tiger__1_uykbph.png",
       "youtubeUrl": "https://www.youtube.com/watch?v=k_l-Vyvltjg",
       "duration": "8 min 2sec",

@@ -7,6 +7,7 @@ type ImageItem = {
 
 type Props = {
   block: {
+    orientation?: string | null;
     images?: Array<ImageItem | null> | null;
   };
 };
@@ -18,10 +19,12 @@ export function ImageBlock({ block }: Props) {
 
   if (images.length === 0) return null;
 
+  const aspectClass = block.orientation === 'portrait' ? 'aspect-[9/16]' : 'aspect-video';
+
   return (
     <div className="flex gap-8">
       {images.map((img, i) => (
-        <div key={i} className="relative aspect-video min-w-0 flex-1 overflow-hidden">
+        <div key={i} className={`relative ${aspectClass} min-w-0 flex-1 overflow-hidden`}>
           <Image
             src={img.src!}
             alt={img.alt ?? ''}
