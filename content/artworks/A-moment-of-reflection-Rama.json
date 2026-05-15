@@ -3,7 +3,9 @@
   "slug": "a-moment-of-reflection-rama",
   "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778842987/Frame_169_sz48yl.jpg",
   "tags": [
-    {}
+    {
+      "tag": "content/tags/MYTHOLOGY.json"
+    }
   ],
   "blocks": [
     {
