@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import type { PageBlocksFeaturedSlider } from "@/tina/__generated__/types";
 import { SectionMasthead } from "../shared/section-masthead";
 import Link from "next/link";
+import { useSiteSettings } from "@/components/site-settings-provider";
 
 type FeaturedSliderBlockProps = {
   block: PageBlocksFeaturedSlider;
@@ -36,6 +37,7 @@ type SlideMedia = {
 const slideEase = [0.22, 1, 0.36, 1] as const;
 
 export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
+  const { sliders } = useSiteSettings();
   const slides =
     block.slides?.filter((slide): slide is FeaturedSliderSlide =>
       Boolean(slide?.title),
@@ -63,10 +65,10 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
       setActiveIndex((currentIndex) =>
         currentIndex === slides.length - 1 ? 0 : currentIndex + 1,
       );
-    }, 4000);
+    }, sliders.autoplaySeconds * 1000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, shouldReduceMotion, isInView, autoplayResetKey]);
+  }, [slides.length, shouldReduceMotion, isInView, autoplayResetKey, sliders.autoplaySeconds]);
 
   if (slides.length === 0) {
     return null;

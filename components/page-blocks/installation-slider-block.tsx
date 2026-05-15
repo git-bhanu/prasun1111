@@ -9,6 +9,7 @@ import { tinaField } from 'tinacms/dist/react';
 import { Icon, IconCircleButton } from '@/components/icons';
 import { ActionButton } from '@/components/shared/action-button';
 import { SectionMasthead } from '@/components/shared/section-masthead';
+import { useSiteSettings } from '@/components/site-settings-provider';
 import { cn } from '@/lib/utils';
 import type { PageBlocksInstallationSlider } from '@/tina/__generated__/types';
 
@@ -22,6 +23,7 @@ type InstallationSlideField = Exclude<keyof InstallationSlide, '__typename'>;
 const slideEase = [0.22, 1, 0.36, 1] as const;
 
 export function InstallationSliderBlock({ block }: InstallationSliderBlockProps) {
+  const { sliders } = useSiteSettings();
   const slides = block.slides?.filter((slide): slide is InstallationSlide => Boolean(slide?.title)) ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -44,10 +46,10 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
     const timer = window.setInterval(() => {
       setDirection(1);
       setActiveIndex((currentIndex) => (currentIndex === slides.length - 1 ? 0 : currentIndex + 1));
-    }, 4000);
+    }, sliders.autoplaySeconds * 1000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, shouldReduceMotion, isInView, autoplayResetKey]);
+  }, [slides.length, shouldReduceMotion, isInView, autoplayResetKey, sliders.autoplaySeconds]);
 
   if (slides.length === 0) {
     return null;

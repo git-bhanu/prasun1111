@@ -82,6 +82,9 @@
   "footer": {
     "social": []
   },
+  "sliders": {
+    "autoplaySeconds": 2.5
+  },
   "theme": {
     "color": "#ff5a1f",
     "font": "sans",

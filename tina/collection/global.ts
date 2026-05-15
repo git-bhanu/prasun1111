@@ -159,6 +159,18 @@ const Global: Collection = {
     },
     {
       type: 'object',
+      label: 'Sliders',
+      name: 'sliders',
+      fields: [
+        {
+          type: 'number',
+          label: 'Autoplay Interval (seconds)',
+          name: 'autoplaySeconds',
+        },
+      ],
+    },
+    {
+      type: 'object',
       label: 'Theme',
       name: 'theme',
       fields: [

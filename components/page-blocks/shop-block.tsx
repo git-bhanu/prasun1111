@@ -3,7 +3,7 @@
 import { useInView, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { type Components, TinaMarkdown } from "tinacms/dist/rich-text";
 
@@ -25,40 +25,13 @@ type ShopBlockProps = {
 
 type ShopItem = NonNullable<NonNullable<PageBlocksShop["items"]>[number]>;
 
-const SCROLL_SPEED = 0.5;
-
 export function ShopBlock({ block }: ShopBlockProps) {
   const items =
     block.items?.filter((item): item is ShopItem => Boolean(item?.image)) ?? [];
   const shouldReduceMotion = useReducedMotion();
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const isPausedRef = useRef(false);
+  const [isHovered, setIsHovered] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { amount: 0.1 });
-
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container || shouldReduceMotion || !isInView) return;
-
-    const direction = { value: 1 };
-    let rafId: number;
-
-    const tick = () => {
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      if (!isPausedRef.current && maxScroll > 2) {
-        container.scrollLeft += SCROLL_SPEED * direction.value;
-        if (container.scrollLeft >= maxScroll - 1) {
-          direction.value = -1;
-        } else if (container.scrollLeft <= 1) {
-          direction.value = 1;
-        }
-      }
-      rafId = requestAnimationFrame(tick);
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [shouldReduceMotion, items.length, isInView]);
 
   return (
     <section
@@ -119,23 +92,23 @@ export function ShopBlock({ block }: ShopBlockProps) {
 
       {items.length > 0 ? (
         <div
-          ref={scrollRef}
-          className="mt-8 flex gap-4 overflow-x-auto px-4 md:mt-16 md:gap-6 md:px-12"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          onMouseEnter={() => {
-            isPausedRef.current = true;
-          }}
-          onMouseLeave={() => {
-            isPausedRef.current = false;
-          }}
+          className="mt-8 overflow-hidden md:mt-16"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          {items.map((item, index) => (
-            <ProductCard
-              key={`product-card-${index}`}
-              item={item}
-              priority={index === 0}
-            />
-          ))}
+          <div
+            className={cn("flex gap-4 md:gap-6", !shouldReduceMotion && "animate-marquee")}
+            style={{ animationPlayState: (!isInView || isHovered) ? "paused" : "running" }}
+          >
+            {[...items, ...items].map((item, index) => (
+              <ProductCard
+                key={index}
+                item={item}
+                priority={index === 0}
+                ariaHidden={index >= items.length}
+              />
+            ))}
+          </div>
         </div>
       ) : null}
     </section>
@@ -145,9 +118,11 @@ export function ShopBlock({ block }: ShopBlockProps) {
 function ProductCard({
   item,
   priority,
+  ariaHidden,
 }: {
   item: ShopItem;
   priority: boolean;
+  ariaHidden?: boolean;
 }) {
   const cardClassName = cn(
     "flex-none aspect-[140/182] md:aspect-[176/227] w-[50vw] md:w-[calc((100vw-144px)/4)] md:min-w-[260px] overflow-hidden bg-neutral-100",
@@ -171,13 +146,13 @@ function ProductCard({
 
   if (item.href) {
     return (
-      <article className={cardClassName}>
-        <Link href={item.href} data-tina-field={tinaField(item, "href")}>
+      <article className={cardClassName} aria-hidden={ariaHidden}>
+        <Link href={item.href} data-tina-field={tinaField(item, "href")} tabIndex={ariaHidden ? -1 : undefined}>
           {inner}
         </Link>
       </article>
     );
   }
 
-  return <article className={cardClassName}>{inner}</article>;
+  return <article className={cardClassName} aria-hidden={ariaHidden}>{inner}</article>;
 }

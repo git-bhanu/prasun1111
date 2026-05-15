@@ -16,6 +16,9 @@ export type SiteNavigationLink = {
 
 export type SiteSettings = {
   showAnnouncementBanner: boolean;
+  sliders: {
+    autoplaySeconds: number;
+  };
   brand: {
     logo: string;
     logoAlt: string;
@@ -69,6 +72,9 @@ export function normalizeSiteSettings(global: GlobalData): SiteSettings {
 
   return {
     showAnnouncementBanner: (global as any).showAnnouncementBanner ?? false,
+    sliders: {
+      autoplaySeconds: (global as any).sliders?.autoplaySeconds ?? 4,
+    },
     brand: {
       logo: global.brand?.logo ?? DEFAULT_SETTINGS.brand.logo,
       logoAlt: global.brand?.logoAlt ?? DEFAULT_SETTINGS.brand.logoAlt,

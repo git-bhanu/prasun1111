@@ -9,6 +9,7 @@ import { tinaField } from 'tinacms/dist/react';
 import { ArtworkTabs, ArtworkTitle } from '@/components/artwork';
 import { Icon, IconCircleButton } from '@/components/icons';
 import { SectionMasthead } from '@/components/shared/section-masthead';
+import { useSiteSettings } from '@/components/site-settings-provider';
 import type { PageBlocksFeaturedWorkSlider } from '@/tina/__generated__/types';
 
 type FeaturedWorkSliderBlockProps = {
@@ -20,6 +21,7 @@ type FeaturedSlide = NonNullable<NonNullable<PageBlocksFeaturedWorkSlider['slide
 const slideEase = [0.22, 1, 0.36, 1] as const;
 
 export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps) {
+  const { sliders } = useSiteSettings();
   const slides = block.slides?.filter((slide): slide is FeaturedSlide => Boolean(slide?.title)) ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -42,10 +44,10 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
     const timer = window.setInterval(() => {
       setDirection(1);
       setActiveIndex((currentIndex) => (currentIndex === slides.length - 1 ? 0 : currentIndex + 1));
-    }, 4000);
+    }, sliders.autoplaySeconds * 1000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, shouldReduceMotion, isInView, autoplayResetKey]);
+  }, [slides.length, shouldReduceMotion, isInView, autoplayResetKey, sliders.autoplaySeconds]);
 
   if (slides.length === 0) {
     return null;
