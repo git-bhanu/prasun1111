@@ -1,5 +1,6 @@
 import type { Collection } from 'tinacms';
 import { headerBlock } from '../blocks/header-block';
+import { imageBlock } from '../blocks/image-block';
 import { twoColumnTextBlock } from '../blocks/two-column-text-block';
 import { videoBlock } from '../blocks/video-block';
 
@@ -65,7 +66,7 @@ const Artwork: Collection = {
       label: 'Artwork Blocks',
       list: true,
       ui: { visualSelector: true },
-      templates: [headerBlock, twoColumnTextBlock, videoBlock],
+      templates: [headerBlock, twoColumnTextBlock, videoBlock, imageBlock],
     },
   ],
 };

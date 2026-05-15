@@ -38,6 +38,15 @@
       "_template": "twoColumnText"
     },
     {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830492/Layer_1_w1ia3x.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "level": "h6",
       "font": "space-grotesk",
       "heading": "2.0 DETAILED STORIES\n",
@@ -47,6 +56,15 @@
       "level": "h3",
       "heading": "Emperor Penguins / *the ritual of resilience*.\n",
       "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830444/Frame_194_e2a4ft.jpg"
+        }
+      ],
+      "_template": "image"
     },
     {
       "leftColumn": "*The Emperor Penguin does not fear the cold, it understands it, & through this understanding, it lives.*\n",

@@ -16,9 +16,9 @@ export function AnnotatedLayout({
 }) {
   return (
     <section className="w-full align-top flex flex-col md:flex-row">
-      <div className="px-6 w-full md:max-w-[45svw] md:w-[890px]">{children}</div>
+      <div className="w-full md:max-w-[45svw] md:w-[890px]">{children}</div>
       {annotations.length > 0 ? (
-        <div className="w-full md:max-w-[55svw] md:w-[55svw] flex md:justify-center">
+        <div className="w-full md:max-w-[55svw] md:w-[55svw] flex md:justify-end">
           <AnnotationPanel annotations={annotations} />
         </div>
       ) : null}

@@ -2,6 +2,7 @@
 
 import { ArtworkDetailActions, ArtworkInfoCard } from "@/components/artwork";
 import { HeaderBlock } from "@/components/blocks/header-block";
+import { ImageBlock } from "@/components/blocks/image-block";
 import { TwoColumnTextBlock } from "@/components/blocks/two-column-text-block";
 import { VideoBlock } from "@/components/blocks/video-block";
 import { Icon } from "@/components/icons";
@@ -196,6 +197,18 @@ function ArtworkCard({
   );
 }
 
+function blockWrapperClass(width: string, verticalPadding: string) {
+  switch (width) {
+    case "full":
+      return `w-full ${verticalPadding}`;
+    case "wide":
+      return `w-full pl-[256px] pr-[256px] ${verticalPadding}`;
+    case "narrow":
+    default:
+      return `pl-[256px] pr-[256px] max-w-[1381px] ${verticalPadding}`;
+  }
+}
+
 function DetailPanel({
   artwork,
   onClose,
@@ -215,7 +228,7 @@ function DetailPanel({
     <>
       <div className="flex min-h-full flex-col md:flex-row">
         {/* Info panel — second on mobile, left on desktop */}
-        <div className="order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:px-[58px]">
+        <div className="order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:pl-[256px]">
           <SectionMasthead
             index={"04"}
             title={"Artworks"}
@@ -269,7 +282,7 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className="w-full py-4 px-2 md:px-[58px]"
+                    className={blockWrapperClass("narrow", "py-4")}
                   >
                     <HeaderBlock block={block} />
                   </div>
@@ -278,7 +291,7 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className="w-full py-4 px-2 md:px-[58px]"
+                    className={blockWrapperClass("wide", "py-4")}
                   >
                     <TwoColumnTextBlock block={block} />
                   </div>
@@ -287,11 +300,26 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className="w-full py-10 px-2 md:max-w-[calc(85svw)] md:pl-[82px] md:pr-[58px]"
+                    className={blockWrapperClass("wide", "py-10")}
                   >
                     <VideoBlock block={block} />
                   </div>
                 );
+              case "ArtworkBlocksImage": {
+                const b = block as unknown as {
+                  __typename: "ArtworkBlocksImage";
+                  width?: string | null;
+                  images?: Array<{ src?: string | null; alt?: string | null } | null> | null;
+                };
+                return (
+                  <div
+                    key={`${block.__typename}-${i}`}
+                    className={blockWrapperClass(b.width ?? "narrow", "py-4")}
+                  >
+                    <ImageBlock block={b} />
+                  </div>
+                );
+              }
               default:
                 return null;
             }
