@@ -3,6 +3,12 @@ import type { Template } from 'tinacms';
 export const twoColumnTextBlock: Template = {
   name: 'twoColumnText',
   label: 'Two Column Text',
+  ui: {
+    itemProps: (item) => {
+      const count = Array.isArray(item?.annotations) ? item.annotations.length : 0;
+      return { label: count > 0 ? `Two Column Text — ${count} ${count === 1 ? 'annotation' : 'annotations'}` : 'Two Column Text' };
+    },
+  },
   fields: [
     {
       type: 'rich-text',

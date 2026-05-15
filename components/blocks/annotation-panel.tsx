@@ -10,15 +10,17 @@ export type Annotation = {
 export function AnnotatedLayout({
   children,
   annotations,
+  className,
 }: {
   children: ReactNode;
   annotations: Annotation[];
+  className?: string;
 }) {
   return (
-    <section className="w-full align-top flex flex-col md:flex-row">
-      <div className="w-full md:max-w-[45svw] md:w-[890px]">{children}</div>
+    <section className={`w-full align-top flex flex-col md:flex-row gap-[10svw] ${className ?? ''}`}>
+      <div className="md:w-[55svw]">{children}</div>
       {annotations.length > 0 ? (
-        <div className="w-full md:max-w-[55svw] md:w-[55svw] flex md:justify-end">
+        <div className="flex md:justify-end">
           <AnnotationPanel annotations={annotations} />
         </div>
       ) : null}

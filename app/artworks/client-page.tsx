@@ -3,6 +3,7 @@
 import { ArtworkDetailActions, ArtworkInfoCard } from "@/components/artwork";
 import { HeaderBlock } from "@/components/blocks/header-block";
 import { ImageBlock } from "@/components/blocks/image-block";
+import { SpaceBlock } from "@/components/blocks/space-block";
 import { TwoColumnTextBlock } from "@/components/blocks/two-column-text-block";
 import { VideoBlock } from "@/components/blocks/video-block";
 import { Icon } from "@/components/icons";
@@ -202,10 +203,10 @@ function blockWrapperClass(width: string, verticalPadding: string) {
     case "full":
       return `w-full ${verticalPadding}`;
     case "wide":
-      return `w-full pl-[256px] pr-[256px] ${verticalPadding}`;
+      return `w-full pl-[10svw] pr-[10svw] ${verticalPadding}`;
     case "narrow":
     default:
-      return `pl-[256px] pr-[256px] max-w-[1381px] ${verticalPadding}`;
+      return `pl-[10svw] pr-[10svw] max-w-[75svw] ${verticalPadding}`;
   }
 }
 
@@ -228,7 +229,7 @@ function DetailPanel({
     <>
       <div className="flex min-h-full flex-col md:flex-row">
         {/* Info panel — second on mobile, left on desktop */}
-        <div className="order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:pl-[256px]">
+        <div className="order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:pl-[10svw]">
           <SectionMasthead
             index={"04"}
             title={"Artworks"}
@@ -310,7 +311,10 @@ function DetailPanel({
                   __typename: "ArtworkBlocksImage";
                   width?: string | null;
                   orientation?: string | null;
-                  images?: Array<{ src?: string | null; alt?: string | null } | null> | null;
+                  images?: Array<{
+                    src?: string | null;
+                    alt?: string | null;
+                  } | null> | null;
                 };
                 return (
                   <div
@@ -320,6 +324,14 @@ function DetailPanel({
                     <ImageBlock block={b} />
                   </div>
                 );
+              }
+              case "ArtworkBlocksSpace": {
+                const b = block as unknown as {
+                  __typename: "ArtworkBlocksSpace";
+                  desktopSpace?: string | null;
+                  mobileSpace?: string | null;
+                };
+                return <SpaceBlock key={`${block.__typename}-${i}`} block={b} />;
               }
               default:
                 return null;

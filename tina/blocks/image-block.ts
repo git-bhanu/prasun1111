@@ -3,6 +3,12 @@ import type { Template } from 'tinacms';
 export const imageBlock: Template = {
   name: 'image',
   label: 'Image',
+  ui: {
+    itemProps: (item) => {
+      const count = Array.isArray(item?.images) ? item.images.length : 0;
+      return { label: `Image — ${count} ${count === 1 ? 'image' : 'images'}` };
+    },
+  },
   fields: [
     {
       type: 'string',

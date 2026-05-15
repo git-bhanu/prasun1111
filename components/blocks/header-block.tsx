@@ -55,5 +55,9 @@ export function HeaderBlock({ block }: Props) {
     </Tag>
   );
 
-  return <AnnotatedLayout annotations={annotations}>{heading}</AnnotatedLayout>;
+  return (
+    <AnnotatedLayout annotations={annotations} className={level === "h6" ? "mt-8" : ""}>
+      {heading}
+    </AnnotatedLayout>
+  );
 }

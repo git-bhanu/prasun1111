@@ -3,6 +3,12 @@ import type { Template } from 'tinacms';
 export const headerBlock: Template = {
   name: 'header',
   label: 'Header',
+  ui: {
+    itemProps: (item) => {
+      const level = item?.level ? item.level.toUpperCase() : 'H2';
+      return { label: `Header — ${level}` };
+    },
+  },
   fields: [
     {
       type: 'string',

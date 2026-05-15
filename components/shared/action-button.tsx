@@ -126,7 +126,7 @@ export function ActionButton({
         {iconPosition === "left" ? renderGhostIcon() : null}
         <span
           className={cn(
-            "font-space-grotesk text-[11px] uppercase leading-none tracking-[0.18em] cursor-pointer",
+            "font-space-grotesk text-[11px] uppercase leading-none cursor-pointer",
             g.text,
           )}
         >
