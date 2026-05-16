@@ -1,6 +1,9 @@
 'use client';
 
 import { Fragment } from 'react';
+import type { Components } from 'tinacms/dist/rich-text';
+import { TinaMarkdown } from 'tinacms/dist/rich-text';
+import type { TinaMarkdownContent } from 'tinacms/dist/rich-text';
 import { ArtworkBentoCard } from './artwork-bento-card';
 
 type Tag = {
@@ -25,9 +28,10 @@ type Artwork = {
 
 export type QuoteBreak = {
   afterPosition?: number | null;
-  leftText?: string | null;
-  rightText?: string | null;
-  rightTextFootnote?: string | null;
+  afterAll?: boolean | null;
+  leftText?: TinaMarkdownContent | null;
+  rightText?: TinaMarkdownContent | null;
+  rightTextFootnote?: TinaMarkdownContent | null;
 };
 
 type ArtworkSection = { type: 'artworks'; artworks: Artwork[] };
@@ -45,7 +49,10 @@ function artworkSlug(a: Artwork) {
 }
 
 function buildSections(artworks: Artwork[], quoteBreaks: QuoteBreak[]): Section[] {
-  const sorted = [...quoteBreaks].sort((a, b) => (a.afterPosition ?? 0) - (b.afterPosition ?? 0));
+  const positional = quoteBreaks.filter((qb) => !qb.afterAll);
+  const afterAll = quoteBreaks.filter((qb) => qb.afterAll);
+
+  const sorted = [...positional].sort((a, b) => (a.afterPosition ?? 0) - (b.afterPosition ?? 0));
   const sections: Section[] = [];
   let group: Artwork[] = [];
 
@@ -67,20 +74,48 @@ function buildSections(artworks: Artwork[], quoteBreaks: QuoteBreak[]): Section[
     sections.push({ type: 'artworks', artworks: group });
   }
 
+  for (const qb of afterAll) {
+    sections.push({ type: 'quoteBreak', quoteBreak: qb });
+  }
+
   return sections;
 }
 
-function ArtworkQuoteBreak({ leftText, rightText, rightTextFootnote }: Omit<QuoteBreak, 'afterPosition'>) {
+const richComponents: Components<{}> = {
+  p: (props) => <span className='block'>{props?.children}</span>,
+  break: () => <br />,
+  bold: (props) => <strong className='font-bold'>{props?.children}</strong>,
+  italic: (props) => <em className='font-sedan italic'>{props?.children}</em>,
+  html_inline: (props) => {
+    const color = props?.value?.match(/^<color text="([^"]+)"\s*\/>$/);
+    if (color) return <span className='text-brand-orange'>{color[1]}</span>;
+    return <>{props?.value}</>;
+  },
+};
+
+function ArtworkQuoteBreak({ leftText, rightText, rightTextFootnote }: Omit<QuoteBreak, 'afterPosition' | 'afterAll'>) {
   if (!leftText && !rightText) return null;
 
   return (
     <div className='bg-black px-8 py-16 sm:px-10 md:px-[58px] md:py-24'>
       <div className='mx-auto grid max-w-7xl grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2'>
-        {leftText && <p className='font-sedan text-2xl leading-tight text-white md:text-[2rem]'>{leftText}</p>}
+        {leftText && (
+          <div className='font-sedan text-2xl leading-tight text-white md:text-[2rem]'>
+            <TinaMarkdown content={leftText} components={richComponents} />
+          </div>
+        )}
         {(rightText || rightTextFootnote) && (
           <div className='space-y-6'>
-            {rightText && <p className='font-sedan text-sm leading-relaxed text-white/80 md:text-base'>{rightText}</p>}
-            {rightTextFootnote && <p className='font-space-grotesk text-[10px] uppercase tracking-widest text-white/60'>{rightTextFootnote}</p>}
+            {rightText && (
+              <div className='font-sedan text-sm leading-relaxed text-white/80 md:text-base'>
+                <TinaMarkdown content={rightText} components={richComponents} />
+              </div>
+            )}
+            {rightTextFootnote && (
+              <div className='font-space-grotesk text-[10px] uppercase tracking-widest text-white/60'>
+                <TinaMarkdown content={rightTextFootnote} components={richComponents} />
+              </div>
+            )}
           </div>
         )}
       </div>
