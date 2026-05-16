@@ -41,6 +41,17 @@ const Artwork: Collection = {
       label: 'Cover Image Alt Text',
     },
     {
+      type: 'image',
+      name: 'bentoImage',
+      label: 'Bento Cover Image',
+      description: 'Optional. Overrides Cover Image in the artworks grid.',
+    },
+    {
+      type: 'string',
+      name: 'bentoImageAlt',
+      label: 'Bento Cover Image Alt Text',
+    },
+    {
       type: 'string',
       name: 'displaySize',
       label: 'Display Size',

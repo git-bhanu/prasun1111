@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Fragment } from 'react';
-import type { Components } from 'tinacms/dist/rich-text';
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
-import type { TinaMarkdownContent } from 'tinacms/dist/rich-text';
-import { ArtworkBentoCard } from './artwork-bento-card';
+import { Fragment } from "react";
+import type { Components } from "tinacms/dist/rich-text";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import type { TinaMarkdownContent } from "tinacms/dist/rich-text";
+import { ArtworkBentoCard } from "./artwork-bento-card";
 
 type Tag = {
   id?: string | null;
@@ -19,6 +19,8 @@ type Artwork = {
   _sys: { filename: string };
   coverImage?: string | null;
   coverImageAlt?: string | null;
+  bentoImage?: string | null;
+  bentoImageAlt?: string | null;
   tags?: Array<{ tag?: Tag | null } | null> | null;
   mostViewed?: boolean | null;
   printsAvailable?: boolean | null;
@@ -34,8 +36,8 @@ export type QuoteBreak = {
   rightTextFootnote?: TinaMarkdownContent | null;
 };
 
-type ArtworkSection = { type: 'artworks'; artworks: Artwork[] };
-type BreakSection = { type: 'quoteBreak'; quoteBreak: QuoteBreak };
+type ArtworkSection = { type: "artworks"; artworks: Artwork[] };
+type BreakSection = { type: "quoteBreak"; quoteBreak: QuoteBreak };
 type Section = ArtworkSection | BreakSection;
 
 interface ArtworkBentoGridProps {
@@ -48,11 +50,16 @@ function artworkSlug(a: Artwork) {
   return (a.slug ?? a._sys.filename).toLowerCase();
 }
 
-function buildSections(artworks: Artwork[], quoteBreaks: QuoteBreak[]): Section[] {
+function buildSections(
+  artworks: Artwork[],
+  quoteBreaks: QuoteBreak[],
+): Section[] {
   const positional = quoteBreaks.filter((qb) => !qb.afterAll);
   const afterAll = quoteBreaks.filter((qb) => qb.afterAll);
 
-  const sorted = [...positional].sort((a, b) => (a.afterPosition ?? 0) - (b.afterPosition ?? 0));
+  const sorted = [...positional].sort(
+    (a, b) => (a.afterPosition ?? 0) - (b.afterPosition ?? 0),
+  );
   const sections: Section[] = [];
   let group: Artwork[] = [];
 
@@ -62,58 +69,65 @@ function buildSections(artworks: Artwork[], quoteBreaks: QuoteBreak[]): Section[
     const breaksHere = sorted.filter((qb) => qb.afterPosition === position);
 
     if (breaksHere.length > 0) {
-      sections.push({ type: 'artworks', artworks: group });
+      sections.push({ type: "artworks", artworks: group });
       group = [];
       for (const qb of breaksHere) {
-        sections.push({ type: 'quoteBreak', quoteBreak: qb });
+        sections.push({ type: "quoteBreak", quoteBreak: qb });
       }
     }
   }
 
   if (group.length > 0) {
-    sections.push({ type: 'artworks', artworks: group });
+    sections.push({ type: "artworks", artworks: group });
   }
 
   for (const qb of afterAll) {
-    sections.push({ type: 'quoteBreak', quoteBreak: qb });
+    sections.push({ type: "quoteBreak", quoteBreak: qb });
   }
 
   return sections;
 }
 
 const richComponents: Components<{}> = {
-  p: (props) => <span className='block'>{props?.children}</span>,
+  p: (props) => <span className="block">{props?.children}</span>,
   break: () => <br />,
-  bold: (props) => <strong className='font-bold'>{props?.children}</strong>,
-  italic: (props) => <em className='font-sedan italic'>{props?.children}</em>,
+  bold: (props) => <strong className="font-bold">{props?.children}</strong>,
+  italic: (props) => <em className="font-sedan italic">{props?.children}</em>,
   html_inline: (props) => {
     const color = props?.value?.match(/^<color text="([^"]+)"\s*\/>$/);
-    if (color) return <span className='text-brand-orange'>{color[1]}</span>;
+    if (color) return <span className="text-brand-orange">{color[1]}</span>;
     return <>{props?.value}</>;
   },
 };
 
-function ArtworkQuoteBreak({ leftText, rightText, rightTextFootnote }: Omit<QuoteBreak, 'afterPosition' | 'afterAll'>) {
+function ArtworkQuoteBreak({
+  leftText,
+  rightText,
+  rightTextFootnote,
+}: Omit<QuoteBreak, "afterPosition" | "afterAll">) {
   if (!leftText && !rightText) return null;
 
   return (
-    <div className='bg-black px-8 py-16 sm:px-10 md:px-[58px] md:py-24'>
-      <div className='mx-auto grid max-w-7xl grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2'>
+    <div className="bg-black px-8 py-16 my-[48px] sm:px-10 md:px-[58px] md:py-24">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2">
         {leftText && (
-          <div className='font-sedan text-2xl leading-tight text-white md:text-[2rem]'>
+          <div className="font-sedan text-[20px] text-white md:text-[48px]">
             <TinaMarkdown content={leftText} components={richComponents} />
           </div>
         )}
         {(rightText || rightTextFootnote) && (
-          <div className='space-y-6'>
+          <div className="space-y-6">
             {rightText && (
-              <div className='font-sedan text-sm leading-relaxed text-white/80 md:text-base'>
+              <div className="font-sedan text-sm text-white md:text-[32px]">
                 <TinaMarkdown content={rightText} components={richComponents} />
               </div>
             )}
             {rightTextFootnote && (
-              <div className='font-space-grotesk text-[10px] uppercase tracking-widest text-white/60'>
-                <TinaMarkdown content={rightTextFootnote} components={richComponents} />
+              <div className="font-space-grotesk text-[12px] md:text-[24px] uppercase tracking-widest text-white">
+                <TinaMarkdown
+                  content={rightTextFootnote}
+                  components={richComponents}
+                />
               </div>
             )}
           </div>
@@ -123,13 +137,17 @@ function ArtworkQuoteBreak({ leftText, rightText, rightTextFootnote }: Omit<Quot
   );
 }
 
-export function ArtworkBentoGrid({ artworks, quoteBreaks = [], onArtworkClick }: ArtworkBentoGridProps) {
+export function ArtworkBentoGrid({
+  artworks,
+  quoteBreaks = [],
+  onArtworkClick,
+}: ArtworkBentoGridProps) {
   const sections = buildSections(artworks, quoteBreaks);
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       {sections.map((section, sectionIndex) => {
-        if (section.type === 'quoteBreak') {
+        if (section.type === "quoteBreak") {
           return (
             <ArtworkQuoteBreak
               key={sectionIndex}
@@ -141,17 +159,24 @@ export function ArtworkBentoGrid({ artworks, quoteBreaks = [], onArtworkClick }:
         }
 
         return (
-          <div key={sectionIndex} className='px-8 py-6 sm:px-10 md:px-[58px] md:py-8'>
-            <div className='grid grid-cols-1 gap-x-3 gap-y-12 md:grid-cols-12'>
+          <div
+            key={sectionIndex}
+            className="px-4 py-0 sm:px-10 md:px-[58px] md:py-8"
+          >
+            <div className="grid grid-cols-1 items-start gap-y-12 md:grid-cols-12 md:gap-x-3 md:gap-y-8">
               {section.artworks.map((artwork) => {
-                const tags = (artwork.tags ?? []).map((t) => t?.tag).filter((t): t is Tag => t != null);
+                const tags = (artwork.tags ?? [])
+                  .map((t) => t?.tag)
+                  .filter((t): t is Tag => t != null);
 
                 return (
                   <Fragment key={artwork.id}>
                     <ArtworkBentoCard
                       title={artwork.title}
-                      coverImage={artwork.coverImage}
-                      coverImageAlt={artwork.coverImageAlt}
+                      coverImage={artwork.bentoImage ?? artwork.coverImage}
+                      coverImageAlt={
+                        artwork.bentoImageAlt ?? artwork.coverImageAlt
+                      }
                       tags={tags}
                       mostViewed={artwork.mostViewed}
                       printsAvailable={artwork.printsAvailable}
