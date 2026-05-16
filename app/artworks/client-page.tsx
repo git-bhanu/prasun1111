@@ -7,6 +7,7 @@ import { SpaceBlock } from "@/components/blocks/space-block";
 import { TwoColumnTextBlock } from "@/components/blocks/two-column-text-block";
 import { VideoBlock } from "@/components/blocks/video-block";
 import { Icon } from "@/components/icons";
+import { ActionButton } from "@/components/shared/action-button";
 import { SectionMasthead } from "@/components/shared/section-masthead";
 import type {
   ArtworkConnectionQuery,
@@ -15,7 +16,7 @@ import type {
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useTina } from "tinacms/dist/react";
 
 type ArtworkNode = NonNullable<
@@ -45,6 +46,7 @@ function ArtworksContent({ query, data, variables }: Props) {
   const { data: tinaData } = useTina({ query, data, variables });
   const router = useRouter();
   const searchParams = useSearchParams();
+  const detailScrollRef = useRef<HTMLDivElement | null>(null);
   const selectedSlug = searchParams?.get("artwork") ?? null;
 
   const artworks: ArtworkNode[] = (tinaData.artworkConnection.edges ?? [])
@@ -134,12 +136,21 @@ function ArtworksContent({ query, data, variables }: Props) {
               exit={{ y: prefersReducedMotion ? 0 : "100%" }}
               transition={{ ease: "easeInOut", duration: 0.2 }}
               className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
+              ref={(el) => {
+                detailScrollRef.current = el as HTMLDivElement | null;
+              }}
             >
               <DetailPanel
                 artwork={selectedArtwork}
                 onClose={close}
                 onPrev={selectedIndex > 0 ? prev : undefined}
                 onNext={selectedIndex < artworks.length - 1 ? next : undefined}
+                scrollToTop={() =>
+                  detailScrollRef.current?.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  })
+                }
               />
             </motion.div>
           </>
@@ -215,11 +226,13 @@ function DetailPanel({
   onClose,
   onPrev,
   onNext,
+  scrollToTop,
 }: {
   artwork: ArtworkNode;
   onClose: () => void;
   onPrev?: (() => void) | false;
   onNext?: (() => void) | false;
+  scrollToTop?: () => void;
 }) {
   const tags = (artwork.tags ?? [])
     .map((t) => t?.tag)
@@ -276,7 +289,7 @@ function DetailPanel({
         )}
       </div>
       {artwork.blocks && artwork.blocks.length > 0 && (
-        <div className="mt-8 mb-20">
+        <div className="mt-8">
           {artwork.blocks.map((block, i) => {
             switch (block?.__typename) {
               case "ArtworkBlocksHeader":
@@ -331,7 +344,9 @@ function DetailPanel({
                   desktopSpace?: string | null;
                   mobileSpace?: string | null;
                 };
-                return <SpaceBlock key={`${block.__typename}-${i}`} block={b} />;
+                return (
+                  <SpaceBlock key={`${block.__typename}-${i}`} block={b} />
+                );
               }
               default:
                 return null;
@@ -339,6 +354,16 @@ function DetailPanel({
           })}
         </div>
       )}
+      <div className="px-6 pb-10 mt-10 md:hidden">
+        <ActionButton
+          color="white"
+          icon="arrowUpwardAlt"
+          label="Back to Top"
+          fullWidth
+          onClick={scrollToTop}
+          className="bg-surface-grey"
+        />
+      </div>
     </>
   );
 }

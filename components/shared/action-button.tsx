@@ -197,14 +197,14 @@ export function ActionButton({
   );
 
   const solidClassName = cn(
-    "inline-flex cursor-pointer items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px]",
-    fullWidth ? "w-full" : "w-full md:w-auto",
+    "cursor-pointer items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px]",
+    fullWidth ? "flex w-full" : "inline-flex w-full md:w-auto",
     solidColors[color].button,
     className,
   );
   const motionClassName = cn(
-    "inline-flex transform-gpu rounded-[10px] md:rounded-[8px]",
-    fullWidth ? "w-full" : "w-full md:w-auto",
+    "transform-gpu rounded-[10px] md:rounded-[8px]",
+    fullWidth ? "flex w-full" : "inline-flex w-full md:w-auto",
   );
 
   if (href) {

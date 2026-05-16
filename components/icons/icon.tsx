@@ -1,5 +1,6 @@
 import AddLinkIcon from '../add_link.svg';
 import ArrowRightAltIcon from './arrow_right_alt.svg';
+import ArrowUpwardAltIcon from './arrow_upward_alt.svg';
 import ArrowOutwardIcon from './arrow_outward.svg';
 import ArticlePersonIcon from './article_person.svg';
 import ErrorIcon from './error.svg';
@@ -16,6 +17,7 @@ export const icons = {
   articlePerson: ArticlePersonIcon,
   arrowOutward: ArrowOutwardIcon,
   arrowRightAlt: ArrowRightAltIcon,
+  arrowUpwardAlt: ArrowUpwardAltIcon,
   error: ErrorIcon,
   hamburger: HamburgerIcon,
   keyboardBackspace: KeyboardBackspaceIcon,
