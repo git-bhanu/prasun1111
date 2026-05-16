@@ -19,6 +19,12 @@ const Artwork: Collection = {
       isTitle: true,
     },
     {
+      type: 'number',
+      name: 'sortOrder',
+      label: 'Sort Order',
+      description: 'Lower numbers appear first. Leave blank to sort to end.',
+    },
+    {
       type: 'string',
       name: 'slug',
       label: 'URL Slug',
@@ -33,6 +39,37 @@ const Artwork: Collection = {
       type: 'string',
       name: 'coverImageAlt',
       label: 'Cover Image Alt Text',
+    },
+    {
+      type: 'string',
+      name: 'displaySize',
+      label: 'Display Size',
+      options: [
+        { label: 'Hero (full width, 16:9)', value: 'hero' },
+        { label: 'Large (half width, 3:4)', value: 'large' },
+        { label: 'Medium (third width, 4:3)', value: 'medium' },
+        { label: 'Small (quarter width, 1:1)', value: 'small' },
+      ],
+    },
+    {
+      type: 'string',
+      name: 'orientation',
+      label: 'Image Orientation',
+      description: 'Override the default aspect ratio for this display size.',
+      options: [
+        { label: 'Landscape (4:3)', value: 'landscape' },
+        { label: 'Portrait (3:4)', value: 'portrait' },
+      ],
+    },
+    {
+      type: 'boolean',
+      name: 'mostViewed',
+      label: 'Most Viewed',
+    },
+    {
+      type: 'boolean',
+      name: 'printsAvailable',
+      label: 'Prints Available',
     },
     {
       type: 'object',

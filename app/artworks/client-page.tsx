@@ -1,6 +1,11 @@
 "use client";
 
-import { ArtworkDetailActions, ArtworkInfoCard } from "@/components/artwork";
+import {
+  ArtworkBentoGrid,
+  ArtworkDetailActions,
+  ArtworkInfoCard,
+} from "@/components/artwork";
+import type { QuoteBreak } from "@/components/artwork";
 import { HeaderBlock } from "@/components/blocks/header-block";
 import { ImageBlock } from "@/components/blocks/image-block";
 import { SpaceBlock } from "@/components/blocks/space-block";
@@ -32,6 +37,7 @@ type Props = {
   query: string;
   data: ArtworkConnectionQuery;
   variables: ArtworkConnectionQueryVariables;
+  quoteBreaks: QuoteBreak[];
 };
 
 export default function ArtworksClientPage(props: Props) {
@@ -42,7 +48,7 @@ export default function ArtworksClientPage(props: Props) {
   );
 }
 
-function ArtworksContent({ query, data, variables }: Props) {
+function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
   const { data: tinaData } = useTina({ query, data, variables });
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -51,7 +57,12 @@ function ArtworksContent({ query, data, variables }: Props) {
 
   const artworks: ArtworkNode[] = (tinaData.artworkConnection.edges ?? [])
     .map((e) => e?.node)
-    .filter((n): n is ArtworkNode => n != null);
+    .filter((n): n is ArtworkNode => n != null)
+    .sort((a, b) => {
+      const aOrder = a.sortOrder ?? Number.MAX_SAFE_INTEGER;
+      const bOrder = b.sortOrder ?? Number.MAX_SAFE_INTEGER;
+      return aOrder - bOrder;
+    });
 
   const artworkSlug = (a: ArtworkNode) =>
     (a.slug ?? a._sys.filename).toLowerCase();
@@ -82,27 +93,17 @@ function ArtworksContent({ query, data, variables }: Props) {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-7xl px-8 py-12 sm:px-10 md:px-[58px]">
-        <p className="mb-2 text-sm uppercase tracking-[0.24em] text-black/45">
-          Collection
-        </p>
-        <h1 className="mb-10 font-space-grotesk text-5xl tracking-[-0.06em] text-black sm:text-6xl">
-          Artworks
-        </h1>
-        {artworks.length === 0 ? (
+      {artworks.length === 0 ? (
+        <div className="px-8 py-12 sm:px-10 md:px-[58px]">
           <p className="text-black/45">No artworks yet.</p>
-        ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {artworks.map((artwork) => (
-              <ArtworkCard
-                key={artwork.id}
-                artwork={artwork}
-                onClick={() => goTo(artworkSlug(artwork))}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <ArtworkBentoGrid
+          artworks={artworks}
+          quoteBreaks={quoteBreaks}
+          onArtworkClick={goTo}
+        />
+      )}
 
       <AnimatePresence>
         {selectedSlug && selectedArtwork && (
@@ -121,11 +122,11 @@ function ArtworksContent({ query, data, variables }: Props) {
               type="button"
               onClick={close}
               aria-label="Close overlay"
-              initial={{ opacity: 0, scale: 0.7 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.7 }}
+              exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed right-6 md:right-36 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white"
+              className="fixed right-6 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white md:right-36"
             >
               <Icon name="pinchInZoom" size={28} color="#fff" />
             </motion.button>
@@ -157,55 +158,6 @@ function ArtworksContent({ query, data, variables }: Props) {
         )}
       </AnimatePresence>
     </>
-  );
-}
-
-function ArtworkCard({
-  artwork,
-  onClick,
-}: {
-  artwork: ArtworkNode;
-  onClick: () => void;
-}) {
-  const tags = (artwork.tags ?? [])
-    .map((t) => t?.tag)
-    .filter((t): t is TagItem => t != null);
-
-  return (
-    <button
-      onClick={onClick}
-      className="group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
-    >
-      <div className="relative mb-3 aspect-[4/3] overflow-hidden bg-[var(--surface-grey)]">
-        {artwork.coverImage ? (
-          <Image
-            src={artwork.coverImage}
-            alt={artwork.coverImageAlt ?? artwork.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        ) : (
-          <div className="h-full w-full bg-[var(--surface-grey)]" />
-        )}
-      </div>
-      <h2 className="font-space-grotesk text-xl tracking-[-0.04em] text-black">
-        {artwork.title}
-      </h2>
-      {tags.length > 0 && (
-        <div className="mt-2 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span
-              key={tag.id}
-              style={{ color: tag.color ?? "currentColor" }}
-              className="font-space-grotesk text-[10px] uppercase tracking-widest"
-            >
-              {tag.title}
-            </span>
-          ))}
-        </div>
-      )}
-    </button>
   );
 }
 
@@ -241,14 +193,13 @@ function DetailPanel({
   return (
     <>
       <div className="flex min-h-full flex-col md:flex-row">
-        {/* Info panel — second on mobile, left on desktop */}
         <div className="order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:pl-[10svw]">
           <SectionMasthead
             index={"04"}
             title={"Artworks"}
             size="sm"
             color="black"
-            className="md:hidden mb-3"
+            className="mb-3 md:hidden"
           />
           <div className="hidden md:block">
             <ArtworkDetailActions mode="close-only" onClose={onClose} />
@@ -264,7 +215,6 @@ function DetailPanel({
               className="mb-10 md:my-20"
             />
 
-            {/* Mobile: all actions; Desktop: secondary only */}
             <div className="mt-4 md:hidden">
               <ArtworkDetailActions mode="all" onClose={onClose} />
             </div>
@@ -274,9 +224,8 @@ function DetailPanel({
           </div>
         </div>
 
-        {/* Image — first on mobile (top), right on desktop */}
         {artwork.coverImage && (
-          <div className="relative order-1 aspect-[4/3] h-[500px] md:h-auto w-full flex-shrink-0 bg-[var(--surface-grey)] md:order-2 md:aspect-auto md:min-h-full md:flex-1">
+          <div className="relative order-1 aspect-[4/3] h-[500px] w-full flex-shrink-0 bg-[var(--surface-grey)] md:order-2 md:aspect-auto md:min-h-full md:h-auto md:flex-1">
             <Image
               src={artwork.coverImage}
               alt={artwork.coverImageAlt ?? artwork.title}
@@ -354,7 +303,7 @@ function DetailPanel({
           })}
         </div>
       )}
-      <div className="px-6 pb-10 mt-10 md:hidden">
+      <div className="mt-10 px-6 pb-10 md:hidden">
         <ActionButton
           color="white"
           icon="arrowUpwardAlt"

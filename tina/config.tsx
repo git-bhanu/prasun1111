@@ -1,10 +1,11 @@
 import { defineConfig } from 'tinacms';
 import nextConfig from '../next.config';
 
+import Artwork from './collection/artwork';
+import ArtworksPage from './collection/artworks-page';
 import Global from './collection/global';
 import Page from './collection/page';
 import Tag from './collection/tag';
-import Artwork from './collection/artwork';
 
 const config = defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
@@ -16,7 +17,7 @@ const config = defineConfig({
   media: {
     // If you wanted cloudinary do this
     loadCustomStore: async () => {
-      const pack = await import("next-tinacms-cloudinary");
+      const pack = await import('next-tinacms-cloudinary');
       return pack.TinaCloudCloudinaryMediaStore;
     },
     // this is the config for the tina cloud media store
@@ -31,7 +32,7 @@ const config = defineConfig({
     basePath: nextConfig.basePath?.replace(/^\//, '') || '', // The base path of the app (could be /blog)
   },
   schema: {
-    collections: [Page, Global, Tag, Artwork],
+    collections: [Page, Global, Tag, Artwork, ArtworksPage],
   },
 });
 

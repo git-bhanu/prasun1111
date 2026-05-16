@@ -3,6 +3,10 @@
   "slug": "eye-of-the-tiger",
   "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778311239/eye-of-the-tiger_v5kevq.jpg",
   "coverImageAlt": "EYE OF THE TIGER",
+  "displaySize": "large",
+  "orientation": "landscape",
+  "mostViewed": true,
+  "printsAvailable": false,
   "tags": [
     {
       "tag": "content/tags/illustration.json"

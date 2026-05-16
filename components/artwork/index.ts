@@ -1,3 +1,7 @@
+export { ArtworkBentoCard } from './artwork-bento-card';
+export type { ArtworkBentoCardProps } from './artwork-bento-card';
+export { ArtworkBentoGrid } from './artwork-bento-grid';
+export type { QuoteBreak } from './artwork-bento-grid';
 export { ArtworkDetailActions } from './artwork-detail-actions';
 export { ArtworkInfoCard } from './artwork-info-card';
 export type { ArtworkInfoCardProps } from './artwork-info-card';
