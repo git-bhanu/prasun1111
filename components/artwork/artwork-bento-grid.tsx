@@ -123,7 +123,7 @@ function ArtworkQuoteBreak({
               </div>
             )}
             {rightTextFootnote && (
-              <div className="font-space-grotesk text-[12px] md:text-[24px] uppercase tracking-widest text-white">
+              <div className="font-space-grotesk mt-6 md:mt-12 text-[12px] md:text-[24px] uppercase tracking-widest text-white">
                 <TinaMarkdown
                   content={rightTextFootnote}
                   components={richComponents}

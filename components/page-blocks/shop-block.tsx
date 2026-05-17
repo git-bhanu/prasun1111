@@ -30,8 +30,33 @@ export function ShopBlock({ block }: ShopBlockProps) {
     block.items?.filter((item): item is ShopItem => Boolean(item?.image)) ?? [];
   const shouldReduceMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { amount: 0.1 });
+  const dragState = useRef({ active: false, startX: 0, baseOffset: 0 });
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const dragWrapperRef = useRef<HTMLDivElement>(null);
+
+  function handlePointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    e.preventDefault();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    dragState.current.active = true;
+    dragState.current.startX = e.clientX;
+    setIsDragging(true);
+  }
+
+  function handlePointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (!dragState.current.active || !dragWrapperRef.current) return;
+    const dx = e.clientX - dragState.current.startX;
+    dragWrapperRef.current.style.transform = `translateX(${dragState.current.baseOffset + dx}px)`;
+  }
+
+  function handlePointerUp(e: React.PointerEvent<HTMLDivElement>) {
+    if (!dragState.current.active) return;
+    dragState.current.baseOffset += e.clientX - dragState.current.startX;
+    dragState.current.active = false;
+    setIsDragging(false);
+  }
 
   return (
     <section
@@ -92,22 +117,30 @@ export function ShopBlock({ block }: ShopBlockProps) {
 
       {items.length > 0 ? (
         <div
-          className="mt-8 overflow-hidden md:mt-16"
+          className={cn("mt-8 overflow-hidden md:mt-16 select-none", isDragging ? "cursor-grabbing" : "cursor-grab")}
+          style={{ touchAction: "pan-y" }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={(e) => { dragState.current.active = false; setIsDragging(false); }}
         >
-          <div
-            className={cn("flex gap-4 md:gap-6", !shouldReduceMotion && "animate-marquee")}
-            style={{ animationPlayState: (!isInView || isHovered) ? "paused" : "running" }}
-          >
-            {[...items, ...items].map((item, index) => (
-              <ProductCard
-                key={index}
-                item={item}
-                priority={index === 0}
-                ariaHidden={index >= items.length}
-              />
-            ))}
+          <div ref={dragWrapperRef}>
+            <div
+              ref={marqueeRef}
+              className={cn("flex gap-4 md:gap-6", !shouldReduceMotion && "animate-marquee")}
+              style={{ animationPlayState: (!isInView || isHovered || isDragging) ? "paused" : "running" }}
+            >
+              {[...items, ...items].map((item, index) => (
+                <ProductCard
+                  key={index}
+                  item={item}
+                  priority={index === 0}
+                  ariaHidden={index >= items.length}
+                />
+              ))}
+            </div>
           </div>
         </div>
       ) : null}
@@ -140,6 +173,7 @@ function ProductCard({
         sizes="(max-width: 400px) 85vw, 25vw"
         className="object-cover object-center"
         priority={priority}
+        draggable={false}
       />
     </div>
   );
