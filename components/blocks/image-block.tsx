@@ -22,7 +22,7 @@ export function ImageBlock({ block }: Props) {
   const aspectClass = block.orientation === 'portrait' ? 'aspect-[9/16]' : 'aspect-video';
 
   return (
-    <div className="flex gap-8">
+    <div className="flex flex-col gap-8 md:flex-row">
       {images.map((img, i) => (
         <div key={i} className={`relative ${aspectClass} min-w-0 flex-1 overflow-hidden`}>
           <Image
