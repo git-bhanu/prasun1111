@@ -1,5 +1,75 @@
 {
   "title": "Inkforms",
   "sortOrder": 3,
-  "slug": "inkforms"
+  "slug": "inkforms",
+  "printsAvailable": true,
+  "tags": [
+    {
+      "tag": "content/tags/PRINTS-AVAILABLE.json"
+    }
+  ],
+  "blocks": [
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "MERGE\n",
+      "_template": "header"
+    },
+    {
+      "level": "h2",
+      "heading": "The edges don’t hold anymore what is yours, what isn’t— it all slips into the same space until there’s no clear difference.\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779105646/Ink_Artwork_Compositions_c4g6au.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "ECHO\n",
+      "_template": "header"
+    },
+    {
+      "level": "h2",
+      "font": "sedan",
+      "heading": "You’ve been here before or maybe another version has it repeats, but never the same, always slightly altered.\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779105961/Echo_c7iyoq.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "BLOOM\n",
+      "_template": "header"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779106121/Bloom_vwdrgl.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h2",
+      "font": "sedan",
+      "heading": "It doesn’t stay contained it reaches, extends, unfolds what was within starts becoming everything around it\n",
+      "_template": "header"
+    }
+  ]
 }
