@@ -1,13 +1,13 @@
 {
   "title": "THE EYE BELONGS TO THE TIGER",
   "slug": "eye-of-the-tiger",
-  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778311239/eye-of-the-tiger_v5kevq.jpg",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779096034/Tiger_Full_Bento_jlhsjq.jpg",
   "coverImageAlt": "EYE OF THE TIGER",
-  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778960873/Frame_141_m0r2aj.jpg",
-  "displaySize": "small",
+  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090192/Tiger_Full_n4svea.jpg",
+  "displaySize": "hero",
   "orientation": "landscape",
   "mostViewed": true,
-  "printsAvailable": false,
+  "printsAvailable": true,
   "tags": [
     {
       "tag": "content/tags/illustration.json"
@@ -87,7 +87,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "Dream Walkers / *the calm *\n\n*within the current.*\n",
+      "heading": "Dream Walkers / \\*the calm \\*\n\n*within the current.*\n",
       "_template": "header"
     },
     {
@@ -179,7 +179,7 @@
     },
     {
       "leftColumn": "The Wildebeests and Zebras move in millions, an exodus of hooves and instinct. They graze, fertilise, migrate. Crossing rivers, jungles, & borders, they chase the rains that revive the Serengeti.\n",
-      "rightColumn": "The Nile Crocodiles wait beneath the surface, still as stone, until the herds come crashing through. \nThe Lions watch from the tall grass, centuries of pride woven into the land. They hunt not to conquer, but to balance. Their lineage marks this place, as much as the dust and wind.\n",
+      "rightColumn": "The Nile Crocodiles wait beneath the surface, still as stone, until the herds come crashing through.\nThe Lions watch from the tall grass, centuries of pride woven into the land. They hunt not to conquer, but to balance. Their lineage marks this place, as much as the dust and wind.\n",
       "_template": "twoColumnText"
     },
     {
@@ -298,10 +298,12 @@
     },
     {
       "desktopSpace": "48",
+      "mobileSpace": "32",
       "_template": "space"
     },
     {
       "desktopSpace": "48",
+      "mobileSpace": "32",
       "_template": "space"
     }
   ]
