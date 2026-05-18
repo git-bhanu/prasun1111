@@ -1,9 +1,10 @@
 {
   "title": "THE EYE BELONGS TO THE TIGER",
+  "sortOrder": 1,
   "slug": "eye-of-the-tiger",
-  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779096034/Tiger_Full_Bento_jlhsjq.jpg",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090117/Tiger_Full_yxnblm.jpg",
   "coverImageAlt": "EYE OF THE TIGER",
-  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090192/Tiger_Full_n4svea.jpg",
+  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779096034/Tiger_Full_Bento_jlhsjq.jpg",
   "displaySize": "hero",
   "orientation": "landscape",
   "mostViewed": true,
