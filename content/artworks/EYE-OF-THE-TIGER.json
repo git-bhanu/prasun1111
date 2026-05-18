@@ -64,7 +64,7 @@
       "_template": "header"
     },
     {
-      "width": "narrow",
+      "width": "full",
       "orientation": "landscape",
       "images": [
         {
@@ -91,10 +91,10 @@
       "_template": "header"
     },
     {
-      "width": "narrow",
+      "width": "full",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778842144/Layer_2_f7moop.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090530/Turtle_xbmrsw.jpg"
         }
       ],
       "_template": "image"
@@ -113,21 +113,21 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "Emperor Penguins/ *the ritual of*\n\n*resilience*\n",
+      "heading": "Emperor Penguins / *the ritual of*\n\n*resilience*\n",
       "_template": "header"
     },
     {
-      "width": "narrow",
+      "width": "full",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778842343/Layer_3_nzwtaz.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779091466/Penguins_fkxosq.jpg"
         }
       ],
       "_template": "image"
     },
     {
-      "leftColumn": "*Two lives, caught in the thaw, searching for balance on a disappearing stage.*\n",
-      "rightColumn": "The Polar Bear Family emerges from winter’s stillness into a vast, melting silence. Once ice meant survival, now it’s a map of loss. Prey is scarce, and what remains floats in the memory of a frozen past, a dead whale, a drifting meal. The Atlantic Walrus hauls out on shrinking slabs, evolution wrapped in skin and tusk, looking for ground to rest, to raise, to remember. But the boundary between ice and ocean is no longer where it used to be.\n",
+      "leftColumn": "*The Emperor Penguin does not fear the cold, it understands it. & through this understanding, it lives.*\n",
+      "rightColumn": "The Emperor Penguin family is a marvel of shared survival. The mother lays a single egg, then passes it, gently, precisely onto the father’s feet. He will carry it for nearly five months, never letting it touch the frozen ground, balancing life on a patch of warmthin a world built on ice. In a crowd of 6,000 nearly identical bodies, the mother finds her family. Always. By sound, by memory, by the rhythm of survival passed down in silence.\n",
       "_template": "twoColumnText"
     },
     {
@@ -139,11 +139,11 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "Kingfishers/ *the echoes of*\n\n*evolution*\n",
+      "heading": "Kingfishers / *the echoes of*\n\n*evolution*\n",
       "_template": "header"
     },
     {
-      "width": "narrow",
+      "width": "full",
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779089830/Kingfishers_dzxlyb.jpg"
@@ -165,7 +165,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "The Serengeti Story/ *a circle*\n\n*in motion*\n",
+      "heading": "The Serengeti Story / *a circle*\n\n*in motion*\n",
       "_template": "header"
     },
     {
@@ -180,6 +180,111 @@
     {
       "leftColumn": "The Wildebeests and Zebras move in millions, an exodus of hooves and instinct. They graze, fertilise, migrate. Crossing rivers, jungles, & borders, they chase the rains that revive the Serengeti.\n",
       "rightColumn": "The Nile Crocodiles wait beneath the surface, still as stone, until the herds come crashing through. \nThe Lions watch from the tall grass, centuries of pride woven into the land. They hunt not to conquer, but to balance. Their lineage marks this place, as much as the dust and wind.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 06\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 07\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "The Vanishing White / *a tale*\n\n*of two lives*\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090606/Polar_Bear_gyn8gy.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "Two lives, caught in the thaw, searching for balance on a disappearing stage.\n",
+      "rightColumn": "The Polar Bear Family emerges from winter’s stillness into a vast, melting silence. Once ice meant survival, now it’s a map of loss. Prey is scarce, and what remains floats in the memory of a frozen past, a dead whale, a drifting meal. The Atlantic Walrus hauls out on shrinking slabs, evolution wrapped in skin and tusk, looking for ground to rest, to raise, to remember. But the boundary between ice and ocean is no longer where it used to be.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Hornbills/ *keepers of the*\n\n*next season*\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090758/Hornbill_leidsw.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*The hornbill does not plant trees, it simply lives. And by living, it gives the forest a future.*\n",
+      "rightColumn": "A living link in the chain of regeneration, the hornbill is not just a bird, it is a gardener in flight. What is not eaten is dropped, what is dropped becomes seed, what is seed becomes forest.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 08\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "The Red Salmon / *a journey backward*\n\n*to belonging*\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090943/Salmon_qm8y1o.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*The salmon does not flee death, it returns to offer it. Because even in ending, life can nourish life.*\n",
+      "rightColumn": "For salmon, death is not an end, it is a return. A choice. A calling. Guided by magnetic memory etched into their minds, millions begin the upstream pilgrimage. Against the current, against exhaustion, against gravity each salmon finds its origin tributary, among hundreds, and swims back home. They come with two final duties: To lay life, eggs returned to their birthplace, feeding bears and riverbanks. To give back, to die where they began, becoming soil, becoming balance.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 09\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "The Camouflage Killers / *a tale in*\n\n*stillness*\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "orientation": "landscape",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779091142/Killers_skrtuz.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*Stillness is not weakness. To disappear is an art. Not all predators chase. Some wait. Some become.*\n",
+      "rightColumn": "The Venus Flytrap doesn’t snap at chance. It waits, measuring the weight of movement, deciding with quiet calculation, three touches, then silence. The Pitcher Plant doesn’t hunt, it invites. One step in, and there’s no step out. The Green Tree Python wraps itself into the forest, not hidden, but indistinguishable. A coil so still, it becomes branch, then strike. Each one a lesson in patience, a masterclass in disguise.\n",
       "_template": "twoColumnText"
     }
   ]
