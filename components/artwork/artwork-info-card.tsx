@@ -1,21 +1,9 @@
-import Link from "next/link";
-import type { ComponentType, SVGProps } from "react";
-
-import ArrowDownIcon from "@/components/icons/arrow-down.svg";
-import ArrowUpIcon from "@/components/icons/arrow-up.svg";
+import { ArtworkTabs, ArtworkTitle } from "@/components/artwork";
 import { SectionMasthead } from "@/components/shared/section-masthead";
 import { cn } from "@/lib/utils";
 
 type ArtworkInfoCardAs = "h1" | "h2" | "h3" | "p";
 type ArtworkInfoCardArrow = "up" | "down";
-
-const arrowIcons: Record<
-  ArtworkInfoCardArrow,
-  ComponentType<SVGProps<SVGSVGElement>>
-> = {
-  up: ArrowUpIcon,
-  down: ArrowDownIcon,
-};
 
 interface Tag {
   id?: string | null;
@@ -35,6 +23,8 @@ export interface ArtworkInfoCardProps {
   eyebrow?: string | null;
   eyebrowIndex?: string;
   eyebrowTinaField?: string;
+  tagsTinaField?: string;
+  tabClassName?: string;
   asCard?: boolean;
   className?: string;
 }
@@ -51,37 +41,15 @@ export function ArtworkInfoCard({
   eyebrow,
   eyebrowIndex = "01",
   eyebrowTinaField,
+  tagsTinaField,
+  tabClassName,
   asCard = true,
   className,
 }: ArtworkInfoCardProps) {
-  const shouldShowArrow = showArrow ?? true;
-  const ArrowIcon = arrowIcons[arrow];
-
-  const titleContent = (
-    <span>
-      {title}
-      {shouldShowArrow ? (
-        <ArrowIcon
-          className="ml-1 inline h-2.5 w-2.5 translate-y-[-0.20em] translate-x-[0.10em] fill-current"
-          aria-hidden="true"
-        />
-      ) : null}
-    </span>
-  );
-
-  const titleNode = href ? (
-    <Link
-      href={href}
-      className={titleClassName}
-      data-tina-field={titleTinaField}
-    >
-      {titleContent}
-    </Link>
-  ) : (
-    <Tag className={titleClassName} data-tina-field={titleTinaField}>
-      {titleContent}
-    </Tag>
-  );
+  const tagItems = tags?.map((tag) => ({
+    value: tag.title,
+    color: tag.color ?? 'orange',
+  })) ?? [];
 
   const inner = (
     <>
@@ -95,18 +63,23 @@ export function ArtworkInfoCard({
           />
         </div>
       )}
-      {titleNode}
-      {tags && tags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-2">
-          {tags.map((tag, i) => (
-            <span
-              key={tag.id ?? i}
-              style={{ color: tag.color ?? "currentColor" }}
-              className="rounded-[4px] bg-white px-3 py-1 font-space-grotesk text-[10px] font-medium uppercase"
-            >
-              {tag.title}
-            </span>
-          ))}
+      <ArtworkTitle
+        title={title}
+        href={href}
+        arrow={arrow}
+        showArrow={showArrow}
+        as={Tag}
+        className={titleClassName}
+        dataTinaField={titleTinaField}
+      />
+      {tagItems.length > 0 && (
+        <div className="mt-3" data-tina-field={tagsTinaField}>
+          <ArtworkTabs
+            items={tagItems}
+            className="bg-transparent p-0"
+            listClassName="flex-row flex-wrap gap-2"
+            tabClassName={cn("min-h-0 flex-none", tabClassName)}
+          />
         </div>
       )}
     </>
@@ -115,10 +88,7 @@ export function ArtworkInfoCard({
   if (asCard) {
     return (
       <div
-        className={cn(
-          "rounded-[8px] bg-[var(--surface-grey-1)] p-4",
-          className,
-        )}
+        className={cn("mt-7 rounded-[4px] bg-surface-grey-1 p-2", className)}
       >
         {inner}
       </div>

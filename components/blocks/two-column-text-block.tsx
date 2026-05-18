@@ -16,7 +16,7 @@ type Props = {
 };
 
 const components: Components<{}> = {
-  p: (props) => <span className="block">{props?.children}</span>,
+  p: (props) => <span className="block mb-5 last:mb-0">{props?.children}</span>,
   break: () => <br />,
   bold: (props) => <strong className="font-bold">{props?.children}</strong>,
   italic: (props) => <em className="italic font-sedan">{props?.children}</em>,

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 
-import { ArtworkTabs, ArtworkTitle } from '@/components/artwork';
+import { ArtworkInfoCard } from '@/components/artwork';
 import { Icon, IconCircleButton } from '@/components/icons';
 import { SectionMasthead } from '@/components/shared/section-masthead';
 import { useSiteSettings } from '@/components/site-settings-provider';
@@ -59,7 +59,7 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
   const mediaField = showVideo ? 'videoUrl' : 'image';
   const tags = activeSlide.tags?.filter((tag): tag is string => Boolean(tag)) ?? [];
   const tagItems = tags.map((tag) => ({
-    value: tag,
+    title: tag,
     color: tag.toLowerCase().includes('available') ? ('blue' as const) : ('orange' as const),
   }));
 
@@ -160,23 +160,16 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
             transition={contentTransition}
             className='mx-4 mt-7 rounded-[4px] bg-surface-grey-1 p-2'
           >
-            <ArtworkTitle
+            <ArtworkInfoCard
+              asCard={false}
               title={activeSlide.title}
               href={activeSlide.href}
-              dataTinaField={tinaField(activeSlide, 'title')}
-              className={'text-[18px]'}
+              titleTinaField={tinaField(activeSlide, 'title')}
+              titleClassName='text-[18px]'
+              tags={tagItems}
+              tagsTinaField={tinaField(activeSlide, 'tags')}
+              tabClassName='font-medium'
             />
-
-            {tags.length ? (
-              <div className='mt-2' data-tina-field={tinaField(activeSlide, 'tags')}>
-                <ArtworkTabs
-                  items={tagItems}
-                  className='bg-transparent p-0'
-                  listClassName='flex-row flex-wrap gap-2'
-                  tabClassName='min-h-0 flex-none rounded-[4px] text-[10px] font-medium md:min-h-0'
-                />
-              </div>
-            ) : null}
           </motion.div>
         </AnimatePresence>
 
@@ -209,18 +202,15 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
                 transition={contentTransition}
                 className='max-w-[28rem] rounded-[8px] bg-surface-grey-1 p-4 shadow-[0_22px_70px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-5'
               >
-                <ArtworkTitle
+                <ArtworkInfoCard
+                  asCard={false}
                   title={activeSlide.title}
                   href={activeSlide.href}
-                  dataTinaField={tinaField(activeSlide, 'title')}
-                  className='text-[1.65rem] sm:text-[2rem] leading-[1.1em]'
+                  titleTinaField={tinaField(activeSlide, 'title')}
+                  titleClassName='text-[1.65rem] sm:text-[2rem] leading-[1.1em]'
+                  tags={tagItems}
+                  tagsTinaField={tinaField(activeSlide, 'tags')}
                 />
-
-                {tags.length ? (
-                  <div className='mt-3' data-tina-field={tinaField(activeSlide, 'tags')}>
-                    <ArtworkTabs items={tagItems} className='bg-transparent p-0' listClassName='flex-row flex-wrap gap-2' tabClassName='min-h-0 flex-none' />
-                  </div>
-                ) : null}
               </motion.div>
             </AnimatePresence>
 

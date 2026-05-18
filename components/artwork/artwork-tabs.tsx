@@ -4,7 +4,7 @@ export type ArtworkTabColor = "orange" | "blue";
 
 export interface ArtworkTabItem {
   value: string;
-  color?: ArtworkTabColor;
+  color?: ArtworkTabColor | string;
 }
 
 export interface ArtworkTabsProps {
@@ -40,18 +40,22 @@ export function ArtworkTabs({
           listClassName,
         )}
       >
-        {items.map((item) => (
-          <li
-            key={item.value}
-            className={cn(
-              "flex min-w-0 flex-1 items-center justify-center whitespace-normal break-words rounded-[4px] bg-white px-3 py-1 text-center font-space-grotesk text-[10px] uppercase",
-              colorClassNames[item.color ?? "orange"],
-              tabClassName,
-            )}
-          >
-            {item.value}
-          </li>
-        ))}
+        {items.map((item) => {
+          const isSemanticColor = item.color === 'orange' || item.color === 'blue';
+          return (
+            <li
+              key={item.value}
+              className={cn(
+                "flex min-w-0 flex-1 items-center justify-center whitespace-normal break-words rounded-[4px] bg-white px-3 py-1 text-center font-space-grotesk text-[10px] uppercase",
+                isSemanticColor ? colorClassNames[item.color as ArtworkTabColor] : colorClassNames['orange'],
+                tabClassName,
+              )}
+              style={!isSemanticColor && item.color ? { color: item.color } : undefined}
+            >
+              {item.value}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

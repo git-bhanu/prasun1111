@@ -83,9 +83,12 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
     goTo(artworkSlug(artworks[selectedIndex + 1]));
 
   useEffect(() => {
-    document.body.style.overflow = selectedSlug ? "hidden" : "";
+    const value = selectedSlug ? "hidden" : "";
+    document.body.style.overflow = value;
+    document.documentElement.style.overflow = value;
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [selectedSlug]);
 
@@ -245,7 +248,7 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className={blockWrapperClass("narrow", "py-4")}
+                    className={blockWrapperClass("narrow", "pb-2 md:py-4")}
                   >
                     <HeaderBlock block={block} />
                   </div>
