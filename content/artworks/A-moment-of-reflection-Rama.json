@@ -2,9 +2,11 @@
   "title": "A MOMENT OF REFLECTION: RAMA",
   "slug": "a-moment-of-reflection-rama",
   "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778842987/Frame_169_sz48yl.jpg",
-  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778960868/Frame_141_qge0pj.png",
-  "displaySize": "large",
-  "orientation": "landscape",
+  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779096680/Frame_1374_is3lco.jpg",
+  "displaySize": "small",
+  "orientation": "portrait",
+  "mostViewed": false,
+  "printsAvailable": true,
   "tags": [
     {
       "tag": "content/tags/MYTHOLOGY.json"
@@ -156,7 +158,7 @@
       "_template": "header"
     },
     {
-      "leftColumn": "In one version, I imagine him questioning his violence toward Shurpanakha; in another, he reflects on whether breaking Shiva’s bow was wrong. He might also question his willingness to believe in a golden deer after surviving in the jungle for nearly 14 years. Ultimately, he concludes that while Ravana’s kidnapping of Sita was wrong, the manner in which it was done was a far graver offense. \n",
+      "leftColumn": "In one version, I imagine him questioning his violence toward Shurpanakha; in another, he reflects on whether breaking Shiva’s bow was wrong. He might also question his willingness to believe in a golden deer after surviving in the jungle for nearly 14 years. Ultimately, he concludes that while Ravana’s kidnapping of Sita was wrong, the manner in which it was done was a far graver offense.\n",
       "rightColumn": "By disguising himself as a sadhu, <ref n=\"02\"/> Ravana’s action became a dangerous template for ages to follow—where a perceived saint is a demon within. This is not just a wrong committed against one person, but an affront to society as a whole, inspiring a world where the guise of goodness is used to hide the intent to do harm.\n",
       "annotations": [
         {
