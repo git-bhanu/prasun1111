@@ -23,7 +23,7 @@
     {
       "level": "h6",
       "font": "space-grotesk",
-      "heading": "1.0 INTRODUCTION\n",
+      "heading": "INTRODUCTION\n",
       "_template": "header"
     },
     {
@@ -43,45 +43,52 @@
       "_template": "twoColumnText"
     },
     {
-      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778525544/Biodiversity_The_Eye_Belongs_to_the_Tiger__1_uykbph.png",
-      "youtubeUrl": "https://www.youtube.com/watch?v=v2qOG4145CU",
-      "duration": "5min. 36sec.",
-      "_template": "video"
-    },
-    {
-      "level": "h6",
-      "font": "space-grotesk",
-      "heading": "2.0 DETAILED STORIES\n",
-      "_template": "header"
-    },
-    {
-      "level": "h3",
-      "heading": "Emperor Penguins / *the ritual of resilience*.\n",
-      "_template": "header"
-    },
-    {
-      "width": "narrow",
+      "width": "full",
+      "orientation": "landscape",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778841985/Layer_1_mhmkbh.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090192/Tiger_Full_n4svea.jpg"
         }
       ],
       "_template": "image"
     },
     {
-      "leftColumn": "*The Emperor Penguin does not fear the cold, it understands it, & through this understanding, it lives.*\n",
-      "rightColumn": "The Emperor<ref n=\"02\"/> Penguin family is a marvel of shared survival. The mother lays a single egg, then passes it, gently, precisely onto the father’s feet.\n\nHe will carry it for nearly five months, never letting it touch the frozen ground, balancing life on a patch of warm thin a world built on ice. In a crowd of 6,000 nearly identical bodies, the mother finds her family. Always. By sound, by memory, by the rhythm<ref n=\"03\"/> of survival passed down in silence.\n",
-      "annotations": [
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 01\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "The Skill Game / *a flight between*\n\n*feast & theft*\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "orientation": "landscape",
+      "images": [
         {
-          "id": "02",
-          "text": "Not the absence of movement, but the presence of focus. A charged pause — like the moment before a strike, or the breath held before something begins."
-        },
-        {
-          "id": "03",
-          "text": "Not the absence of movement, but the presence of focus. A charged pause — like the moment before a strike, or the breath held before something begins."
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779088854/Untitled-1_hqrhsz.jpg"
         }
       ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*A dive for life, a race through sky, where hunters hunt, and pirates fly.*\n",
+      "rightColumn": "One egg, one hope, Red-Billed Tropicbirds dive 100 meters down into a sea of sardines, trapped by dolphin rings. A hunt below, a heist above.\n\n**Frigatebirds** wait in the sky, they don’t dive, they steal. Some fathers return, some don’t. Balance hangs between beak & wing.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 02\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Dream Walkers / *the calm *\n\n*within the current.*\n",
+      "_template": "header"
     },
     {
       "width": "narrow",
@@ -93,15 +100,21 @@
       "_template": "image"
     },
     {
-      "level": "h2",
-      "font": "sedan",
-      "heading": "Dream Walkers / *the calm within the current.*\n",
+      "leftColumn": "*Balance is quiet. Change is loud. Even drift has purpose. Even peace can vanish.*\n",
+      "rightColumn": "**Tropical turtles** drift like thoughts, unhurried, gentle, grazing the reef with quiet grace.\u0003 Omnivores of balance , they tend to the underwater garden. But as the seas warm, even their calm rhythm begins to break.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 03\n",
       "_template": "header"
     },
     {
-      "leftColumn": "*Balance is quiet. Change is loud. Even drift has purpose. Even peace can vanish.*\n",
-      "rightColumn": "Tropical turtles drift like thoughts, unhurried, gentle, grazing the reef with quiet grace.\u0003 Omnivores of balance , they tend to the underwater garden. But as the seas warm, even their calm rhythm begins to break.\n",
-      "_template": "twoColumnText"
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Emperor Penguins/ *the ritual of*\n\n*resilience*\n",
+      "_template": "header"
     },
     {
       "width": "narrow",
@@ -114,7 +127,59 @@
     },
     {
       "leftColumn": "*Two lives, caught in the thaw, searching for balance on a disappearing stage.*\n",
-      "rightColumn": "The Polar Bear Family emerges from winter’s stillness into a vast, melting silence. Once ice meant survival, now it’s a map of loss. Prey is scarce, and what remains floats in the memory of a frozen past, a dead whale, a drifting meal.\n\nThe Atlantic Walrus hauls out on shrinking slabs, evolution wrapped in skin and tusk, looking for ground to rest, to raise, to remember. But the boundary between ice and ocean is no longer where it used to be.\n",
+      "rightColumn": "The Polar Bear Family emerges from winter’s stillness into a vast, melting silence. Once ice meant survival, now it’s a map of loss. Prey is scarce, and what remains floats in the memory of a frozen past, a dead whale, a drifting meal. The Atlantic Walrus hauls out on shrinking slabs, evolution wrapped in skin and tusk, looking for ground to rest, to raise, to remember. But the boundary between ice and ocean is no longer where it used to be.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 04\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Kingfishers/ *the echoes of*\n\n*evolution*\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779089830/Kingfishers_dzxlyb.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*The kingfisher is not one story, it is a lineage of balance in motion.*\n",
+      "rightColumn": "The kingfisher is not just one bird, but the beginning of a hundred more. From one form came many, over a hundred species, each shaped by its landscape, each mastering a different rhythm of survival.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 05\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "The Serengeti Story/ *a circle*\n\n*in motion*\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090015/The_Serengeti_Story_toh6ex.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "The Wildebeests and Zebras move in millions, an exodus of hooves and instinct. They graze, fertilise, migrate. Crossing rivers, jungles, & borders, they chase the rains that revive the Serengeti.\n",
+      "rightColumn": "The Nile Crocodiles wait beneath the surface, still as stone, until the herds come crashing through. \nThe Lions watch from the tall grass, centuries of pride woven into the land. They hunt not to conquer, but to balance. Their lineage marks this place, as much as the dust and wind.\n",
       "_template": "twoColumnText"
     }
   ]
