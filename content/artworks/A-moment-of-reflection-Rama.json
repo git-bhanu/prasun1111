@@ -1,7 +1,7 @@
 {
   "title": "A MOMENT OF REFLECTION: RAMA",
   "slug": "a-moment-of-reflection-rama",
-  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778842987/Frame_169_sz48yl.jpg",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779096680/Frame_1374_is3lco.jpg",
   "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779096680/Frame_1374_is3lco.jpg",
   "displaySize": "small",
   "orientation": "portrait",
@@ -24,6 +24,15 @@
       "font": "sedan",
       "heading": "The *touch-through* yet deep analysis of all that has gone often brings us to a moment — a moment that *reflects the past* and at times defines it to be the *pivot* of a lifetime.\n",
       "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779098446/DSCF3787_m3rifj.jpg"
+        }
+      ],
+      "_template": "image"
     },
     {
       "leftColumn": "*Ram stands at such a moment.* He puts forward the first step towards the war — a step from land to water —\n",
