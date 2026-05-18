@@ -303,12 +303,11 @@ function DetailPanel({
           })}
         </div>
       )}
-      <div className="mt-10 px-6 pb-10 md:hidden">
+      <div className="mt-10 flex justify-center px-6 pb-10">
         <ActionButton
           color="white"
           icon="arrowUpwardAlt"
           label="Back to Top"
-          fullWidth
           onClick={scrollToTop}
           className="bg-surface-grey"
         />

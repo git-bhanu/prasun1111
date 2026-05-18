@@ -7,7 +7,12 @@ import { Icon, type IconName } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
 export type ActionButtonVariant = "solid" | "ghost";
-export type ActionButtonColor = "black" | "orange" | "blue" | "white" | "outlined";
+export type ActionButtonColor =
+  | "black"
+  | "orange"
+  | "blue"
+  | "white"
+  | "outlined";
 
 const buttonHover = {
   y: -1,
@@ -181,12 +186,12 @@ export function ActionButton({
     return (
       <span
         className={cn(
-          "inline-flex shrink-0 items-center justify-center",
+          "inline-flex shrink-0 items-center justify-center md:size-[24px]",
           solidColors[color].icon,
         )}
         aria-hidden="true"
       >
-        <Icon name={icon} size={18} color="currentColor" />
+        <Icon name={icon} size={24} color="currentColor" />
       </span>
     );
   };
@@ -206,7 +211,7 @@ export function ActionButton({
   );
 
   const solidClassName = cn(
-    "cursor-pointer items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px]",
+    "cursor-pointer items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px] overflow-visible",
     fullWidth ? "flex w-full" : "inline-flex w-full md:w-auto",
     solidColors[color].button,
     className,

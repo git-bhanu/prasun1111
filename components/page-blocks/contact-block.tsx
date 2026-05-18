@@ -199,7 +199,7 @@ function VentureCard({
   );
 
   const sharedClass =
-    "flex flex-col items-center justify-center gap-3 px-4 h-[284px] md:h-[480px] transition-colors duration-200";
+    "flex flex-col items-center justify-center gap-3 px-4 h-[284px] md:h-[480px] transition-colors duration-200 rounded-[8px]";
 
   if (venture.href) {
     return (
@@ -254,7 +254,7 @@ function SocialCell({
   ) : null;
 
   const cellClass =
-    "flex items-center justify-center py-7 bg-[#f9f9f9] aspect-[1/1]";
+    "flex items-center justify-center py-7 bg-[#f9f9f9] aspect-[1/1] rounded-[4px]";
 
   if (link.href) {
     return (
