@@ -253,7 +253,8 @@ function SocialCell({
     />
   ) : null;
 
-  const cellClass = "flex items-center justify-center py-7 bg-[#f9f9f9]";
+  const cellClass =
+    "flex items-center justify-center py-7 bg-[#f9f9f9] aspect-[1/1]";
 
   if (link.href) {
     return (
