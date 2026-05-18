@@ -44,6 +44,11 @@
       "_template": "twoColumnText"
     },
     {
+      "desktopSpace": "32",
+      "mobileSpace": "24",
+      "_template": "space"
+    },
+    {
       "width": "full",
       "orientation": "landscape",
       "images": [
@@ -88,7 +93,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "Dream Walkers / \\*the calm \\*\n\n*within the current.*\n",
+      "heading": "Dream Walkers / *the calm*\n\n*within the current.*\n",
       "_template": "header"
     },
     {
@@ -301,6 +306,12 @@
       "desktopSpace": "48",
       "mobileSpace": "32",
       "_template": "space"
+    },
+    {
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778525544/Biodiversity_The_Eye_Belongs_to_the_Tiger__1_uykbph.png",
+      "youtubeUrl": "https://www.youtube.com/watch?v=v2qOG4145CU",
+      "duration": "5MIN. 36SEC.",
+      "_template": "video"
     },
     {
       "desktopSpace": "48",
