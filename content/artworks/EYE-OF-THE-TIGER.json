@@ -64,7 +64,7 @@
       "_template": "header"
     },
     {
-      "width": "full",
+      "width": "wide",
       "orientation": "landscape",
       "images": [
         {
@@ -91,7 +91,7 @@
       "_template": "header"
     },
     {
-      "width": "full",
+      "width": "wide",
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090530/Turtle_xbmrsw.jpg"
@@ -117,7 +117,7 @@
       "_template": "header"
     },
     {
-      "width": "full",
+      "width": "wide",
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779091466/Penguins_fkxosq.jpg"
@@ -143,7 +143,7 @@
       "_template": "header"
     },
     {
-      "width": "full",
+      "width": "wide",
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779089830/Kingfishers_dzxlyb.jpg"
@@ -221,7 +221,7 @@
       "_template": "header"
     },
     {
-      "width": "full",
+      "width": "wide",
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090758/Hornbill_leidsw.jpg"
@@ -273,7 +273,7 @@
       "_template": "header"
     },
     {
-      "width": "full",
+      "width": "wide",
       "orientation": "landscape",
       "images": [
         {
