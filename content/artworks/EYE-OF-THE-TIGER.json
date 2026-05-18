@@ -47,7 +47,7 @@
       "orientation": "landscape",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090192/Tiger_Full_n4svea.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779095746/Tiger_Full_p2k6cz.jpg"
         }
       ],
       "_template": "image"
@@ -286,6 +286,23 @@
       "leftColumn": "*Stillness is not weakness. To disappear is an art. Not all predators chase. Some wait. Some become.*\n",
       "rightColumn": "The Venus Flytrap doesn’t snap at chance. It waits, measuring the weight of movement, deciding with quiet calculation, three touches, then silence. The Pitcher Plant doesn’t hunt, it invites. One step in, and there’s no step out. The Green Tree Python wraps itself into the forest, not hidden, but indistinguishable. A coil so still, it becomes branch, then strike. Each one a lesson in patience, a masterclass in disguise.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090192/Tiger_Full_n4svea.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "desktopSpace": "48",
+      "_template": "space"
+    },
+    {
+      "desktopSpace": "48",
+      "_template": "space"
     }
   ]
 }
