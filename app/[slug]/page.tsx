@@ -37,11 +37,6 @@ const pageCopy = {
     title: 'Cart',
     description: 'Cart content is not built yet. This page currently exists to validate route-to-route transitions.',
   },
-  contact: {
-    eyebrow: 'Utility',
-    title: 'Contact',
-    description: 'Contact content is not built yet. This page currently exists to validate route-to-route transitions.',
-  },
 } as const;
 
 type PageSlug = keyof typeof pageCopy;

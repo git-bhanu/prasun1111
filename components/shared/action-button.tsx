@@ -7,7 +7,7 @@ import { Icon, type IconName } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
 export type ActionButtonVariant = "solid" | "ghost";
-export type ActionButtonColor = "black" | "orange" | "blue" | "white";
+export type ActionButtonColor = "black" | "orange" | "blue" | "white" | "outlined";
 
 const buttonHover = {
   y: -1,
@@ -45,6 +45,10 @@ const solidColors: Record<ActionButtonColor, { button: string; icon: string }> =
       button: "bg-white text-black hover:bg-white/95",
       icon: "text-black",
     },
+    outlined: {
+      button: "bg-[#F9F9F9] text-black hover:bg-black/95 hover:text-white",
+      icon: "",
+    },
   };
 
 const ghostColors: Record<
@@ -70,6 +74,11 @@ const ghostColors: Record<
     text: "text-white",
     icon: "text-white",
     circle: "group-hover:bg-white group-hover:text-black",
+  },
+  outlined: {
+    text: "text-black",
+    icon: "text-black",
+    circle: "group-hover:bg-black group-hover:text-white",
   },
 };
 
@@ -172,12 +181,12 @@ export function ActionButton({
     return (
       <span
         className={cn(
-          "inline-flex size-[15px] md:size-[18px] shrink-0 items-center justify-center",
+          "inline-flex shrink-0 items-center justify-center",
           solidColors[color].icon,
         )}
         aria-hidden="true"
       >
-        <Icon name={icon} size={24} color="currentColor" />
+        <Icon name={icon} size={18} color="currentColor" />
       </span>
     );
   };

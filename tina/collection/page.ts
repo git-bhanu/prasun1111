@@ -508,6 +508,128 @@ const designSliderBlock: Template = {
   ],
 };
 
+const contactBlock: Template = {
+  name: 'contact',
+  label: 'Contact',
+  fields: [
+    {
+      type: 'rich-text',
+      label: 'Heading',
+      name: 'heading',
+      overrides: {
+        toolbar: ['italic'],
+      },
+    },
+    {
+      type: 'rich-text',
+      label: 'Description',
+      name: 'body',
+      overrides: {
+        toolbar: ['bold', 'italic'],
+      },
+    },
+    {
+      type: 'string',
+      label: 'Reach Out Button Label',
+      name: 'reachOutLabel',
+    },
+    {
+      type: 'string',
+      label: 'Reach Out Button Link',
+      name: 'reachOutHref',
+    },
+    {
+      type: 'string',
+      label: 'Mail Button Label',
+      name: 'mailLabel',
+    },
+    {
+      type: 'string',
+      label: 'Mail Button Link',
+      name: 'mailHref',
+    },
+    {
+      type: 'object',
+      label: 'Venture Cards',
+      name: 'ventures',
+      list: true,
+      ui: {
+        itemProps: (item) => ({ label: item?.title || 'Venture' }),
+      },
+      fields: [
+        {
+          type: 'image',
+          label: 'Logo',
+          name: 'logo',
+        },
+        {
+          type: 'string',
+          label: 'Era (e.g. 2010-PRESENT)',
+          name: 'era',
+        },
+        {
+          type: 'string',
+          label: 'Title',
+          name: 'title',
+        },
+        {
+          type: 'string',
+          label: 'Website Label',
+          name: 'websiteLabel',
+        },
+        {
+          type: 'string',
+          label: 'Link',
+          name: 'href',
+        },
+        {
+          type: 'string',
+          label: 'Hover Background Color',
+          name: 'hoverColor',
+          description: 'Background color of the card on hover. e.g. #f5e6d0',
+          ui: { component: 'color' },
+        },
+      ],
+    },
+    {
+      type: 'object',
+      label: 'Social Links',
+      name: 'socialLinks',
+      list: true,
+      ui: {
+        itemProps: (item) => ({ label: item?.platform || 'Social link' }),
+      },
+      fields: [
+        {
+          type: 'string',
+          label: 'Platform',
+          name: 'platform',
+          options: [
+            { label: 'Gmail', value: 'gmail' },
+            { label: 'Instagram', value: 'instagram' },
+            { label: 'LinkedIn', value: 'linkedin' },
+            { label: 'Facebook', value: 'facebook' },
+            { label: 'WhatsApp', value: 'whatsapp' },
+            { label: 'YouTube', value: 'youtube' },
+          ],
+        },
+        {
+          type: 'string',
+          label: 'Link',
+          name: 'href',
+        },
+        {
+          type: 'string',
+          label: 'Icon Hover Color',
+          name: 'hoverColor',
+          description: 'Color the icon changes to on hover. Defaults to the platform brand color.',
+          ui: { component: 'color' },
+        },
+      ],
+    },
+  ],
+};
+
 const shopBlock: Template = {
   name: 'shop',
   label: 'Shop',
@@ -718,7 +840,7 @@ const Page: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock, designSliderBlock, shopBlock],
+      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock, designSliderBlock, shopBlock, contactBlock],
     },
   ],
 };
