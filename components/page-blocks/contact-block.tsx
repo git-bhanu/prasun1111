@@ -81,6 +81,7 @@ export function ContactBlock({ block }: { block: PageBlocksContact }) {
                 icon="addCall"
                 label={block.reachOutLabel ?? "REACH OUT"}
                 href={block.reachOutHref ?? "#"}
+                target="_blank"
                 dataTinaField={tinaField(block, "reachOutHref")}
               />
               <ActionButton

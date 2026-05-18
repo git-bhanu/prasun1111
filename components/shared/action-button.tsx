@@ -95,6 +95,7 @@ export interface ActionButtonProps {
   label?: string | null;
   subLabel?: string | null;
   href?: string | null;
+  target?: string;
   fullWidth?: boolean;
   onClick?: () => void;
   className?: string;
@@ -109,6 +110,7 @@ export function ActionButton({
   label,
   subLabel,
   href,
+  target,
   fullWidth = false,
   onClick,
   className,
@@ -159,6 +161,7 @@ export function ActionButton({
       return (
         <Link
           href={href}
+          target={target}
           className={ghostClassName}
           data-tina-field={dataTinaField}
         >
@@ -231,6 +234,7 @@ export function ActionButton({
       >
         <Link
           href={href}
+          target={target}
           className={solidClassName}
           data-tina-field={dataTinaField}
         >
