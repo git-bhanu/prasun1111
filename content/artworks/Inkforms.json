@@ -2,6 +2,10 @@
   "title": "Inkforms",
   "sortOrder": 3,
   "slug": "inkforms",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779106996/imgi_7_033_xnj5fv.jpg",
+  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779106996/imgi_7_033_xnj5fv.jpg",
+  "displaySize": "large",
+  "orientation": "landscape",
   "printsAvailable": true,
   "tags": [
     {
@@ -70,6 +74,53 @@
       "font": "sedan",
       "heading": "It doesn’t stay contained it reaches, extends, unfolds what was within starts becoming everything around it\n",
       "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "SETTLE\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779106574/Settle_vhd2ng.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h2",
+      "font": "sedan",
+      "heading": "What remains is quieter not everything leaves some things stay.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "ROOT\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779106826/ROOT_krfw8j.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h2",
+      "font": "sedan",
+      "heading": "Not separate anymore what holds you, steadies you slowly, quietly you begin to take root.\n",
+      "_template": "header"
+    },
+    {
+      "desktopSpace": "48",
+      "mobileSpace": "32",
+      "_template": "space"
     }
   ]
 }
