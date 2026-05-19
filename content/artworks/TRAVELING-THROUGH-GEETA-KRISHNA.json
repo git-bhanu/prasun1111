@@ -18,8 +18,106 @@
   ],
   "blocks": [
     {
-      "heading": "hello\n",
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "TRAVELING THROUGH GEETA\n",
       "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "This artwork began as an exploration of the Bhagavad Gita through the creation of the Vishwaroop. More than illustrating mythology, I wanted to interpret its philosophy through a contemporary lens and understand how its teachings continue to exist within modern life.\n",
+      "_template": "header"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779175583/KrishnaC_wnv5vs.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "LIFE THROUGH ACTION\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Karma & Process\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "While creating this piece, I found myself drawn toward the Gita’s understanding of action. The process became less about chasing outcome sand more about  \n",
+      "rightColumn": "surrendering to the integrity of the act itself — allowing creation to unfold without attachment to results.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h2",
+      "heading": "To me, the Gita is not confined to history or scripture. Its ideas surrounding fear, doubt, purpose, and responsibility remain deeply human and continue to offer clarity even within the complexities of contemporary existence.\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "orientation": "landscape",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779175860/KrishnaD_fk7eug.jpg"
+        },
+        {}
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "ARJUN WITHIN / THE PHYSICAL SELF\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "I interpreted Arjun as the human self shaped by emotion, attachment, identity, and uncertainty. \n",
+      "rightColumn": "He represents the part of us constantly navigating conflict while trying to make sense of our responsibilities and choices.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h2",
+      "font": "sedan",
+      "heading": "Every decision, struggle, and internal conflict became its own battlefield where the dialogue between fear and clarity continuously unfolds.\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779176050/KrishnaB_byx9wi.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779176057/KrishnaA_tqso0m.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "This piece is not about retelling scripture literally. It is about experiencing the Gita as a living philosophy that continues to move through thought, action, and self-reflection, shaping the way we understand ourselves and the world around us.\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779176096/Krishna_1_loktcg.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "youtubeUrl": "https://www.youtube.com/watch?v=T1I_wrNcvTo",
+      "duration": "6MIN. 10SEC.",
+      "_template": "video"
     }
   ]
 }
