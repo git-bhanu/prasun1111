@@ -101,7 +101,7 @@ export function ArtworkBentoCard({
             src={coverImage}
             alt={coverImageAlt ?? title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover"
             sizes={imageSizes[size]}
           />
         ) : (

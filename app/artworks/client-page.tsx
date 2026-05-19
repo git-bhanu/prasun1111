@@ -18,10 +18,10 @@ import type {
   ArtworkConnectionQuery,
   ArtworkConnectionQueryVariables,
 } from "@/tina/__generated__/types";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import gsap from "gsap";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTina } from "tinacms/dist/react";
 
 type ArtworkNode = NonNullable<
@@ -50,16 +50,33 @@ export default function ArtworksClientPage(props: Props) {
 
 function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
   const { data: tinaData } = useTina({ query, data, variables });
-  const router = useRouter();
   const searchParams = useSearchParams();
+
+  const backdropRef = useRef<HTMLDivElement | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
   const detailScrollRef = useRef<HTMLDivElement | null>(null);
+  const isOpenRef = useRef(false);
+
+  useLayoutEffect(() => {
+    if (backdropRef.current) gsap.set(backdropRef.current, { autoAlpha: 0 });
+    if (closeBtnRef.current) gsap.set(closeBtnRef.current, { autoAlpha: 0 });
+    if (panelRef.current) gsap.set(panelRef.current, { autoAlpha: 0, y: "100%" });
+  }, []);
+
   const [selectedSlug, setSelectedSlug] = useState<string | null>(
     () => searchParams?.get("artwork") ?? null,
   );
+  const [displayArtwork, setDisplayArtwork] = useState<ArtworkNode | null>(null);
 
   useEffect(() => {
-    setSelectedSlug(searchParams?.get("artwork") ?? null);
-  }, [searchParams]);
+    const handlePop = () => {
+      const params = new URLSearchParams(window.location.search);
+      setSelectedSlug(params.get("artwork") ?? null);
+    };
+    window.addEventListener("popstate", handlePop);
+    return () => window.removeEventListener("popstate", handlePop);
+  }, []);
 
   const artworks: ArtworkNode[] = (tinaData.artworkConnection.edges ?? [])
     .map((e) => e?.node)
@@ -79,37 +96,90 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
 
   const selectedArtwork = selectedIndex >= 0 ? artworks[selectedIndex] : null;
 
+  const animateIn = useCallback(() => {
+    const panel = panelRef.current;
+    const backdrop = backdropRef.current;
+    const closeBtn = closeBtnRef.current;
+    if (!panel || !backdrop || !closeBtn) return;
+
+    const skip = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+    if (skip) {
+      gsap.set(panel, { y: 0, autoAlpha: 1 });
+      gsap.set(backdrop, { autoAlpha: 1 });
+      gsap.set(closeBtn, { autoAlpha: 1, scale: 1 });
+    } else {
+      gsap.fromTo(panel, { y: "100%", autoAlpha: 1 }, { y: 0, duration: 0.45, ease: "expo.out" });
+      gsap.fromTo(backdrop, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.inOut" });
+      gsap.fromTo(closeBtn, { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "expo.out" });
+    }
+
+    isOpenRef.current = true;
+  }, []);
+
+  const animateOut = useCallback((onComplete: () => void) => {
+    const panel = panelRef.current;
+    const backdrop = backdropRef.current;
+    const closeBtn = closeBtnRef.current;
+
+    const finish = () => {
+      if (panel) gsap.set(panel, { autoAlpha: 0 });
+      if (backdrop) gsap.set(backdrop, { autoAlpha: 0 });
+      if (closeBtn) gsap.set(closeBtn, { autoAlpha: 0 });
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+      isOpenRef.current = false;
+      onComplete();
+    };
+
+    if (!panel || !backdrop || !closeBtn) { finish(); return; }
+
+    const skip = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (skip) { finish(); return; }
+
+    gsap.timeline({ onComplete: finish })
+      .fromTo(panel, { y: 0 }, { y: "100%", duration: 0.45, ease: "expo.in" }, 0)
+      .fromTo(backdrop, { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.3, ease: "power2.inOut" }, 0)
+      .fromTo(closeBtn, { autoAlpha: 1, scale: 1 }, { autoAlpha: 0, scale: 0.9, duration: 0.2, ease: "power2.in" }, 0);
+  }, []);
+
+  const prevSlugRef = useRef<string | null>(null);
+
+  useLayoutEffect(() => {
+    const prev = prevSlugRef.current;
+    prevSlugRef.current = selectedSlug;
+
+    if (selectedSlug && selectedArtwork) {
+      setDisplayArtwork(selectedArtwork);
+      if (!isOpenRef.current) animateIn();
+    } else if (!selectedSlug && prev) {
+      animateOut(() => setDisplayArtwork(null));
+    }
+  }, [selectedSlug, selectedArtwork, animateIn, animateOut]);
+
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+  }, []);
+
   const goTo = (slug: string) => {
     setSelectedSlug(slug);
-    router.push(`/artworks?artwork=${encodeURIComponent(slug)}`, { scroll: false });
+    window.history.pushState({}, "", `/artworks?artwork=${encodeURIComponent(slug)}`);
   };
   const close = () => {
     setSelectedSlug(null);
-    router.push("/artworks", { scroll: false });
+    window.history.pushState({}, "", "/artworks");
   };
-  const prev = () =>
-    selectedIndex > 0 && goTo(artworkSlug(artworks[selectedIndex - 1]));
-  const next = () =>
-    selectedIndex < artworks.length - 1 &&
-    goTo(artworkSlug(artworks[selectedIndex + 1]));
 
-  useLayoutEffect(() => {
-    if (!selectedSlug) return;
-    const y = window.scrollY;
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${y}px`;
-    document.body.style.width = "100%";
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      document.body.style.overflow = "";
-      window.scrollTo(0, y);
-    };
-  }, [selectedSlug]);
-
-  const prefersReducedMotion = useReducedMotion();
+  const displayIndex = displayArtwork
+    ? artworks.findIndex((a) => artworkSlug(a) === artworkSlug(displayArtwork))
+    : -1;
 
   return (
     <>
@@ -125,58 +195,39 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
         />
       )}
 
-      <AnimatePresence>
-        {selectedSlug && selectedArtwork && (
-          <>
-            <motion.div
-              key="artwork-backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ ease: "easeInOut", duration: 0.3 }}
-              onClick={close}
-              className="fixed inset-0 z-[99] bg-black/60"
-            />
-            <motion.button
-              key="artwork-close-btn"
-              type="button"
-              onClick={close}
-              aria-label="Close overlay"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed right-6 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white md:right-36"
-            >
-              <Icon name="pinchInZoom" size={28} color="#fff" />
-            </motion.button>
-            <motion.div
-              key="artwork-detail"
-              initial={{ y: prefersReducedMotion ? 0 : "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: prefersReducedMotion ? 0 : "100%" }}
-              transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.45 }}
-              className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
-              ref={(el) => {
-                detailScrollRef.current = el as HTMLDivElement | null;
-              }}
-            >
-              <DetailPanel
-                artwork={selectedArtwork}
-                onClose={close}
-                onPrev={selectedIndex > 0 ? prev : undefined}
-                onNext={selectedIndex < artworks.length - 1 ? next : undefined}
-                scrollToTop={() =>
-                  detailScrollRef.current?.scrollTo({
-                    top: 0,
-                    behavior: "smooth",
-                  })
-                }
-              />
-            </motion.div>
-          </>
+      <div
+        ref={backdropRef}
+        onClick={close}
+        className="fixed inset-0 z-[99] bg-black/60"
+      />
+      <button
+        ref={closeBtnRef}
+        type="button"
+        onClick={close}
+        aria-label="Close overlay"
+        className="fixed right-6 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white md:right-36"
+      >
+        <Icon name="pinchInZoom" size={28} color="#fff" />
+      </button>
+      <div
+        ref={(el) => {
+          panelRef.current = el;
+          detailScrollRef.current = el;
+        }}
+        className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
+      >
+        {displayArtwork && (
+          <DetailPanel
+            artwork={displayArtwork}
+            onClose={close}
+            onPrev={displayIndex > 0 ? () => goTo(artworkSlug(artworks[displayIndex - 1])) : undefined}
+            onNext={displayIndex < artworks.length - 1 ? () => goTo(artworkSlug(artworks[displayIndex + 1])) : undefined}
+            scrollToTop={() =>
+              detailScrollRef.current?.scrollTo({ top: 0, behavior: "smooth" })
+            }
+          />
         )}
-      </AnimatePresence>
+      </div>
     </>
   );
 }
@@ -202,8 +253,8 @@ function DetailPanel({
 }: {
   artwork: ArtworkNode;
   onClose: () => void;
-  onPrev?: (() => void) | false;
-  onNext?: (() => void) | false;
+  onPrev?: () => void;
+  onNext?: () => void;
   scrollToTop?: () => void;
 }) {
   const tags = (artwork.tags ?? [])
