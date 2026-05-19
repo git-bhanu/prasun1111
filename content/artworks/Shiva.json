@@ -2,8 +2,18 @@
   "title": "Shiva",
   "sortOrder": 5,
   "slug": "shiva",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779174556/Shiva_pmm8bd.jpg",
+  "displaySize": "hero",
   "mostViewed": true,
   "printsAvailable": true,
+  "tags": [
+    {
+      "tag": "content/tags/PRINTS-AVAILABLE.json"
+    },
+    {
+      "tag": "content/tags/MYTHOLOGY.json"
+    }
+  ],
   "blocks": [
     {
       "heading": "hello2\n",
