@@ -121,6 +121,28 @@
       "desktopSpace": "48",
       "mobileSpace": "32",
       "_template": "space"
+    },
+    {
+      "width": "wide",
+      "orientation": "portrait",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779180373/Ink_Artwork_Posters_4_qqskvj.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779180378/Ink_Artwork_Posters_1_tpvekt.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779180401/Ink_Artwork_Posters_2_uzaa0c.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779180410/Ink_Artwork_Posters_3_qasoc8.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779180417/Ink_Artwork_Posters_5_rd20wi.jpg"
+        }
+      ],
+      "_template": "image"
     }
   ]
 }
