@@ -18,6 +18,7 @@
   ],
   "blocks": [
     {
+      "heading": "hello\n",
       "_template": "header"
     }
   ]
