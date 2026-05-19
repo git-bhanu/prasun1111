@@ -92,10 +92,10 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779176050/KrishnaB_byx9wi.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779176057/KrishnaA_tqso0m.jpg"
         },
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779176057/KrishnaA_tqso0m.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177397/Krishna3_u6bf92.jpg"
         }
       ],
       "_template": "image"
@@ -115,6 +115,7 @@
       "_template": "image"
     },
     {
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177536/Krishna_Thumbnail_S.jpg_exyvdv.jpg",
       "youtubeUrl": "https://www.youtube.com/watch?v=T1I_wrNcvTo",
       "duration": "6MIN. 10SEC.",
       "_template": "video"
