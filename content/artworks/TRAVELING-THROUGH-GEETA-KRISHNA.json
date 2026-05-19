@@ -106,10 +106,23 @@
       "_template": "header"
     },
     {
-      "width": "full",
+      "width": "wide",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779176096/Krishna_1_loktcg.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177819/Krishna22_oqvs2j.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "wide",
+      "orientation": "portrait",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177645/Krishna_Bento_etuxoc.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177765/Portait_1_nvdico.jpg"
         }
       ],
       "_template": "image"
