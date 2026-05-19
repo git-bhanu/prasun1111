@@ -2,11 +2,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 const pageCopy = {
-  about: {
-    eyebrow: 'Studio',
-    title: 'About',
-    description: 'A minimal route placeholder so App Router navigations stay client-side and view transitions can run.',
-  },
   installations: {
     eyebrow: 'Collection',
     title: 'Installations',

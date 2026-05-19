@@ -630,6 +630,139 @@ const contactBlock: Template = {
   ],
 };
 
+const aboutHeroBlock: Template = {
+  name: 'aboutHero',
+  label: 'About Hero',
+  fields: [
+    {
+      type: 'string',
+      label: 'Eyebrow',
+      name: 'eyebrow',
+    },
+    {
+      type: 'rich-text',
+      label: 'Statement',
+      name: 'statement',
+      required: true,
+      overrides: {
+        toolbar: ['italic'],
+      },
+    },
+    {
+      type: 'rich-text',
+      label: 'Body',
+      name: 'body',
+      overrides: {
+        toolbar: ['bold', 'italic'],
+      },
+    },
+  ],
+};
+
+const mediaBlock: Template = {
+  name: 'media',
+  label: 'Media',
+  fields: [
+    {
+      type: 'image',
+      label: 'Image',
+      name: 'image',
+      required: true,
+    },
+    {
+      type: 'string',
+      label: 'Alt Text',
+      name: 'alt',
+    },
+    {
+      type: 'string',
+      label: 'Size',
+      name: 'size',
+      options: [
+        { label: 'Full Width', value: 'full' },
+        { label: 'Contained', value: 'contained' },
+      ],
+    },
+  ],
+};
+
+const cvBioBlock: Template = {
+  name: 'cvBio',
+  label: 'CV + Bio',
+  fields: [
+    {
+      type: 'object',
+      label: 'CV Entries',
+      name: 'entries',
+      list: true,
+      ui: {
+        itemProps: (item) => ({ label: item?.organization || 'Entry' }),
+      },
+      fields: [
+        {
+          type: 'string',
+          label: 'Organization',
+          name: 'organization',
+        },
+        {
+          type: 'string',
+          label: 'Role',
+          name: 'role',
+        },
+        {
+          type: 'string',
+          label: 'Period',
+          name: 'period',
+        },
+      ],
+    },
+    {
+      type: 'rich-text',
+      label: 'Body',
+      name: 'body',
+      overrides: {
+        toolbar: ['bold', 'italic'],
+      },
+    },
+  ],
+};
+
+const statementCtaBlock: Template = {
+  name: 'statementCta',
+  label: 'Statement + CTA',
+  fields: [
+    {
+      type: 'rich-text',
+      label: 'Statement',
+      name: 'statement',
+      required: true,
+      overrides: {
+        toolbar: ['bold', 'italic'],
+      },
+    },
+    {
+      type: 'string',
+      label: 'Primary Button Label',
+      name: 'primaryLabel',
+    },
+    {
+      type: 'string',
+      label: 'Primary Button Link',
+      name: 'primaryHref',
+    },
+    {
+      type: 'string',
+      label: 'Secondary Button Label',
+      name: 'secondaryLabel',
+    },
+    {
+      type: 'string',
+      label: 'Secondary Button Link',
+      name: 'secondaryHref',
+    },
+  ],
+};
+
 const shopBlock: Template = {
   name: 'shop',
   label: 'Shop',
@@ -840,7 +973,7 @@ const Page: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock, designSliderBlock, shopBlock, contactBlock],
+      templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock, designSliderBlock, shopBlock, contactBlock, aboutHeroBlock, mediaBlock, cvBioBlock, statementCtaBlock],
     },
   ],
 };
