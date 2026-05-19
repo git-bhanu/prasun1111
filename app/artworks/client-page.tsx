@@ -21,7 +21,7 @@ import type {
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useLayoutEffect, useRef } from "react";
 import { useTina } from "tinacms/dist/react";
 
 type ArtworkNode = NonNullable<
@@ -74,21 +74,27 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
   const selectedArtwork = selectedIndex >= 0 ? artworks[selectedIndex] : null;
 
   const goTo = (slug: string) =>
-    router.push(`/artworks?artwork=${encodeURIComponent(slug)}`);
-  const close = () => router.push("/artworks");
+    router.push(`/artworks?artwork=${encodeURIComponent(slug)}`, { scroll: false });
+  const close = () => router.push("/artworks", { scroll: false });
   const prev = () =>
     selectedIndex > 0 && goTo(artworkSlug(artworks[selectedIndex - 1]));
   const next = () =>
     selectedIndex < artworks.length - 1 &&
     goTo(artworkSlug(artworks[selectedIndex + 1]));
 
-  useEffect(() => {
-    const value = selectedSlug ? "hidden" : "";
-    document.body.style.overflow = value;
-    document.documentElement.style.overflow = value;
+  useLayoutEffect(() => {
+    if (!selectedSlug) return;
+    const y = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${y}px`;
+    document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
     return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
       document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
+      window.scrollTo(0, y);
     };
   }, [selectedSlug]);
 
@@ -138,7 +144,7 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
               initial={{ y: prefersReducedMotion ? 0 : "100%" }}
               animate={{ y: 0 }}
               exit={{ y: prefersReducedMotion ? 0 : "100%" }}
-              transition={{ ease: "easeInOut", duration: 0.2 }}
+              transition={{ ease: "easeInOut", duration: 0.1 }}
               className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
               ref={(el) => {
                 detailScrollRef.current = el as HTMLDivElement | null;
