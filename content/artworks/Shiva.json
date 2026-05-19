@@ -18,6 +18,11 @@
     {
       "heading": "hello2\n",
       "_template": "header"
+    },
+    {
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778848578/Rama_Thumbnail_com3tq.jpg",
+      "videoUrl": "https://res.cloudinary.com/dkxfwnlbz/video/upload/v1779223644/WhatsApp_Video_2026-05-19_at_11.24.47_y1gsn3.mp4",
+      "_template": "video"
     }
   ]
 }

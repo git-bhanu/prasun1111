@@ -1,6 +1,7 @@
 "use client";
 
 import { ActionButton } from "@/components/shared/action-button";
+import { CloudinaryPlayer } from "@/components/blocks/cloudinary-player";
 import { tinaField } from "tinacms/dist/react";
 import Image from "next/image";
 import { useState } from "react";
@@ -8,6 +9,7 @@ import { useState } from "react";
 type VideoBlockData = {
   posterImage?: string | null;
   youtubeUrl?: string | null;
+  videoUrl?: string | null;
   duration?: string | null;
 };
 
@@ -25,9 +27,26 @@ function extractYouTubeId(url: string): string | null {
 export function VideoBlock({ block }: Props) {
   const [playing, setPlaying] = useState(false);
 
-  if (!block.posterImage && !block.youtubeUrl) return null;
+  const hasYouTube = Boolean(block.youtubeUrl);
+  const hasCloudinary = Boolean(block.videoUrl);
+  const hasPoster = Boolean(block.posterImage);
+
+  if (!hasPoster && !hasYouTube && !hasCloudinary) return null;
 
   const videoId = block.youtubeUrl ? extractYouTubeId(block.youtubeUrl) : null;
+
+  if (hasCloudinary) {
+    return (
+      <div
+        className="flex flex-col gap-4 w-full"
+        data-tina-field={tinaField(block, "videoUrl")}
+      >
+        <div className="relative w-full overflow-hidden rounded-2xl bg-black">
+          <CloudinaryPlayer src={block.videoUrl!} poster={block.posterImage} />
+        </div>
+      </div>
+    );
+  }
 
   const button = videoId && !playing ? (
     <ActionButton

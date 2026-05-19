@@ -15,6 +15,12 @@ export const videoBlock: Template = {
       label: 'YouTube URL',
     },
     {
+      type: 'image',
+      name: 'videoUrl',
+      label: 'Cloudinary Video',
+      description: 'Select a Cloudinary video asset.',
+    },
+    {
       type: 'string',
       name: 'duration',
       label: 'Duration (e.g. 8MIN. 23 SEC.)',
