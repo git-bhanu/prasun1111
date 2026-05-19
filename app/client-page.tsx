@@ -40,7 +40,7 @@ export default function ClientPage(props: ClientPageProps) {
           case 'PageBlocksFeaturedWorkSlider':
             return (
               <SectionReveal key={`${block.__typename}-${index}`}>
-                <ArtworkSliderBlock block={block} />
+                <ArtworkSliderBlock block={block as any} />
               </SectionReveal>
             );
           case 'PageBlocksFeaturedSlider':
