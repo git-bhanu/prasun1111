@@ -9,7 +9,10 @@ import React from 'react';
 import '@/styles.css';
 
 export const metadata: Metadata = {
-  title: 'Prasun1111',
+  title: {
+    default: 'Prasun1111',
+    template: '%s - Prasun1111',
+  },
   description: 'Official website of Prasun1111 featuring artworks, installations, films, design, and writings.',
   icons: {
     icon: [{ url: '/favicon/favicon_00.png', type: 'image/png' }],

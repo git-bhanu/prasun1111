@@ -55,9 +55,12 @@ export function CvBioBlock({ block }: { block: PageBlocksCvBio }) {
             <SectionReveal delay={0.15}>
               <div
                 data-tina-field={tinaField(block, "body")}
-                className="font-sedan text-[16px] leading-tight md:text-4xl"
+                className="font-sedan text-[16px] leading-relaxed md:text-4xl"
               >
-                <TinaMarkdown content={block.body} components={bodyComponents} />
+                <TinaMarkdown
+                  content={block.body}
+                  components={bodyComponents}
+                />
               </div>
             </SectionReveal>
           ) : null}

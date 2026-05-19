@@ -1,5 +1,9 @@
+import type { Metadata } from 'next';
+
 import client from '@/tina/client';
 import ContactClientPage from './client-page';
+
+export const metadata: Metadata = { title: 'Contact' };
 
 export default async function ContactPage() {
   const result = await client.queries.page(

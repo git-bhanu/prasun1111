@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 const pageCopy = {
@@ -44,6 +45,12 @@ type RouteProps = {
 
 export function generateStaticParams() {
   return Object.keys(pageCopy).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {
+  const { slug } = await params;
+  const page = pageCopy[slug as PageSlug];
+  return { title: page?.title ?? slug };
 }
 
 export default async function SectionPage({ params }: RouteProps) {
