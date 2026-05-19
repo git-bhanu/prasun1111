@@ -12,17 +12,35 @@ import { SectionMasthead } from '@/components/shared/section-masthead';
 import { useSiteSettings } from '@/components/site-settings-provider';
 import type { PageBlocksFeaturedWorkSlider } from '@/tina/__generated__/types';
 
-type FeaturedWorkSliderBlockProps = {
+type ArtworkSliderBlockProps = {
   block: PageBlocksFeaturedWorkSlider;
 };
 
-type FeaturedSlide = NonNullable<NonNullable<PageBlocksFeaturedWorkSlider['slides']>[number]>;
+type SlideArtwork = {
+  __typename?: string | null;
+  title: string;
+  slug?: string | null;
+  tags?: Array<{
+    tag?: { title: string; color?: string | null } | null;
+  } | null> | null;
+};
+
+type FeaturedSlide = {
+  __typename?: string | null;
+  artwork?: SlideArtwork | null;
+  backgroundType?: string | null;
+  image?: string | null;
+  imageAlt?: string | null;
+  videoUrl?: string | null;
+  videoPoster?: string | null;
+};
 
 const slideEase = [0.22, 1, 0.36, 1] as const;
 
-export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps) {
+export function ArtworkSliderBlock({ block }: ArtworkSliderBlockProps) {
   const { sliders } = useSiteSettings();
-  const slides = block.slides?.filter((slide): slide is FeaturedSlide => Boolean(slide?.title)) ?? [];
+  const slides = (block.slides as Array<FeaturedSlide | null> | null | undefined)
+    ?.filter((slide): slide is FeaturedSlide => Boolean(slide?.artwork)) ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [autoplayResetKey, setAutoplayResetKey] = useState(0);
@@ -57,11 +75,14 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
   const canNavigate = slides.length > 1;
   const showVideo = activeSlide.backgroundType === 'video' && Boolean(activeSlide.videoUrl);
   const mediaField = showVideo ? 'videoUrl' : 'image';
-  const tags = activeSlide.tags?.filter((tag): tag is string => Boolean(tag)) ?? [];
-  const tagItems = tags.map((tag) => ({
-    title: tag,
-    color: tag.toLowerCase().includes('available') ? ('blue' as const) : ('orange' as const),
-  }));
+  const artwork = activeSlide.artwork ?? null;
+  const slideTitle = artwork?.title ?? '';
+  const slideHref = artwork?.slug ? `/artworks?artwork=${artwork.slug}` : undefined;
+  const tagItems = (artwork?.tags ?? [])
+    .flatMap((t) => {
+      if (!t?.tag?.title) return [];
+      return [{ title: t.tag.title, color: t.tag.color ?? 'orange' }];
+    });
 
   const goToPrevious = () => {
     setDirection(-1);
@@ -87,7 +108,7 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
   const renderMedia = () => (
     <AnimatePresence initial={false} mode='sync'>
       <motion.div
-        key={`${activeIndex}-${activeSlide.image ?? activeSlide.videoUrl ?? activeSlide.title}`}
+        key={`${activeIndex}-${activeSlide.image ?? activeSlide.videoUrl ?? slideTitle}`}
         className='absolute inset-0'
         initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -108,7 +129,7 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
         ) : activeSlide.image ? (
           <Image
             src={activeSlide.image}
-            alt={activeSlide.imageAlt || activeSlide.title}
+            alt={activeSlide.imageAlt || slideTitle}
             fill
             sizes='100vw'
             className='object-cover'
@@ -135,16 +156,14 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
   return (
     <section ref={sectionRef} className='mx-auto w-full bg-white py-8 md:py-0'>
       <div className='md:hidden'>
-        {activeSlide.eyebrow ? (
-          <div data-tina-field={tinaField(activeSlide, 'eyebrow')} className='px-4'>
-            <SectionMasthead
-              index='01'
-              title={activeSlide.eyebrow}
-              size='sm'
-              mobileColor='black'
-            />
-          </div>
-        ) : null}
+        <div className='px-4'>
+          <SectionMasthead
+            index='01'
+            title='ARTWORKS'
+            size='sm'
+            mobileColor='black'
+          />
+        </div>
 
         <div className='relative mt-7 overflow-hidden bg-black h-[165px]' data-tina-field={tinaField(activeSlide, mediaField)}>
           {renderMedia()}
@@ -162,12 +181,12 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
           >
             <ArtworkInfoCard
               asCard={false}
-              title={activeSlide.title}
-              href={activeSlide.href}
-              titleTinaField={tinaField(activeSlide, 'title')}
+              title={slideTitle}
+              href={slideHref}
+              titleTinaField={artwork ? tinaField(artwork as any, 'title') : undefined}
               titleClassName='text-[18px]'
               tags={tagItems}
-              tagsTinaField={tinaField(activeSlide, 'tags')}
+              tagsTinaField={artwork ? tinaField(artwork as any, 'tags') : undefined}
               tabClassName='font-medium'
             />
           </motion.div>
@@ -180,16 +199,13 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
         {renderMedia()}
 
         <div className='relative z-10 flex min-h-[34rem] flex-col justify-between p-6 sm:p-8 md:min-h-[42rem] md:p-10'>
-          {activeSlide.eyebrow ? (
-            <div data-tina-field={tinaField(activeSlide, 'eyebrow')}>
-              <SectionMasthead
-                index={1}
-                title={activeSlide.eyebrow}
-                size='sm'
-
-              />
-            </div>
-          ) : null}
+          <div>
+            <SectionMasthead
+              index={1}
+              title='ARTWORKS'
+              size='sm'
+            />
+          </div>
 
           <div className='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
             <AnimatePresence initial={false} mode='wait' custom={direction}>
@@ -204,12 +220,12 @@ export function FeaturedWorkSliderBlock({ block }: FeaturedWorkSliderBlockProps)
               >
                 <ArtworkInfoCard
                   asCard={false}
-                  title={activeSlide.title}
-                  href={activeSlide.href}
-                  titleTinaField={tinaField(activeSlide, 'title')}
+                  title={slideTitle}
+                  href={slideHref}
+                  titleTinaField={artwork ? tinaField(artwork as any, 'title') : undefined}
                   titleClassName='text-[1.65rem] sm:text-[2rem] leading-[1.1em]'
                   tags={tagItems}
-                  tagsTinaField={tinaField(activeSlide, 'tags')}
+                  tagsTinaField={artwork ? tinaField(artwork as any, 'tags') : undefined}
                 />
               </motion.div>
             </AnimatePresence>

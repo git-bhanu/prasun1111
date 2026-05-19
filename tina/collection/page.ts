@@ -95,7 +95,7 @@ const artistIntroBlock: Template = {
 
 const featuredWorkSliderBlock: Template = {
   name: 'featuredWorkSlider',
-  label: 'Featured Work Slider',
+  label: 'Artwork Slider',
   fields: [
     {
       type: 'object',
@@ -104,37 +104,22 @@ const featuredWorkSliderBlock: Template = {
       list: true,
       ui: {
         itemProps: (item) => {
-          return { label: item?.title || item?.eyebrow || 'Featured slide' };
+          const artworkLabel = item?.artwork
+            ? (item.artwork as string).split('/').pop()?.replace(/\.json$/, '') ?? 'Slide'
+            : null;
+          return { label: artworkLabel || item?.eyebrow || 'Featured slide' };
         },
         defaultItem: {
           eyebrow: 'ARTWORKS',
-          title: 'RAMA / FROM AYODHA TO LANKA',
           backgroundType: 'image',
-          tags: ['ILLUSTRATION', 'MYTHOLOGY', 'PRINTS AVAILABLE'],
         },
       },
       fields: [
         {
-          type: 'string',
-          label: 'Eyebrow',
-          name: 'eyebrow',
-        },
-        {
-          type: 'string',
-          label: 'Title',
-          name: 'title',
-          required: true,
-        },
-        {
-          type: 'string',
-          label: 'Link',
-          name: 'href',
-        },
-        {
-          type: 'string',
-          label: 'Tags',
-          name: 'tags',
-          list: true,
+          type: 'reference',
+          label: 'Artwork',
+          name: 'artwork',
+          collections: ['artwork'],
         },
         {
           type: 'string',

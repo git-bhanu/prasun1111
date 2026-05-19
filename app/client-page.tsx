@@ -3,7 +3,7 @@
 import { ArtistIntroBlock } from '@/components/page-blocks/artist-intro-block';
 import { DesignSliderBlock } from '@/components/page-blocks/design-slider-block';
 import { FeaturedSliderBlock } from '@/components/page-blocks/featured-slider-block';
-import { FeaturedWorkSliderBlock } from '@/components/page-blocks/featured-work-slider-block';
+import { ArtworkSliderBlock } from '@/components/page-blocks/artwork-slider-block';
 import { HeroStatementBlock } from '@/components/page-blocks/hero-statement-block';
 import { InstallationSliderBlock } from '@/components/page-blocks/installation-slider-block';
 import { MovieListBlock } from '@/components/page-blocks/movie-list-block';
@@ -40,7 +40,7 @@ export default function ClientPage(props: ClientPageProps) {
           case 'PageBlocksFeaturedWorkSlider':
             return (
               <SectionReveal key={`${block.__typename}-${index}`}>
-                <FeaturedWorkSliderBlock block={block} />
+                <ArtworkSliderBlock block={block} />
               </SectionReveal>
             );
           case 'PageBlocksFeaturedSlider':
