@@ -21,7 +21,7 @@ import type {
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useLayoutEffect, useRef } from "react";
+import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTina } from "tinacms/dist/react";
 
 type ArtworkNode = NonNullable<
@@ -53,7 +53,13 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const detailScrollRef = useRef<HTMLDivElement | null>(null);
-  const selectedSlug = searchParams?.get("artwork") ?? null;
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(
+    () => searchParams?.get("artwork") ?? null,
+  );
+
+  useEffect(() => {
+    setSelectedSlug(searchParams?.get("artwork") ?? null);
+  }, [searchParams]);
 
   const artworks: ArtworkNode[] = (tinaData.artworkConnection.edges ?? [])
     .map((e) => e?.node)
@@ -73,9 +79,14 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
 
   const selectedArtwork = selectedIndex >= 0 ? artworks[selectedIndex] : null;
 
-  const goTo = (slug: string) =>
+  const goTo = (slug: string) => {
+    setSelectedSlug(slug);
     router.push(`/artworks?artwork=${encodeURIComponent(slug)}`, { scroll: false });
-  const close = () => router.push("/artworks", { scroll: false });
+  };
+  const close = () => {
+    setSelectedSlug(null);
+    router.push("/artworks", { scroll: false });
+  };
   const prev = () =>
     selectedIndex > 0 && goTo(artworkSlug(artworks[selectedIndex - 1]));
   const next = () =>
