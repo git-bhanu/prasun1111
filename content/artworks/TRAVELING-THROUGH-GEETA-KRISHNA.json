@@ -119,10 +119,19 @@
       "orientation": "portrait",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177645/Krishna_Bento_etuxoc.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177765/Portait_1_nvdico.jpg"
         },
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177765/Portait_1_nvdico.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177645/Krishna_Bento_etuxoc.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779179896/Krishna_with_Artist_e1quqz.jpg"
         }
       ],
       "_template": "image"
