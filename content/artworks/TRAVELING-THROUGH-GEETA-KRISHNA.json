@@ -10,10 +10,10 @@
   "printsAvailable": true,
   "tags": [
     {
-      "tag": "content/tags/PRINTS-AVAILABLE.json"
+      "tag": "content/tags/MYTHOLOGY.json"
     },
     {
-      "tag": "content/tags/MYTHOLOGY.json"
+      "tag": "content/tags/PRINTS-AVAILABLE.json"
     }
   ],
   "blocks": [
