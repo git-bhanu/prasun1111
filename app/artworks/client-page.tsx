@@ -144,7 +144,7 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
               initial={{ y: prefersReducedMotion ? 0 : "100%" }}
               animate={{ y: 0 }}
               exit={{ y: prefersReducedMotion ? 0 : "100%" }}
-              transition={{ ease: "easeInOut", duration: 0.1 }}
+              transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.45 }}
               className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
               ref={(el) => {
                 detailScrollRef.current = el as HTMLDivElement | null;

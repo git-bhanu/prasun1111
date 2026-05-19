@@ -1,6 +1,7 @@
 'use client';
 
 import { ContactBlock } from '@/components/page-blocks/contact-block';
+import { SectionReveal } from '@/components/shared/section-reveal';
 import type { PageQuery, PageQueryVariables } from '@/tina/__generated__/types';
 import { useTina } from 'tinacms/dist/react';
 
@@ -19,7 +20,11 @@ export default function ContactClientPage(props: Props) {
         if (!block) return null;
         switch (block.__typename) {
           case 'PageBlocksContact':
-            return <ContactBlock key={index} block={block} />;
+            return (
+              <SectionReveal key={index}>
+                <ContactBlock block={block} />
+              </SectionReveal>
+            );
           default:
             return null;
         }

@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionReveal } from "@/components/shared/section-reveal";
 import { Fragment } from "react";
 import type { Components } from "tinacms/dist/rich-text";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
@@ -149,12 +150,13 @@ export function ArtworkBentoGrid({
       {sections.map((section, sectionIndex) => {
         if (section.type === "quoteBreak") {
           return (
-            <ArtworkQuoteBreak
-              key={sectionIndex}
-              leftText={section.quoteBreak.leftText}
-              rightText={section.quoteBreak.rightText}
-              rightTextFootnote={section.quoteBreak.rightTextFootnote}
-            />
+            <SectionReveal key={sectionIndex}>
+              <ArtworkQuoteBreak
+                leftText={section.quoteBreak.leftText}
+                rightText={section.quoteBreak.rightText}
+                rightTextFootnote={section.quoteBreak.rightTextFootnote}
+              />
+            </SectionReveal>
           );
         }
 

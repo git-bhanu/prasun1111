@@ -8,6 +8,7 @@ import { HeroStatementBlock } from '@/components/page-blocks/hero-statement-bloc
 import { InstallationSliderBlock } from '@/components/page-blocks/installation-slider-block';
 import { MovieListBlock } from '@/components/page-blocks/movie-list-block';
 import { ShopBlock } from '@/components/page-blocks/shop-block';
+import { SectionReveal } from '@/components/shared/section-reveal';
 import type { PageQuery, PageQueryVariables } from '@/tina/__generated__/types';
 import { useTina } from 'tinacms/dist/react';
 
@@ -25,21 +26,53 @@ export default function ClientPage(props: ClientPageProps) {
       {data.page.blocks?.map((block, index) => {
         switch (block?.__typename) {
           case 'PageBlocksHeroStatement':
-            return <HeroStatementBlock key={`${block.__typename}-${index}`} block={block} />;
+            return (
+              <SectionReveal key={`${block.__typename}-${index}`}>
+                <HeroStatementBlock block={block} />
+              </SectionReveal>
+            );
           case 'PageBlocksArtistIntro':
-            return <ArtistIntroBlock key={`${block.__typename}-${index}`} block={block} />;
+            return (
+              <SectionReveal key={`${block.__typename}-${index}`}>
+                <ArtistIntroBlock block={block} />
+              </SectionReveal>
+            );
           case 'PageBlocksFeaturedWorkSlider':
-            return <FeaturedWorkSliderBlock key={`${block.__typename}-${index}`} block={block} />;
+            return (
+              <SectionReveal key={`${block.__typename}-${index}`}>
+                <FeaturedWorkSliderBlock block={block} />
+              </SectionReveal>
+            );
           case 'PageBlocksFeaturedSlider':
-            return <FeaturedSliderBlock key={`${block.__typename}-${index}`} block={block} />;
+            return (
+              <SectionReveal key={`${block.__typename}-${index}`}>
+                <FeaturedSliderBlock block={block} />
+              </SectionReveal>
+            );
           case 'PageBlocksInstallationSlider':
-            return <InstallationSliderBlock key={`${block.__typename}-${index}`} block={block} />;
+            return (
+              <SectionReveal key={`${block.__typename}-${index}`}>
+                <InstallationSliderBlock block={block} />
+              </SectionReveal>
+            );
           case 'PageBlocksMovieList':
-            return <MovieListBlock key={`${block.__typename}-${index}`} block={block} />;
+            return (
+              <SectionReveal key={`${block.__typename}-${index}`}>
+                <MovieListBlock block={block} />
+              </SectionReveal>
+            );
           case 'PageBlocksDesignSlider':
-            return <DesignSliderBlock key={`${block.__typename}-${index}`} block={block} />;
+            return (
+              <SectionReveal key={`${block.__typename}-${index}`}>
+                <DesignSliderBlock block={block} />
+              </SectionReveal>
+            );
           case 'PageBlocksShop':
-            return <ShopBlock key={`${block.__typename}-${index}`} block={block} />;
+            return (
+              <SectionReveal key={`${block.__typename}-${index}`}>
+                <ShopBlock block={block} />
+              </SectionReveal>
+            );
           default:
             return null;
         }

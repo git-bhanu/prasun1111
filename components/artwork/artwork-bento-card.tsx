@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import * as motion from "motion/react-client";
+import { useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { ArtworkInfoCard } from "./artwork-info-card";
 
@@ -66,15 +68,20 @@ export function ArtworkBentoCard({
   const size: DisplaySize = validSizes.includes(displaySize as DisplaySize)
     ? (displaySize as DisplaySize)
     : "medium";
+  const shouldReduce = useReducedMotion();
 
   return (
-    <button
+    <motion.button
       type="button"
       onClick={onClick}
       className={cn(
         "group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black cursor-pointer",
         colSpanClass[size],
       )}
+      initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+      whileInView={shouldReduce ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
     >
       <div
         className={cn(
@@ -83,8 +90,8 @@ export function ArtworkBentoCard({
         )}
       >
         {mostViewed && (
-          <div className="absolute left-3 top-3 z-10 rounded-[20px] bg-white px-[12px] py-[4px] backdrop-blur-sm">
-            <span className="font-space-grotesk text-[10px] uppercase text-black">
+          <div className="absolute left-3 top-3 z-10 rounded-[20px] bg-white px-[12px] pt-[3px] pb-[2px] backdrop-blur-sm">
+            <span className="font-space-grotesk text-[10px] uppercase text-black grid place-items-center">
               Most Viewed
             </span>
           </div>
@@ -111,6 +118,6 @@ export function ArtworkBentoCard({
         asCard
         className="mt-2 rounded-[8px]"
       />
-    </button>
+    </motion.button>
   );
 }
