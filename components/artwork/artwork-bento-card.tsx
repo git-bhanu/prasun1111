@@ -84,7 +84,7 @@ export function ArtworkBentoCard({
       >
         {mostViewed && (
           <div className="absolute left-3 top-3 z-10 rounded-[20px] bg-white px-[12px] py-[4px] backdrop-blur-sm">
-            <span className="font-space-grotesk text-[12px] uppercase text-black">
+            <span className="font-space-grotesk text-[10px] uppercase text-black">
               Most Viewed
             </span>
           </div>
