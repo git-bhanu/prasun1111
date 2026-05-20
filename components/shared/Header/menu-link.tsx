@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { tinaField } from 'tinacms/dist/react';
 
+import { ANNOUNCEMENT_OVERLAY_EVENT } from '@/components/shared/announcement-overlay';
 import type { SiteNavigationLink } from '@/lib/site-settings';
 import { cn } from '@/lib/utils';
 
@@ -11,17 +12,26 @@ type MenuLinkProps = {
   index: string;
   label: string;
   href: string;
+  locked: boolean;
   source?: SiteNavigationLink['source'];
 };
 
-export function MenuLink({ index, label, href, source }: MenuLinkProps) {
+export function MenuLink({ index, label, href, locked, source }: MenuLinkProps) {
   const pathname = usePathname();
   const isActive = pathname === href;
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (locked) {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent(ANNOUNCEMENT_OVERLAY_EVENT));
+    }
+  };
 
   return (
     <Link
       href={href}
       aria-current={isActive ? 'page' : undefined}
+      onClick={handleClick}
       className='font-space-grotesk group flex shrink-0 items-start gap-1 whitespace-nowrap uppercase md:gap-[4.8px]'
     >
       <span

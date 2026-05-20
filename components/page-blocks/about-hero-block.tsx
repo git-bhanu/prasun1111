@@ -31,14 +31,14 @@ export function AboutHeroBlock({ block }: { block: PageBlocksAboutHero }) {
                 {block.eyebrow ? (
                   <p
                     data-tina-field={tinaField(block, "eyebrow")}
-                    className="mb-5 font-space-grotesk text-[10px] uppercase text-brand-blue md:text-[24px]"
+                    className="mb-5 font-space-grotesk text-[10px] uppercase text-brand-blue md:text-[20px]"
                   >
                     {block.eyebrow}
                   </p>
                 ) : null}
                 <h1
                   data-tina-field={tinaField(block, "statement")}
-                  className="font-sedan text-[24px] leading-tight md:text-[80px]"
+                  className="font-sedan text-[32px] leading-tight md:text-[64px]"
                 >
                   <TinaMarkdown
                     content={block.statement}
@@ -52,7 +52,7 @@ export function AboutHeroBlock({ block }: { block: PageBlocksAboutHero }) {
             <SectionReveal delay={0.15}>
               <div
                 data-tina-field={tinaField(block, "body")}
-                className="font-sedan text-[16px] leading-relaxed md:flex md:flex-col md:justify-center md:text-[36px]"
+                className="font-sedan text-[16px] leading-relaxed md:flex md:flex-col md:justify-center md:text-[32px]"
               >
                 <TinaMarkdown
                   content={block.body}

@@ -11,6 +11,7 @@ export type SiteNavigationLink = {
   href: string;
   group: NavigationGroup;
   showInFooter: boolean;
+  locked: boolean;
   source: NavigationLinkSource;
 };
 
@@ -64,6 +65,7 @@ export function normalizeSiteSettings(global: GlobalData): SiteSettings {
       href: link.href,
       group: link.group,
       showInFooter: link.showInFooter ?? false,
+      locked: (link as any).locked ?? false,
       source: link,
     });
 
