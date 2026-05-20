@@ -2,8 +2,8 @@
   "title": "TRAVELING THROUGH GEETA: KRISHNA",
   "sortOrder": 3,
   "slug": "traveling-through-geeta-krishna",
-  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779173363/Krishna_Cover_kamfcg.jpg",
-  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779173368/Krishna_Bento_p7sgnx.jpg",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779262586/Krishna_Cover__blzrss.jpg",
+  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779262587/Portait_2_zvfir6.jpg",
   "displaySize": "medium",
   "orientation": "portrait",
   "mostViewed": true,
@@ -51,7 +51,7 @@
       "_template": "header"
     },
     {
-      "leftColumn": "While creating this piece, I found myself drawn toward the Gita’s understanding of action. The process became less about chasing outcome sand more about  \n",
+      "leftColumn": "While creating this piece, I found myself drawn toward the Gita’s understanding of action. The process became less about chasing outcome sand more about\n",
       "rightColumn": "surrendering to the integrity of the act itself — allowing creation to unfold without attachment to results.\n",
       "_template": "twoColumnText"
     },
@@ -66,8 +66,7 @@
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779175860/KrishnaD_fk7eug.jpg"
-        },
-        {}
+        }
       ],
       "_template": "image"
     },
@@ -78,7 +77,7 @@
       "_template": "header"
     },
     {
-      "leftColumn": "I interpreted Arjun as the human self shaped by emotion, attachment, identity, and uncertainty. \n",
+      "leftColumn": "I interpreted Arjun as the human self shaped by emotion, attachment, identity, and uncertainty.\n",
       "rightColumn": "He represents the part of us constantly navigating conflict while trying to make sense of our responsibilities and choices.\n",
       "_template": "twoColumnText"
     },
@@ -95,7 +94,7 @@
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779176057/KrishnaA_tqso0m.jpg"
         },
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177397/Krishna3_u6bf92.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779262585/Krishna3_mc33fg.jpg"
         }
       ],
       "_template": "image"
@@ -122,7 +121,7 @@
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177765/Portait_1_nvdico.jpg"
         },
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779177645/Krishna_Bento_etuxoc.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779262587/Portait_2_zvfir6.jpg"
         }
       ],
       "_template": "image"
