@@ -20,9 +20,9 @@ const sizeClasses = {
     title: 'text-xs md:text-md',
   },
   md: {
-    container: 'w-full items-start gap-0.5 md:gap-1',
-    index: 'text-[1.35rem] sm:text-[1.65rem]',
-    title: 'text-[clamp(3.25rem,8vw,6rem)]',
+    container: 'w-fit items-center gap-0.5 md:gap-1',
+    index: 'text-[18px] font-space-grotesk',
+    title: 'text-[24px]',
   },
   lg: {
     container: 'w-full items-start gap-0.5 md:gap-1',
