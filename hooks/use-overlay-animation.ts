@@ -19,8 +19,6 @@ export function useOverlayAnimation({ backdropRef, closeBtnRef, panelRef, animat
     }
     if (backdropRef?.current) gsap.set(backdropRef.current, { autoAlpha: 0 });
     if (closeBtnRef.current) gsap.set(closeBtnRef.current, { autoAlpha: 0 });
-    // refs are stable — intentionally omitted from deps
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const animateIn = useCallback(() => {
@@ -41,7 +39,7 @@ export function useOverlayAnimation({ backdropRef, closeBtnRef, panelRef, animat
       gsap.set(closeBtn, { autoAlpha: 1, scale: 1 });
     } else {
       if (animation === 'slide-up') {
-        gsap.fromTo(panel, { y: '100%', autoAlpha: 1 }, { y: 0, duration: 0.45, ease: 'expo.out' });
+        gsap.fromTo(panel, { y: '100%' }, { y: 0, duration: 0.45, ease: 'expo.out' });
       } else {
         gsap.fromTo(panel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: 'power2.inOut' });
       }
@@ -52,7 +50,7 @@ export function useOverlayAnimation({ backdropRef, closeBtnRef, panelRef, animat
     }
 
     isOpenRef.current = true;
-  }, [animation, backdropRef, closeBtnRef, panelRef]);
+  }, [animation]);
 
   const animateOut = useCallback(
     (onComplete: () => void) => {
@@ -92,7 +90,7 @@ export function useOverlayAnimation({ backdropRef, closeBtnRef, panelRef, animat
       }
       tl.fromTo(closeBtn, { autoAlpha: 1, scale: 1 }, { autoAlpha: 0, scale: 0.9, duration: 0.2, ease: 'power2.in' }, 0);
     },
-    [animation, backdropRef, closeBtnRef, panelRef]
+    [animation]
   );
 
   return { isOpenRef, animateIn, animateOut };
