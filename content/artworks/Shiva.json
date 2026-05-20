@@ -22,18 +22,9 @@
       "_template": "header"
     },
     {
-      "level": "h3",
+      "level": "h2",
       "heading": "He took a deep breath, a faint, knowing smile upon His face.\n",
       "_template": "header"
-    },
-    {
-      "width": "wide",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779261157/shiva4_zlxwv6.jpg"
-        }
-      ],
-      "_template": "image"
     },
     {
       "leftColumn": "“The reasons are many. What burdens one may not burden another. Some will blame the physical world; some, the unseen realms of being. Some will call it a pursuit of right, others a surrender to wrong. \n",
@@ -41,13 +32,22 @@
       "_template": "twoColumnText"
     },
     {
-      "level": "h2",
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779261157/shiva5_aegqun.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
       "heading": "Yet there must be a reason, for the quest itself is Balance.\n",
       "_template": "header"
     },
     {
       "level": "h3",
-      "heading": "*He asks:* “What is the void to be filled? What is the cure to this chaos?”\n\n*He replies:* “Knowledge is the cure. And therefore, the void is ignorance.”\n",
+      "heading": "*He asks:* “What is the void to be filled? What is the cure to this chaos?” *He then replies:* “Knowledge is the cure. And therefore, the void is ignorance.”\n",
       "_template": "header"
     },
     {
@@ -65,8 +65,83 @@
       "_template": "header"
     },
     {
-      "level": "h2",
+      "level": "h3",
       "heading": "He smiled again, almost amused.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "“You want it to run, don’t you?” He said to Himself. “You want creation to breathe — life and death, time and space, the physical and the unseen. You need movement; stillness is just death. Stillness is not balance.”\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "He nodded gently, curiosity alive in his eyes. “You desire balance, but not stagnation. You seek equilibrium, but not stillness. You want both — and yet neither.”\n",
+      "_template": "header"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779261157/shiva4_zlxwv6.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "The only way is to create a process that is cyclic — a wheel that moves by its own momentum and slows by its own friction, yet never truly stops. If you wish to experience balance, you must recreate it in every moment.\n",
+      "rightColumn": " Every act in this universe has a counteract. These opposites shape the rhythm of existence. \n\nThe system is chaos, and chaos is the system. Together, they form the balance you sustain.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h3",
+      "heading": "“What if I lose control?” He asked. “You won’t,” He replied. “But if the system perishes, you will create it again. You will run it again. If balance collapses, you will dissolve it all — and begin anew.”\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Shiva then said to Himself: “Your dance is the cosmic balance — of life and death, of good and evil, of boon and curse, of love and hate, of drought and flood, and above all, of knowledge and ignorance.” “Your dance holds both — Tandava and Lasya.”\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779260675/shiva3_ref8hd.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779260674/shiva2_zt5wey.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "The Shiva that seeks opened his eyes in gratitude. A quiet glare of enlightenment rested within them. He looked around, and soon heard the Shiva that had been answering all his curiosities.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "“I know you are looking for Me,” He said. “And yet, you search for nothing. That ease within the search is your awareness. And the reason for the search itself… is your astonishment.” \n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779262336/shiva6_y8zyml.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h2",
+      "heading": "“Dear Shiva, I am You, and You are Me. You are the embodied expression of Me, while I am the idea from which You emerge. I am You, and I am all of creation together. That is why I cannot think only of You. I must think of all that surrounds You, shapes You, breaks You… and creates You once again.”\n",
+      "_template": "header"
+    },
+    {
+      "level": "h2",
+      "heading": "“This goes forever.”\n",
       "_template": "header"
     }
   ]
