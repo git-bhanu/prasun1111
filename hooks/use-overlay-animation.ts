@@ -39,7 +39,7 @@ export function useOverlayAnimation({ backdropRef, closeBtnRef, panelRef, animat
       gsap.set(closeBtn, { autoAlpha: 1, scale: 1 });
     } else {
       if (animation === 'slide-up') {
-        gsap.fromTo(panel, { y: '100%' }, { y: 0, duration: 0.45, ease: 'expo.out' });
+        gsap.fromTo(panel, { y: '100%', autoAlpha: 1 }, { y: 0, duration: 0.45, ease: 'expo.out' });
       } else {
         gsap.fromTo(panel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: 'power2.inOut' });
       }
