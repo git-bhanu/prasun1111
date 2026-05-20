@@ -26,7 +26,7 @@ export function AnnouncementOverlay() {
 }
 
 function AnnouncementOverlayContent({ onClose }: { onClose: () => void }) {
-  const { brand, primaryLinks, utilityLinks } = useSiteSettings();
+  const { brand, primaryLinks, reachOutHref } = useSiteSettings();
 
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -49,7 +49,6 @@ function AnnouncementOverlayContent({ onClose }: { onClose: () => void }) {
   }, []);
 
   const activeLink = primaryLinks[0];
-  const contactHref = utilityLinks[0]?.href ?? "/contact";
 
   return (
     <>
@@ -64,48 +63,59 @@ function AnnouncementOverlayContent({ onClose }: { onClose: () => void }) {
       </button>
       <div
         ref={panelRef}
-        className="fixed inset-x-0 bottom-0 top-[50px] z-[100] flex flex-col items-start justify-center rounded-t-2xl bg-brand-blue px-10 md:px-20"
+        className="fixed inset-x-0 bottom-0 top-[50px] z-[100] flex flex-col items-center justify-center rounded-t-2xl bg-brand-blue px-10 md:px-6"
       >
-        <Image
-          src={brand.logo}
-          width={160}
-          height={68}
-          alt={brand.logoAlt}
-          className="mb-10 h-auto w-auto brightness-0 invert"
-          priority
-        />
-        {activeLink && (
-          <div className="mb-6">
-            <p className="font-sedan text-[28px] leading-none text-white md:text-[32px]">
-              Selective Access is currently Active, only the
-            </p>
-            <div className="mt-3 flex items-center gap-3">
-              <SectionMasthead
-                size="md"
-                color="white"
-                borderStrength="visible"
-                title={activeLink.label}
-                index={activeLink.index}
-              />
-              <span className="font-sedan text-[1.25rem] leading-none text-white md:text-[32px]">
-                section remains open.
-              </span>
+        <div className="w-full max-w-2xl">
+          <Image
+            src={brand.logo}
+            width={160}
+            height={68}
+            alt={brand.logoAlt}
+            className="mb-10 h-auto w-auto brightness-0 invert"
+            priority
+          />
+          {activeLink && (
+            <div className="mb-6 font-sedan text-[20px] leading-tight text-white md:text-[32px]">
+              Selective Access is currently Active, only the{" "}
+              <span className="inline-flex align-middle mx-1">
+                <span className="md:hidden">
+                  <SectionMasthead
+                    size="sm"
+                    color="white"
+                    borderStrength="visible"
+                    title={activeLink.label}
+                    index={activeLink.index}
+                  />
+                </span>
+                <span className="hidden md:inline-flex">
+                  <SectionMasthead
+                    size="md"
+                    color="white"
+                    borderStrength="visible"
+                    title={activeLink.label}
+                    index={activeLink.index}
+                  />
+                </span>
+              </span>{" "}
+              section remains open.
             </div>
-          </div>
-        )}
-        <p className="mb-10 max-w-[560px] font-sedan italic text-white text-[1rem] md:text-[24px]">
-          While the remaining spaces continue to unfold, conversations are
-          always welcome.{" "}
-          <span className="not-italic font-sedan text-brand-orange">
-            For collaborations, thoughts, or simply to connect.
-          </span>
-        </p>
-        <ActionButton
-          color="white"
-          icon="addCall"
-          label="Reach Out"
-          href={contactHref}
-        />
+          )}
+          <p className="mb-10 font-sedan italic text-white text-[16px] md:text-[24px]">
+            While the remaining spaces continue to unfold, conversations are
+            always welcome.{" "}
+            <span className="italic font-sedan text-brand-orange">
+              For collaborations, thoughts, or simply to connect.
+            </span>
+          </p>
+          <ActionButton
+            color="white"
+            icon="addCall"
+            label="Reach Out"
+            href={reachOutHref}
+            target="_blank"
+            className="w-auto md:w-full"
+          />
+        </div>
       </div>
     </>
   );

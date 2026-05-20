@@ -8,6 +8,7 @@ import { tinaField } from "tinacms/dist/react";
 import { type Components, TinaMarkdown } from "tinacms/dist/rich-text";
 
 import { ActionButton } from "@/components/shared/action-button";
+import { ANNOUNCEMENT_OVERLAY_EVENT } from "@/components/shared/announcement-overlay";
 import { SectionMasthead } from "@/components/shared/section-masthead";
 import { cn } from "@/lib/utils";
 import type { PageBlocksDesignSlider } from "@/tina/__generated__/types";
@@ -100,7 +101,7 @@ export function DesignSliderBlock({ block }: DesignSliderBlockProps) {
               label={block.buttonLabel}
               icon="arrowRightAlt"
               iconPosition="right"
-              href={block.buttonHref}
+              onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
               dataTinaField={tinaField(block, "buttonLabel")}
             />
           </div>
@@ -131,8 +132,8 @@ export function DesignSliderBlock({ block }: DesignSliderBlockProps) {
         <ActionButton
           color="black"
           label={block.buttonLabel}
-          href={block.buttonHref}
           fullWidth
+          onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
           dataTinaField={tinaField(block, "buttonLabel")}
         />
       </div>

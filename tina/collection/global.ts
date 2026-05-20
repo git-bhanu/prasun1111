@@ -57,6 +57,11 @@ const Global: Collection = {
       name: 'showAnnouncementBanner',
     },
     {
+      type: 'string',
+      label: 'Reach Out Href',
+      name: 'reachOutHref',
+    },
+    {
       type: 'object',
       label: 'Brand',
       name: 'brand',

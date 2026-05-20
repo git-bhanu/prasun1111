@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, useInView, useReducedMotion } from "motion/react";
+import { AnimatePresence, useReducedMotion } from "motion/react";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -47,7 +47,6 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   const [autoplayResetKey, setAutoplayResetKey] = useState(0);
   const shouldReduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { amount: 0.4 });
 
   useEffect(() => {
     if (activeIndex > slides.length - 1) {
@@ -56,7 +55,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   }, [activeIndex, slides.length]);
 
   useEffect(() => {
-    if (slides.length <= 1 || shouldReduceMotion || !isInView) {
+    if (slides.length <= 1 || shouldReduceMotion) {
       return;
     }
 
@@ -68,7 +67,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
     }, sliders.autoplaySeconds * 1000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, shouldReduceMotion, isInView, autoplayResetKey, sliders.autoplaySeconds]);
+  }, [slides.length, shouldReduceMotion, autoplayResetKey, sliders.autoplaySeconds]);
 
   if (slides.length === 0) {
     return null;

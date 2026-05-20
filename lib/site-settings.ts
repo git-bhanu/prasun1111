@@ -17,6 +17,7 @@ export type SiteNavigationLink = {
 
 export type SiteSettings = {
   showAnnouncementBanner: boolean;
+  reachOutHref: string;
   sliders: {
     autoplaySeconds: number;
   };
@@ -74,6 +75,7 @@ export function normalizeSiteSettings(global: GlobalData): SiteSettings {
 
   return {
     showAnnouncementBanner: (global as any).showAnnouncementBanner ?? false,
+    reachOutHref: (global as any).reachOutHref ?? '',
     sliders: {
       autoplaySeconds: (global as any).sliders?.autoplaySeconds ?? 4,
     },

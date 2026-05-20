@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { tinaField } from 'tinacms/dist/react';
 
 import { ActionButton } from '@/components/shared/action-button';
+import { ANNOUNCEMENT_OVERLAY_EVENT } from '@/components/shared/announcement-overlay';
 import { SectionMasthead } from '@/components/shared/section-masthead';
 import { cn } from '@/lib/utils';
 import type { PageBlocksMovieList } from '@/tina/__generated__/types';
@@ -121,6 +122,7 @@ function MovieActions({
       label={movie.watchFilmLabel}
       subLabel={movie.filmDuration}
       href={movie.watchFilmHref}
+      target="_blank"
       fullWidth={fullWidth}
       dataTinaField={tinaField(movie, 'watchFilmLabel')}
     />
@@ -130,7 +132,7 @@ function MovieActions({
       color='black'
       icon='error'
       label={movie.readMoreLabel}
-      href={movie.readMoreHref}
+      onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
       fullWidth={fullWidth}
       dataTinaField={tinaField(movie, 'readMoreLabel')}
     />

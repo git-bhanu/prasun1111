@@ -8,6 +8,7 @@ import { tinaField } from 'tinacms/dist/react';
 
 import { Icon, IconCircleButton } from '@/components/icons';
 import { ActionButton } from '@/components/shared/action-button';
+import { ANNOUNCEMENT_OVERLAY_EVENT } from '@/components/shared/announcement-overlay';
 import { SectionMasthead } from '@/components/shared/section-masthead';
 import { useSiteSettings } from '@/components/site-settings-provider';
 import { cn } from '@/lib/utils';
@@ -176,6 +177,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                 label={activeSlide.watchFilmLabel}
                 subLabel={activeSlide.filmDuration}
                 href={activeSlide.watchFilmHref}
+                target="_blank"
                 fullWidth
                 dataTinaField={tinaField(activeSlide, 'watchFilmLabel')}
               />
@@ -183,7 +185,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                 color='black'
                 icon='error'
                 label={activeSlide.readMoreLabel}
-                href={activeSlide.readMoreHref}
+                onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
                 fullWidth
                 dataTinaField={tinaField(activeSlide, 'readMoreLabel')}
               />
@@ -233,7 +235,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                   color='black'
                   icon='error'
                   label={activeSlide.readMoreLabel}
-                  href={activeSlide.readMoreHref}
+                  onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
                   dataTinaField={tinaField(activeSlide, 'readMoreLabel')}
                 />
                 <ActionButton
@@ -242,6 +244,7 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
                   label={activeSlide.watchFilmLabel}
                   subLabel={activeSlide.filmDuration}
                   href={activeSlide.watchFilmHref}
+                target="_blank"
                   dataTinaField={tinaField(activeSlide, 'watchFilmLabel')}
                 />
               </div>

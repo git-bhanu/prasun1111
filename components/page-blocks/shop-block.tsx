@@ -8,6 +8,7 @@ import { tinaField } from "tinacms/dist/react";
 import { type Components, TinaMarkdown } from "tinacms/dist/rich-text";
 
 import { ActionButton } from "@/components/shared/action-button";
+import { ANNOUNCEMENT_OVERLAY_EVENT } from "@/components/shared/announcement-overlay";
 import { SectionMasthead } from "@/components/shared/section-masthead";
 import { cn } from "@/lib/utils";
 import type { PageBlocksShop } from "@/tina/__generated__/types";
@@ -107,7 +108,7 @@ export function ShopBlock({ block }: ShopBlockProps) {
                 label={block.buttonLabel}
                 icon="shoppingBag"
                 iconPosition="left"
-                href={block.buttonHref}
+                onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
                 dataTinaField={tinaField(block, "buttonLabel")}
               />
             </div>
