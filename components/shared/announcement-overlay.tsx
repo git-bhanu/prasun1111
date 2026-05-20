@@ -56,7 +56,7 @@ function AnnouncementOverlayContent() {
       >
         <Icon name='pinchInZoom' size={28} color='#fff' />
       </button>
-      <div ref={panelRef} className='fixed inset-0 z-[100] flex flex-col items-center justify-center bg-brand-blue px-6'>
+      <div ref={panelRef} className='fixed inset-x-0 bottom-0 top-[50px] z-[100] flex flex-col items-center justify-center rounded-t-2xl bg-brand-blue px-6'>
         <Image src={brand.logo} width={160} height={68} alt={brand.logoAlt} className='mb-10 h-auto w-auto brightness-0 invert' priority />
         {activeLink && (
           <div className='mb-6 text-center'>
