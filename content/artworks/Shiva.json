@@ -2,7 +2,8 @@
   "title": "Shiva",
   "sortOrder": 5,
   "slug": "shiva",
-  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779174556/Shiva_pmm8bd.jpg",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779260285/Shiva-cover_s4hplg.jpg",
+  "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779260382/shiva_bento_lrrkuz.jpg",
   "displaySize": "hero",
   "mostViewed": true,
   "printsAvailable": true,
@@ -16,13 +17,57 @@
   ],
   "blocks": [
     {
-      "heading": "hello2\n",
+      "level": "h2",
+      "heading": "“Balance is the only quest,” Shiva said to himself. And then he asked, *“Why is it so difficult to attain?”*\n",
       "_template": "header"
     },
     {
-      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778848578/Rama_Thumbnail_com3tq.jpg",
-      "videoUrl": "https://res.cloudinary.com/dkxfwnlbz/video/upload/v1779223644/WhatsApp_Video_2026-05-19_at_11.24.47_y1gsn3.mp4",
-      "_template": "video"
+      "level": "h3",
+      "heading": "He took a deep breath, a faint, knowing smile upon His face.\n",
+      "_template": "header"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779261157/shiva4_zlxwv6.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "“The reasons are many. What burdens one may not burden another. Some will blame the physical world; some, the unseen realms of being. Some will call it a pursuit of right, others a surrender to wrong. \n",
+      "rightColumn": "But what one calls right must always be someone else’s wrong. What they fail to understand is this — nothing is absolutely right, and nothing is absolutely wrong.”\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h2",
+      "heading": "Yet there must be a reason, for the quest itself is Balance.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "*He asks:* “What is the void to be filled? What is the cure to this chaos?”\n\n*He replies:* “Knowledge is the cure. And therefore, the void is ignorance.”\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779260675/shiva1_rg1vlq.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "So ignorance must dissolve, and knowledge must prevail.\n\nBut then He wondered — “If knowledge alone prevails, will balance remain? Will nature, creation, space, and time become too still… too static?”\n",
+      "_template": "header"
+    },
+    {
+      "level": "h2",
+      "heading": "He smiled again, almost amused.\n",
+      "_template": "header"
     }
   ]
 }
