@@ -35,7 +35,7 @@
       "width": "wide",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779261157/shiva5_aegqun.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779263139/shiva7_wvt8xo.jpg"
         }
       ],
       "_template": "image"
@@ -49,15 +49,6 @@
       "level": "h3",
       "heading": "*He asks:* “What is the void to be filled? What is the cure to this chaos?” *He then replies:* “Knowledge is the cure. And therefore, the void is ignorance.”\n",
       "_template": "header"
-    },
-    {
-      "width": "full",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779260675/shiva1_rg1vlq.jpg"
-        }
-      ],
-      "_template": "image"
     },
     {
       "level": "h3",
@@ -99,6 +90,15 @@
       "_template": "header"
     },
     {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779262336/shiva6_y8zyml.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "level": "h3",
       "heading": "Shiva then said to Himself: “Your dance is the cosmic balance — of life and death, of good and evil, of boon and curse, of love and hate, of drought and flood, and above all, of knowledge and ignorance.” “Your dance holds both — Tandava and Lasya.”\n",
       "_template": "header"
@@ -129,7 +129,7 @@
       "width": "full",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779262336/shiva6_y8zyml.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779260675/shiva1_rg1vlq.jpg"
         }
       ],
       "_template": "image"
