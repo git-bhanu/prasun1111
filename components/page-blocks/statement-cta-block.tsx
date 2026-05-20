@@ -30,7 +30,7 @@ export function StatementCtaBlock({
         <SectionReveal delay={0}>
           <h2
             data-tina-field={tinaField(block, "statement")}
-            className="font-sedan text-[36px] leading-tight md:text-[80px]"
+            className="font-sedan text-[32px] leading-tight md:text-[64px]"
           >
             <TinaMarkdown
               content={block.statement}
