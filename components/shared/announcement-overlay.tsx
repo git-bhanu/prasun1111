@@ -24,7 +24,7 @@ function AnnouncementOverlayContent() {
   const { animateOut, animateIn } = useOverlayAnimation({
     closeBtnRef,
     panelRef,
-    animation: 'fade',
+    animation: 'slide-up',
   });
 
   useLayoutEffect(() => {
