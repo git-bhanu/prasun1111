@@ -6,7 +6,7 @@ import { SectionMasthead } from '@/components/shared/section-masthead';
 import { useSiteSettings } from '@/components/site-settings-provider';
 import { useOverlayAnimation } from '@/hooks/use-overlay-animation';
 import Image from 'next/image';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 export function AnnouncementOverlay() {
   const { showAnnouncementBanner } = useSiteSettings();
@@ -16,6 +16,7 @@ export function AnnouncementOverlay() {
 
 function AnnouncementOverlayContent() {
   const { brand, primaryLinks, utilityLinks } = useSiteSettings();
+  const [isClosed, setIsClosed] = useState(false);
 
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -40,7 +41,9 @@ function AnnouncementOverlayContent() {
   const activeLink = primaryLinks[0];
   const contactHref = utilityLinks[0]?.href ?? '/contact';
 
-  const close = () => animateOut(() => {});
+  const close = () => animateOut(() => setIsClosed(true));
+
+  if (isClosed) return null;
 
   return (
     <>
