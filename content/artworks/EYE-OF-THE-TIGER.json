@@ -66,7 +66,7 @@
     },
     {
       "level": "h3",
-      "heading": "The Skill Game / *a flight between*\n\n*feast & theft*\n",
+      "heading": "The Skill Game / *a flight between feast & theft*\n",
       "_template": "header"
     },
     {
@@ -93,7 +93,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "Dream Walkers / *the calm*\n\n*within the current.*\n",
+      "heading": "Dream Walkers / *the calm within the current.*\n",
       "_template": "header"
     },
     {
@@ -119,7 +119,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "Emperor Penguins / *the ritual of*\n\n*resilience*\n",
+      "heading": "Emperor Penguins / *the ritual of resilience*\n",
       "_template": "header"
     },
     {
@@ -145,7 +145,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "Kingfishers / *the echoes of*\n\n*evolution*\n",
+      "heading": "Kingfishers / *the echoes of evolution*\n",
       "_template": "header"
     },
     {
@@ -171,7 +171,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "The Serengeti Story / *a circle*\n\n*in motion*\n",
+      "heading": "The Serengeti Story / *a circle in motion*\n",
       "_template": "header"
     },
     {
@@ -195,15 +195,9 @@
       "_template": "header"
     },
     {
-      "level": "h6",
-      "font": "space-grotesk",
-      "heading": "CHAPTER 07\n",
-      "_template": "header"
-    },
-    {
       "level": "h3",
       "font": "sedan",
-      "heading": "The Vanishing White / *a tale*\n\n*of two lives*\n",
+      "heading": "The Vanishing White / *a tale of two lives*\n",
       "_template": "header"
     },
     {
@@ -221,9 +215,15 @@
       "_template": "twoColumnText"
     },
     {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "CHAPTER 07\n",
+      "_template": "header"
+    },
+    {
       "level": "h3",
       "font": "sedan",
-      "heading": "Hornbills/ *keepers of the*\n\n*next season*\n",
+      "heading": "Hornbills/ *keepers of the next season*\n",
       "_template": "header"
     },
     {
@@ -249,7 +249,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "The Red Salmon / *a journey backward*\n\n*to belonging*\n",
+      "heading": "The Red Salmon / *a journey backward to belonging*\n",
       "_template": "header"
     },
     {
@@ -275,7 +275,7 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "The Camouflage Killers / *a tale in*\n\n*stillness*\n",
+      "heading": "The Camouflage Killers / *a tale in stillness*\n",
       "_template": "header"
     },
     {
