@@ -8,15 +8,24 @@ import { useOverlayAnimation } from '@/hooks/use-overlay-animation';
 import Image from 'next/image';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
+export const ANNOUNCEMENT_OVERLAY_EVENT = 'open-announcement-overlay';
+
 export function AnnouncementOverlay() {
   const { showAnnouncementBanner } = useSiteSettings();
-  if (!showAnnouncementBanner) return null;
-  return <AnnouncementOverlayContent />;
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener(ANNOUNCEMENT_OVERLAY_EVENT, handleOpen);
+    return () => window.removeEventListener(ANNOUNCEMENT_OVERLAY_EVENT, handleOpen);
+  }, []);
+
+  if (!showAnnouncementBanner || !isOpen) return null;
+  return <AnnouncementOverlayContent onClose={() => setIsOpen(false)} />;
 }
 
-function AnnouncementOverlayContent() {
+function AnnouncementOverlayContent({ onClose }: { onClose: () => void }) {
   const { brand, primaryLinks, utilityLinks } = useSiteSettings();
-  const [isClosed, setIsClosed] = useState(false);
 
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -41,16 +50,12 @@ function AnnouncementOverlayContent() {
   const activeLink = primaryLinks[0];
   const contactHref = utilityLinks[0]?.href ?? '/contact';
 
-  const close = () => animateOut(() => setIsClosed(true));
-
-  if (isClosed) return null;
-
   return (
     <>
       <button
         ref={closeBtnRef}
         type='button'
-        onClick={close}
+        onClick={() => animateOut(onClose)}
         aria-label='Close announcement'
         className='fixed right-6 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white md:right-36'
       >
@@ -69,7 +74,7 @@ function AnnouncementOverlayContent() {
         )}
         <p className='mb-10 max-w-[560px] text-center font-sedan italic text-white/80 text-[1rem] md:text-[1.125rem]'>
           While the remaining spaces continue to unfold, conversations are always welcome.{' '}
-          <span className='text-brand-orange not-italic font-sedan'>For collaborations, thoughts, or simply to connect.</span>
+          <span className='not-italic font-sedan text-brand-orange'>For collaborations, thoughts, or simply to connect.</span>
         </p>
         <ActionButton color='white' icon='addCall' label='Reach Out' href={contactHref} />
       </div>
