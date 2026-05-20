@@ -5,6 +5,8 @@ import { ActionButton } from "@/components/shared/action-button";
 import { SectionMasthead } from "@/components/shared/section-masthead";
 import { useSiteSettings } from "@/components/site-settings-provider";
 import { useOverlayAnimation } from "@/hooks/use-overlay-animation";
+import animationData from "@/public/uploads/assets/1111.json";
+import Lottie from "lottie-react";
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
@@ -66,14 +68,25 @@ function AnnouncementOverlayContent({ onClose }: { onClose: () => void }) {
         className="fixed inset-x-0 bottom-0 top-[50px] z-[100] flex flex-col items-center justify-center rounded-t-2xl bg-brand-blue px-10 md:px-6"
       >
         <div className="w-full max-w-2xl">
-          <Image
-            src={brand.logo}
-            width={160}
-            height={68}
-            alt={brand.logoAlt}
-            className="mb-10 h-auto w-auto brightness-0 invert"
-            priority
-          />
+          <div className="mb-10 inline-flex h-[44px] items-stretch gap-3 md:h-[68px]">
+            <Image
+              src={brand.logo}
+              width={160}
+              height={68}
+              alt={brand.logoAlt}
+              className="h-full w-auto brightness-0 invert"
+              priority
+            />
+            <div className="aspect-[680/700] h-full shrink-0 overflow-hidden">
+              <Lottie
+                animationData={animationData}
+                autoplay
+                loop
+                rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+                className="h-full w-full brightness-0 invert"
+              />
+            </div>
+          </div>
           {activeLink && (
             <div className="mb-6 font-sedan text-[20px] leading-tight text-white md:text-[32px]">
               Selective Access is currently Active, only the{" "}
