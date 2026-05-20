@@ -12,63 +12,72 @@
         "label": "ARTWORKS",
         "href": "/artworks",
         "group": "primary",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": false
       },
       {
         "index": "02",
         "label": "INSTALLATIONS",
         "href": "/installations",
         "group": "primary",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": true
       },
       {
         "index": "03",
         "label": "FILMS",
         "href": "/films",
         "group": "primary",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": true
       },
       {
         "index": "04",
         "label": "DESIGN",
         "href": "/design",
         "group": "primary",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": true
       },
       {
         "index": "05",
         "label": "WRITINGS",
         "href": "/writings",
         "group": "primary",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": true
       },
       {
         "index": "06",
         "label": "SHOP",
         "href": "/shop",
         "group": "utility",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": true
       },
       {
         "index": "07",
         "label": "CART",
         "href": "/cart",
         "group": "utility",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": true
       },
       {
         "index": "08",
         "label": "ABOUT",
         "href": "/about",
         "group": "utility",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": false
       },
       {
         "index": "09",
         "label": "CONTACT",
         "href": "/contact",
         "group": "utility",
-        "showInFooter": true
+        "showInFooter": true,
+        "locked": false
       }
     ]
   },

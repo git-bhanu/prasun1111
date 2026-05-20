@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { tinaField } from 'tinacms/dist/react';
 
 import { ANNOUNCEMENT_OVERLAY_EVENT } from '@/components/shared/announcement-overlay';
-import { useSiteSettings } from '@/components/site-settings-provider';
 import type { SiteNavigationLink } from '@/lib/site-settings';
 import { cn } from '@/lib/utils';
 
@@ -13,17 +12,16 @@ type MenuLinkProps = {
   index: string;
   label: string;
   href: string;
+  locked: boolean;
   source?: SiteNavigationLink['source'];
 };
 
-export function MenuLink({ index, label, href, source }: MenuLinkProps) {
+export function MenuLink({ index, label, href, locked, source }: MenuLinkProps) {
   const pathname = usePathname();
   const isActive = pathname === href;
-  const { primaryLinks } = useSiteSettings();
-  const isAccessible = href === primaryLinks[0]?.href;
 
   const handleClick = (e: React.MouseEvent) => {
-    if (!isAccessible) {
+    if (locked) {
       e.preventDefault();
       window.dispatchEvent(new CustomEvent(ANNOUNCEMENT_OVERLAY_EVENT));
     }

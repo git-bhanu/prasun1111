@@ -283,7 +283,7 @@ function CenterMenuPanel({
               <ul className='flex flex-col items-center gap-y-5'>
                 {links.map((link) => (
                   <li key={link.href}>
-                    <UtilityMenuLink href={link.href} label={link.label} source={link.source} onNavigate={onNavigate} />
+                    <UtilityMenuLink href={link.href} label={link.label} locked={link.locked} source={link.source} onNavigate={onNavigate} />
                   </li>
                 ))}
               </ul>
@@ -334,21 +334,21 @@ function MenuFooter({ meta }: { meta: SiteSettings['meta'] }) {
 function UtilityMenuLink({
   href,
   label,
+  locked,
   source,
   onNavigate,
 }: {
   href: string;
   label: string;
+  locked: boolean;
   source: SiteNavigationLink['source'];
   onNavigate: () => void;
 }) {
   const pathname = usePathname();
   const isActive = pathname === href;
-  const { primaryLinks } = useSiteSettings();
-  const isAccessible = href === primaryLinks[0]?.href;
 
   const handleClick = (e: React.MouseEvent) => {
-    if (!isAccessible) {
+    if (locked) {
       e.preventDefault();
       window.dispatchEvent(new CustomEvent(ANNOUNCEMENT_OVERLAY_EVENT));
     } else {

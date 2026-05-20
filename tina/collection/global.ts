@@ -35,6 +35,11 @@ const navigationLinkFields = [
     label: 'Show in footer',
     name: 'showInFooter',
   },
+  {
+    type: 'boolean',
+    label: 'Locked (triggers coming-soon overlay)',
+    name: 'locked',
+  },
 ] as const;
 
 const Global: Collection = {
