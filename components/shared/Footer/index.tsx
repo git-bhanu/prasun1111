@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 
+import { ANNOUNCEMENT_OVERLAY_EVENT } from '@/components/shared/announcement-overlay';
 import { cn } from '@/lib/utils';
 
 export default function Footer() {
@@ -98,20 +99,30 @@ function FooterNavLink({
   index,
   label,
   href,
+  locked,
   source,
 }: {
   index: string;
   label: string;
   href: string;
+  locked: boolean;
   source: SiteNavigationLink['source'];
 }) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (locked) {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent(ANNOUNCEMENT_OVERLAY_EVENT));
+    }
+  };
+
   return (
     <Link
       href={href}
       aria-current={isActive ? 'page' : undefined}
+      onClick={handleClick}
       data-tina-field={tinaField(source, 'label')}
       className='group flex items-start gap-2.5 uppercase font-space-grotesk'
     >
