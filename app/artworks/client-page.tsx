@@ -181,7 +181,7 @@ function DetailPanel({
     <>
       <div className='flex min-h-full flex-col md:flex-row'>
         <div className='order-2 flex w-full flex-col px-6 py-6 md:order-1 md:w-[50%] md:shrink-0 md:items-start md:justify-center md:pl-[10svw]'>
-          <SectionMasthead index={'04'} title={'Artworks'} size='sm' color='black' className='mb-3 md:hidden' />
+          <SectionMasthead index={'01'} title={'Artworks'} size='sm' color='black' className='mb-3 md:hidden' />
           <div className='hidden md:block'>
             <ArtworkDetailActions mode='close-only' onClose={onClose} />
           </div>
