@@ -30,15 +30,6 @@
       "_template": "header"
     },
     {
-      "width": "wide",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779175583/KrishnaC_wnv5vs.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
       "level": "h6",
       "font": "space-grotesk",
       "heading": "LIFE THROUGH ACTION\n",
@@ -56,19 +47,18 @@
       "_template": "twoColumnText"
     },
     {
-      "level": "h2",
-      "heading": "To me, the Gita is not confined to history or scripture. Its ideas surrounding fear, doubt, purpose, and responsibility remain deeply human and continue to offer clarity even within the complexities of contemporary existence.\n",
-      "_template": "header"
-    },
-    {
-      "width": "full",
-      "orientation": "landscape",
+      "width": "wide",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779175860/KrishnaD_fk7eug.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779175583/KrishnaC_wnv5vs.jpg"
         }
       ],
       "_template": "image"
+    },
+    {
+      "level": "h2",
+      "heading": "To me, the Gita is not confined to history or scripture. Its ideas surrounding fear, doubt, purpose, and responsibility remain deeply human and continue to offer clarity even within the complexities of contemporary existence.\n",
+      "_template": "header"
     },
     {
       "level": "h6",
@@ -80,6 +70,16 @@
       "leftColumn": "I interpreted Arjun as the human self shaped by emotion, attachment, identity, and uncertainty.\n",
       "rightColumn": "He represents the part of us constantly navigating conflict while trying to make sense of our responsibilities and choices.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "width": "full",
+      "orientation": "landscape",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779175860/KrishnaD_fk7eug.jpg"
+        }
+      ],
+      "_template": "image"
     },
     {
       "level": "h2",
