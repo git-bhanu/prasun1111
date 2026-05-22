@@ -104,7 +104,13 @@
     },
     {
       "leftColumn": "*He is about to step into the ocean, where the team of Nala and Neer are  constructing a divine floating bridge for their master — the prince of Ayodhya.*\n",
-      "rightColumn": "He looks at the floating stones and recalls — How Lakshmana cut off the nose and left ear of शूपर्णखा Shurpanakha, Ravana’s sister, who was smitten by the beauty and youth of both brothers.\n\nHow he crossed that first trap — yet eventually they were drawn into the greater one — the illusion of Maarich, the golden deer.\n",
+      "rightColumn": "He looks at the floating stones and recalls — How Lakshmana cut off the nose and left ear of शूपर्णखा Shurpanakha, Ravana’s sister, who was smitten by the beauty and youth of both brothers.\n\nHow he crossed that first trap — yet eventually they were drawn into the greater one — the illusion of Maarich<ref n=\"01\"/>,the golden deer.\n",
+      "annotations": [
+        {
+          "id": "01",
+          "text": "Not temptation through desire, but through wonder.\nMaarich became the perfect distraction — beautiful enough to be pursued, unreal enough to conceal danger. In the Ramayana, illusion rarely arrives as fear; it arrives as fascination."
+        }
+      ],
       "_template": "twoColumnText"
     },
     {
@@ -176,7 +182,7 @@
       "annotations": [
         {
           "id": "02",
-          "text": "Inspired by a conversation between Shiva & Parvati"
+          "text": "Inspired by a conversation between Shiva & Parvati, mentioned in Shiv Puraan."
         }
       ],
       "_template": "twoColumnText"
