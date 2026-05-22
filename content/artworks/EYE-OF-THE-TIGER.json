@@ -107,7 +107,13 @@
     },
     {
       "leftColumn": "*Balance is quiet. Change is loud. Even drift has purpose. Even peace can vanish.*\n",
-      "rightColumn": "**Tropical turtles** drift like thoughts, unhurried, gentle, grazing the reef with quiet grace.\u0003 Omnivores of balance , they tend to the underwater garden. But as the seas warm, even their calm rhythm begins to break.\n",
+      "rightColumn": "**Tropical turtles** drift like thoughts, unhurried, gentle, grazing the reef with quiet grace.\u0003 Omnivores of balance <ref n=\"02\"/> , they tend to the underwater garden. But as the seas warm, even their calm rhythm begins to break.\n",
+      "annotations": [
+        {
+          "id": "02",
+          "text": "Not passive creatures, but quiet keepers of equilibrium.\nBy feeding across seagrass and reef systems, turtles help maintain the delicate balance that allows marine life to thrive without overtaking itself."
+        }
+      ],
       "_template": "twoColumnText"
     },
     {
@@ -211,7 +217,13 @@
     },
     {
       "leftColumn": "Two lives, caught in the thaw, searching for balance on a disappearing stage.\n",
-      "rightColumn": "The Polar Bear Family emerges from winter’s stillness into a vast, melting silence. Once ice meant survival, now it’s a map of loss. Prey is scarce, and what remains floats in the memory of a frozen past, a dead whale, a drifting meal. The Atlantic Walrus hauls out on shrinking slabs, evolution wrapped in skin and tusk, looking for ground to rest, to raise, to remember. But the boundary between ice and ocean is no longer where it used to be.\n",
+      "rightColumn": "The Polar Bear Family emerges from winter’s stillness into a vast, melting silence<ref n=\"03\"/>. Once ice meant survival, now it’s a map of loss. Prey is scarce, and what remains floats in the memory of a frozen past, a dead whale, a drifting meal. The Atlantic Walrus hauls out on shrinking slabs, evolution wrapped in skin and tusk, looking for ground to rest, to raise, to remember. But the boundary between ice and ocean is no longer where it used to be.\n",
+      "annotations": [
+        {
+          "id": "03",
+          "text": "Not emptiness, but absence in motion.\nA silence shaped by retreating ice, vanished hunting paths, and ecosystems losing the ground they once depended on — slowly, visibly, and without warning."
+        }
+      ],
       "_template": "twoColumnText"
     },
     {
@@ -263,7 +275,13 @@
     },
     {
       "leftColumn": "*The salmon does not flee death, it returns to offer it. Because even in ending, life can nourish life.*\n",
-      "rightColumn": "For salmon, death is not an end, it is a return. A choice. A calling. Guided by magnetic memory etched into their minds, millions begin the upstream pilgrimage. Against the current, against exhaustion, against gravity each salmon finds its origin tributary, among hundreds, and swims back home. They come with two final duties: To lay life, eggs returned to their birthplace, feeding bears and riverbanks. To give back, to die where they began, becoming soil, becoming balance.\n",
+      "rightColumn": "For salmon, death is not an end, it is a return. A choice. A calling. Guided by magnetic memory<ref n=\"04\"/> etched into their minds, millions begin the upstream pilgrimage. Against the current, against exhaustion, against gravity each salmon finds its origin tributary, among hundreds, and swims back home. They come with two final duties: To lay life, eggs returned to their birthplace, feeding bears and riverbanks. To give back, to die where they began, becoming soil, becoming balance.\n",
+      "annotations": [
+        {
+          "id": "04",
+          "text": "An invisible map carried within them.\nSalmon navigate using Earth’s magnetic field, sensing direction and distance across vast oceans, only to return with astonishing precision to the very waters where their lives began."
+        }
+      ],
       "_template": "twoColumnText"
     },
     {
@@ -290,7 +308,13 @@
     },
     {
       "leftColumn": "*Stillness is not weakness. To disappear is an art. Not all predators chase. Some wait. Some become.*\n",
-      "rightColumn": "The Venus Flytrap doesn’t snap at chance. It waits, measuring the weight of movement, deciding with quiet calculation, three touches, then silence. The Pitcher Plant doesn’t hunt, it invites. One step in, and there’s no step out. The Green Tree Python wraps itself into the forest, not hidden, but indistinguishable. A coil so still, it becomes branch, then strike. Each one a lesson in patience, a masterclass in disguise.\n",
+      "rightColumn": "The Venus Flytrap doesn’t snap at chance. It waits, measuring the weight of movement<ref n=\"05\"/>, deciding with quiet calculation, three touches, then silence. The Pitcher Plant doesn’t hunt, it invites. One step in, and there’s no step out. The Green Tree Python wraps itself into the forest, not hidden, but indistinguishable. A coil so still, it becomes branch, then strike. Each one a lesson in patience, a masterclass in disguise.\n",
+      "annotations": [
+        {
+          "id": "05",
+          "text": "Not instinct alone, but controlled response.\nThe flytrap senses repeated contact before closing, conserving energy by distinguishing living movement from passing rain, wind, or debris."
+        }
+      ],
       "_template": "twoColumnText"
     },
     {
