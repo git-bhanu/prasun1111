@@ -2,7 +2,7 @@
   "title": "A MOMENT OF REFLECTION: RAMA",
   "sortOrder": 2,
   "slug": "a-moment-of-reflection-rama",
-  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779096680/Frame_1374_is3lco.jpg",
+  "coverImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779437679/Ram_B_W_kwyowc.png",
   "bentoImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779096680/Frame_1374_is3lco.jpg",
   "displaySize": "medium",
   "orientation": "portrait",
@@ -30,6 +30,11 @@
       "_template": "header"
     },
     {
+      "leftColumn": "*Ram stands at such a moment.* He puts forward the first step towards the war — a step from land to water —\n",
+      "rightColumn": "and recalls everything that has brought him here, keeping himself as a part of his own inception.\n",
+      "_template": "twoColumnText"
+    },
+    {
       "width": "full",
       "images": [
         {
@@ -37,11 +42,6 @@
         }
       ],
       "_template": "image"
-    },
-    {
-      "leftColumn": "*Ram stands at such a moment.* He puts forward the first step towards the war — a step from land to water —\n",
-      "rightColumn": "and recalls everything that has brought him here, keeping himself as a part of his own inception.\n",
-      "_template": "twoColumnText"
     },
     {
       "level": "h6",
