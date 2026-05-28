@@ -209,20 +209,22 @@ export function InstallationSliderBlock({ block }: InstallationSliderBlockProps)
             </div>
           ) : null}
 
-          <div className='max-w-[930px]'>
-            <AnimatePresence initial={false} mode='wait'>
-              <motion.h2
-                key={`title-desktop-${activeIndex}`}
-                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={contentTransition}
-                className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase'
-                data-tina-field={tinaField(activeSlide, 'title')}
-              >
-                {activeSlide.title}
-              </motion.h2>
-            </AnimatePresence>
+          <div>
+            <div className='max-w-[930px]'>
+              <AnimatePresence initial={false} mode='wait'>
+                <motion.h2
+                  key={`title-desktop-${activeIndex}`}
+                  initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={contentTransition}
+                  className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase'
+                  data-tina-field={tinaField(activeSlide, 'title')}
+                >
+                  {activeSlide.title}
+                </motion.h2>
+              </AnimatePresence>
+            </div>
 
             <div className='mt-8 border-t border-white/20 pt-9'>
               <InstallationDetails slide={activeSlide} artists={artists} variant='desktop' slideKey={activeIndex} />

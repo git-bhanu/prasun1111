@@ -5,6 +5,7 @@ import Artwork from './collection/artwork';
 import ArtworksPage from './collection/artworks-page';
 import Global from './collection/global';
 import Installation from './collection/installation';
+import InstallationsPage from './collection/installations-page';
 import Page from './collection/page';
 import Tag from './collection/tag';
 
@@ -33,7 +34,7 @@ const config = defineConfig({
     basePath: nextConfig.basePath?.replace(/^\//, '') || '', // The base path of the app (could be /blog)
   },
   schema: {
-    collections: [Page, Global, Tag, Artwork, ArtworksPage, Installation],
+    collections: [Page, Global, Tag, Artwork, ArtworksPage, Installation, InstallationsPage],
   },
 });
 

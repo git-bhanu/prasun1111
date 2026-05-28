@@ -6,6 +6,8 @@ import { SpaceBlock } from '@/components/blocks/space-block';
 import { TwoColumnTextBlock } from '@/components/blocks/two-column-text-block';
 import { VideoBlock } from '@/components/blocks/video-block';
 import { Icon, IconCircleButton } from '@/components/icons';
+import { InstallationDetails, InstallationListGrid } from '@/components/installation';
+import type { InstallationListItem, QuoteBreak } from '@/components/installation';
 import { ActionButton } from '@/components/shared/action-button';
 import { SectionMasthead } from '@/components/shared/section-masthead';
 import { useOverlayAnimation } from '@/hooks/use-overlay-animation';
@@ -22,6 +24,7 @@ type Props = {
   query: string;
   data: InstallationConnectionQuery;
   variables: InstallationConnectionQueryVariables;
+  quoteBreaks: QuoteBreak[];
 };
 
 export default function InstallationsClientPage(props: Props) {
@@ -32,7 +35,7 @@ export default function InstallationsClientPage(props: Props) {
   );
 }
 
-function InstallationsContent({ query, data, variables }: Props) {
+function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
   const { data: tinaData } = useTina({ query, data, variables });
   const searchParams = useSearchParams();
 
@@ -113,20 +116,20 @@ function InstallationsContent({ query, data, variables }: Props) {
           <p className='text-black/45'>No installations yet.</p>
         </div>
       ) : (
-        <div className='px-4 py-8 sm:px-10 md:px-[58px]'>
-          <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
-            {installations.map((installation) => (
-              <button
-                key={installation.id}
-                type='button'
-                onClick={() => goTo(installationSlug(installation))}
-                className='cursor-pointer rounded bg-[var(--surface-grey)] p-4 text-left font-space-grotesk text-sm font-bold uppercase hover:bg-[var(--surface-grey-1)]'
-              >
-                {installation.title}
-              </button>
-            ))}
-          </div>
-        </div>
+        <InstallationListGrid
+          items={installations.map(
+            (n) =>
+              ({
+                id: n.id,
+                slug: n.slug,
+                _sys: n._sys,
+                tinaSource: n,
+                data: n,
+              }) satisfies InstallationListItem
+          )}
+          quoteBreaks={quoteBreaks}
+          onItemClick={goTo}
+        />
       )}
 
       <div ref={backdropRef} onClick={close} className='fixed inset-0 z-[99] bg-black/60' />
@@ -144,7 +147,7 @@ function InstallationsContent({ query, data, variables }: Props) {
           panelRef.current = el;
           detailScrollRef.current = el;
         }}
-        className='fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white'
+        className='fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto bg-white'
       >
         {displayInstallation && (
           <DetailPanel
@@ -171,24 +174,19 @@ function blockWrapperClass(width: string, verticalPadding: string) {
   }
 }
 
-export const INSTALLATION_DETAIL_DESKTOP_HEIGHT = '80svh';
-export const INSTALLATION_DETAIL_MOBILE_IMAGE_HEIGHT = '60svh';
 
 function DetailPanel({
   installation,
   onPrev,
   onNext,
   scrollToTop,
-  desktopHeight = INSTALLATION_DETAIL_DESKTOP_HEIGHT,
 }: {
   installation: InstallationNode;
   onPrev?: () => void;
   onNext?: () => void;
   scrollToTop?: () => void;
-  desktopHeight?: string;
 }) {
   const showVideo = installation.backgroundType === 'video' && Boolean(installation.videoUrl);
-  const artists = (installation.artists ?? []).filter((a): a is string => Boolean(a));
   const canNavigate = Boolean(onPrev || onNext);
 
   const renderMedia = () => {
@@ -241,54 +239,47 @@ function DetailPanel({
     <>
       {/* Mobile layout */}
       <div className='md:hidden'>
-        <div
-          className='relative w-full aspect-[16/9] overflow-hidden bg-black'
-          data-tina-field={tinaField(installation, showVideo ? 'videoUrl' : 'image')}
-        >
+        <div className='relative w-full aspect-[16/9] overflow-hidden bg-black' data-tina-field={tinaField(installation, showVideo ? 'videoUrl' : 'image')}>
           {renderMedia()}
         </div>
 
         <div className='px-4 pt-6 pb-8'>
-          <SectionMasthead index='01' title='INSTALLATIONS' size='sm' mobileColor='black' />
+          <SectionMasthead index='02' title='INSTALLATIONS' size='sm' mobileColor='black' />
 
           {renderControls('mt-4')}
 
-          <h1
-            className='mt-5 font-space-grotesk text-[22px] font-bold leading-[1.2] uppercase text-black'
-            data-tina-field={tinaField(installation, 'title')}
-          >
+          <h1 className='mt-5 font-space-grotesk text-[22px] font-bold leading-[1.2] uppercase text-black' data-tina-field={tinaField(installation, 'title')}>
             {installation.title}
           </h1>
 
-          <InstallationDetails installation={installation} artists={artists} className='mt-6 border-t border-black/25 pt-6' />
+          <InstallationDetails source={installation} tinaSource={installation} className='mt-6 border-t border-black/25 pt-6' />
         </div>
       </div>
 
       {/* Desktop layout */}
       <div
-        className='relative isolate hidden overflow-hidden bg-black md:block'
-        style={{ minHeight: desktopHeight }}
+        className='relative isolate hidden overflow-hidden bg-black md:block md:min-h-full'
         data-tina-field={tinaField(installation, showVideo ? 'videoUrl' : 'image')}
       >
         {renderMedia()}
         <div className='absolute inset-0 bg-black/[0.12]' />
 
-        <div className='relative z-10 flex flex-col justify-between px-12 py-14 text-white' style={{ minHeight: desktopHeight }}>
-          <SectionMasthead index='01' title='INSTALLATIONS' size='sm' />
+        <div className='relative z-10 flex min-h-full flex-col justify-between px-12 py-14 text-white'>
+          <SectionMasthead index='02' title='INSTALLATIONS' size='sm' />
 
-          <div className='max-w-[930px]'>
-            <h1 className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase' data-tina-field={tinaField(installation, 'title')}>
-              {installation.title}
-            </h1>
+          <div>
+            <div className='max-w-[930px]'>
+              <h1 className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase' data-tina-field={tinaField(installation, 'title')}>
+                {installation.title}
+              </h1>
+            </div>
 
             <div className='mt-8 border-t border-white/20 pt-9'>
-              <InstallationDetails installation={installation} artists={artists} variant='desktop' />
+              <InstallationDetails source={installation} tinaSource={installation} variant='dark' />
             </div>
           </div>
 
-          <div className='flex items-end justify-end'>
-            {renderControls()}
-          </div>
+          <div className='flex items-end justify-end'>{renderControls()}</div>
         </div>
       </div>
 
@@ -347,79 +338,5 @@ function DetailPanel({
         <ActionButton color='white' icon='arrowUpwardAlt' label='Back to Top' onClick={scrollToTop} className='bg-surface-grey' />
       </div>
     </>
-  );
-}
-
-function InstallationDetails({
-  installation,
-  artists,
-  variant = 'mobile',
-  className,
-}: {
-  installation: InstallationNode;
-  artists: string[];
-  variant?: 'mobile' | 'desktop';
-  className?: string;
-}) {
-  return (
-    <div className={cn('grid grid-cols-[1fr_1px_1.28fr] gap-x-8', variant === 'desktop' && 'max-w-[520px] gap-x-7', className)}>
-      <div className='space-y-6'>
-        <DetailItem label='MEDIUM' value={installation.medium} field='medium' installation={installation} variant={variant} />
-        <DetailItem label='DIMENSIONS' value={installation.dimensions} field='dimensions' installation={installation} variant={variant} />
-        <DetailItem label='WEIGHT' value={installation.weight} field='weight' installation={installation} variant={variant} withBorder={false} />
-      </div>
-
-      <div className={cn('bg-black/25', variant === 'desktop' && 'bg-white/[0.18]')} />
-
-      <div className='flex flex-col justify-between gap-10'>
-        {artists.length > 0 && (
-          <div data-tina-field={tinaField(installation, 'artists')}>
-            <p className={cn('font-space-grotesk text-[10px] leading-none uppercase text-neutral-500', variant === 'desktop' && 'text-sm text-white/50')}>
-              ARTISTS
-            </p>
-            <p className={cn('mt-3 font-space-grotesk text-[14px] leading-[1.35] uppercase', variant === 'desktop' && 'text-[20px] text-white')}>
-              {artists.map((artist, index) => (
-                <span key={artist} className='md:block'>
-                  {artist}
-                  {index < artists.length - 1 ? <span className='md:hidden'>, </span> : null}
-                </span>
-              ))}
-            </p>
-          </div>
-        )}
-
-        <DetailItem label='YEAR' value={installation.year} field='year' installation={installation} variant={variant} withBorder={false} />
-      </div>
-    </div>
-  );
-}
-
-type InstallationDetailField = 'medium' | 'dimensions' | 'weight' | 'year';
-
-function DetailItem({
-  label,
-  value,
-  field,
-  installation,
-  variant,
-  withBorder = true,
-}: {
-  label: string;
-  value?: string | null;
-  field: InstallationDetailField;
-  installation: InstallationNode;
-  variant: 'mobile' | 'desktop';
-  withBorder?: boolean;
-}) {
-  if (!value) return null;
-
-  return (
-    <div
-      className={cn(withBorder && 'border-b border-black/20 pb-5', variant === 'desktop' && withBorder && 'border-white/[0.18]')}
-      data-tina-field={tinaField(installation, field)}
-    >
-      <p className={cn('font-space-grotesk text-[10px] leading-none uppercase text-neutral-500', variant === 'desktop' && 'text-sm text-white/50')}>{label}</p>
-      <p className={cn('mt-1 font-space-grotesk text-[14px]', variant === 'desktop' && 'text-[20px] text-white')}>{value}</p>
-    </div>
   );
 }

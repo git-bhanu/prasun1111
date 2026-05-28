@@ -50,6 +50,20 @@ const Installation: Collection = {
       label: 'Image Alt Text',
     },
     {
+      type: 'object',
+      name: 'listingImages',
+      label: 'Listing Images',
+      description: 'Images shown in the listing page slider. Falls back to main image if empty.',
+      list: true,
+      ui: {
+        itemProps: (item) => ({ label: item?.alt || 'Image' }),
+      },
+      fields: [
+        { type: 'image', name: 'src', label: 'Image' },
+        { type: 'string', name: 'alt', label: 'Alt Text' },
+      ],
+    },
+    {
       type: 'image',
       name: 'videoUrl',
       label: 'Video',
@@ -86,6 +100,26 @@ const Installation: Collection = {
       type: 'string',
       name: 'year',
       label: 'Year',
+    },
+    {
+      type: 'string',
+      name: 'watchFilmLabel',
+      label: 'Watch Film Label',
+    },
+    {
+      type: 'string',
+      name: 'watchFilmHref',
+      label: 'Watch Film Link',
+    },
+    {
+      type: 'string',
+      name: 'filmDuration',
+      label: 'Film Duration',
+    },
+    {
+      type: 'string',
+      name: 'readMoreLabel',
+      label: 'Read More Label',
     },
     {
       type: 'object',
