@@ -3,6 +3,14 @@
   "slug": "repeat-biodiversity-of-the-balance",
   "backgroundType": "image",
   "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779444505/Installation_01_x7zlvu.jpg",
+  "listingImages": [
+    {
+      "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779444505/Installation_01_x7zlvu.jpg"
+    },
+    {
+      "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779621220/Layer_1_oyqsfc.png"
+    }
+  ],
   "medium": "EPOXY & WOOD",
   "artists": [
     "PRASUN MAZUMDAR",
@@ -12,6 +20,7 @@
   "weight": "80-85KG",
   "year": "2019",
   "watchFilmLabel": "WATCH FILM",
+  "watchFilmHref": "https://www.youtube.com/watch?v=1NnwXJxUshw",
   "filmDuration": "6MIN. 49 SEC.",
   "readMoreLabel": "READ MORE",
   "blocks": [
@@ -28,7 +37,7 @@
     },
     {
       "leftColumn": "To ensure that this diversity flourishes and the balance remains maintained, it is important to understand diversities in different spaces in our ecosystem.\u0003\u0003In this project,\n",
-      "rightColumn": "I have focused on different spaces, species, events, hunting and Farming that are causing changes that tremble the balance of the ecosystem. \n",
+      "rightColumn": "I have focused on different spaces, species, events, hunting and Farming that are causing changes that tremble the balance of the ecosystem.\n",
       "_template": "twoColumnText"
     },
     {
