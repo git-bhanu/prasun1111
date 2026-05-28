@@ -147,7 +147,7 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
           panelRef.current = el;
           detailScrollRef.current = el;
         }}
-        className='fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto bg-white'
+        className='fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white'
       >
         {displayInstallation && (
           <DetailPanel

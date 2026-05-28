@@ -325,7 +325,7 @@ function CenterMenuPanel({
           className={cn(
             "fixed inset-x-0 bottom-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-white px-5 py-6 md:px-0 md:py-4",
             showAnnouncementBanner
-              ? "top-[90px] md:top-[178px]"
+              ? "top-[90px] md:top-[140px]"
               : "top-[106px] md:top-[140px]",
           )}
         >
