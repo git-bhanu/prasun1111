@@ -42,7 +42,7 @@ export default function Header() {
   }, [menuExpanded]);
 
   return (
-    <header className="p-4 md:pt-4">
+    <header className="p-4 md:p-0">
       <div className="font-s flex flex-col gap-y-4">
         <div className="flex flex-col gap-y-4">
           <DesktopPrimaryNav
@@ -85,7 +85,7 @@ function DesktopPrimaryNav({
 }) {
   return (
     <motion.nav
-      className="hidden min-w-0 items-center justify-between gap-8 bg-white px-[42px] py-5 md:flex"
+      className="hidden min-w-0 items-center justify-between gap-8 bg-white px-[42px] py-5 md:flex dark:bg-brand-black"
       initial={{ opacity: 0, y: -10, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{
@@ -208,7 +208,7 @@ function CenterMenu({
   return (
     <div className="w-full shrink-0 grow-0 md:w-[300px] md:max-w-[350px] md:basis-[283.2px]">
       <motion.div
-        className="flex w-full items-center justify-between rounded-[12px] bg-surface-grey px-5 py-3 md:h-20 md:px-5"
+        className="flex w-full items-center justify-between rounded-[12px] bg-surface-grey px-5 py-3 md:h-20 md:px-5 dark:bg-neutral-900"
         initial={{ opacity: 0, y: 0, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
@@ -225,7 +225,7 @@ function CenterMenu({
             height={34}
             priority
             alt={brand.logoAlt}
-            className="h-full w-auto shrink-0 object-contain"
+            className="h-full w-auto shrink-0 object-contain dark:invert"
           />
           <div className="aspect-[680/700] h-full shrink-0 overflow-hidden">
             <Lottie
@@ -233,7 +233,7 @@ function CenterMenu({
               autoplay
               loop
               rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
-              className="h-full w-full brightness-0"
+              className="h-full w-full brightness-0 dark:invert"
             />
           </div>
         </Link>
@@ -323,7 +323,7 @@ function CenterMenuPanel({
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className={cn(
-            "fixed inset-x-0 bottom-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-white px-5 py-6 md:px-0 md:py-4",
+            "fixed inset-x-0 bottom-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-white dark:bg-black px-5 py-6 md:px-0 md:py-4",
             showAnnouncementBanner
               ? "top-[90px] md:top-[140px]"
               : "top-[106px] md:top-[140px]",
@@ -372,9 +372,9 @@ function MenuMeta({ meta }: { meta: SiteSettings["meta"] }) {
   }, [meta]);
 
   return (
-    <div className="font-space-grotesk flex items-center justify-center gap-x-4 text-center text-[10px] uppercase text-black md:gap-x-5 md:text-[12px]">
+    <div className="font-space-grotesk flex items-center justify-center gap-x-4 text-center text-[10px] uppercase text-black dark:text-white md:gap-x-5 md:text-[12px]">
       <span>{meta.establishedLabel}</span>
-      <span className="text-black/50">|</span>
+      <span className="text-black/50 dark:text-white/50">|</span>
       <span>{timeLabel}</span>
     </div>
   );
@@ -382,9 +382,9 @@ function MenuMeta({ meta }: { meta: SiteSettings["meta"] }) {
 
 function MenuFooter({ meta }: { meta: SiteSettings["meta"] }) {
   return (
-    <div className=" font-space-grotesk mt-auto flex items-center justify-center gap-x-4 pt-8 text-center text-[10px] uppercase text-black md:gap-x-5 md:pt-0 md:text-[12px]">
+    <div className="font-space-grotesk mt-auto flex items-center justify-center gap-x-4 pt-8 text-center text-[10px] uppercase text-black dark:text-white md:gap-x-5 md:pt-0 md:text-[12px]">
       <span>{meta.issueLabel}</span>
-      <span className="text-black/50">|</span>
+      <span className="text-black/50 dark:text-white/50">|</span>
       <span>{meta.location}</span>
     </div>
   );
@@ -423,7 +423,9 @@ function UtilityMenuLink({
       data-tina-field={tinaField(source, "label")}
       className={cn(
         "font-space-grotesk text-center text-[24px] uppercase leading-none tracking-[-0.05em] transition-opacity duration-150 md:text-[32px]",
-        isActive ? "font-bold text-black" : "text-black hover:opacity-60",
+        isActive
+          ? "font-bold text-black dark:text-white"
+          : "text-black hover:opacity-60 dark:text-white",
       )}
     >
       {label}

@@ -30,7 +30,7 @@
         "href": "/films",
         "group": "primary",
         "showInFooter": true,
-        "locked": true
+        "locked": false
       },
       {
         "index": "04",

@@ -17,7 +17,7 @@ export default function Footer() {
   const { brand, footerLinks, meta } = useSiteSettings();
 
   return (
-    <footer className='bg-surface-grey text-black'>
+    <footer className='bg-surface-grey text-black dark:bg-neutral-950 dark:text-white'>
       <div className='px-4 py-8 md:px-[58px] md:py-14'>
         <div className='flex flex-col gap-10 xl:flex-row xl:items-stretch xl:justify-between xl:gap-12'>
           <div className='min-w-0 flex-1'>
@@ -40,7 +40,7 @@ function FooterWordmark({ brand }: { brand: SiteSettings['brand'] }) {
     <Link href='/' aria-label={brand.homeAriaLabel} className='block w-full'>
       <div className='flex aspect-[2327/700] w-full items-stretch gap-[10px] md:gap-[30px]'>
         <div className='relative w-[70%] md:w-[calc(70.78%_-_20px)] shrink-0'>
-          <Image src={brand.logo} alt={brand.logoAlt} fill priority className='object-contain object-left' />
+          <Image src={brand.logo} alt={brand.logoAlt} fill priority className='object-contain object-left dark:invert' />
         </div>
 
         <div className='h-full w-[28%] md:w-[29%] shrink-0'>
@@ -49,7 +49,7 @@ function FooterWordmark({ brand }: { brand: SiteSettings['brand'] }) {
             autoplay
             loop
             rendererSettings={{ preserveAspectRatio: 'xMidYMid meet' }}
-            className='h-full w-full brightness-0'
+            className='h-full w-full brightness-0 dark:invert'
           />
         </div>
       </div>
@@ -75,7 +75,7 @@ function FooterMeta({ meta }: { meta: SiteSettings['meta'] }) {
   return (
     <div className='font-space-grotesk flex items-center gap-x-3 text-[10px] uppercase tracking-[-0.04em] md:justify-start md:text-[11px] mb-6 md:mb-0'>
       <span>{meta.establishedLabel}</span>
-      <span className='text-black/50'>|</span>
+      <span className='text-black/50 dark:text-white/50'>|</span>
       <span>{timeLabel}</span>
     </div>
   );
@@ -129,7 +129,7 @@ function FooterNavLink({
       <span
         className={cn(
           'pt-1 text-[9px] leading-none tracking-[-0.04em] -mt-1 transition-all duration-100',
-          isActive ? 'text-brand-orange' : 'text-black group-hover:text-brand-orange'
+          isActive ? 'text-brand-orange' : 'text-black group-hover:text-brand-orange dark:text-white dark:group-hover:text-brand-orange'
         )}
       >
         ({index})
@@ -139,7 +139,9 @@ function FooterNavLink({
         <span
           className={cn(
             'absolute inset-0 transition-all duration-100',
-            isActive ? 'font-bold text-black' : 'font-normal text-black group-hover:font-bold group-hover:text-black'
+            isActive
+              ? 'font-bold text-black dark:text-white'
+              : 'font-normal text-black group-hover:font-bold group-hover:text-black dark:text-white dark:group-hover:text-white'
           )}
         >
           {label}
@@ -154,7 +156,7 @@ function FooterIssue({ meta }: { meta: SiteSettings['meta'] }) {
     <div className='text-[10px] uppercase md:text-[11px] font-space-grotesk pt-6 md:pt-0'>
       <div className='flex items-center gap-x-3 md:justify-start'>
         <span>{meta.issueLabel}</span>
-        <span className='text-black/50'>|</span>
+        <span className='text-black/50 dark:text-white/50'>|</span>
         <span>{meta.location}</span>
       </div>
     </div>

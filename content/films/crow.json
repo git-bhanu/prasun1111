@@ -1,0 +1,36 @@
+{
+  "title": "CROW : THE MOVIE\n",
+  "sortOrder": 1,
+  "tagline": "‘Life always finds its way’\n",
+  "synopsis": "A tale that I have heard and read as a kid, like many of us. The thirsty crow, that drops pebbles, in an earthen pot to get some water level up, and once the level is to a mark that it can reach it with its beak, it gets water and satisfaction both.\n",
+  "awards": [
+    {
+      "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779980629/Untitled-1_2_1_h7bkup.svg"
+    },
+    {
+      "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779980646/image_19_v0tkak.svg",
+      "alt": "Best Animation Award"
+    },
+    {
+      "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779980666/CROWa_THE_MOVIE_1_year_1_rniyxv.svg"
+    },
+    {
+      "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779980472/Untitled-1_2_t93ri1.svg"
+    },
+    {
+      "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779980560/Animate_2_gyfg9h.svg"
+    }
+  ],
+  "backgroundType": "image",
+  "heroImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778095386/Frame_108_lltcnp.jpg",
+  "heroVideoPoster": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778156455/Frame_235_otzhmu.jpg",
+  "medium": "3D & 2D ANIMATION",
+  "storyDirection": "PRASUN MAZUMDAR",
+  "resolution": "1920 x 1080",
+  "year": "2023",
+  "youtubeUrl": "https://www.youtube.com/watch?v=1NnwXJxUshw",
+  "watchFilmLabel": "WATCH FILM",
+  "watchFilmHref": "https://www.youtube.com/watch?v=1NnwXJxUshw",
+  "filmDuration": "8MIN. 23 SEC.",
+  "blocks": []
+}
