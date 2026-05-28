@@ -193,7 +193,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
 
       {/* Desktop */}
       <div className='hidden md:grid md:grid-cols-[2fr_3fr]'>
-        <div className='flex flex-col justify-between py-10 pr-16'>
+        <div className='flex flex-col justify-between pr-16'>
           <div>
             <h2
               className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase text-black'

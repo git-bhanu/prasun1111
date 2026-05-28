@@ -53,7 +53,7 @@ export default function ClientPage(props: ClientPageProps) {
           case "PageBlocksInstallationSlider":
             return (
               <SectionReveal key={`${block.__typename}-${index}`}>
-                <InstallationSliderBlock block={block} />
+                <InstallationSliderBlock block={block as any} />
               </SectionReveal>
             );
           case "PageBlocksMovieList":

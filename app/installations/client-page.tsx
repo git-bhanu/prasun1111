@@ -1,24 +1,39 @@
-'use client';
+"use client";
 
-import { HeaderBlock } from '@/components/blocks/header-block';
-import { ImageBlock } from '@/components/blocks/image-block';
-import { SpaceBlock } from '@/components/blocks/space-block';
-import { TwoColumnTextBlock } from '@/components/blocks/two-column-text-block';
-import { VideoBlock } from '@/components/blocks/video-block';
-import { Icon, IconCircleButton } from '@/components/icons';
-import { InstallationDetails, InstallationListGrid } from '@/components/installation';
-import type { InstallationListItem, QuoteBreak } from '@/components/installation';
-import { ActionButton } from '@/components/shared/action-button';
-import { SectionMasthead } from '@/components/shared/section-masthead';
-import { useOverlayAnimation } from '@/hooks/use-overlay-animation';
-import { cn } from '@/lib/utils';
-import type { InstallationConnectionQuery, InstallationConnectionQueryVariables } from '@/tina/__generated__/types';
-import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { tinaField, useTina } from 'tinacms/dist/react';
+import { HeaderBlock } from "@/components/blocks/header-block";
+import { ImageBlock } from "@/components/blocks/image-block";
+import { SpaceBlock } from "@/components/blocks/space-block";
+import { TwoColumnTextBlock } from "@/components/blocks/two-column-text-block";
+import { VideoBlock } from "@/components/blocks/video-block";
+import { Icon } from "@/components/icons";
+import {
+  InstallationDetails,
+  InstallationListGrid,
+} from "@/components/installation";
+import type {
+  InstallationListItem,
+  QuoteBreak,
+} from "@/components/installation";
+import { ActionButton } from "@/components/shared/action-button";
+import { SectionMasthead } from "@/components/shared/section-masthead";
+import { useOverlayAnimation } from "@/hooks/use-overlay-animation";
+import { cn } from "@/lib/utils";
+import type {
+  InstallationConnectionQuery,
+  InstallationConnectionQueryVariables,
+} from "@/tina/__generated__/types";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { tinaField, useTina } from "tinacms/dist/react";
 
-type InstallationNode = NonNullable<NonNullable<NonNullable<InstallationConnectionQuery['installationConnection']['edges']>[number]>['node']>;
+type InstallationNode = NonNullable<
+  NonNullable<
+    NonNullable<
+      InstallationConnectionQuery["installationConnection"]["edges"]
+    >[number]
+  >["node"]
+>;
 
 type Props = {
   query: string;
@@ -50,19 +65,24 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
     panelRef,
   });
 
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(() => searchParams?.get('installation') ?? null);
-  const [displayInstallation, setDisplayInstallation] = useState<InstallationNode | null>(null);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(
+    () => searchParams?.get("installation") ?? null,
+  );
+  const [displayInstallation, setDisplayInstallation] =
+    useState<InstallationNode | null>(null);
 
   useEffect(() => {
     const handlePop = () => {
       const params = new URLSearchParams(window.location.search);
-      setSelectedSlug(params.get('installation') ?? null);
+      setSelectedSlug(params.get("installation") ?? null);
     };
-    window.addEventListener('popstate', handlePop);
-    return () => window.removeEventListener('popstate', handlePop);
+    window.addEventListener("popstate", handlePop);
+    return () => window.removeEventListener("popstate", handlePop);
   }, []);
 
-  const installations: InstallationNode[] = (tinaData.installationConnection.edges ?? [])
+  const installations: InstallationNode[] = (
+    tinaData.installationConnection.edges ?? []
+  )
     .map((e) => e?.node)
     .filter((n): n is InstallationNode => n != null)
     .sort((a, b) => {
@@ -71,10 +91,14 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
       return aOrder - bOrder;
     });
 
-  const installationSlug = (i: InstallationNode) => (i.slug ?? i._sys.filename).toLowerCase();
+  const installationSlug = (i: InstallationNode) =>
+    (i.slug ?? i._sys.filename).toLowerCase();
 
-  const selectedIndex = selectedSlug ? installations.findIndex((i) => installationSlug(i) === selectedSlug) : -1;
-  const selectedInstallation = selectedIndex >= 0 ? installations[selectedIndex] : null;
+  const selectedIndex = selectedSlug
+    ? installations.findIndex((i) => installationSlug(i) === selectedSlug)
+    : -1;
+  const selectedInstallation =
+    selectedIndex >= 0 ? installations[selectedIndex] : null;
 
   const prevSlugRef = useRef<string | null>(null);
 
@@ -92,28 +116,30 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
 
   useEffect(() => {
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     };
   }, []);
 
   const goTo = (slug: string) => {
     setSelectedSlug(slug);
-    window.history.pushState({}, '', `/installations?installation=${encodeURIComponent(slug)}`);
+    window.history.pushState(
+      {},
+      "",
+      `/installations?installation=${encodeURIComponent(slug)}`,
+    );
   };
 
   const close = () => {
     setSelectedSlug(null);
-    window.history.pushState({}, '', '/installations');
+    window.history.pushState({}, "", "/installations");
   };
-
-  const displayIndex = displayInstallation ? installations.findIndex((i) => installationSlug(i) === installationSlug(displayInstallation)) : -1;
 
   return (
     <>
       {installations.length === 0 ? (
-        <div className='px-8 py-12 sm:px-10 md:px-[58px]'>
-          <p className='text-black/45'>No installations yet.</p>
+        <div className="px-8 py-12 sm:px-10 md:px-[58px]">
+          <p className="text-black/45">No installations yet.</p>
         </div>
       ) : (
         <InstallationListGrid
@@ -125,36 +151,40 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
                 _sys: n._sys,
                 tinaSource: n,
                 data: n,
-              }) satisfies InstallationListItem
+              }) satisfies InstallationListItem,
           )}
           quoteBreaks={quoteBreaks}
           onItemClick={goTo}
         />
       )}
 
-      <div ref={backdropRef} onClick={close} className='fixed inset-0 z-[99] bg-black/60' />
+      <div
+        ref={backdropRef}
+        onClick={close}
+        className="fixed inset-0 z-[99] bg-black/60"
+      />
       <button
         ref={closeBtnRef}
-        type='button'
+        type="button"
         onClick={close}
-        aria-label='Close overlay'
-        className='fixed right-6 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white md:right-36'
+        aria-label="Close overlay"
+        className="fixed right-6 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white md:right-36"
       >
-        <Icon name='pinchInZoom' size={28} color='#fff' />
+        <Icon name="pinchInZoom" size={28} color="#fff" />
       </button>
       <div
         ref={(el) => {
           panelRef.current = el;
           detailScrollRef.current = el;
         }}
-        className='fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white'
+        className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
       >
         {displayInstallation && (
           <DetailPanel
             installation={displayInstallation}
-            onPrev={displayIndex > 0 ? () => goTo(installationSlug(installations[displayIndex - 1])) : undefined}
-            onNext={displayIndex < installations.length - 1 ? () => goTo(installationSlug(installations[displayIndex + 1])) : undefined}
-            scrollToTop={() => detailScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })}
+            scrollToTop={() =>
+              detailScrollRef.current?.scrollTo({ top: 0, behavior: "smooth" })
+            }
           />
         )}
       </div>
@@ -164,44 +194,39 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
 
 function blockWrapperClass(width: string, verticalPadding: string) {
   switch (width) {
-    case 'full':
+    case "full":
       return `w-full ${verticalPadding}`;
-    case 'wide':
+    case "wide":
       return `w-full px-[5svw] md:pl-[10svw] md:pr-[10svw] ${verticalPadding}`;
-    case 'narrow':
+    case "narrow":
     default:
       return `w-full px-[5svw] md:pl-[10svw] md:pr-[10svw] md:max-w-[75svw] ${verticalPadding}`;
   }
 }
 
-
 function DetailPanel({
   installation,
-  onPrev,
-  onNext,
   scrollToTop,
 }: {
   installation: InstallationNode;
-  onPrev?: () => void;
-  onNext?: () => void;
   scrollToTop?: () => void;
 }) {
-  const showVideo = installation.backgroundType === 'video' && Boolean(installation.videoUrl);
-  const canNavigate = Boolean(onPrev || onNext);
+  const showVideo =
+    installation.backgroundType === "video" && Boolean(installation.videoUrl);
 
   const renderMedia = () => {
     if (showVideo) {
       return (
         <video
-          className='absolute inset-0 h-full w-full object-cover'
+          className="absolute inset-0 h-full w-full object-cover"
           src={installation.videoUrl ?? undefined}
           poster={installation.videoPoster ?? installation.image ?? undefined}
           autoPlay
           muted
           loop
           playsInline
-          preload='metadata'
-          data-tina-field={tinaField(installation, 'videoUrl')}
+          preload="metadata"
+          data-tina-field={tinaField(installation, "videoUrl")}
         />
       );
     }
@@ -211,121 +236,147 @@ function DetailPanel({
           src={installation.image}
           alt={installation.imageAlt || installation.title}
           fill
-          sizes='100vw'
-          className='object-cover'
+          sizes="100vw"
+          className="object-cover"
           priority
-          data-tina-field={tinaField(installation, 'image')}
+          data-tina-field={tinaField(installation, "image")}
         />
       );
     }
-    return <div className='absolute inset-0 bg-neutral-900' />;
-  };
-
-  const renderControls = (className?: string) => {
-    if (!canNavigate) return null;
-    return (
-      <div className={cn('flex items-center gap-4', className)}>
-        <IconCircleButton onClick={onPrev} disabled={!onPrev} aria-label='Previous installation' className={cn(!onPrev && 'opacity-30 cursor-not-allowed')}>
-          <Icon name='keyboardBackspace' color='currentColor' className='rotate-180' aria-hidden='true' />
-        </IconCircleButton>
-        <IconCircleButton onClick={onNext} disabled={!onNext} aria-label='Next installation' className={cn(!onNext && 'opacity-30 cursor-not-allowed')}>
-          <Icon name='keyboardBackspace' color='currentColor' aria-hidden='true' />
-        </IconCircleButton>
-      </div>
-    );
+    return <div className="absolute inset-0 bg-neutral-900" />;
   };
 
   return (
     <>
       {/* Mobile layout */}
-      <div className='md:hidden'>
-        <div className='relative w-full aspect-[16/9] overflow-hidden bg-black' data-tina-field={tinaField(installation, showVideo ? 'videoUrl' : 'image')}>
+      <div className="md:hidden">
+        <div
+          className="relative w-full aspect-[16/9] overflow-hidden bg-black"
+          data-tina-field={tinaField(
+            installation,
+            showVideo ? "videoUrl" : "image",
+          )}
+        >
           {renderMedia()}
         </div>
 
-        <div className='px-4 pt-6 pb-8'>
-          <SectionMasthead index='02' title='INSTALLATIONS' size='sm' mobileColor='black' />
-
-          {renderControls('mt-4')}
-
-          <h1 className='mt-5 font-space-grotesk text-[22px] font-bold leading-[1.2] uppercase text-black' data-tina-field={tinaField(installation, 'title')}>
+        <div className="px-4 pt-6 pb-8">
+          <SectionMasthead
+            index="02"
+            title="INSTALLATIONS"
+            size="sm"
+            mobileColor="black"
+          />
+          <h1
+            className="mt-6 font-space-grotesk text-[22px] font-bold leading-[1.2] uppercase text-black"
+            data-tina-field={tinaField(installation, "title")}
+          >
             {installation.title}
           </h1>
 
-          <InstallationDetails source={installation} tinaSource={installation} className='mt-6 border-t border-black/25 pt-6' />
+          <InstallationDetails
+            source={installation}
+            tinaSource={installation}
+            className="mt-6 border-t border-black/25 pt-6"
+          />
         </div>
       </div>
 
       {/* Desktop layout */}
       <div
-        className='relative isolate hidden overflow-hidden bg-black md:block md:min-h-full'
-        data-tina-field={tinaField(installation, showVideo ? 'videoUrl' : 'image')}
+        className="relative isolate hidden overflow-hidden bg-black md:block md:min-h-full"
+        data-tina-field={tinaField(
+          installation,
+          showVideo ? "videoUrl" : "image",
+        )}
       >
         {renderMedia()}
-        <div className='absolute inset-0 bg-black/[0.12]' />
+        <div className="absolute inset-0 bg-black/[0.12]" />
 
-        <div className='relative z-10 flex min-h-full flex-col justify-between px-12 py-14 text-white'>
-          <SectionMasthead index='02' title='INSTALLATIONS' size='sm' />
+        <div className="relative z-10 flex min-h-full flex-col px-12 py-14 text-white">
+          <SectionMasthead index="02" title="INSTALLATIONS" size="sm" />
 
-          <div>
-            <div className='max-w-[930px]'>
-              <h1 className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase' data-tina-field={tinaField(installation, 'title')}>
+          <div className="mt-10">
+            <div className="max-w-[930px]">
+              <h1
+                className="font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase"
+                data-tina-field={tinaField(installation, "title")}
+              >
                 {installation.title}
               </h1>
             </div>
 
-            <div className='mt-8 border-t border-white/20 pt-9'>
-              <InstallationDetails source={installation} tinaSource={installation} variant='dark' />
+            <div className="mt-8 border-t border-white/20 pt-9">
+              <InstallationDetails
+                source={installation}
+                tinaSource={installation}
+                variant="dark"
+              />
             </div>
           </div>
-
-          <div className='flex items-end justify-end'>{renderControls()}</div>
         </div>
       </div>
 
       {/* Blocks */}
       {installation.blocks && installation.blocks.length > 0 && (
-        <div className='mt-8'>
+        <div className="mt-8">
           {installation.blocks.map((block, i) => {
             switch (block?.__typename) {
-              case 'InstallationBlocksHeader':
+              case "InstallationBlocksHeader":
                 return (
-                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass('narrow', 'pb-2 md:py-4')}>
+                  <div
+                    key={`${block.__typename}-${i}`}
+                    className={blockWrapperClass("narrow", "pb-2 md:py-4")}
+                  >
                     <HeaderBlock block={block} />
                   </div>
                 );
-              case 'InstallationBlocksTwoColumnText':
+              case "InstallationBlocksTwoColumnText":
                 return (
-                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass('wide', 'py-4')}>
+                  <div
+                    key={`${block.__typename}-${i}`}
+                    className={blockWrapperClass("wide", "py-4")}
+                  >
                     <TwoColumnTextBlock block={block} />
                   </div>
                 );
-              case 'InstallationBlocksVideo':
+              case "InstallationBlocksVideo":
                 return (
-                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass('wide', 'py-10')}>
+                  <div
+                    key={`${block.__typename}-${i}`}
+                    className={blockWrapperClass("wide", "py-10")}
+                  >
                     <VideoBlock block={block} />
                   </div>
                 );
-              case 'InstallationBlocksImage': {
+              case "InstallationBlocksImage": {
                 const b = block as unknown as {
-                  __typename: 'InstallationBlocksImage';
+                  __typename: "InstallationBlocksImage";
                   width?: string | null;
                   orientation?: string | null;
-                  images?: Array<{ src?: string | null; alt?: string | null } | null> | null;
+                  images?: Array<{
+                    src?: string | null;
+                    alt?: string | null;
+                  } | null> | null;
                 };
                 return (
-                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass(b.width ?? 'narrow', 'py-4')}>
+                  <div
+                    key={`${block.__typename}-${i}`}
+                    className={blockWrapperClass(b.width ?? "narrow", "py-4")}
+                  >
                     <ImageBlock block={b} />
                   </div>
                 );
               }
-              case 'InstallationBlocksSpace': {
+              case "InstallationBlocksSpace": {
                 const b = block as unknown as {
-                  __typename: 'InstallationBlocksSpace';
+                  __typename: "InstallationBlocksSpace";
                   desktopSpace?: string | null;
                   mobileSpace?: string | null;
                 };
-                return <SpaceBlock key={`${block.__typename}-${i}`} block={b} />;
+                return (
+                  <SpaceBlock key={`${block.__typename}-${i}`} block={b} />
+                );
               }
               default:
                 return null;
@@ -334,8 +385,14 @@ function DetailPanel({
         </div>
       )}
 
-      <div className='mt-10 flex justify-center px-6 pb-10'>
-        <ActionButton color='white' icon='arrowUpwardAlt' label='Back to Top' onClick={scrollToTop} className='bg-surface-grey' />
+      <div className="mt-10 flex justify-center px-6 pb-10">
+        <ActionButton
+          color="white"
+          icon="arrowUpwardAlt"
+          label="Back to Top"
+          onClick={scrollToTop}
+          className="bg-surface-grey"
+        />
       </div>
     </>
   );

@@ -109,6 +109,7 @@ export function InstallationListGrid({ items, quoteBreaks = [], onItemClick }: I
   const sections = buildSections(items, quoteBreaks);
 
   let itemCount = 0;
+  const totalItems = items.length;
 
   return (
     <div className='w-full'>
@@ -130,9 +131,18 @@ export function InstallationListGrid({ items, quoteBreaks = [], onItemClick }: I
             {section.items.map((item) => {
               itemCount++;
               const slug = itemSlug(item);
+              const isFirst = itemCount === 1;
+              const isLast = itemCount === totalItems;
 
               return (
-                <div key={item.id} className={cn('px-4 sm:px-10 md:px-[58px]', itemCount > 1 && 'border-t border-black/10')}>
+                <div
+                  key={item.id}
+                  className={cn(
+                    'px-4 sm:px-10 md:px-[58px]',
+                    isFirst ? 'mt-[30px]' : 'mt-[30px] md:mt-[60px]',
+                    isLast ? 'mb-[30px]' : 'mb-[30px] md:mb-[60px]',
+                  )}
+                >
                   <InstallationListCard
                     installation={item.data}
                     tinaSource={item.tinaSource}
