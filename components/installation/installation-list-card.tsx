@@ -149,7 +149,6 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
           label={installation.readMoreLabel}
           onClick={onOpen}
           fullWidth={fullWidth}
-          dataTinaField={tinaField(tinaSource as any, 'readMoreLabel')}
         />
       )}
       {installation.watchFilmLabel && (
