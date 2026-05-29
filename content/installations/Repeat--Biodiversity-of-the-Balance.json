@@ -171,6 +171,31 @@
       "leftColumn": "*Hope, not as emotion, but as evolution.*\n",
       "rightColumn": "It explores the possibility of an organism capable of generating renewal when in contact with decay, collapse, or dying life forms. A presence that carries regeneration within itself.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780052004/5_mlc885.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "TIME\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "The Flow of Evolution\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*Time does not move in a straight line. It expands, contracts, repeats, and transforms.*\n",
+      "rightColumn": "Each branch of evolution carries stories of survival, extinction, mutation, and rebirth. Through time, life continuously reshapes itself to endure changing realities.\n\nThe installation becomes a physical manifestation of this movement — where textures, forms, and structures reflect the silent evolution of existence itself.\n",
+      "_template": "twoColumnText"
     }
   ]
 }
