@@ -107,7 +107,7 @@ function FilmDetail({ film }: { film: Film }) {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex w-full flex-col bg-black">
       {/* Mobile */}
       <div className="md:hidden">
         <div className="px-4 pt-6">
