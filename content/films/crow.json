@@ -230,7 +230,12 @@
       "_template": "header"
     },
     {
-      "width": "",
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780040206/The_Crow_Asset_3_kwsvmg.jpg"
+        }
+      ],
       "_template": "image"
     },
     {
