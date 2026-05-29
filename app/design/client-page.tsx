@@ -203,7 +203,10 @@ function DesignContent({ query, data, variables }: Props) {
             design={displayDesign}
             allDesigns={designs}
             onClose={close}
-            onItemClick={goTo}
+            onItemClick={(slug) => {
+              goTo(slug);
+              detailScrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             scrollToTop={() =>
               detailScrollRef.current?.scrollTo({ top: 0, behavior: "smooth" })
             }
@@ -245,10 +248,10 @@ function DetailPanel({
 
   return (
     <>
-      <div className="flex flex-col h-[calc(100svh-50px)]">
+      <div className="flex flex-col md:h-[calc(100svh-50px)]">
         <div className="px-4 pt-8 pb-4 md:px-[10svw] md:pt-20 shrink-0">
           {(design.date || design.category) && (
-            <p className="font-space-grotesk text-[24px] font-normal leading-none uppercase tracking-normal mb-4">
+            <p className="font-space-grotesk text-[12px] md:text-[24px] font-normal leading-none uppercase tracking-normal mb-4">
               {design.date && formatDesignDate(design.date)}
               {design.date && design.category && " · "}
               {design.category && (
@@ -258,23 +261,30 @@ function DetailPanel({
               )}
             </p>
           )}
-          <h1 className="font-sedan text-[70px] font-normal leading-tight tracking-normal text-black">
+          <h1 className="font-sedan text-[32px] md:text-[70px] font-normal leading-tight tracking-normal text-black">
             <TinaMarkdown
               content={design.title as any}
               components={
                 {
-                  p: (props: any) => <span className="block">{props?.children}</span>,
-                  bold: (props: any) => <strong className="font-bold">{props?.children}</strong>,
-                  italic: (props: any) => <em className="italic">{props?.children}</em>,
+                  p: (props: any) => (
+                    <span className="block">{props?.children}</span>
+                  ),
+                  bold: (props: any) => (
+                    <strong className="font-bold">{props?.children}</strong>
+                  ),
+                  italic: (props: any) => (
+                    <em className="italic">{props?.children}</em>
+                  ),
                 } as Components<object>
               }
             />
           </h1>
         </div>
+        <div className="mx-4 md:mx-[10svw] border-b border-black/10" />
 
         {design.image && (
-          <div className="flex-1 min-h-0 mt-6 w-full px-4 md:px-[10svw]">
-            <div className="relative w-full h-full overflow-hidden bg-neutral-100">
+          <div className="mt-6 w-full px-4 md:px-[10svw] md:flex-1 md:min-h-0">
+            <div className="relative aspect-[16/9] md:aspect-auto md:w-full md:h-full overflow-hidden bg-neutral-100">
               <BlurUpImage
                 src={design.image}
                 alt={design.imageAlt ?? design._sys.filename}
@@ -356,7 +366,10 @@ function DetailPanel({
       )}
 
       {otherDesigns.length > 0 && (
-        <div className="mt-16 border-t border-black/10 pt-10 px-4 pb-12 md:px-[10svw]">
+        <div className="mt-20 pt-10 px-4 pb-12 md:px-[10svw]">
+          <p className="font-space-grotesk text-[20px] md:text-[28px] font-bold uppercase tracking-wide text-black mb-8">
+            Related Content ↓
+          </p>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {otherDesigns.map((d) => (
               <DesignListCard
