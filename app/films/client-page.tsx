@@ -138,7 +138,7 @@ function FilmDetail({ film }: { film: Film }) {
           </h1>
           {film.tagline && (
             <p
-              className="mt-3 font-sedan text-[14px] md:text-[24px] leading-snug text-white"
+              className="mt-3 font-sedan text-[20px] md:text-[24px] text-white mb-4"
               data-tina-field={tinaField(film as any, "tagline")}
             >
               <TinaMarkdown
@@ -151,7 +151,7 @@ function FilmDetail({ film }: { film: Film }) {
 
         {film.synopsis && (
           <div
-            className="px-4 pt-3 pb-4 font-sedan text-[14px] md:text-[24px] leading-relaxed text-white"
+            className="px-4 pt-3 pb-4 font-sedan text-[16px] md:text-[24px] leading-relaxed text-white"
             data-tina-field={tinaField(film as any, "synopsis")}
           >
             <TinaMarkdown
@@ -221,7 +221,7 @@ function FilmDetail({ film }: { film: Film }) {
             )}
           </div>
 
-          <div className="w-[340px] shrink-0">
+          <div className="w-[500px] shrink-0">
             <FilmMeta film={film} />
           </div>
         </div>
@@ -413,7 +413,7 @@ function FilmMeta({ film }: { film: Film }) {
 
   return (
     <div className="border-t pb- border-white/[0.15] mx-4">
-      <div className="grid grid-cols-[1fr_1px_1.5fr] mt-4">
+      <div className="grid grid-cols-[1fr_1px_1.5fr] md:grid-cols-[1fr_1px_1fr] mt-4">
         <div>
           {left.map((f, i) => (
             <div

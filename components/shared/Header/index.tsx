@@ -138,17 +138,21 @@ function MobilePrimaryNav({
       return;
     }
 
-    const targetLeft = Math.max(
-      0,
-      activeItem.offsetLeft -
-        scrollContainer.clientWidth / 2 +
-        activeItem.clientWidth / 2,
-    );
+    const raf = requestAnimationFrame(() => {
+      const targetLeft = Math.max(
+        0,
+        activeItem.offsetLeft -
+          scrollContainer.clientWidth / 2 +
+          activeItem.clientWidth / 2,
+      );
 
-    scrollContainer.scrollTo({
-      left: targetLeft,
-      behavior: reduceMotion ? "auto" : "smooth",
+      scrollContainer.scrollTo({
+        left: targetLeft,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
     });
+
+    return () => cancelAnimationFrame(raf);
   }, [pathname, reduceMotion]);
 
   const handleScroll = () => {
