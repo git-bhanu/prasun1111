@@ -206,7 +206,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
           <div className='mt-10'>{renderButtons()}</div>
         </div>
 
-        <div className='relative overflow-hidden bg-neutral-200' style={{ minHeight: 420 }}>
+        <div className='relative aspect-[16/9] overflow-hidden bg-neutral-200'>
           {renderSlide('60vw', desktopSlideRef)}
           {canNavigate && <div className='absolute bottom-4 right-4 z-10'>{renderControls()}</div>}
         </div>
