@@ -1,1 +1,1 @@
-export const LOCKED_PATHS = ["/design", "/writings", "/shop", "/cart"];
+export const LOCKED_PATHS = ["/writings", "/shop", "/cart"];

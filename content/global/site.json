@@ -38,7 +38,7 @@
         "href": "/design",
         "group": "primary",
         "showInFooter": true,
-        "locked": true
+        "locked": false
       },
       {
         "index": "05",

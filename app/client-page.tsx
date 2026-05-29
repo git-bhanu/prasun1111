@@ -65,7 +65,7 @@ export default function ClientPage(props: ClientPageProps) {
           case "PageBlocksDesignSlider":
             return (
               <SectionReveal key={`${block.__typename}-${index}`}>
-                <DesignSliderBlock block={block} />
+                <DesignSliderBlock block={block as any} />
               </SectionReveal>
             );
           case "PageBlocksShop":

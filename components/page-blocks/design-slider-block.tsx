@@ -2,13 +2,13 @@
 
 import { useInView, useReducedMotion } from "motion/react";
 import { BlurUpImage } from "@/components/shared/blur-up-image";
+import { formatDesignDate } from "@/components/design";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { type Components, TinaMarkdown } from "tinacms/dist/rich-text";
 
 import { ActionButton } from "@/components/shared/action-button";
-import { ANNOUNCEMENT_OVERLAY_EVENT } from "@/components/shared/announcement-overlay";
 import { SectionMasthead } from "@/components/shared/section-masthead";
 import { cn } from "@/lib/utils";
 import type { PageBlocksDesignSlider } from "@/tina/__generated__/types";
@@ -17,6 +17,13 @@ const headingComponents: Components<{}> = {
   p: (props) => <span className="block">{props?.children}</span>,
   break: () => <br />,
   bold: (props) => <strong className="font-medium">{props?.children}</strong>,
+  italic: (props) => <em className="italic font-sedan">{props?.children}</em>,
+};
+
+const descriptionComponents: Components<{}> = {
+  p: (props) => <span className="block">{props?.children}</span>,
+  break: () => <br />,
+  bold: (props) => <strong className="font-semibold">{props?.children}</strong>,
   italic: (props) => <em className="italic font-sedan">{props?.children}</em>,
 };
 
@@ -32,8 +39,9 @@ const SCROLL_SPEED = 0.5;
 
 export function DesignSliderBlock({ block }: DesignSliderBlockProps) {
   const items =
-    block.items?.filter((item): item is DesignItem => Boolean(item?.image)) ??
-    [];
+    block.items?.filter(
+      (item): item is DesignItem => Boolean((item as any)?.design),
+    ) ?? [];
   const shouldReduceMotion = useReducedMotion();
   const scrollRef = useRef<HTMLDivElement>(null);
   const isPausedRef = useRef(false);
@@ -101,7 +109,7 @@ export function DesignSliderBlock({ block }: DesignSliderBlockProps) {
               label={block.buttonLabel}
               icon="arrowRightAlt"
               iconPosition="right"
-              onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
+              href="/design"
               dataTinaField={tinaField(block, "buttonLabel")}
             />
           </div>
@@ -133,7 +141,7 @@ export function DesignSliderBlock({ block }: DesignSliderBlockProps) {
           color="black"
           label={block.buttonLabel}
           fullWidth
-          onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
+          href="/design"
           dataTinaField={tinaField(block, "buttonLabel")}
         />
       </div>
@@ -148,16 +156,41 @@ function DesignCard({
   item: DesignItem;
   priority: boolean;
 }) {
+  const design = (item as any).design as {
+    title: string;
+    slug?: string | null;
+    image?: string | null;
+    imageAlt?: string | null;
+    cardImage?: string | null;
+    cardImageAlt?: string | null;
+    date?: string | null;
+    category?: { title: string } | null;
+    description?: any;
+    accentColor?: string | null;
+    _sys: { filename: string };
+  };
+
+  if (!design) return null;
+
+  const displayImage = design.cardImage ?? design.image;
+  const displayAlt = design.cardImageAlt ?? design.imageAlt ?? design.title;
+  const slug = design.slug ?? design._sys.filename;
+  const href = `/design?design=${encodeURIComponent(slug.toLowerCase())}`;
+
+  const accentBg = design.accentColor ?? "#e0f2fe";
+  const cardClassName = cn(
+    "group flex-none w-[85vw] md:w-[calc((100vw-144px)/3)] md:min-w-[400px] overflow-hidden transition-colors duration-300",
+    "[background-color:var(--card-accent)] md:bg-white md:hover:[background-color:var(--card-accent)]",
+  );
+  const cardStyle = { "--card-accent": accentBg } as React.CSSProperties;
+
   const inner = (
     <>
-      <div
-        className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100 mt-6 md:mt-0"
-        data-tina-field={tinaField(item, "image")}
-      >
-        {item.image ? (
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100 mt-6 md:mt-0">
+        {displayImage ? (
           <BlurUpImage
-            src={item.image}
-            alt={item.imageAlt || item.category || "Design"}
+            src={displayImage}
+            alt={displayAlt}
             fill
             sizes="(max-width: 767px) 85vw, 420px"
             className="object-cover"
@@ -169,40 +202,31 @@ function DesignCard({
       </div>
 
       <div className="my-4 px-4 md:p-6">
-        {item.date || item.category ? (
+        {(design.date || design.category) ? (
           <p className="font-space-grotesk text-xs md:text-[18px] mt-4 uppercase leading-tight tracking-wide text-black">
-            {item.date ? (
-              <span data-tina-field={tinaField(item, "date")}>{item.date}</span>
+            {design.date ? (
+              <span>{formatDesignDate(design.date)}</span>
             ) : null}
-            {item.date && item.category ? " · " : null}
-            {item.category ? (
-              <strong
-                className="font-semibold text-black"
-                data-tina-field={tinaField(item, "category")}
-              >
-                {item.category}
+            {design.date && design.category ? " · " : null}
+            {design.category ? (
+              <strong className="font-semibold text-black">
+                {design.category.title}
               </strong>
             ) : null}
           </p>
         ) : null}
 
-        {item.title ? (
-          <h3
-            className="mt-4 md:mt-6 mb-4 font-sedan text-[20px] leading-[1.1] text-black md:text-[36px] cursor-pointer"
-            data-tina-field={tinaField(item, "title")}
-          >
-            <TinaMarkdown content={item.title} components={headingComponents} />
+        {design.title ? (
+          <h3 className="mt-4 md:mt-6 mb-4 font-sedan text-[20px] leading-[1.1] text-black md:text-[36px] cursor-pointer">
+            {design.title}
           </h3>
         ) : null}
 
-        {item.description ? (
-          <div
-            className=" border-t border-black/8 pt-4 mb-4 font-sedan text-sm md:text-[24px] italic leading-tight md:leading-none text-black md:line-clamp-2 line-clamp-3"
-            data-tina-field={tinaField(item, "description")}
-          >
+        {design.description ? (
+          <div className="border-t border-black/8 pt-4 mb-4 font-sedan text-sm md:text-[24px] italic leading-tight md:leading-none text-black md:line-clamp-2 line-clamp-3">
             <TinaMarkdown
-              content={item.description}
-              components={headingComponents}
+              content={design.description}
+              components={descriptionComponents}
             />
           </div>
         ) : null}
@@ -210,31 +234,11 @@ function DesignCard({
     </>
   );
 
-  const accentBg = item.accentColor ?? "#e0f2fe";
-  const cardClassName = cn(
-    "group flex-none w-[85vw] md:w-[calc((100vw-144px)/3)] md:min-w-[400px] overflow-hidden transition-colors duration-300",
-    "[background-color:var(--card-accent)] md:bg-white md:hover:[background-color:var(--card-accent)]",
-  );
-  const cardStyle = { "--card-accent": accentBg } as React.CSSProperties;
-
-  if (item.href) {
-    return (
-      <article>
-        <Link
-          href={item.href}
-          className={cardClassName}
-          style={cardStyle}
-          data-tina-field={tinaField(item, "href")}
-        >
-          {inner}
-        </Link>
-      </article>
-    );
-  }
-
   return (
-    <article className={cardClassName} style={cardStyle}>
-      {inner}
+    <article>
+      <Link href={href} className={cardClassName} style={cardStyle}>
+        {inner}
+      </Link>
     </article>
   );
 }

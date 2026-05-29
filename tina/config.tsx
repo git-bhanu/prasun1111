@@ -3,6 +3,7 @@ import nextConfig from '../next.config';
 
 import Artwork from './collection/artwork';
 import ArtworksPage from './collection/artworks-page';
+import Design from './collection/design';
 import Film from './collection/film';
 import FilmsPage from './collection/films-page';
 import Global from './collection/global';
@@ -36,7 +37,7 @@ const config = defineConfig({
     basePath: nextConfig.basePath?.replace(/^\//, '') || '', // The base path of the app (could be /blog)
   },
   schema: {
-    collections: [Page, Global, Tag, Artwork, ArtworksPage, Installation, InstallationsPage, Film, FilmsPage],
+    collections: [Page, Global, Tag, Artwork, ArtworksPage, Installation, InstallationsPage, Film, FilmsPage, Design],
   },
 });
 
