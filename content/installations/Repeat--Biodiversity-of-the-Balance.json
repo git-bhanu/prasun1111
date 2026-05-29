@@ -252,6 +252,22 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "TIME\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*Time does not move in a straight line. It expands, contracts, repeats, and transforms.*\n",
+      "rightColumn": "Each branch of evolution carries stories of survival, extinction, mutation, and rebirth. Through time, life continuously reshapes itself to endure changing realities.\n\nThe installation becomes a physical manifestation of this movement — where textures, forms, and structures reflect the silent evolution of existence itself.\n",
+      "_template": "twoColumnText"
     }
   ]
 }
