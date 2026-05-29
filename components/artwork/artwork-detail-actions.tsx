@@ -1,6 +1,7 @@
 "use client";
 
 import { ActionButton } from "@/components/shared/action-button";
+import { showCopyToast } from "@/components/shared/copy-toast";
 
 export interface ArtworkDetailActionsProps {
   onClose: () => void;
@@ -17,7 +18,7 @@ export function ArtworkDetailActions({
 }: ArtworkDetailActionsProps) {
   const handleShare = () => {
     const url = shareUrl ?? window.location.href;
-    navigator.clipboard.writeText(url).catch(() => {});
+    navigator.clipboard.writeText(url).then(showCopyToast).catch(() => {});
   };
 
   return (

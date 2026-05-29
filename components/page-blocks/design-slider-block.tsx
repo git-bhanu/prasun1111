@@ -27,6 +27,21 @@ const descriptionComponents: Components<{}> = {
   italic: (props) => <em className="italic font-sedan">{props?.children}</em>,
 };
 
+const titleComponents: Components<{}> = {
+  p: (props) => <span className="block">{props?.children}</span>,
+  break: () => <br />,
+  bold: (props) => <strong className="font-medium">{props?.children}</strong>,
+  italic: (props) => <em className="italic font-sedan">{props?.children}</em>,
+};
+
+function extractText(node: any): string {
+  if (!node) return '';
+  if (typeof node === 'string') return node;
+  if (node.text) return node.text;
+  if (node.children) return node.children.map(extractText).join('');
+  return '';
+}
+
 type DesignSliderBlockProps = {
   block: PageBlocksDesignSlider;
 };
@@ -157,7 +172,7 @@ function DesignCard({
   priority: boolean;
 }) {
   const design = (item as any).design as {
-    title: string;
+    title: any;
     slug?: string | null;
     image?: string | null;
     imageAlt?: string | null;
@@ -173,7 +188,7 @@ function DesignCard({
   if (!design) return null;
 
   const displayImage = design.cardImage ?? design.image;
-  const displayAlt = design.cardImageAlt ?? design.imageAlt ?? design.title;
+  const displayAlt = design.cardImageAlt ?? design.imageAlt ?? extractText(design.title);
   const slug = design.slug ?? design._sys.filename;
   const href = `/design?design=${encodeURIComponent(slug.toLowerCase())}`;
 
@@ -224,7 +239,7 @@ function DesignCard({
 
           {design.title ? (
             <h3 className="mt-4 md:mt-6 mb-4 font-sedan text-[20px] leading-[1.1] text-black md:text-[36px] cursor-pointer">
-              {design.title}
+              <TinaMarkdown content={design.title} components={titleComponents} />
             </h3>
           ) : null}
 

@@ -13,6 +13,7 @@ import { SectionMasthead } from '@/components/shared/section-masthead';
 import { useOverlayAnimation } from '@/hooks/use-overlay-animation';
 import type { ArtworkConnectionQuery, ArtworkConnectionQueryVariables } from '@/tina/__generated__/types';
 import { BlurUpImage } from '@/components/shared/blur-up-image';
+import { CopyToast } from '@/components/shared/copy-toast';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTina } from 'tinacms/dist/react';
@@ -111,6 +112,7 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
 
   return (
     <>
+      <CopyToast />
       {artworks.length === 0 ? (
         <div className='px-8 py-12 sm:px-10 md:px-[58px]'>
           <p className='text-black/45'>No artworks yet.</p>
