@@ -234,12 +234,22 @@
       "_template": "image"
     },
     {
+      "leftColumn": "Each part starts with these fluid movements that expressed very much the idea of that part in a very abstract form.\n\nI wanted to add this to the movie as a background of the text that we wanted to communicate to our audience.\n",
+      "rightColumn": "They set up a huge canvas for the audience and it (hopefully) inspires the vision already of what they are going to see. “We want to create this experience together with the audience” was the thought behind making and using them.\n",
       "_template": "twoColumnText"
     },
     {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
+        }
+      ],
       "_template": "image"
     },
     {
+      "desktopSpace": "48",
+      "mobileSpace": "32",
       "_template": "space"
     }
   ]
