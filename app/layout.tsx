@@ -52,7 +52,7 @@ export default async function RootLayout({
         <NextTopLoader
           color="#ff6400"
           showSpinner={false}
-          height={2}
+          height={4}
           shadow={false}
         />
         <FaviconAnimator />

@@ -138,7 +138,7 @@ function DesignContent({ query, data, variables }: Props) {
               key={filter}
               type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`relative cursor-pointer rounded-full px-5 py-2 font-space-grotesk text-xs font-semibold uppercase tracking-wide transition-colors ${activeFilter !== filter ? "hover:bg-black/10" : ""}`}
+              className={`relative cursor-pointer rounded-full px-5 py-2 font-space-grotesk text-[14px] md:text-[20px] font-normal tracking-wide transition-colors ${activeFilter !== filter ? "hover:bg-black/10" : ""}`}
             >
               {activeFilter === filter && (
                 <motion.span
