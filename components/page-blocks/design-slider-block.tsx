@@ -178,66 +178,65 @@ function DesignCard({
   const href = `/design?design=${encodeURIComponent(slug.toLowerCase())}`;
 
   const accentBg = design.accentColor ?? "#e0f2fe";
-  const cardClassName = cn(
-    "group flex-none w-[85vw] md:w-[calc((100vw-144px)/3)] md:min-w-[400px] overflow-hidden transition-colors duration-300",
-    "[background-color:var(--card-accent)] md:bg-white md:hover:[background-color:var(--card-accent)]",
-  );
   const cardStyle = { "--card-accent": accentBg } as React.CSSProperties;
 
-  const inner = (
-    <>
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100 mt-6 md:mt-0">
-        {displayImage ? (
-          <BlurUpImage
-            src={displayImage}
-            alt={displayAlt}
-            fill
-            sizes="(max-width: 767px) 85vw, 420px"
-            className="object-cover"
-            priority={priority}
-          />
-        ) : (
-          <div className="absolute inset-0 bg-neutral-100" />
-        )}
-      </div>
-
-      <div className="my-4 px-4 md:p-6">
-        {(design.date || design.category) ? (
-          <p className="font-space-grotesk text-xs md:text-[18px] mt-4 uppercase leading-tight tracking-wide text-black">
-            {design.date ? (
-              <span>{formatDesignDate(design.date)}</span>
-            ) : null}
-            {design.date && design.category ? " · " : null}
-            {design.category ? (
-              <strong className="font-semibold text-black">
-                {design.category.title}
-              </strong>
-            ) : null}
-          </p>
-        ) : null}
-
-        {design.title ? (
-          <h3 className="mt-4 md:mt-6 mb-4 font-sedan text-[20px] leading-[1.1] text-black md:text-[36px] cursor-pointer">
-            {design.title}
-          </h3>
-        ) : null}
-
-        {design.description ? (
-          <div className="border-t border-black/8 pt-4 mb-4 font-sedan text-sm md:text-[24px] italic leading-tight md:leading-none text-black md:line-clamp-2 line-clamp-3">
-            <TinaMarkdown
-              content={design.description}
-              components={descriptionComponents}
-            />
-          </div>
-        ) : null}
-      </div>
-    </>
-  );
-
   return (
-    <article>
-      <Link href={href} className={cardClassName} style={cardStyle}>
-        {inner}
+    <article
+      className="flex-none w-[85vw] md:w-[calc((100vw-144px)/3)] md:min-w-[400px] overflow-hidden"
+      style={cardStyle}
+    >
+      <Link
+        href={href}
+        className={cn(
+          "group flex h-full flex-col transition-colors duration-300",
+          "[background-color:var(--card-accent)] md:bg-white md:hover:[background-color:var(--card-accent)]",
+        )}
+      >
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100 mt-6 md:mt-0">
+          {displayImage ? (
+            <BlurUpImage
+              src={displayImage}
+              alt={displayAlt}
+              fill
+              sizes="(max-width: 767px) 85vw, 420px"
+              className="object-cover"
+              priority={priority}
+            />
+          ) : (
+            <div className="absolute inset-0 bg-neutral-100" />
+          )}
+        </div>
+
+        <div className="my-4 px-4 md:p-6">
+          {(design.date || design.category) ? (
+            <p className="font-space-grotesk text-xs md:text-[18px] mt-4 uppercase leading-tight tracking-wide text-black">
+              {design.date ? (
+                <span>{formatDesignDate(design.date)}</span>
+              ) : null}
+              {design.date && design.category ? " · " : null}
+              {design.category ? (
+                <strong className="font-semibold text-black">
+                  {design.category.title}
+                </strong>
+              ) : null}
+            </p>
+          ) : null}
+
+          {design.title ? (
+            <h3 className="mt-4 md:mt-6 mb-4 font-sedan text-[20px] leading-[1.1] text-black md:text-[36px] cursor-pointer">
+              {design.title}
+            </h3>
+          ) : null}
+
+          {design.description ? (
+            <div className="border-t border-black/8 pt-4 mb-4 font-sedan text-sm md:text-[24px] italic leading-tight md:leading-none text-black md:line-clamp-2 line-clamp-3">
+              <TinaMarkdown
+                content={design.description}
+                components={descriptionComponents}
+              />
+            </div>
+          ) : null}
+        </div>
       </Link>
     </article>
   );

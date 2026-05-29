@@ -1,8 +1,8 @@
 'use client';
 
-import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { cn } from '@/lib/utils';
 import type { PageBlocksMedia } from '@/tina/__generated__/types';
+import Image from 'next/image';
 import { tinaField } from 'tinacms/dist/react';
 
 export function MediaBlock({ block }: { block: PageBlocksMedia }) {
@@ -12,7 +12,7 @@ export function MediaBlock({ block }: { block: PageBlocksMedia }) {
 
   return (
     <div data-tina-field={tinaField(block, 'image')} className={cn('w-full overflow-hidden px-4 md:px-12', !isFull && 'mx-auto max-w-[1280px]')}>
-      <BlurUpImage src={block.image} alt={block.alt || ''} width={0} height={0} sizes='100vw' className='h-auto w-full' />
+      <Image src={block.image} alt={block.alt || ''} width={0} height={0} sizes='100vw' className='h-auto w-full' quality={90} />
     </div>
   );
 }
