@@ -28,49 +28,132 @@
     {
       "level": "h6",
       "font": "space-grotesk",
-      "heading": "1.0 INTRODUCTION\n",
+      "heading": "CORE PHILOSOPHY\n",
       "_template": "header"
     },
     {
       "level": "h3",
-      "heading": "The beauty of balance is the idea of Diversity, The beauty of diversity is the idea of Balance.\n",
+      "heading": "Biodiversity is the Balance.\n",
       "_template": "header"
     },
     {
-      "leftColumn": "To ensure that this diversity flourishes and the balance remains maintained, it is important to understand diversities in different spaces in our ecosystem.\u0003\u0003In this project,\n",
-      "rightColumn": "I have focused on different spaces, species, events, hunting and Farming that are causing changes that tremble the balance of the ecosystem.\n",
+      "leftColumn": "Biodiversity is the foundation of a balanced ecosystem. The richer and more interconnected life becomes, the stronger the ecosystem grows in its ability to sustain itself through time.\n",
+      "rightColumn": "Every species, texture, behaviour, and form exists as part of a larger living nexus. Diversity is not fragmentation — it is the force that binds existence together.\n",
       "_template": "twoColumnText"
-    },
-    {
-      "level": "h6",
-      "font": "space-grotesk",
-      "heading": "2.0 DETAILED STORIES\n",
-      "_template": "header"
     },
     {
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779621220/Layer_1_oyqsfc.png"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780047216/3_tamumb.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "HUMAN REFLECTION\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Becoming One\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*Humanity has often been conditioned to become “one type” instead of becoming “one together.”*\n",
+      "rightColumn": "Yet ecosystems thrive through variation, contrast, and coexistence. The greater the diversity within a system, the greater its resilience, adaptability, and balance.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780049725/6_psi3bt.jpg"
         }
       ],
       "_template": "image"
     },
     {
       "level": "h3",
-      "heading": "Emperor Penguins / the ritual of resilience.\n",
+      "heading": "Uniformity weakens ecosystems. Diversity allows them to endure. The deeper the network of life becomes, the stronger its balance grows.\n",
       "_template": "header"
     },
     {
-      "leftColumn": "*The Emperor Penguin does not fear the cold, it understands it, & through this understanding, it lives.*\n",
-      "rightColumn": "The Emperor<ref n=\"01\"/> Penguin family is a marvel of shared survival. The mother lays a single egg, then passes it, gently, precisely onto the father’s feet.\n\nHe will carry it for nearly five months, never letting it touch the frozen ground, balancing life on a patch of warm thin a world built on ice. In a crowd of 6,000 nearly identical bodies, the mother finds her family. Always. By sound, by memory, by the rhythm \\[03] of survival passed down in silence.\n",
-      "annotations": [
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE NEXUS OF LIFE\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Complexity Creates Strength\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*Each layer of biodiversity strengthens the network of existence. Complexity creates resilience.*\n",
+      "rightColumn": "Through differences in species, behavior, intelligence, and adaptation, ecosystems evolve the ability to survive uncertainty, collapse, and change.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "full",
+      "images": [
         {
-          "id": "1",
-          "text": "Test annotation text."
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780049831/1_eghhw5.jpg"
         }
       ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "ECOLOGICAL TENSION\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780051665/7_bje4cg.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "Understanding the Fracture\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*To preserve balance, one must first understand what disrupts it.*\n",
+      "rightColumn": "The installation reflects upon species, ecosystems, hunting, farming, and human intervention — forces continuously reshaping the equilibrium of the natural world.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "heading": "REGENERATION\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Evolution of Hope\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*This installation imagines regeneration as an evolutionary phenomenon — a process where the strongest qualities of past life forms converge into a new organism.*\n",
+      "rightColumn": "An organism formed from inherited memory, adaptive intelligence, and positive intent within every cell. A species designed not to dominate nature, but to evolve with it.\n\nEven at the smallest scale, it possesses the power to transform entire ecosystems — much like an atom capable of redefining matter itself.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780051319/2_oqi4s1.jpg"
+        }
+      ],
+      "_template": "image"
     }
   ]
 }
