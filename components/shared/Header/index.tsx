@@ -11,6 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import animationData from "@/public/uploads/assets/1111.json";
 import Lottie from "lottie-react";
+import gsap from "gsap";
 import { AnimatePresence, useReducedMotion } from "motion/react";
 import * as motion from "motion/react-client";
 import Image from "next/image";
@@ -138,21 +139,24 @@ function MobilePrimaryNav({
       return;
     }
 
-    const raf = requestAnimationFrame(() => {
-      const targetLeft = Math.max(
-        0,
-        activeItem.offsetLeft -
-          scrollContainer.clientWidth / 2 +
-          activeItem.clientWidth / 2,
-      );
+    const containerRect = scrollContainer.getBoundingClientRect();
+    const itemRect = activeItem.getBoundingClientRect();
+    const targetLeft = Math.max(
+      0,
+      scrollContainer.scrollLeft +
+        itemRect.left -
+        containerRect.left -
+        (containerRect.width - itemRect.width) / 2,
+    );
 
-      scrollContainer.scrollTo({
-        left: targetLeft,
-        behavior: reduceMotion ? "auto" : "smooth",
-      });
+    const tween = gsap.to(scrollContainer, {
+      scrollLeft: targetLeft,
+      duration: reduceMotion ? 0 : 0.5,
+      ease: "expo.out",
+      overwrite: true,
     });
 
-    return () => cancelAnimationFrame(raf);
+    return () => tween.kill();
   }, [pathname, reduceMotion]);
 
   const handleScroll = () => {
@@ -177,7 +181,7 @@ function MobilePrimaryNav({
         layoutScroll
         onScroll={handleScroll}
         className={cn(
-          "flex snap-x snap-mandatory gap-x-8 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-3 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-[2.5px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:transition-colors [&::-webkit-scrollbar-thumb]:duration-300",
+          "flex gap-x-8 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-3 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-[2.5px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:transition-colors [&::-webkit-scrollbar-thumb]:duration-300",
           isScrolling
             ? "[&::-webkit-scrollbar-thumb]:bg-surface-grey [scrollbar-color:#e5e5e5_transparent]"
             : "[&::-webkit-scrollbar-thumb]:bg-transparent [scrollbar-color:transparent_transparent]",
@@ -190,7 +194,7 @@ function MobilePrimaryNav({
             ref={(element) => {
               itemRefs.current[link.href] = element;
             }}
-            className="shrink-0 snap-center"
+            className="shrink-0"
           >
             <MenuLink {...link} />
           </motion.li>
