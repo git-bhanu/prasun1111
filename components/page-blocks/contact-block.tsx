@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BlurUpImage } from "@/components/shared/blur-up-image";
 import { useState } from "react";
 import ArrowUpIcon from "@/components/icons/arrow-up.svg";
 import { ActionButton } from "@/components/shared/action-button";
@@ -155,7 +155,7 @@ function VentureCard({
         data-tina-field={venture.logo ? tinaField(venture, "logo") : undefined}
       >
         {venture.logo ? (
-          <Image
+          <BlurUpImage
             src={venture.logo}
             alt={venture.title ?? ""}
             fill

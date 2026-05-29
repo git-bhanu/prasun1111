@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { BlurUpImage } from '@/components/shared/blur-up-image';
 
 type ImageItem = {
   src?: string | null;
@@ -25,7 +25,7 @@ export function ImageBlock({ block }: Props) {
     <div className="flex flex-col gap-8 md:flex-row">
       {images.map((img, i) => (
         <div key={i} className={`relative ${aspectClass} min-w-0 flex-1 overflow-hidden`}>
-          <Image
+          <BlurUpImage
             src={img.src!}
             alt={img.alt ?? ''}
             fill

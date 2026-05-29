@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { tinaField } from 'tinacms/dist/react';
 
 import { ActionButton } from '@/components/shared/action-button';
@@ -59,7 +59,7 @@ function MovieCard({ movie, priority }: { movie: MovieListItem; priority: boolea
           className='relative mt-8 aspect-video overflow-hidden bg-neutral-100'
           data-tina-field={tinaField(movie, movie.mobileImage ? 'mobileImage' : 'desktopImage')}
         >
-          <Image src={mobileImage} alt={mobileImageAlt} fill sizes='(max-width: 767px) calc(100vw - 32px), 0vw' className='object-cover' priority={priority} />
+          <BlurUpImage src={mobileImage} alt={mobileImageAlt} fill sizes='(max-width: 767px) calc(100vw - 32px), 0vw' className='object-cover' priority={priority} />
         </div>
 
         <MovieActions movie={movie} className='mt-8 flex-col gap-1.5' fullWidth />
@@ -69,7 +69,7 @@ function MovieCard({ movie, priority }: { movie: MovieListItem; priority: boolea
         className='relative isolate hidden aspect-video overflow-hidden rounded-[8px] bg-neutral-100 md:block'
         data-tina-field={tinaField(movie, 'desktopImage')}
       >
-        <Image src={movie.desktopImage} alt={desktopImageAlt} fill sizes='calc(100vw - 64px)' className='object-cover' priority={priority} />
+        <BlurUpImage src={movie.desktopImage} alt={desktopImageAlt} fill sizes='calc(100vw - 64px)' className='object-cover' priority={priority} />
         <div className='absolute inset-0 bg-black/[0.08]' />
 
         <div className='absolute left-1/2 top-1/2 z-10 flex w-full max-w-[850px] -translate-x-1/2 -translate-y-1/2 flex-col items-center px-8 text-center text-white'>

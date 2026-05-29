@@ -3,7 +3,7 @@
 import { ActionButton } from "@/components/shared/action-button";
 import { CloudinaryPlayer } from "@/components/blocks/cloudinary-player";
 import { tinaField } from "tinacms/dist/react";
-import Image from "next/image";
+import { BlurUpImage } from "@/components/shared/blur-up-image";
 import { useState } from "react";
 
 type VideoBlockData = {
@@ -73,7 +73,7 @@ export function VideoBlock({ block }: Props) {
         ) : (
           <>
             {block.posterImage && (
-              <Image
+              <BlurUpImage
                 src={block.posterImage}
                 alt=""
                 fill

@@ -22,7 +22,7 @@ import type {
   InstallationConnectionQuery,
   InstallationConnectionQueryVariables,
 } from "@/tina/__generated__/types";
-import Image from "next/image";
+import { BlurUpImage } from "@/components/shared/blur-up-image";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { tinaField, useTina } from "tinacms/dist/react";
@@ -232,7 +232,7 @@ function DetailPanel({
     }
     if (installation.image) {
       return (
-        <Image
+        <BlurUpImage
           src={installation.image}
           alt={installation.imageAlt || installation.title}
           fill

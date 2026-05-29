@@ -4,7 +4,7 @@ import { Icon, IconCircleButton } from '@/components/icons';
 import { ActionButton } from '@/components/shared/action-button';
 import { cn } from '@/lib/utils';
 import gsap from 'gsap';
-import Image from 'next/image';
+import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { type RefObject, useCallback, useRef, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 import { InstallationDetails } from './installation-details';
@@ -80,7 +80,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
     if (hasSlider) {
       const slide = slides[activeIndex] ?? slides[0];
       return (
-        <Image
+        <BlurUpImage
           src={slide.src!}
           alt={slide.alt || installation.title}
           fill
@@ -107,7 +107,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
     }
     if (installation.image) {
       return (
-        <Image
+        <BlurUpImage
           src={installation.image}
           alt={installation.imageAlt || installation.title}
           fill

@@ -1,7 +1,7 @@
 "use client";
 
 import { useInView, useReducedMotion } from "motion/react";
-import Image from "next/image";
+import { BlurUpImage } from "@/components/shared/blur-up-image";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { tinaField } from "tinacms/dist/react";
@@ -167,14 +167,13 @@ function ProductCard({
       className="relative w-full h-full overflow-hidden"
       data-tina-field={tinaField(item, "image")}
     >
-      <Image
+      <BlurUpImage
         src={item.image}
         alt={item.imageAlt || "Product"}
         fill
         sizes="(max-width: 400px) 85vw, 25vw"
         className="object-cover object-center"
         priority={priority}
-        draggable={false}
       />
     </div>
   );

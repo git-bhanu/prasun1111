@@ -12,7 +12,7 @@ import { ActionButton } from '@/components/shared/action-button';
 import { SectionMasthead } from '@/components/shared/section-masthead';
 import { useOverlayAnimation } from '@/hooks/use-overlay-animation';
 import type { ArtworkConnectionQuery, ArtworkConnectionQueryVariables } from '@/tina/__generated__/types';
-import Image from 'next/image';
+import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTina } from 'tinacms/dist/react';
@@ -207,7 +207,7 @@ function DetailPanel({
 
         {artwork.coverImage && (
           <div className='relative order-1 aspect-[4/3] h-[500px] w-full flex-shrink-0 bg-[var(--surface-grey)] md:order-2 md:aspect-auto md:min-h-full md:h-auto md:flex-1'>
-            <Image
+            <BlurUpImage
               src={artwork.coverImage}
               alt={artwork.coverImageAlt ?? artwork.title}
               fill

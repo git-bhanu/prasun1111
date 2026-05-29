@@ -2,7 +2,7 @@
 
 import { AnimatePresence, useReducedMotion } from "motion/react";
 import * as motion from "motion/react-client";
-import Image from "next/image";
+import { BlurUpImage } from "@/components/shared/blur-up-image";
 import { useEffect, useRef, useState } from "react";
 import { tinaField } from "tinacms/dist/react";
 
@@ -122,7 +122,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
             preload="metadata"
           />
         ) : media.src ? (
-          <Image
+          <BlurUpImage
             src={media.src}
             alt={media.alt}
             fill

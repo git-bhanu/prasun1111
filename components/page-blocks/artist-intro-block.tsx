@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { tinaField } from 'tinacms/dist/react';
 import { type Components, TinaMarkdown } from 'tinacms/dist/rich-text';
 
@@ -59,7 +59,7 @@ function Portrait({ block }: ArtistIntroBlockProps) {
   return (
     <div className='relative h-[272px] overflow-hidden bg-neutral-900 md:h-[272px] md:w-[570px]' data-tina-field={tinaField(block, 'image')}>
       {block.image ? (
-        <Image
+        <BlurUpImage
           src={block.image}
           alt={block.imageAlt || block.nameLabel || ''}
           fill

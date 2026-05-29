@@ -7,8 +7,8 @@ import { SpaceBlock } from "@/components/blocks/space-block";
 import { TwoColumnTextBlock } from "@/components/blocks/two-column-text-block";
 import { VideoBlock } from "@/components/blocks/video-block";
 import { ActionButton } from "@/components/shared/action-button";
+import { BlurUpImage } from "@/components/shared/blur-up-image";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import { useState } from "react";
 import { tinaField, useTina } from "tinacms/dist/react";
 import {
@@ -41,6 +41,7 @@ function extractYouTubeId(url: string): string | null {
   );
   return match?.[1] ?? null;
 }
+
 
 type Film = {
   __typename?: string;
@@ -114,7 +115,7 @@ function FilmDetail({ film }: { film: Film }) {
           {awards.length > 0 && (
             <div className="mb-5 grid grid-cols-3 gap-3">
               {awards.map((award, i) => (
-                <Image
+                <BlurUpImage
                   key={i}
                   src={award.image!}
                   alt={award.alt ?? ""}
@@ -175,7 +176,7 @@ function FilmDetail({ film }: { film: Film }) {
         {awards.length > 0 && (
           <div className="mb-8 flex flex-wrap gap-4">
             {awards.map((award, i) => (
-              <Image
+              <BlurUpImage
                 key={i}
                 src={award.image!}
                 alt={award.alt ?? ""}
@@ -373,11 +374,10 @@ function FilmHeaderVideo({
           />
         ) : (
           film.heroImage && (
-            <Image
+            <BlurUpImage
               src={film.heroImage}
               alt="Film"
               fill
-              sizes="100vw"
               className="object-cover"
               priority
             />
@@ -393,7 +393,7 @@ function FilmHeaderVideo({
         {awards.length > 0 && !playing && (
           <div className="absolute bottom-5 left-5 z-10 flex flex-wrap items-center gap-3">
             {awards.map((award, i) => (
-              <Image
+              <BlurUpImage
                 key={i}
                 src={award.image!}
                 alt={award.alt ?? ""}

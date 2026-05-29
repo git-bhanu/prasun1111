@@ -1,7 +1,7 @@
 "use client";
 
 import { useInView, useReducedMotion } from "motion/react";
-import Image from "next/image";
+import { BlurUpImage } from "@/components/shared/blur-up-image";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { tinaField } from "tinacms/dist/react";
@@ -155,7 +155,7 @@ function DesignCard({
         data-tina-field={tinaField(item, "image")}
       >
         {item.image ? (
-          <Image
+          <BlurUpImage
             src={item.image}
             alt={item.imageAlt || item.category || "Design"}
             fill

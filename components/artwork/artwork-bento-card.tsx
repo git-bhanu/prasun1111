@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import * as motion from "motion/react-client";
 import { useReducedMotion } from "motion/react";
-import Image from "next/image";
+import { BlurUpImage } from "@/components/shared/blur-up-image";
 import { ArtworkInfoCard } from "./artwork-info-card";
 
 type Tag = {
@@ -97,7 +97,7 @@ export function ArtworkBentoCard({
           </div>
         )}
         {coverImage ? (
-          <Image
+          <BlurUpImage
             src={coverImage}
             alt={coverImageAlt ?? title}
             fill
