@@ -116,7 +116,7 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780051665/7_bje4cg.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780051850/4_bold5w.jpg"
         }
       ],
       "_template": "image"
@@ -133,6 +133,7 @@
     },
     {
       "level": "h6",
+      "font": "space-grotesk",
       "heading": "REGENERATION\n",
       "_template": "header"
     },
