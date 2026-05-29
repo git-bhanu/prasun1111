@@ -1,4 +1,5 @@
 {
+  "heroVideoPoster": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778156455/Frame_235_otzhmu.jpg",
   "title": "CROW : THE MOVIE\n",
   "sortOrder": 1,
   "tagline": "‘Life always finds its way’\n",
@@ -23,14 +24,173 @@
   ],
   "backgroundType": "image",
   "heroImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778095386/Frame_108_lltcnp.jpg",
-  "heroVideoPoster": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778156455/Frame_235_otzhmu.jpg",
+  "youtubeUrl": "https://www.youtube.com/watch?v=1NnwXJxUshw",
   "medium": "3D & 2D ANIMATION",
   "storyDirection": "PRASUN MAZUMDAR",
   "resolution": "1920 x 1080",
   "year": "2023",
-  "youtubeUrl": "https://www.youtube.com/watch?v=1NnwXJxUshw",
   "watchFilmLabel": "WATCH FILM",
   "watchFilmHref": "https://www.youtube.com/watch?v=1NnwXJxUshw",
   "filmDuration": "8MIN. 23 SEC.",
-  "blocks": []
+  "blocks": [
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "INITIAL IDEA\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780037274/FINAL_CROW_02312_pjtmow.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h2",
+      "font": "sedan",
+      "heading": "Rethinking the Thirsty Crow: A Childhood Tale *Questioned.*\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "A twist in the tale. A folklore that has given a message of “intelligence”. A tale that I have heard and read as a kid, like many of us. The thirsty crow, that drops pebbles, in an earthen pot to get some water level up, and once the level is to a mark that it can reach it with its beak, it gets water and satisfaction both.\n\nMy mind questioned me about this for a long long time. Questions, like, are the gravels that the crow is putting \n",
+      "rightColumn": "wont have negative space in between them to consume the rise in the level of water? If the water is too little, will it really...come up, as it might just get covered with the gravels/pebbles? \n\n*Will the crow have to do it all the time, just to have a sip of water? What about the other crows? Or in that matter, if this is the situation that becomes realistic how will anyone have water?*\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Too many questions, that’s often referred to as “childlike curiosity” but when it touches the lines of “real life” issues, I feel compelled to answer them (if not to anyone) at least to myself.\n",
+      "_template": "header"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780037619/The_Crow_Asset_jcarln.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "REAL LIFE ISSUES\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780037545/FINAL_CROW_10450_y24xyr.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "We know how drinking water very soon could become a huge issue for all of us, if right now it is a huge issue for 30% of the world and 65% of India's population. If not taken care of at this point, very soon it could become the biggest challenge for human existence.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE PLOT\n",
+      "_template": "header"
+    },
+    {
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780037695/FINAL_CROW_13345_ozrexg.png"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780037717/FINAL_CROW_14032_rs9o4i.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "The crow for me represents humanity and I felt that the crow always has the answer, the crow knows it. It is for sure “intelligent” enough to understand it but the question remain (in my mind) is it “brave” enough to take the step.\n\n I always feel its bravery that must help you take a step, nothing else. Money, resources, skills are a matter of time and might change the dynamics in one's life. But if you are confident to decide and brave enough to act then\n",
+      "rightColumn": "you definitely develop the grit to cross the line and the composure to spread it across.\n\nThis story is all about that and the mystery to see if the line is crossed and if we do, what's waiting beyond the line. So this time the story also has a message, but not that of *“intelligence”* Rather, it is about *“confidence,”* about “faith,” towards your own positive imagination for a better tomorrow.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780037812/FINAL_CROW_11803_eg0lsv.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE SYNOPSIS\n",
+      "_template": "header"
+    },
+    {
+      "level": "h2",
+      "heading": "Crow – The movie is told in three parts: 1.Decay 2.Incarnation 3.The Crack\n\nAs the names suggest, they share a state of mind, a state of being in three very different situations.\n",
+      "_template": "header"
+    },
+    {
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "PART 1\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Decay\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780038016/FINAL_CROW_00372_tqrppk.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "This part starts with space that has possibly nothing positive around. It is all dead and decaying. You see stillness that is quenching. You experience void, a hollow journey of a mind. The mind of our Crow—this mind has a thought, a thought that is the only positive thing that you discover and see in this journey.\n",
+      "rightColumn": "This thought is the silver lining and is the only ray of hope. It is something you pray an individual, a society, or a civilization to possess while it's going through a corrosion or decaying phase: to remain positive, to remain confident, and act.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "PART 2\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Incarnation\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780038158/FINAL_CROW_04699_tj2au0.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "In Part 2, It’s an abstract take on what's happening, at that moment, and stretching to sometime of incubation.\n\nThe crow has performed its duty without getting worried of its personal benefits or life and laid the hope into the pot with some water to live and grow. The Crow and the hope are\n",
+      "rightColumn": "now detached, like a child gets detached from its mother, right after the birth.\n\nThey travel a long way internally to meet their individual fate(s). The crow dies, the hope grows. The hope grows as the crow has imagined, and that's the success of the crow.\n",
+      "_template": "twoColumnText"
+    }
+  ]
 }
