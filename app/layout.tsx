@@ -4,6 +4,7 @@ import { FaviconAnimator } from '@/components/favicon-animator';
 import { cn } from '@/lib/utils';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
+import NextTopLoader from 'nextjs-toploader';
 import React from 'react';
 
 import '@/styles.css';
@@ -38,6 +39,7 @@ export default async function RootLayout({
   return (
     <html lang='en' className={cn(fontSans.variable, nunito.variable, lato.variable, sedan.variable, spaceGrotesk.variable)}>
       <body className='min-h-screen bg-background font-sans antialiased'>
+        <NextTopLoader color='#000000' showSpinner={false} height={2} shadow={false} />
         <FaviconAnimator />
         <BaseLayout siteSettingsQuery={siteSettings.query} siteSettingsData={siteSettings.data} siteSettingsVariables={siteSettings.variables}>
           {children}
