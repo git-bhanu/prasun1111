@@ -191,6 +191,56 @@
       "leftColumn": "In Part 2, It’s an abstract take on what's happening, at that moment, and stretching to sometime of incubation.\n\nThe crow has performed its duty without getting worried of its personal benefits or life and laid the hope into the pot with some water to live and grow. The Crow and the hope are\n",
       "rightColumn": "now detached, like a child gets detached from its mother, right after the birth.\n\nThey travel a long way internally to meet their individual fate(s). The crow dies, the hope grows. The hope grows as the crow has imagined, and that's the success of the crow.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "PART 3\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "The Crack\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039379/FINAL_CROW_08936_g1kklo.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "The hope takes charge and when it does, it makes the universe work for itself. Nature comes to celebrate such brave acts and the universe swirls around time to unveil a different side of the space you lived in. Nature works in a different way than us, it does what it needs to do, without wondering about the outcomes, for nature the outcome is neither the resting ground nor a singular objective.\n",
+      "rightColumn": "For nature the idea is what matters, the act is what matters, the wholesome approach that maters, the process is what matters, as the fact remains same, “life always finds its way” and till the time life is there, nature is flourishing.\n\n\\*life: any form of life.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Each part or phase of one straight physical journey is such a different and unique experience for the mental journey that we wanted to express them very differently from each other, and we regard that as a very important part or even tool of this overall composition.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE LIQUID MOTION\n",
+      "_template": "header"
+    },
+    {
+      "width": "",
+      "_template": "image"
+    },
+    {
+      "_template": "twoColumnText"
+    },
+    {
+      "_template": "image"
+    },
+    {
+      "_template": "space"
     }
   ]
 }
