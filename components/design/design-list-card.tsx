@@ -28,8 +28,16 @@ const richComponents: Components<object> = {
   italic: (props) => <em className='italic font-sedan'>{props?.children}</em>,
 };
 
+function extractText(node: any): string {
+  if (!node) return '';
+  if (typeof node === 'string') return node;
+  if (node.text) return node.text;
+  if (node.children) return node.children.map(extractText).join('');
+  return '';
+}
+
 export interface DesignCardData {
-  title: string;
+  title: any;
   image?: string | null;
   imageAlt?: string | null;
   cardImage?: string | null;
@@ -62,7 +70,7 @@ export function DesignListCard({ design, onClick, sizes }: DesignListCardProps) 
         {(design.cardImage ?? design.image) ? (
           <BlurUpImage
             src={(design.cardImage ?? design.image)!}
-            alt={design.cardImageAlt ?? design.imageAlt ?? design.title}
+            alt={design.cardImageAlt ?? design.imageAlt ?? extractText(design.title)}
             fill
             sizes={sizes ?? '(max-width: 767px) 100vw, 33vw'}
             className='object-cover'
@@ -81,7 +89,9 @@ export function DesignListCard({ design, onClick, sizes }: DesignListCardProps) 
           </p>
         )}
 
-        <h3 className='mt-4 font-sedan text-[20px] leading-[1.1] text-black md:text-[28px]'>{design.title}</h3>
+        <h3 className='mt-4 font-sedan text-[20px] leading-[1.1] text-black md:text-[28px]'>
+          <TinaMarkdown content={design.title} components={richComponents} />
+        </h3>
 
         {design.description && (
           <div className='mt-3 border-t border-black/8 pt-3 font-sedan text-sm italic leading-tight text-black line-clamp-3 md:text-base md:line-clamp-2'>

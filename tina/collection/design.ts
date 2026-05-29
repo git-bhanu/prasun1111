@@ -13,11 +13,11 @@ const Design: Collection = {
   format: 'json',
   fields: [
     {
-      type: 'string',
+      type: 'rich-text',
       name: 'title',
       label: 'Title',
       required: true,
-      isTitle: true,
+      overrides: { toolbar: ['bold', 'italic'] },
     },
     {
       type: 'number',

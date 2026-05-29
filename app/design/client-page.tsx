@@ -22,6 +22,7 @@ import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTina } from "tinacms/dist/react";
+import { type Components, TinaMarkdown } from "tinacms/dist/rich-text";
 
 type DesignNode = NonNullable<
   NonNullable<
@@ -132,18 +133,18 @@ function DesignContent({ query, data, variables }: Props) {
   return (
     <>
       <div className="px-4 mb-6 md:mb-12 pt-2 md:pt-6 md:px-[58px]">
-        <div className="inline-flex rounded-full bg-[#f0f0f0] p-1">
+        <div className="inline-flex rounded-[8px] bg-[#f0f0f0] p-1">
           {(["byDoing", "byKnowing"] as const).map((filter) => (
             <button
               key={filter}
               type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`relative cursor-pointer rounded-full px-5 py-2 font-space-grotesk text-[14px] md:text-[20px] font-normal tracking-wide transition-colors ${activeFilter !== filter ? "hover:bg-black/10" : ""}`}
+              className={`relative cursor-pointer rounded-[8px] px-5 py-2 font-space-grotesk text-[14px] md:text-[20px] font-normal tracking-wide transition-colors ${activeFilter !== filter ? "hover:bg-black/10" : ""}`}
             >
               {activeFilter === filter && (
                 <motion.span
                   layoutId="design-filter-pill"
-                  className="absolute inset-0 rounded-full bg-black"
+                  className="absolute inset-0 rounded-[8px] bg-black"
                   transition={{ type: "spring", stiffness: 400, damping: 35 }}
                 />
               )}
@@ -152,7 +153,7 @@ function DesignContent({ query, data, variables }: Props) {
               >
                 {filter === "byDoing" ? "By Doing" : "By Knowing"}
                 <span
-                  className={`mt-0.5 h-[2px] w-full rounded-full bg-brand-orange transition-opacity duration-200 ${activeFilter === filter ? "opacity-100" : "opacity-0"}`}
+                  className={`mt-0.5 h-[2px] w-full rounded-[8px] bg-brand-orange transition-opacity duration-200 ${activeFilter === filter ? "opacity-100" : "opacity-0"}`}
                 />
               </span>
             </button>
@@ -244,35 +245,48 @@ function DetailPanel({
 
   return (
     <>
-      <div className="px-4 pt-8 pb-4 md:px-[10svw] md:pt-12">
-        {(design.date || design.category) && (
-          <p className="font-space-grotesk text-xs uppercase tracking-widest text-black/60 mb-4">
-            {design.date && formatDesignDate(design.date)}
-            {design.date && design.category && " · "}
-            {design.category && (
-              <strong className="font-semibold text-black">
-                {design.category.title}
-              </strong>
-            )}
-          </p>
-        )}
-        <h1 className="font-sedan text-[28px] font-normal leading-[1.1] text-black md:text-[48px] md:max-w-[70svw]">
-          {design.title}
-        </h1>
-      </div>
-
-      {design.image && (
-        <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden bg-neutral-100 md:aspect-[21/9]">
-          <BlurUpImage
-            src={design.image}
-            alt={design.imageAlt ?? design.title}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
+      <div className="flex flex-col h-[calc(100svh-50px)]">
+        <div className="px-4 pt-8 pb-4 md:px-[10svw] md:pt-20 shrink-0">
+          {(design.date || design.category) && (
+            <p className="font-space-grotesk text-[24px] font-normal leading-none uppercase tracking-normal mb-4">
+              {design.date && formatDesignDate(design.date)}
+              {design.date && design.category && " · "}
+              {design.category && (
+                <strong className="font-semibold text-black">
+                  {design.category.title}
+                </strong>
+              )}
+            </p>
+          )}
+          <h1 className="font-sedan text-[70px] font-normal leading-tight tracking-normal text-black">
+            <TinaMarkdown
+              content={design.title as any}
+              components={
+                {
+                  p: (props: any) => <span className="block">{props?.children}</span>,
+                  bold: (props: any) => <strong className="font-bold">{props?.children}</strong>,
+                  italic: (props: any) => <em className="italic">{props?.children}</em>,
+                } as Components<object>
+              }
+            />
+          </h1>
         </div>
-      )}
+
+        {design.image && (
+          <div className="flex-1 min-h-0 mt-6 w-full px-4 md:px-[10svw]">
+            <div className="relative w-full h-full overflow-hidden bg-neutral-100">
+              <BlurUpImage
+                src={design.image}
+                alt={design.imageAlt ?? design._sys.filename}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority
+              />
+            </div>
+          </div>
+        )}
+      </div>
 
       {design.blocks && design.blocks.length > 0 && (
         <div className="mt-8">
@@ -342,7 +356,7 @@ function DetailPanel({
       )}
 
       {otherDesigns.length > 0 && (
-        <div className="mt-16 border-t border-black/10 pt-10 px-4 pb-12 md:px-[58px]">
+        <div className="mt-16 border-t border-black/10 pt-10 px-4 pb-12 md:px-[10svw]">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {otherDesigns.map((d) => (
               <DesignListCard

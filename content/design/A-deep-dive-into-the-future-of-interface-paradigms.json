@@ -1,9 +1,22 @@
 {
-  "title": "A deep dive into the future of interface paradigms.",
+  "title": "A deep dive into the future of interface *paradigms*.\n",
   "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780063113/Layer_1_1_gs9nyh.png",
   "date": "2025-10-27T14:07:33.320Z",
   "category": "content/tags/Design/Brand-Identity.json",
   "designType": "byDoing",
   "description": "Their initial agreement reflected an openness to possibilities, but not the level of commitment needed to carry a full branding project through.\n",
-  "accentColor": "#F0F9FB"
+  "accentColor": "#F0F9FB",
+  "blocks": [
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "It’s *not about size*. *It’s about space.* / Let’s begin with a simple analogy that makes logo sizing *easier* to understand.\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*The Emperor Penguin does not fear the cold, it understands it, & through this understanding, it lives.*\n",
+      "rightColumn": "The Emperor Penguin family is a marvel of shared survival. The mother lays a single egg, then passes it, gently, precisely onto the father’s feet. \n\nHe will carry it for nearly five months, never letting it touch the frozen ground, balancing life on a patch of warm thin a world built on ice. In a crowd of 6,000 nearly identical bodies, the mother finds her family. Always. By sound, by memory, by the rhythm of survival passed down in silence.\n",
+      "_template": "twoColumnText"
+    }
+  ]
 }
