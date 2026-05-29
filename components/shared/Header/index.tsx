@@ -156,7 +156,7 @@ function MobilePrimaryNav({
       overwrite: true,
     });
 
-    return () => tween.kill();
+    return () => { tween.kill(); };
   }, [pathname, reduceMotion]);
 
   const handleScroll = () => {
