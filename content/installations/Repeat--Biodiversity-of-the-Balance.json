@@ -155,6 +155,22 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "INNER ENERGY\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Beyond Physical Form / The installation is not merely about anatomy, but about invisible energy.\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*Hope, not as emotion, but as evolution.*\n",
+      "rightColumn": "It explores the possibility of an organism capable of generating renewal when in contact with decay, collapse, or dying life forms. A presence that carries regeneration within itself.\n",
+      "_template": "twoColumnText"
     }
   ]
 }
