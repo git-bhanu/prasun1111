@@ -172,6 +172,20 @@ function FilmDetail({ film }: { film: Film }) {
 
       {/* Desktop */}
       <div className="hidden bg-black px-12 pt-14 pb-16 md:block">
+        {awards.length > 0 && (
+          <div className="mb-8 flex flex-wrap gap-4">
+            {awards.map((award, i) => (
+              <Image
+                key={i}
+                src={award.image!}
+                alt={award.alt ?? ""}
+                height={60}
+                width={150}
+                className="object-contain"
+              />
+            ))}
+          </div>
+        )}
         <h1
           className="font-space-grotesk text-[48px] font-bold text-white"
           data-tina-field={tinaField(film as any, "title")}
