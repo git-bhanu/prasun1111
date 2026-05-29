@@ -196,6 +196,62 @@
       "leftColumn": "*Time does not move in a straight line. It expands, contracts, repeats, and transforms.*\n",
       "rightColumn": "Each branch of evolution carries stories of survival, extinction, mutation, and rebirth. Through time, life continuously reshapes itself to endure changing realities.\n\nThe installation becomes a physical manifestation of this movement — where textures, forms, and structures reflect the silent evolution of existence itself.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE HEAD\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "The part that imagines direction before movement exists: *Imagination, Perception, Wisdom, Courage*\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780061760/REPEAT_yqqr2i.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE TORSO\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "The core that absorbs pressure and continues forward: *Awareness, Grit, Resilience, Adaptability*\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE TAIL\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "The part that understands departure, memory, and impact: *Stability, Patience, Empathy, Responsibility*\n",
+      "_template": "header"
+    },
+    {
+      "desktopSpace": "48",
+      "mobileSpace": "32",
+      "_template": "space"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780060858/8_stzbvg.jpg"
+        }
+      ],
+      "_template": "image"
     }
   ]
 }
