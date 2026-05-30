@@ -147,19 +147,23 @@ export default function WritingDetailClientPage({ query, data, variables, otherW
       )}
 
       {otherWritings.length > 0 && (
-        <div className='mt-16 [&>a:last-child>div:last-child]:hidden'>
-          {otherWritings.map((w) => (
-            <WritingListItem
-              key={w.id}
-              slug={w._sys.filename}
-              titleSections={w.titleSections ?? []}
-              date={w.date}
-              tags={w.tags}
-              visualsCount={w.visualsCount}
-              readingType={w.readingType}
-              linkClassName='group block px-4 md:px-[42px]'
-            />
-          ))}
+        <div className='mt-16'>
+          <div className='border-t border-black' />
+          <div className='mt-1 border-t border-black' />
+          <div className='[&>a:last-child>div:last-child]:hidden'>
+            {otherWritings.map((w) => (
+              <WritingListItem
+                key={w.id}
+                slug={w._sys.filename}
+                titleSections={w.titleSections ?? []}
+                date={w.date}
+                tags={w.tags}
+                visualsCount={w.visualsCount}
+                readingType={w.readingType}
+                linkClassName='group block px-4 md:px-[42px]'
+              />
+            ))}
+          </div>
         </div>
       )}
     </article>
