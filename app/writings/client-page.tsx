@@ -1,8 +1,11 @@
-'use client';
+"use client";
 
-import { WritingListItem } from '@/components/writings/writing-list-item';
-import type { WritingConnectionQuery, WritingConnectionQueryVariables } from '@/tina/__generated__/types';
-import { useTina } from 'tinacms/dist/react';
+import { WritingListItem } from "@/components/writings/writing-list-item";
+import type {
+  WritingConnectionQuery,
+  WritingConnectionQueryVariables,
+} from "@/tina/__generated__/types";
+import { useTina } from "tinacms/dist/react";
 
 type Props = {
   query: string;
@@ -10,7 +13,9 @@ type Props = {
   variables: WritingConnectionQueryVariables;
 };
 
-type WritingNode = NonNullable<NonNullable<WritingConnectionQuery['writingConnection']['edges']>[number]>['node'];
+type WritingNode = NonNullable<
+  NonNullable<WritingConnectionQuery["writingConnection"]["edges"]>[number]
+>["node"];
 
 export default function WritingsClientPage({ query, data, variables }: Props) {
   const { data: tinaData } = useTina({ query, data, variables });
@@ -24,9 +29,11 @@ export default function WritingsClientPage({ query, data, variables }: Props) {
     });
 
   return (
-    <section className='w-full pb-20 pt-4 md:pt-8'>
+    <section className="w-full pb-20 pt-0 md:pt-2">
       {writings.length === 0 ? (
-        <p className='px-4 py-12 font-space-grotesk text-black/40 md:px-[58px]'>No writings yet.</p>
+        <p className="px-4 py-12 font-space-grotesk text-black/40 md:px-[58px]">
+          No writings yet.
+        </p>
       ) : (
         <div>
           {writings.map((writing) => (
