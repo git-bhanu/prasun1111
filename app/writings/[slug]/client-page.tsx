@@ -6,12 +6,10 @@ import { SpaceBlock } from '@/components/blocks/space-block';
 import { TwoColumnTextBlock } from '@/components/blocks/two-column-text-block';
 import { VideoBlock } from '@/components/blocks/video-block';
 import { Icon } from '@/components/icons';
-import { ActionButton } from '@/components/shared/action-button';
 import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { WritingListItem } from '@/components/writings/writing-list-item';
 import { WritingTitle } from '@/components/writings/writing-title';
 import type { WritingConnectionQuery, WritingQuery, WritingQueryVariables } from '@/tina/__generated__/types';
-import { useRef } from 'react';
 import { useTina } from 'tinacms/dist/react';
 
 type WritingNode = NonNullable<NonNullable<WritingConnectionQuery['writingConnection']['edges']>[number]>['node'];
@@ -52,13 +50,12 @@ function blockWrapperClass(width: string, verticalPadding: string) {
 export default function WritingDetailClientPage({ query, data, variables, otherWritings = [] }: Props) {
   const { data: tinaData } = useTina({ query, data, variables });
   const writing = tinaData.writing;
-  const articleRef = useRef<HTMLElement>(null);
 
   const formattedDate = formatWritingDate(writing.date);
   const tagLabels = (writing.tags ?? []).filter((t): t is string => Boolean(t));
 
   return (
-    <article ref={articleRef} className='w-full'>
+    <article className='w-full'>
       <div className='px-4 pt-2 md:px-[42px] md:pt-6'>
         {(formattedDate || tagLabels.length > 0) && (
           <div className='mb-6 flex items-center gap-4 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]'>
@@ -150,7 +147,7 @@ export default function WritingDetailClientPage({ query, data, variables, otherW
       )}
 
       {otherWritings.length > 0 && (
-        <div className='mt-16 border-t border-black'>
+        <div className='mt-16'>
           {otherWritings.map((w) => (
             <WritingListItem
               key={w.id}
@@ -160,20 +157,11 @@ export default function WritingDetailClientPage({ query, data, variables, otherW
               tags={w.tags}
               visualsCount={w.visualsCount}
               readingType={w.readingType}
+              linkClassName='group block px-4 md:px-[42px]'
             />
           ))}
         </div>
       )}
-
-      <div className='mt-10 flex justify-center px-6 pb-10'>
-        <ActionButton
-          color='white'
-          icon='arrowUpwardAlt'
-          label='Back to Top'
-          onClick={() => articleRef.current?.scrollIntoView({ behavior: 'smooth' })}
-          className='bg-surface-grey'
-        />
-      </div>
     </article>
   );
 }

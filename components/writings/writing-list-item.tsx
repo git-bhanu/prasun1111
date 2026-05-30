@@ -12,6 +12,7 @@ type Props = {
   tags?: (string | null)[] | null;
   visualsCount?: number | null;
   readingType?: string | null;
+  linkClassName?: string;
 };
 
 function parseDateParts(iso: string | null | undefined) {
@@ -19,14 +20,7 @@ function parseDateParts(iso: string | null | undefined) {
   try {
     const d = new Date(iso);
     const day = d.getUTCDate();
-    const suffix =
-      day === 1 || day === 21 || day === 31
-        ? 'st'
-        : day === 2 || day === 22
-          ? 'nd'
-          : day === 3 || day === 23
-            ? 'rd'
-            : 'th';
+    const suffix = day === 1 || day === 21 || day === 31 ? 'st' : day === 2 || day === 22 ? 'nd' : day === 3 || day === 23 ? 'rd' : 'th';
     const month = d.toLocaleString('en-GB', { month: 'long', timeZone: 'UTC' }).toUpperCase();
     const year = d.getUTCFullYear();
     return { day, suffix, month, year };
@@ -35,14 +29,13 @@ function parseDateParts(iso: string | null | undefined) {
   }
 }
 
-export function WritingListItem({ slug, titleSections, date, tags, visualsCount, readingType }: Props) {
+export function WritingListItem({ slug, titleSections, date, tags, visualsCount, readingType, linkClassName }: Props) {
   const dateParts = parseDateParts(date);
   const tagLabels = (tags ?? []).filter((t): t is string => Boolean(t));
 
   return (
-    <Link href={`/writings/${slug}`} className='group block px-4 md:px-[58px]'>
+    <Link href={`/writings/${slug}`} className={linkClassName ?? 'group block px-4 md:px-[58px]'}>
       <div className='py-8 md:py-10'>
-
         {/* meta line */}
         <div className='mb-6 flex items-center gap-4 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]'>
           {dateParts && (
@@ -55,9 +48,7 @@ export function WritingListItem({ slug, titleSections, date, tags, visualsCount,
             <span className='font-normal text-black/50 transition-colors duration-300 ease-in-out group-hover:text-brand-blue'>·</span>
           )}
           {tagLabels.length > 0 && (
-            <strong className='font-bold text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue'>
-              {tagLabels.join(' / ')}
-            </strong>
+            <strong className='font-bold text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue'>{tagLabels.join(' / ')}</strong>
           )}
         </div>
 
