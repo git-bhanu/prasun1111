@@ -1,0 +1,62 @@
+<h2>Which font controls per title section?</h2>
+<p class="subtitle">Roboto Flex supports many axes. Pick how much control you need in TinaCMS.</p>
+
+<div class="cards">
+  <div class="card" data-choice="simple" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #f5f5f5; font-family: sans-serif; font-size: 13px;">
+      <div style="font-weight: bold; margin-bottom: 10px;">Per-section fields:</div>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px; margin: 3px;">📝 text</td><td style="padding-left: 8px; color: #666; font-size: 11px;">free text</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px; margin: 3px; margin-top: 4px;">🔤 font</td><td style="padding-left: 8px; color: #666; font-size: 11px;">Roboto Flex / Roboto Mono</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px; margin-top: 4px;">⚖️ weight</td><td style="padding-left: 8px; color: #666; font-size: 11px;">100–900 slider</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px; margin-top: 4px;">〰️ style</td><td style="padding-left: 8px; color: #666; font-size: 11px;">normal / italic</td></tr>
+      </table>
+      <div style="margin-top: 12px; padding: 8px; background: #111; color: white; border-radius: 4px;">
+        How <strong style="font-weight: 900; font-size: 1.2em;">BIG</strong> <em style="font-weight: 300;">should the logo be?</em>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Simple — 4 controls</h3>
+      <p>text · font family · weight · style. Covers most Figma title variants shown.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="medium" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #f5f5f5; font-family: sans-serif; font-size: 13px;">
+      <div style="font-weight: bold; margin-bottom: 10px;">Per-section fields:</div>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">📝 text</td><td style="padding-left: 8px; color: #666; font-size: 11px;">free text</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">🔤 font</td><td style="padding-left: 8px; color: #666; font-size: 11px;">Roboto Flex / Roboto Mono</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">⚖️ weight</td><td style="padding-left: 8px; color: #666; font-size: 11px;">100–900 slider</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">〰️ style</td><td style="padding-left: 8px; color: #666; font-size: 11px;">normal / italic</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">↔️ width</td><td style="padding-left: 8px; color: #666; font-size: 11px;">75–125% (condensed → expanded)</td></tr>
+      </table>
+      <div style="margin-top: 12px; padding: 8px; background: #111; color: white; border-radius: 4px; letter-spacing: -0.02em;">
+        <span style="font-stretch: condensed; font-weight: 900; letter-spacing: 0.05em;">/// TOUCH AT YOUR OWN RISK ///</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Medium — 5 controls</h3>
+      <p>Adds width axis. Enables condensed/expanded styles seen in Figma (e.g. "TOUCH AT YOUR OWN RISK").</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="full" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #f5f5f5; font-family: sans-serif; font-size: 13px;">
+      <div style="font-weight: bold; margin-bottom: 10px;">Per-section fields:</div>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">📝 text</td><td style="padding-left: 8px; color: #666; font-size: 11px;">free text</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">🔤 font</td><td style="padding-left: 8px; color: #666; font-size: 11px;">Roboto Flex / Roboto Mono</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">⚖️ weight</td><td style="padding-left: 8px; color: #666; font-size: 11px;">100–900</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">〰️ style</td><td style="padding-left: 8px; color: #666; font-size: 11px;">normal / italic</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">↔️ width</td><td style="padding-left: 8px; color: #666; font-size: 11px;">75–125%</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">📐 slant</td><td style="padding-left: 8px; color: #666; font-size: 11px;">-10–0° (true slant axis)</td></tr>
+        <tr><td style="padding: 4px 8px; background: white; border: 1px solid #ddd; border-radius: 3px;">🔠 size</td><td style="padding-left: 8px; color: #666; font-size: 11px;">optical size override (opsz)</td></tr>
+      </table>
+    </div>
+    <div class="card-body">
+      <h3>Full — 7 controls</h3>
+      <p>All useful axes exposed. Maximum expression, but heavier CMS editing experience.</p>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import {
   Sedan,
   Space_Grotesk,
 } from "next/font/google";
+import localFont from "next/font/local";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,4 +34,19 @@ export const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
   weight: ["400", "500", "700"],
+});
+
+export const robotoFlex = localFont({
+  src: "../public/fonts/RobotoFlex.ttf",
+  variable: "--font-roboto-flex",
+  display: "swap",
+});
+
+export const robotoMono = localFont({
+  src: [
+    { path: "../public/fonts/RobotoMono.ttf", style: "normal" },
+    { path: "../public/fonts/RobotoMono-Italic.ttf", style: "italic" },
+  ],
+  variable: "--font-roboto-mono",
+  display: "swap",
 });

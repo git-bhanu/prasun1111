@@ -1,0 +1,126 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+  .page-mock {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+  .mock-topbar {
+    border-bottom: 1px solid #111;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .mock-nav { display: flex; gap: 16px; font-size: 10px; letter-spacing: 0.1em; }
+  .mock-nav span { opacity: 0.4; }
+  .mock-nav .active { opacity: 1; font-weight: 700; text-decoration: underline; }
+  .writing-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 14px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .writing-meta { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+  .writing-title { font-size: 18px; line-height: 1.2; margin: 4px 0; }
+  .writing-footer { font-size: 9px; color: #aaa; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+  .arrow-btn { width: 28px; height: 28px; border: 1px solid #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; margin-top: 4px; }
+  .detail-hero { height: 120px; background: #111; display: flex; align-items: flex-end; padding: 16px 20px; }
+  .detail-hero-label { color: white; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; }
+  .detail-body { padding: 16px 20px; }
+  .detail-title { font-size: 28px; line-height: 1.1; margin-bottom: 8px; }
+  .detail-meta { font-size: 9px; color: #888; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px solid #e0e0e0; padding-bottom: 10px; }
+  .detail-prose { font-size: 11px; line-height: 1.7; color: #333; }
+  .detail-prose p { margin: 0 0 8px; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; color: #111; }
+</style>
+
+<h2>Writings page layouts</h2>
+<p class="subtitle">List page (left) and detail page (right). Click to select your preferred layout.</p>
+
+<div class="split">
+  <div class="mockup" data-choice="list" onclick="toggleSelect(this)">
+    <div class="mockup-header">List page — /writings</div>
+    <div class="mockup-body">
+      <div class="page-mock">
+        <div class="mock-topbar">
+          <span style="font-weight: 900; font-size: 11px;">PRASUN</span>
+          <div class="mock-nav">
+            <span>ARTWORKS</span><span>FILMS</span><span>DESIGN</span><span class="active">WRITINGS</span>
+          </div>
+        </div>
+        <div class="writing-item">
+          <div>
+            <div class="writing-meta">14° JAN 2025 &nbsp;·&nbsp; NATURE / TRANQUILITY</div>
+            <div class="writing-title">How <strong style="font-weight: 900;">BIG</strong> should the <em style="font-weight: 300;">logo</em> be?</div>
+            <div class="writing-footer">5 VISUALS &nbsp;·&nbsp; VISUAL READ</div>
+          </div>
+          <div class="arrow-btn">↗</div>
+        </div>
+        <div class="writing-item">
+          <div>
+            <div class="writing-meta">1° JAN 2025 &nbsp;·&nbsp; NATURE / BALANCE</div>
+            <div class="writing-title" style="font-weight: 300; font-style: italic;">In summer, we make the plant hot<strong style="font-weight: 700; font-style: normal;">ter.</strong></div>
+            <div class="writing-footer">2 VISUALS &nbsp;·&nbsp; OBSERVATIONAL READ</div>
+          </div>
+          <div class="arrow-btn">↗</div>
+        </div>
+        <div class="writing-item">
+          <div>
+            <div class="writing-meta">4° JUL 2025 &nbsp;·&nbsp; TRANQUILITY</div>
+            <div class="writing-title" style="font-family: 'Roboto Mono', monospace; font-weight: 700; letter-spacing: 0.04em;">BE AWARE, TO BE AWAKE.</div>
+            <div class="writing-footer">10 VISUALS &nbsp;·&nbsp; OBSERVATIONAL READ</div>
+          </div>
+          <div class="arrow-btn">↗</div>
+        </div>
+        <div class="writing-item">
+          <div>
+            <div class="writing-meta">7° JUL 2025 &nbsp;·&nbsp; NATURE</div>
+            <div class="writing-title" style="font-weight: 900; letter-spacing: 0.06em;">/// TOUCH<br>AT YOUR OWN RISK ///</div>
+            <div class="writing-footer">10 VISUALS &nbsp;·&nbsp; VISUAL READ</div>
+          </div>
+          <div class="arrow-btn">↗</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup" data-choice="detail" onclick="toggleSelect(this)">
+    <div class="mockup-header">Detail page — /writings/[slug]</div>
+    <div class="mockup-body">
+      <div class="page-mock">
+        <div class="mock-topbar">
+          <span style="font-weight: 900; font-size: 11px;">PRASUN</span>
+          <div class="mock-nav">
+            <span>ARTWORKS</span><span>FILMS</span><span>DESIGN</span><span class="active">WRITINGS</span>
+          </div>
+        </div>
+        <div class="detail-hero">
+          <div class="detail-hero-label">Hero image (required, Cloudinary)</div>
+        </div>
+        <div class="detail-body">
+          <div class="detail-title">
+            <span style="font-weight: 300; font-style: italic;">TIME </span><span style="font-weight: 400;">life </span><em style="font-weight: 700; font-style: italic;">paradox.</em>
+          </div>
+          <div class="detail-meta">
+            14° JANUARY 2025 &nbsp;·&nbsp; PATTERN / PERCEPTION / ELASTICITY &nbsp;·&nbsp; 10 VISUALS &nbsp;·&nbsp; OBSERVATIONAL READ
+          </div>
+          <div class="detail-prose">
+            <p>I am no scientist, no institution, and no organisation. I do not claim scientifically proven facts to establish what I imagine about time, or later, about life.</p>
+            <p>In my diary, I say up to 3 key numbers: I use pattern. I use drift. And I think, study are the time to write them down. And I think, study about the time it takes to read them...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top: 16px;">Both pages are part of the feature — click either to confirm you like the direction.</p>

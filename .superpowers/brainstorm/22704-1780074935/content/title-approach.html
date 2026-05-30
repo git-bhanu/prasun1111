@@ -1,0 +1,56 @@
+<h2>How should mixed-weight title sections work in TinaCMS?</h2>
+<p class="subtitle">Each writing title can mix fonts, weights, and styles. Pick the editing model.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #f5f5f5; font-family: monospace; font-size: 12px; line-height: 1.6;">
+      <div style="margin-bottom: 8px; font-weight: bold;">Title sections (array in Tina):</div>
+      <div style="background: white; border: 1px solid #ddd; border-radius: 4px; padding: 8px; margin-bottom: 6px;">
+        <div>text: "How "</div>
+        <div>font: Roboto Flex · weight: 700 · style: normal · width: 100%</div>
+      </div>
+      <div style="background: white; border: 1px solid #ddd; border-radius: 4px; padding: 8px; margin-bottom: 6px;">
+        <div>text: "BIG"</div>
+        <div>font: Roboto Flex · weight: 900 · style: normal · width: 100%</div>
+      </div>
+      <div style="background: white; border: 1px solid #ddd; border-radius: 4px; padding: 8px;">
+        <div>text: " should the logo be?"</div>
+        <div>font: Roboto Flex · weight: 300 · style: italic · width: 100%</div>
+      </div>
+      <div style="margin-top: 10px; padding: 8px; background: #111; color: white; border-radius: 4px; font-family: sans-serif;">
+        How <strong style="font-size: 1.3em;">BIG</strong> <em style="font-weight: 300;"> should the logo be?</em>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Sections Array</h3>
+      <p>Each span is a TinaCMS object with text + explicit font/weight/style controls. Full control, works well with Tina's list UI.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Maximum control per span</li><li>Supports all Roboto Flex axes (width, slant)</li><li>Explicit — easy to understand</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>More fields to fill per section</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #f5f5f5; font-family: monospace; font-size: 12px; line-height: 1.6;">
+      <div style="margin-bottom: 8px; font-weight: bold;">Tina rich text with custom marks:</div>
+      <div style="background: white; border: 1px solid #ddd; border-radius: 4px; padding: 10px;">
+        <div>How <strong>[weight-900]BIG[/weight-900]</strong> <em>[weight-300]should the logo be?[/weight-300]</em></div>
+      </div>
+      <div style="margin-top: 6px; background: white; border: 1px solid #ddd; border-radius: 4px; padding: 10px;">
+        <span style="font-size: 11px; color: #888;">Custom marks rendered as inline toolbar buttons in Tina's rich text editor</span>
+      </div>
+      <div style="margin-top: 10px; padding: 8px; background: #111; color: white; border-radius: 4px; font-family: sans-serif;">
+        How <strong style="font-size: 1.3em;">BIG</strong> <em style="font-weight: 300;">should the logo be?</em>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Rich Text + Custom Marks</h3>
+      <p>Single Tina rich text field with custom inline marks for weight/style. Editing feels like a word processor.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Familiar editing UX</li><li>Faster to type</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Custom marks are complex to implement</li><li>Limited axis control (wdth, slnt harder)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

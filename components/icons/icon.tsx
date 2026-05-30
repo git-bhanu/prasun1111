@@ -1,4 +1,6 @@
 import AddCallIcon from './add_call.svg';
+import AnimatedImagesIcon from './animated_images.svg';
+import ChromeReaderModeIcon from './chrome_reader_mode.svg';
 import AddLinkIcon from '../add_link.svg';
 import ArrowRightAltIcon from './arrow_right_alt.svg';
 import ArrowUpwardAltIcon from './arrow_upward_alt.svg';
@@ -16,6 +18,8 @@ import { SvgIcon, type SvgIconProps } from './svg-icon';
 
 export const icons = {
   addCall: AddCallIcon,
+  animatedImages: AnimatedImagesIcon,
+  chromeReaderMode: ChromeReaderModeIcon,
   addLink: AddLinkIcon,
   articlePerson: ArticlePersonIcon,
   arrowOutward: ArrowOutwardIcon,

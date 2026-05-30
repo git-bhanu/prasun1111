@@ -1,4 +1,4 @@
-import { fontSans, lato, nunito, sedan, spaceGrotesk } from "@/app/fonts";
+import { fontSans, lato, nunito, robotoFlex, robotoMono, sedan, spaceGrotesk } from "@/app/fonts";
 import { BaseLayout } from "@/components/base-layout";
 import { FaviconAnimator } from "@/components/favicon-animator";
 import { cn } from "@/lib/utils";
@@ -46,6 +46,8 @@ export default async function RootLayout({
         lato.variable,
         sedan.variable,
         spaceGrotesk.variable,
+        robotoFlex.variable,
+        robotoMono.variable,
       )}
     >
       <body className="min-h-screen bg-background font-sans antialiased">

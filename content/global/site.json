@@ -46,7 +46,7 @@
         "href": "/writings",
         "group": "primary",
         "showInFooter": true,
-        "locked": true
+        "locked": false
       },
       {
         "index": "06",

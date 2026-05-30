@@ -13,11 +13,6 @@ const pageCopy = {
     title: 'Design',
     description: 'Design work will live here. This page currently exists to validate route-to-route transitions.',
   },
-  writings: {
-    eyebrow: 'Collection',
-    title: 'Writings',
-    description: 'Writing and notes will live here. This page currently exists to validate route-to-route transitions.',
-  },
   shop: {
     eyebrow: 'Utility',
     title: 'Shop',
