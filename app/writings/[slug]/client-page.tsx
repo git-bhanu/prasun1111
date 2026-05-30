@@ -1,9 +1,16 @@
 'use client';
 
+import { HeaderBlock } from '@/components/blocks/header-block';
+import { ImageBlock } from '@/components/blocks/image-block';
+import { SpaceBlock } from '@/components/blocks/space-block';
+import { TwoColumnTextBlock } from '@/components/blocks/two-column-text-block';
+import { VideoBlock } from '@/components/blocks/video-block';
+import { ActionButton } from '@/components/shared/action-button';
+import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { WritingTitle } from '@/components/writings/writing-title';
 import type { WritingQuery, WritingQueryVariables } from '@/tina/__generated__/types';
+import { useRef } from 'react';
 import { useTina } from 'tinacms/dist/react';
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
 
 type Props = {
   query: string;
@@ -25,15 +32,28 @@ function formatWritingDate(iso: string | null | undefined): string | null {
   }
 }
 
+function blockWrapperClass(width: string, verticalPadding: string) {
+  switch (width) {
+    case 'full':
+      return `w-full ${verticalPadding}`;
+    case 'wide':
+      return `w-full px-[5svw] md:pl-[10svw] md:pr-[10svw] ${verticalPadding}`;
+    case 'narrow':
+    default:
+      return `w-full px-[5svw] md:pl-[10svw] md:pr-[10svw] md:max-w-[75svw] ${verticalPadding}`;
+  }
+}
+
 export default function WritingDetailClientPage({ query, data, variables }: Props) {
   const { data: tinaData } = useTina({ query, data, variables });
   const writing = tinaData.writing;
+  const articleRef = useRef<HTMLElement>(null);
 
   const formattedDate = formatWritingDate(writing.date);
   const tagLabels = (writing.tags ?? []).filter((t): t is string => Boolean(t));
 
   return (
-    <article className='w-full'>
+    <article ref={articleRef} className='w-full'>
       <div className='mx-auto max-w-5xl px-4 pb-24 pt-8 md:px-[58px] md:pt-12'>
         {(formattedDate || tagLabels.length > 0) && (
           <p className='mb-6 font-space-grotesk text-[12px] uppercase tracking-[0.14em] text-black/50'>
@@ -70,12 +90,72 @@ export default function WritingDetailClientPage({ query, data, variables }: Prop
             )}
           </div>
         )}
+      </div>
 
-        {writing.body && (
-          <div className='prose prose-lg max-w-none font-space-grotesk text-[16px] leading-[1.8] text-black/75 md:text-[18px]'>
-            <TinaMarkdown content={writing.body} />
-          </div>
-        )}
+      {writing.heroImage && (
+        <div className='relative aspect-[16/9] w-full overflow-hidden bg-[var(--surface-grey)]'>
+          <BlurUpImage src={writing.heroImage} alt='' fill className='object-cover' sizes='100vw' priority />
+        </div>
+      )}
+
+      {writing.blocks && writing.blocks.length > 0 && (
+        <div className='mt-8'>
+          {writing.blocks.map((block, i) => {
+            switch (block?.__typename) {
+              case 'WritingBlocksHeader':
+                return (
+                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass('narrow', 'pb-2 md:py-4')}>
+                    <HeaderBlock block={block} />
+                  </div>
+                );
+              case 'WritingBlocksTwoColumnText':
+                return (
+                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass('wide', 'py-4')}>
+                    <TwoColumnTextBlock block={block} />
+                  </div>
+                );
+              case 'WritingBlocksVideo':
+                return (
+                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass('wide', 'py-10')}>
+                    <VideoBlock block={block} />
+                  </div>
+                );
+              case 'WritingBlocksImage': {
+                const b = block as unknown as {
+                  __typename: 'WritingBlocksImage';
+                  width?: string | null;
+                  orientation?: string | null;
+                  images?: Array<{ src?: string | null; alt?: string | null } | null> | null;
+                };
+                return (
+                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass(b.width ?? 'narrow', 'py-4')}>
+                    <ImageBlock block={b} />
+                  </div>
+                );
+              }
+              case 'WritingBlocksSpace': {
+                const b = block as unknown as {
+                  __typename: 'WritingBlocksSpace';
+                  desktopSpace?: string | null;
+                  mobileSpace?: string | null;
+                };
+                return <SpaceBlock key={`${block.__typename}-${i}`} block={b} />;
+              }
+              default:
+                return null;
+            }
+          })}
+        </div>
+      )}
+
+      <div className='mt-10 flex justify-center px-6 pb-10'>
+        <ActionButton
+          color='white'
+          icon='arrowUpwardAlt'
+          label='Back to Top'
+          onClick={() => articleRef.current?.scrollIntoView({ behavior: 'smooth' })}
+          className='bg-surface-grey'
+        />
       </div>
     </article>
   );

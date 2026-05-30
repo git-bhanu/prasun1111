@@ -1,4 +1,9 @@
 import type { Collection } from 'tinacms';
+import { headerBlock } from '../blocks/header-block';
+import { imageBlock } from '../blocks/image-block';
+import { spaceBlock } from '../blocks/space-block';
+import { twoColumnTextBlock } from '../blocks/two-column-text-block';
+import { videoBlock } from '../blocks/video-block';
 
 const Writing: Collection = {
   name: 'writing',
@@ -29,11 +34,7 @@ const Writing: Collection = {
         itemProps: (item) => ({ label: item?.text || 'Section' }),
       },
       fields: [
-        {
-          type: 'string',
-          name: 'text',
-          label: 'Text',
-        },
+        { type: 'string', name: 'text', label: 'Text' },
         {
           type: 'string',
           name: 'font',
@@ -68,49 +69,22 @@ const Writing: Collection = {
             { value: 'italic', label: 'Italic' },
           ],
         },
-        {
-          type: 'number',
-          name: 'width',
-          label: 'Width % (75–125)',
-        },
-        {
-          type: 'boolean',
-          name: 'lineBreakAfter',
-          label: 'Line break after',
-        },
+        { type: 'number', name: 'width', label: 'Width % (75–125)' },
+        { type: 'boolean', name: 'lineBreakAfter', label: 'Line break after' },
       ],
     },
+    { type: 'datetime', name: 'date', label: 'Date' },
+    { type: 'string', name: 'tags', label: 'Tags', list: true },
+    { type: 'number', name: 'visualsCount', label: 'Visuals Count' },
+    { type: 'string', name: 'readingType', label: 'Reading Type' },
+    { type: 'image', name: 'heroImage', label: 'Hero Image' },
     {
-      type: 'datetime',
-      name: 'date',
-      label: 'Date',
-    },
-    {
-      type: 'string',
-      name: 'tags',
-      label: 'Tags',
+      type: 'object',
+      name: 'blocks',
+      label: 'Writing Blocks',
       list: true,
-    },
-    {
-      type: 'number',
-      name: 'visualsCount',
-      label: 'Visuals Count',
-    },
-    {
-      type: 'string',
-      name: 'readingType',
-      label: 'Reading Type',
-    },
-    {
-      type: 'image',
-      name: 'heroImage',
-      label: 'Hero Image',
-    },
-    {
-      type: 'rich-text',
-      name: 'body',
-      label: 'Body',
-      isBody: true,
+      ui: { visualSelector: true },
+      templates: [headerBlock, twoColumnTextBlock, videoBlock, imageBlock, spaceBlock],
     },
   ],
 };
