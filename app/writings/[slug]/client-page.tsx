@@ -55,7 +55,7 @@ export default function WritingDetailClientPage({ query, data, variables }: Prop
 
   return (
     <article ref={articleRef} className='w-full'>
-      <div className='mx-auto max-w-5xl px-4 pb-24 pt-8 md:px-[58px] md:pt-12'>
+      <div className='px-4 pb-24 pt-8 md:px-[42px] md:pt-12'>
         {(formattedDate || tagLabels.length > 0) && (
           <div className='mb-6 flex items-center gap-4 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]'>
             {formattedDate && <span className='font-normal text-black/50'>{formattedDate}</span>}
