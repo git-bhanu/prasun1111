@@ -37,7 +37,7 @@ export function WritingListItem({ slug, titleSections, date, tags, visualsCount,
     <Link href={`/writings/${slug}`} className={linkClassName ?? 'group block px-4 md:px-[58px]'}>
       <div className='py-8 md:py-10'>
         {/* meta line */}
-        <div className='mb-6 flex items-center gap-4 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]'>
+        <div className='mb-6 flex items-center gap-1 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]'>
           {dateParts && (
             <span className='font-normal text-black/50 transition-colors duration-300 ease-in-out group-hover:text-brand-blue'>
               {dateParts.day}
