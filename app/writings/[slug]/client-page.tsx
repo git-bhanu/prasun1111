@@ -148,8 +148,8 @@ export default function WritingDetailClientPage({ query, data, variables, otherW
 
       {otherWritings.length > 0 && (
         <div className='mt-16'>
-          <div className='border-t border-black' />
-          <div className='mt-1 border-t border-black' />
+          <div className='px-4 md:px-[42px]'><div className='border-t border-black' /></div>
+          <div className='mt-1 px-4 md:px-[42px]'><div className='border-t border-black' /></div>
           <div className='[&>a:last-child>div:last-child]:hidden'>
             {otherWritings.map((w) => (
               <WritingListItem
