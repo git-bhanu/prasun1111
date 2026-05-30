@@ -5,6 +5,7 @@ import { ImageBlock } from '@/components/blocks/image-block';
 import { SpaceBlock } from '@/components/blocks/space-block';
 import { TwoColumnTextBlock } from '@/components/blocks/two-column-text-block';
 import { VideoBlock } from '@/components/blocks/video-block';
+import { Icon } from '@/components/icons';
 import { ActionButton } from '@/components/shared/action-button';
 import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { WritingTitle } from '@/components/writings/writing-title';
@@ -56,11 +57,11 @@ export default function WritingDetailClientPage({ query, data, variables }: Prop
     <article ref={articleRef} className='w-full'>
       <div className='mx-auto max-w-5xl px-4 pb-24 pt-8 md:px-[58px] md:pt-12'>
         {(formattedDate || tagLabels.length > 0) && (
-          <p className='mb-6 font-space-grotesk text-[12px] uppercase tracking-[0.14em] text-black/50'>
-            {formattedDate && <span>{formattedDate}</span>}
-            {formattedDate && tagLabels.length > 0 && <span className='mx-3 text-black/20'>·</span>}
-            {tagLabels.length > 0 && <strong className='font-bold tracking-[0.1em] text-black'>{tagLabels.join(' / ')}</strong>}
-          </p>
+          <div className='mb-6 flex items-center gap-4 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]'>
+            {formattedDate && <span className='font-normal text-black/50'>{formattedDate}</span>}
+            {formattedDate && tagLabels.length > 0 && <span className='font-normal text-black/50'>·</span>}
+            {tagLabels.length > 0 && <strong className='font-bold text-black'>{tagLabels.join(' / ')}</strong>}
+          </div>
         )}
 
         <h1 className='mb-8 text-[56px] leading-[1.0] tracking-[-0.02em] text-black sm:text-[72px] md:text-[96px]'>
@@ -68,23 +69,16 @@ export default function WritingDetailClientPage({ query, data, variables }: Prop
         </h1>
 
         {(writing.visualsCount != null || writing.readingType) && (
-          <div className='mb-12 flex items-center gap-5 font-space-grotesk text-[11px] uppercase tracking-[0.14em] text-black/40'>
+          <div className='mb-12 flex flex-wrap items-center gap-2'>
             {writing.visualsCount != null && (
-              <span className='flex items-center gap-1.5'>
-                <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' aria-hidden='true'>
-                  <rect x='3' y='3' width='18' height='18' rx='2' />
-                  <circle cx='8.5' cy='8.5' r='1.5' />
-                  <path d='m21 15-5-5L5 21' />
-                </svg>
+              <span className='flex h-6 items-center gap-2 rounded-[4px] bg-[#f5f5f5] px-3 py-1 font-space-grotesk text-[12px] uppercase tracking-[0.1em] text-black'>
+                <Icon name='animatedImages' size={16} color='currentColor' />
                 {writing.visualsCount} VISUALS
               </span>
             )}
             {writing.readingType && (
-              <span className='flex items-center gap-1.5'>
-                <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' aria-hidden='true'>
-                  <path d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20' />
-                  <path d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z' />
-                </svg>
+              <span className='flex h-6 items-center gap-2 rounded-[4px] bg-[#f5f5f5] px-3 py-1 font-space-grotesk text-[12px] uppercase tracking-[0.1em] text-black'>
+                <Icon name='chromeReaderMode' size={16} color='currentColor' />
                 {writing.readingType}
               </span>
             )}
