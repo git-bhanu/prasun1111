@@ -147,7 +147,7 @@ export default function WritingDetailClientPage({ query, data, variables, otherW
       )}
 
       {otherWritings.length > 0 && (
-        <div className='mt-16'>
+        <div className='mt-16 [&>a:last-child>div:last-child]:hidden'>
           {otherWritings.map((w) => (
             <WritingListItem
               key={w.id}
