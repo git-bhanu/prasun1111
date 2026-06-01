@@ -1,4 +1,6 @@
+import { JsonLd } from '@/components/shared/json-ld';
 import { buildMetadata, richTextToPlain } from '@/lib/seo';
+import { buildCollectionPageSchema, buildCreativeWorkSchema } from '@/lib/structured-data';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
 import DesignClientPage from './client-page';
@@ -35,8 +37,34 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   return { title: 'Design' };
 }
 
-export default async function DesignPage() {
+export default async function DesignPage({ searchParams }: Props) {
+  const { design: slug } = await searchParams;
   const result = await client.queries.designConnection({ first: 100 }, { fetchOptions: { next: { revalidate: 60 } } });
 
-  return <DesignClientPage query={result.query} data={result.data} variables={result.variables} />;
+  const collectionSchema = buildCollectionPageSchema('/design', 'Design');
+
+  let itemSchema = null;
+  if (slug) {
+    const node = result.data.designConnection.edges?.find((e) => {
+      const n = e?.node;
+      return n && (n.slug ?? n._sys.filename).toLowerCase() === slug.toLowerCase();
+    })?.node;
+    if (node) {
+      itemSchema = buildCreativeWorkSchema({
+        slug: node.slug ?? node._sys.filename,
+        name: richTextToPlain(node.title),
+        image: node.seo?.ogImage ?? node.image,
+        collection: 'design',
+        param: 'design',
+      });
+    }
+  }
+
+  return (
+    <>
+      <JsonLd schema={collectionSchema} />
+      {itemSchema && <JsonLd schema={itemSchema} />}
+      <DesignClientPage query={result.query} data={result.data} variables={result.variables} />
+    </>
+  );
 }

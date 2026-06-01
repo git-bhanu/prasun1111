@@ -1,4 +1,6 @@
+import { JsonLd } from '@/components/shared/json-ld';
 import { buildMetadata } from '@/lib/seo';
+import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/structured-data';
 import type { WritingConnectionQuery } from '@/tina/__generated__/types';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
@@ -40,7 +42,30 @@ export default async function WritingDetailPage({ params }: Props) {
       })
       .slice(0, 4);
 
-    return <WritingDetailClientPage query={result.query} data={result.data} variables={result.variables} otherWritings={otherWritings} />;
+    const writing = result.data.writing;
+    const sections = writing.titleSections ?? [];
+    const plainTitle = sections.map((s) => s?.text ?? '').join('') || slug;
+    const seoDescription = writing.seo?.metaDescription ?? undefined;
+
+    const articleSchema = buildArticleSchema({
+      slug,
+      headline: plainTitle,
+      datePublished: writing.date,
+      image: writing.seo?.ogImage ?? writing.heroImage,
+      description: seoDescription,
+    });
+    const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: 'Writings', url: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://prasun1111.com'}/writings` },
+      { name: plainTitle },
+    ]);
+
+    return (
+      <>
+        <JsonLd schema={articleSchema} />
+        <JsonLd schema={breadcrumbSchema} />
+        <WritingDetailClientPage query={result.query} data={result.data} variables={result.variables} otherWritings={otherWritings} />
+      </>
+    );
   } catch {
     notFound();
   }

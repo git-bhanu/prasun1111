@@ -110,6 +110,13 @@ const Global: Collection = {
       ],
     },
     {
+      type: 'string',
+      label: 'Artist Same-As URLs',
+      name: 'sameAs',
+      list: true,
+      description: 'Social profiles and related URLs for structured data (schema.org sameAs). One URL per entry.',
+    },
+    {
       type: 'object',
       label: 'Site Meta',
       name: 'siteMeta',

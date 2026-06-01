@@ -1,4 +1,6 @@
+import { JsonLd } from '@/components/shared/json-ld';
 import { buildMetadata } from '@/lib/seo';
+import { buildCollectionPageSchema, buildCreativeWorkSchema } from '@/lib/structured-data';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
 import InstallationsClientPage from './client-page';
@@ -34,7 +36,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   return { title: 'Installations' };
 }
 
-export default async function InstallationsPage() {
+export default async function InstallationsPage({ searchParams }: Props) {
+  const { installation: slug } = await searchParams;
   const result = await client.queries.installationConnection({ first: 100 }, { fetchOptions: { next: { revalidate: 60 } } });
 
   let quoteBreaks = [];
@@ -43,5 +46,30 @@ export default async function InstallationsPage() {
     quoteBreaks = pageResult.data?.installationsPage?.quoteBreaks ?? [];
   } catch {}
 
-  return <InstallationsClientPage query={result.query} data={result.data} variables={result.variables} quoteBreaks={quoteBreaks} />;
+  const collectionSchema = buildCollectionPageSchema('/installations', 'Installations');
+
+  let itemSchema = null;
+  if (slug) {
+    const node = result.data.installationConnection.edges?.find((e) => {
+      const n = e?.node;
+      return n && (n.slug ?? n._sys.filename).toLowerCase() === slug.toLowerCase();
+    })?.node;
+    if (node) {
+      itemSchema = buildCreativeWorkSchema({
+        slug: node.slug ?? node._sys.filename,
+        name: node.title,
+        image: node.seo?.ogImage ?? node.image,
+        collection: 'installations',
+        param: 'installation',
+      });
+    }
+  }
+
+  return (
+    <>
+      <JsonLd schema={collectionSchema} />
+      {itemSchema && <JsonLd schema={itemSchema} />}
+      <InstallationsClientPage query={result.query} data={result.data} variables={result.variables} quoteBreaks={quoteBreaks} />
+    </>
+  );
 }

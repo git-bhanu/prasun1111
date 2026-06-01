@@ -1,5 +1,7 @@
 import type { QuoteBreak } from '@/components/artwork';
+import { JsonLd } from '@/components/shared/json-ld';
 import { buildMetadata } from '@/lib/seo';
+import { buildCollectionPageSchema, buildVisualArtworkSchema } from '@/lib/structured-data';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
 import ArtworksClientPage from './client-page';
@@ -35,7 +37,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   return { title: 'Artworks' };
 }
 
-export default async function ArtworksPage() {
+export default async function ArtworksPage({ searchParams }: Props) {
+  const { artwork: slug } = await searchParams;
   const result = await client.queries.artworkConnection({ first: 100 }, { fetchOptions: { next: { revalidate: 60 } } });
 
   let quoteBreaks: QuoteBreak[] = [];
@@ -44,5 +47,28 @@ export default async function ArtworksPage() {
     quoteBreaks = pageResult.data?.artworksPage?.quoteBreaks ?? [];
   } catch {}
 
-  return <ArtworksClientPage query={result.query} data={result.data} variables={result.variables} quoteBreaks={quoteBreaks} />;
+  const collectionSchema = buildCollectionPageSchema('/artworks', 'Artworks');
+
+  let artworkSchema = null;
+  if (slug) {
+    const node = result.data.artworkConnection.edges?.find((e) => {
+      const n = e?.node;
+      return n && (n.slug ?? n._sys.filename).toLowerCase() === slug.toLowerCase();
+    })?.node;
+    if (node) {
+      artworkSchema = buildVisualArtworkSchema({
+        slug: node.slug ?? node._sys.filename,
+        name: node.title,
+        image: node.seo?.ogImage ?? node.coverImage,
+      });
+    }
+  }
+
+  return (
+    <>
+      <JsonLd schema={collectionSchema} />
+      {artworkSchema && <JsonLd schema={artworkSchema} />}
+      <ArtworksClientPage query={result.query} data={result.data} variables={result.variables} quoteBreaks={quoteBreaks} />
+    </>
+  );
 }

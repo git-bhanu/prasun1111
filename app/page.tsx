@@ -1,4 +1,7 @@
+import { JsonLd } from '@/components/shared/json-ld';
 import { buildMetadata } from '@/lib/seo';
+import { buildHomepageGraph } from '@/lib/structured-data';
+import { normalizeSiteSettings } from '@/lib/site-settings';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
 import ClientPage from './client-page';
@@ -37,5 +40,19 @@ export default async function Home() {
     );
   }
 
-  return <ClientPage query={result.query} data={result.data} variables={result.variables} />;
+  let sameAs: string[] = [];
+  try {
+    const globalResult = await client.queries.global(
+      { relativePath: 'site.json' },
+      { fetchOptions: { next: { revalidate: 60 } } },
+    );
+    sameAs = normalizeSiteSettings(globalResult.data.global).sameAs;
+  } catch {}
+
+  return (
+    <>
+      <JsonLd schema={buildHomepageGraph(sameAs)} />
+      <ClientPage query={result.query} data={result.data} variables={result.variables} />
+    </>
+  );
 }
