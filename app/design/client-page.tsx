@@ -254,7 +254,7 @@ function DetailPanel({
       <div className="flex flex-col md:h-[calc(100svh-50px)]">
         <div className="px-4 pt-8 pb-4 md:px-[10svw] md:pt-20 shrink-0">
           {(design.date || design.category) && (
-            <p className="font-space-grotesk text-[12px] md:text-[24px] font-normal leading-none uppercase tracking-normal mb-4">
+            <p className="font-space-grotesk text-[12px] md:text-[16px] font-normal leading-none uppercase tracking-normal mb-4">
               {design.date && formatDesignDate(design.date)}
               {design.date && design.category && " · "}
               {design.category && (
@@ -264,7 +264,7 @@ function DetailPanel({
               )}
             </p>
           )}
-          <h1 className="font-sedan text-[32px] md:text-[70px] font-normal leading-tight tracking-normal text-black">
+          <h1 className="font-sedan text-[28px] md:text-[48px] font-normal leading-tight tracking-normal text-black">
             <TinaMarkdown
               content={design.title as any}
               components={
