@@ -329,7 +329,7 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className={blockWrapperClass("narrow", "pb-2 md:py-4")}
+                    className={blockWrapperClass("wide", "pb-2 md:py-4")}
                   >
                     <HeaderBlock block={block} />
                   </div>

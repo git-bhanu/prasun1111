@@ -228,7 +228,7 @@ function DetailPanel({
             switch (block?.__typename) {
               case 'ArtworkBlocksHeader':
                 return (
-                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass('narrow', 'pb-2 md:py-4')}>
+                  <div key={`${block.__typename}-${i}`} className={blockWrapperClass('wide', 'pb-2 md:py-4')}>
                     <HeaderBlock block={block} />
                   </div>
                 );

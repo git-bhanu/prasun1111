@@ -24,7 +24,7 @@ const components: Components<{}> = {
   html_inline: (props) => {
     const match = props?.value?.match(/^<ref n="([^"]+)"\s*\/>$/);
     if (match) {
-      return <sup className='font-space-grotesk relative top-[-19px] left-0.5 text-[20px] text-brand-orange'>[{match[1]}]</sup>;
+      return <sup className='font-space-grotesk relative top-[-10px] md:top-[-16px] left-0.5 text-[10px] md:text-[14px] text-brand-orange'>[{match[1]}]</sup>;
     }
     return <>{props?.value}</>;
   },
