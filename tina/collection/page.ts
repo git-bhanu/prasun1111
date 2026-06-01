@@ -1,4 +1,5 @@
 import type { Collection, Template } from 'tinacms';
+import { seoField } from '../fields/seo';
 
 const heroStatementBlock: Template = {
   name: 'heroStatement',
@@ -855,6 +856,7 @@ const Page: Collection = {
       },
       templates: [heroStatementBlock, artistIntroBlock, featuredWorkSliderBlock, featuredSliderBlock, installationSliderBlock, movieListBlock, designSliderBlock, shopBlock, contactBlock, aboutHeroBlock, mediaBlock, cvBioBlock, statementCtaBlock],
     },
+    seoField,
   ],
 };
 

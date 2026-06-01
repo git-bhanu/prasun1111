@@ -1,10 +1,15 @@
+import { buildMetadata } from '@/lib/seo';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
 import WritingsClientPage from './client-page';
 
-export const metadata: Metadata = {
-  title: 'Writings',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const pageResult = await (client.queries as any).writingPage({ relativePath: 'config.json' }, { fetchOptions: { next: { revalidate: 60 } } });
+    return buildMetadata(pageResult.data?.writingPage?.seo, 'Writings');
+  } catch {}
+  return { title: 'Writings' };
+}
 
 export default async function WritingsPage() {
   const result = await client.queries.writingConnection({ first: 100, sort: 'date' }, { fetchOptions: { next: { revalidate: 60 } } });

@@ -1,4 +1,5 @@
 import type { Collection } from 'tinacms';
+import { seoField } from '../fields/seo';
 
 const FilmsPage: Collection = {
   name: 'filmsPage',
@@ -18,6 +19,7 @@ const FilmsPage: Collection = {
       label: 'Featured Film',
       collections: ['film'],
     },
+    seoField,
   ],
 };
 

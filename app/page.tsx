@@ -1,5 +1,19 @@
+import { buildMetadata } from '@/lib/seo';
 import client from '@/tina/client';
+import type { Metadata } from 'next';
 import ClientPage from './client-page';
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const result = await client.queries.page(
+      { relativePath: 'home.mdx' },
+      { fetchOptions: { next: { revalidate: 60 } } },
+    );
+    return buildMetadata(result.data.page.seo, 'Prasun1111');
+  } catch {
+    return {};
+  }
+}
 
 export default async function Home() {
   let result;

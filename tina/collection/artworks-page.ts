@@ -1,4 +1,5 @@
 import type { Collection } from "tinacms";
+import { seoField } from "../fields/seo";
 
 const ArtworksPage: Collection = {
   name: "artworksPage",
@@ -61,6 +62,7 @@ const ArtworksPage: Collection = {
         },
       ],
     },
+    seoField,
   ],
 };
 

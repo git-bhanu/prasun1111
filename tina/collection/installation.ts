@@ -1,4 +1,5 @@
 import type { Collection } from 'tinacms';
+import { seoField } from '../fields/seo';
 import { headerBlock } from '../blocks/header-block';
 import { imageBlock } from '../blocks/image-block';
 import { spaceBlock } from '../blocks/space-block';
@@ -129,6 +130,7 @@ const Installation: Collection = {
       ui: { visualSelector: true },
       templates: [headerBlock, twoColumnTextBlock, videoBlock, imageBlock, spaceBlock],
     },
+    seoField,
   ],
 };
 

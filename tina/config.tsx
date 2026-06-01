@@ -4,6 +4,7 @@ import nextConfig from '../next.config';
 import Artwork from './collection/artwork';
 import ArtworksPage from './collection/artworks-page';
 import Design from './collection/design';
+import DesignPage from './collection/design-page';
 import Film from './collection/film';
 import FilmsPage from './collection/films-page';
 import Global from './collection/global';
@@ -12,6 +13,7 @@ import InstallationsPage from './collection/installations-page';
 import Page from './collection/page';
 import Tag from './collection/tag';
 import Writing from './collection/writing';
+import WritingPage from './collection/writing-page';
 
 const config = defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
@@ -38,7 +40,7 @@ const config = defineConfig({
     basePath: nextConfig.basePath?.replace(/^\//, '') || '', // The base path of the app (could be /blog)
   },
   schema: {
-    collections: [Page, Global, Tag, Artwork, ArtworksPage, Installation, InstallationsPage, Film, FilmsPage, Design, Writing],
+    collections: [Page, Global, Tag, Artwork, ArtworksPage, Installation, InstallationsPage, Film, FilmsPage, Design, DesignPage, Writing, WritingPage],
   },
 });
 

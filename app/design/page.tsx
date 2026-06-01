@@ -1,3 +1,4 @@
+import { buildMetadata, richTextToPlain } from '@/lib/seo';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
 import DesignClientPage from './client-page';
@@ -15,26 +16,23 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
         return n && (n.slug ?? n._sys.filename).toLowerCase() === slug.toLowerCase();
       })?.node;
 
-      if (node?.image) {
-        return {
-          title: node.title,
-          openGraph: {
-            title: node.title,
-            images: [{ url: node.image, alt: node.imageAlt ?? node.title }],
-          },
-          twitter: {
-            card: 'summary_large_image',
-            title: node.title,
-            images: [node.image],
-          },
-        };
+      if (node) {
+        const plainTitle = richTextToPlain(node.title);
+        const meta = buildMetadata(node.seo, plainTitle);
+        if (!node.seo?.ogImage && node.image) {
+          meta.openGraph = { title: plainTitle, images: [{ url: node.image, alt: node.imageAlt ?? plainTitle }] };
+          meta.twitter = { card: 'summary_large_image', title: plainTitle, images: [node.image] };
+        }
+        return meta;
       }
     } catch {}
   }
 
-  return {
-    title: 'Design',
-  };
+  try {
+    const pageResult = await (client.queries as any).designPage({ relativePath: 'config.json' }, { fetchOptions: { next: { revalidate: 60 } } });
+    return buildMetadata(pageResult.data?.designPage?.seo, 'Design');
+  } catch {}
+  return { title: 'Design' };
 }
 
 export default async function DesignPage() {

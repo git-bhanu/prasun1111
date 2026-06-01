@@ -1,4 +1,5 @@
 import type { QuoteBreak } from '@/components/artwork';
+import { buildMetadata } from '@/lib/seo';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
 import ArtworksClientPage from './client-page';
@@ -16,26 +17,22 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
         return n && (n.slug ?? n._sys.filename).toLowerCase() === slug.toLowerCase();
       })?.node;
 
-      if (node?.coverImage) {
-        return {
-          title: node.title,
-          openGraph: {
-            title: node.title,
-            images: [{ url: node.coverImage, alt: node.coverImageAlt ?? node.title }],
-          },
-          twitter: {
-            card: 'summary_large_image',
-            title: node.title,
-            images: [node.coverImage],
-          },
-        };
+      if (node) {
+        const meta = buildMetadata(node.seo, node.title);
+        if (!node.seo?.ogImage && node.coverImage) {
+          meta.openGraph = { title: node.title, images: [{ url: node.coverImage, alt: node.coverImageAlt ?? node.title }] };
+          meta.twitter = { card: 'summary_large_image', title: node.title, images: [node.coverImage] };
+        }
+        return meta;
       }
     } catch {}
   }
 
-  return {
-    title: 'Artworks',
-  };
+  try {
+    const pageResult = await (client.queries as any).artworksPage({ relativePath: 'config.json' }, { fetchOptions: { next: { revalidate: 60 } } });
+    return buildMetadata(pageResult.data?.artworksPage?.seo, 'Artworks');
+  } catch {}
+  return { title: 'Artworks' };
 }
 
 export default async function ArtworksPage() {

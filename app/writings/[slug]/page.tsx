@@ -1,3 +1,4 @@
+import { buildMetadata } from '@/lib/seo';
 import type { WritingConnectionQuery } from '@/tina/__generated__/types';
 import client from '@/tina/client';
 import type { Metadata } from 'next';
@@ -12,9 +13,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   try {
     const result = await client.queries.writing({ relativePath: `${slug}.mdx` }, { fetchOptions: { next: { revalidate: 60 } } });
-    const sections = result.data.writing.titleSections ?? [];
-    const plainTitle = sections.map((s) => s?.text ?? '').join('');
-    return { title: plainTitle || slug };
+    const writing = result.data.writing;
+    const sections = writing.titleSections ?? [];
+    const plainTitle = sections.map((s) => s?.text ?? '').join('') || slug;
+    return buildMetadata(writing.seo, plainTitle);
   } catch {
     return { title: slug };
   }
