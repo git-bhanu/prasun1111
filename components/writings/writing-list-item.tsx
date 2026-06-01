@@ -57,10 +57,9 @@ export function WritingListItem({ slug, titleSections, date, tags, visualsCount,
           <h2 className='text-[36px] leading-[1.05] tracking-[-0.01em] text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue sm:text-[60px] md:text-[76px]'>
             <WritingTitle sections={titleSections} />
           </h2>
-          <span className='mb-[0.05em] flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border-2 border-brand-orange text-brand-orange transition-all duration-300 ease-in-out group-hover:bg-brand-orange group-hover:text-white md:h-[72px] md:w-[72px] md:border-[3px]'>
-            <svg className='h-8 w-8 md:h-12 md:w-12' viewBox='0 0 48 48' fill='none' aria-hidden='true'>
-              <path d='M13 35L35 13M35 13H16M35 13V32' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round' />
-            </svg>
+          <span className='mb-[0.05em] shrink-0'>
+            <Icon name='outbound' size={48} className='block w-12 h-12 md:w-[72px] md:h-[72px] group-hover:hidden' />
+            <Icon name='outboundHover' size={48} className='hidden w-12 h-12 md:w-[72px] md:h-[72px] group-hover:block' />
           </span>
         </div>
 

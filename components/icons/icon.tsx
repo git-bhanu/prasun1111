@@ -10,6 +10,8 @@ import ErrorIcon from './error.svg';
 import ForwardToInboxIcon from './forward_to_inbox.svg';
 import HamburgerIcon from './hamburger.svg';
 import KeyboardBackspaceIcon from './keyboard_backspace.svg';
+import OutboundIcon from './outbound.svg';
+import OutboundHoverIcon from './outbound-hover.svg';
 import PinchInZoom from './pinch_zoom_in.svg';
 import PlayCircleIcon from './play_circle.svg';
 import ShoppingBagIcon from './shopping_bag.svg';
@@ -29,6 +31,8 @@ export const icons = {
   forwardToInbox: ForwardToInboxIcon,
   hamburger: HamburgerIcon,
   keyboardBackspace: KeyboardBackspaceIcon,
+  outbound: OutboundIcon,
+  outboundHover: OutboundHoverIcon,
   pinchInZoom: PinchInZoom,
   playCircle: PlayCircleIcon,
   shoppingBag: ShoppingBagIcon,
