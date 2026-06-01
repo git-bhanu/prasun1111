@@ -39,7 +39,7 @@ export function TwoColumnTextBlock({ block }: Props) {
   const annotations = (block.annotations ?? []).filter((a): a is Annotation => a != null && (!!a.id || !!a.text));
 
   const columns = (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-x-12 text-base md:text-xl leading-tight text-black font-sedan dark:text-white'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-x-12 text-[16px] md:text-xl leading-tight text-black font-sedan dark:text-white'>
       {block.leftColumn && (
         <div data-tina-field={tinaField(block, 'leftColumn')}>
           <TinaMarkdown content={block.leftColumn} components={components} />

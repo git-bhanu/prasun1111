@@ -37,7 +37,7 @@ export function HeaderBlock({ block }: Props) {
 
   const level = block.level ?? 'h2';
   const Tag = level as 'h2' | 'h3' | 'h6';
-  const sizeClass = level === 'h3' ? 'text-[18px] md:text-[36px]' : level === 'h6' ? 'text-[12px] md:text-[14px]' : 'text-[20px] md:text-[48px]';
+  const sizeClass = level === 'h3' ? 'text-[22px] md:text-[36px]' : level === 'h6' ? 'text-[12px] md:text-[14px]' : 'text-[28px] md:text-[48px]';
   const fontClass = block.font === 'space-grotesk' ? 'font-space-grotesk' : 'font-sedan';
 
   const heading = (
