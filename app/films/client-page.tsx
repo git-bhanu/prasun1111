@@ -152,7 +152,7 @@ function FilmDetail({ film }: { film: Film }) {
 
         {film.synopsis && (
           <div
-            className="px-4 pt-3 pb-4 font-sedan text-[16px] md:text-[24px] leading-relaxed text-white"
+            className="px-4 pt-3 pb-4 font-sedan text-[16px] md:text-[24px] leading-tight text-white"
             data-tina-field={tinaField(film as any, "synopsis")}
           >
             <TinaMarkdown
