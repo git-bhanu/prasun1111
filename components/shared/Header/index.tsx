@@ -101,42 +101,106 @@ function MobilePrimaryNav({
   const pathname = usePathname();
   const reduceMotion = useReducedMotion();
   const scrollContainerRef = useRef<HTMLUListElement | null>(null);
-  const itemRefs = useRef<Record<string, HTMLLIElement | null>>({});
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isResettingRef = useRef(false);
+  const isTweeningRef = useRef(false);
+  const setWidthRef = useRef(0);
+  const count = links.length;
+  const tripleLinks = [...links, ...links, ...links];
 
   useEffect(() => {
-    if (!pathname) {
-      return;
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const currentPathname = pathname;
+    const id = requestAnimationFrame(() => {
+      const items = el.querySelectorAll<HTMLLIElement>('li');
+      if (items.length < count * 2) return;
+      const sw = items[count].offsetLeft - items[0].offsetLeft;
+      setWidthRef.current = sw;
+
+      const activeIndex = links.findIndex(
+        (l) => currentPathname === l.href || (l.href !== '/' && currentPathname?.startsWith(l.href + '/'))
+      );
+      const idx = count + (activeIndex >= 0 ? activeIndex : 0);
+      el.scrollLeft = items[idx].offsetLeft - items[0].offsetLeft;
+    });
+
+    return () => cancelAnimationFrame(id);
+  // only re-run if links count changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
+
+  useEffect(() => {
+    if (!pathname) return;
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const activeIndex = links.findIndex(
+      (l) => pathname === l.href || (l.href !== '/' && pathname.startsWith(l.href + '/'))
+    );
+    if (activeIndex === -1) return;
+
+    const items = el.querySelectorAll<HTMLLIElement>('li');
+    let sw = setWidthRef.current;
+    if (!sw && items.length >= count * 2) {
+      sw = items[count].offsetLeft - items[0].offsetLeft;
+      setWidthRef.current = sw;
+    }
+    if (!sw) return;
+
+    const middleItem = items[count + activeIndex];
+    if (!middleItem) return;
+
+    const containerRect = el.getBoundingClientRect();
+    const itemRect = middleItem.getBoundingClientRect();
+    let targetLeft = el.scrollLeft + itemRect.left - containerRect.left;
+    let useNextCopy = false;
+
+    if (targetLeft < el.scrollLeft) {
+      targetLeft += sw;
+      useNextCopy = true;
     }
 
-    const scrollContainer = scrollContainerRef.current;
-    const activeItem = itemRefs.current[pathname];
+    isTweeningRef.current = true;
 
-    if (!scrollContainer || !activeItem) {
-      return;
-    }
-
-    const containerRect = scrollContainer.getBoundingClientRect();
-    const itemRect = activeItem.getBoundingClientRect();
-    const targetLeft = Math.max(0, scrollContainer.scrollLeft + itemRect.left - containerRect.left - (containerRect.width - itemRect.width) / 2);
-
-    const tween = gsap.to(scrollContainer, {
+    const tween = gsap.to(el, {
       scrollLeft: targetLeft,
       duration: reduceMotion ? 0 : 0.5,
       ease: 'expo.out',
       overwrite: true,
+      onComplete: () => {
+        isTweeningRef.current = false;
+        if (useNextCopy) el.scrollLeft -= sw;
+      },
     });
 
     return () => {
       tween.kill();
+      isTweeningRef.current = false;
     };
-  }, [pathname, reduceMotion]);
+  }, [pathname, reduceMotion, links, count]);
 
   const handleScroll = () => {
     setIsScrolling(true);
     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     scrollTimeoutRef.current = setTimeout(() => setIsScrolling(false), 800);
+
+    const el = scrollContainerRef.current;
+    if (!el || isResettingRef.current || isTweeningRef.current) return;
+    const sw = setWidthRef.current;
+    if (!sw) return;
+
+    if (el.scrollLeft < sw) {
+      isResettingRef.current = true;
+      el.scrollLeft += sw;
+      isResettingRef.current = false;
+    } else if (el.scrollLeft >= sw * 2) {
+      isResettingRef.current = true;
+      el.scrollLeft -= sw;
+      isResettingRef.current = false;
+    }
   };
 
   return (
@@ -158,17 +222,10 @@ function MobilePrimaryNav({
             : '[&::-webkit-scrollbar-thumb]:bg-transparent [scrollbar-color:transparent_transparent]'
         )}
       >
-        {links.map((link) => (
-          <motion.li
-            key={link.href}
-            layout
-            ref={(element) => {
-              itemRefs.current[link.href] = element;
-            }}
-            className='shrink-0'
-          >
+        {tripleLinks.map((link, i) => (
+          <li key={`${link.href}-${i}`} className='shrink-0'>
             <MenuLink {...link} />
-          </motion.li>
+          </li>
         ))}
       </motion.ul>
     </motion.nav>
