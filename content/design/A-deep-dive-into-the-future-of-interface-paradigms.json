@@ -44,9 +44,26 @@
       "_template": "header"
     },
     {
-      "leftColumn": " <color text= \"One thing became clear almost immediately: this wasn't a brand that needed reinvention. \" />\n",
+      "leftColumn": "*One thing became clear almost immediately: this wasn't a brand that needed reinvention.*\n",
       "rightColumn": "Salad Days had already established a meaningful place in the lives of its customers. It had built recognition, familiarity, and a distinct personality over time. The challenge wasn't to create something entirely new, but to understand what people already connected with and strengthen those foundations for the future.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780320784/Salad_Days_0.4-33_jojxkf.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780320788/Salad_Days_0.4-34_bsincc.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "Like many rebranding projects, the process began by identifying the elements that carried the strongest memory value. Interestingly, one particular element kept resurfacing.\n\nThe teal.\n",
+      "_template": "header"
     }
   ]
 }
