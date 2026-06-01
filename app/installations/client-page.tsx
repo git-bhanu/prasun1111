@@ -162,6 +162,7 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
         ref={backdropRef}
         onClick={close}
         className="fixed inset-0 z-[99] bg-black/60"
+        style={{ opacity: 0, visibility: 'hidden' }}
       />
       <button
         ref={closeBtnRef}
@@ -169,6 +170,7 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
         onClick={close}
         aria-label="Close overlay"
         className="fixed right-6 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white md:right-36"
+        style={{ opacity: 0, visibility: 'hidden' }}
       >
         <Icon name="pinchInZoom" size={28} color="#fff" />
       </button>
@@ -178,6 +180,7 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
           detailScrollRef.current = el;
         }}
         className="fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white"
+        style={{ opacity: 0, visibility: 'hidden', transform: 'translateY(100%)' }}
       >
         {displayInstallation && (
           <DetailPanel

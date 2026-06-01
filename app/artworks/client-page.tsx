@@ -121,13 +121,14 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
         <ArtworkBentoGrid artworks={artworks} quoteBreaks={quoteBreaks} onArtworkClick={goTo} />
       )}
 
-      <div ref={backdropRef} onClick={close} className='fixed inset-0 z-[99] bg-black/60' />
+      <div ref={backdropRef} onClick={close} className='fixed inset-0 z-[99] bg-black/60' style={{ opacity: 0, visibility: 'hidden' }} />
       <button
         ref={closeBtnRef}
         type='button'
         onClick={close}
         aria-label='Close overlay'
         className='fixed right-6 top-[30px] z-[101] flex size-15 cursor-pointer items-center justify-center rounded-full bg-brand-orange text-white md:right-36'
+        style={{ opacity: 0, visibility: 'hidden' }}
       >
         <Icon name='pinchInZoom' size={28} color='#fff' />
       </button>
@@ -137,6 +138,7 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
           detailScrollRef.current = el;
         }}
         className='fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white'
+        style={{ opacity: 0, visibility: 'hidden', transform: 'translateY(100%)' }}
       >
         {displayArtwork && (
           <DetailPanel
@@ -208,7 +210,7 @@ function DetailPanel({
         </div>
 
         {artwork.coverImage && (
-          <div className='relative order-1 aspect-[4/3] h-[500px] w-full flex-shrink-0 bg-[var(--surface-grey)] md:order-2 md:aspect-auto md:min-h-full md:h-auto md:flex-1'>
+          <div className='relative order-1 h-[500px] w-full flex-shrink-0 overflow-hidden bg-[var(--surface-grey)] md:order-2 md:aspect-auto md:min-h-full md:h-auto md:flex-1'>
             <BlurUpImage
               src={artwork.coverImage}
               alt={artwork.coverImageAlt ?? artwork.title}

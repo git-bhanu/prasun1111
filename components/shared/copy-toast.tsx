@@ -47,6 +47,7 @@ export function CopyToast() {
       aria-live="polite"
       aria-atomic="true"
       className="pointer-events-none fixed inset-x-0 top-6 z-[200] flex justify-center"
+      style={{ opacity: 0, visibility: 'hidden', transform: 'translateY(-64px)' }}
     >
       <div className="flex items-center gap-3 rounded-full bg-black px-6 py-4 shadow-xl">
         <ClipboardIcon />
