@@ -29,7 +29,12 @@
     },
     {
       "level": "h3",
-      "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation<ref n=\"01\"/> of a conversation that had been unfolding for years.\n\nOne thing became clear almost immediately: this wasn't a brand that needed *reinvention.*\n",
+      "heading": "Long before there was a formal brief, there was a friendship. Over the course of more than three years, countless conversations revolved around the brand, what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation<ref n=\"01\"/> of a conversation that had been unfolding for years.\n",
       "annotations": [
         {
           "id": "01",
@@ -39,9 +44,9 @@
       "_template": "header"
     },
     {
-      "level": "h3",
-      "heading": "Long before there was a formal brief, there was a friendship. Over the course of more than three years, countless conversations revolved around the brand, what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
-      "_template": "header"
+      "leftColumn": " <color text= \"One thing became clear almost immediately: this wasn't a brand that needed reinvention. \" />\n",
+      "rightColumn": "Salad Days had already established a meaningful place in the lives of its customers. It had built recognition, familiarity, and a distinct personality over time. The challenge wasn't to create something entirely new, but to understand what people already connected with and strengthen those foundations for the future.\n",
+      "_template": "twoColumnText"
     }
   ]
 }
