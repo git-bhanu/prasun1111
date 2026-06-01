@@ -22,7 +22,7 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319583/Salad_Days_0.4_jpsagq.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780321317/SD_Old_zw7oxh.jpg"
         }
       ],
       "_template": "image"
@@ -49,6 +49,20 @@
       "_template": "twoColumnText"
     },
     {
+      "level": "h3",
+      "heading": "Like many rebranding projects, the process began by identifying the elements that carried the strongest memory value. Interestingly, one particular element kept resurfacing.\n\nThe *Teal.*\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780321616/Avocado_Blueberry_Smoothie__zi4pfz.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "width": "narrow",
       "images": [
         {
@@ -61,9 +75,13 @@
       "_template": "image"
     },
     {
-      "level": "h3",
-      "heading": "Like many rebranding projects, the process began by identifying the elements that carried the strongest memory value. Interestingly, one particular element kept resurfacing.\n\nThe teal.\n",
-      "_template": "header"
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319583/Salad_Days_0.4_jpsagq.jpg"
+        }
+      ],
+      "_template": "image"
     }
   ]
 }
