@@ -22,14 +22,17 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780321317/SD_Old_zw7oxh.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780321717/6JAM6JKM_Product__Salad_Days_mmpuco.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780321874/BeFunky-collage_0_kheswr.jpg"
         }
       ],
       "_template": "image"
     },
     {
       "level": "h3",
-      "heading": "Long before there was a formal brief, there was a friendship. Over the course of more than three years, countless conversations revolved around the brand, what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
+      "heading": "Long before there was a formal brief, there was a *friendship.* Over the course of more than three years, countless conversations revolved around the brand, what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
       "_template": "header"
     },
     {
@@ -63,13 +66,15 @@
       "_template": "image"
     },
     {
+      "level": "h3",
+      "heading": "Whether we were reviewing past communication, discussing customer recall, or imagining future applications, the colour consistently found its way back into the conversation. It had become one of the brand's most recognizable assets—not because it was loud or distinctive in isolation, but because it had quietly earned its place over years of consistent use.\n\n*The question was never whether it should remain. The question was whether it was the right teal.*\n",
+      "_template": "header"
+    },
+    {
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780320784/Salad_Days_0.4-33_jojxkf.jpg"
-        },
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780320788/Salad_Days_0.4-34_bsincc.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319583/Salad_Days_0.4_jpsagq.jpg"
         }
       ],
       "_template": "image"
@@ -78,7 +83,10 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319583/Salad_Days_0.4_jpsagq.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780320784/Salad_Days_0.4-33_jojxkf.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780320788/Salad_Days_0.4-34_bsincc.jpg"
         }
       ],
       "_template": "image"
