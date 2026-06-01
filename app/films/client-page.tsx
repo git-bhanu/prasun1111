@@ -427,7 +427,7 @@ function FilmMeta({ film }: { film: Film }) {
 
   return (
     <div className="border-t pb- border-white/[0.15] mx-4">
-      <div className="grid grid-cols-[1fr_1px_1.5fr] md:grid-cols-[1fr_1px_1fr] mt-4">
+      <div className="grid grid-cols-[1fr_1px_1fr] mt-4">
         <div>
           {left.map((f, i) => (
             <div
