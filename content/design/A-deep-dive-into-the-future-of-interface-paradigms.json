@@ -8,19 +8,24 @@
   "accentColor": "#F0F9FB",
   "blocks": [
     {
-      "level": "h3",
+      "level": "h2",
       "font": "sedan",
-      "heading": "Some projects arrive exactly when you expect them to. Others take their time. The rebranding of Salad Days belonged firmly in the second category.\n",
+      "heading": "Some projects arrive exactly when you expect them to. *Others take their time. *The rebranding of Salad Days belonged firmly in the *second category.*\n",
       "_template": "header"
     },
     {
-      "leftColumn": "*Long before there was a formal brief, there was a friendship.*\n",
-      "rightColumn": " Over the course of more than three years, countless conversations revolved around the brand—what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
-      "_template": "twoColumnText"
+      "desktopSpace": "48",
+      "mobileSpace": "32",
+      "_template": "space"
     },
     {
       "level": "h3",
-      "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation of a conversation that had been unfolding for years.\n\nOne thing became clear almost immediately: *this wasn't a brand that needed reinvention.*\n",
+      "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation of a conversation that had been unfolding for years.\n\nOne thing became clear almost immediately: this wasn't a brand that needed *reinvention.*\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Long before there was a formal brief, there was a friendship. Over the course of more than three years, countless conversations revolved around the brand, what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
       "_template": "header"
     }
   ]
