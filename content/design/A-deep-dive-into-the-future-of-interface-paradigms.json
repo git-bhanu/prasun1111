@@ -22,14 +22,20 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319329/salad_days_soup_hpg57n.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319583/Salad_Days_0.4_jpsagq.jpg"
         }
       ],
       "_template": "image"
     },
     {
       "level": "h3",
-      "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation of a conversation that had been unfolding for years.\n\nOne thing became clear almost immediately: this wasn't a brand that needed *reinvention.*\n",
+      "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation<ref n=\"01\"/> of a conversation that had been unfolding for years.\n\nOne thing became clear almost immediately: this wasn't a brand that needed *reinvention.*\n",
+      "annotations": [
+        {
+          "id": "01",
+          "text": "Meaningful creative work often begins long before a contract is signed, taking shape through conversations, observations, shared experiences, and accumulated understanding."
+        }
+      ],
       "_template": "header"
     },
     {
