@@ -52,7 +52,7 @@ export function AboutHeroBlock({ block }: { block: PageBlocksAboutHero }) {
             <SectionReveal delay={0.15}>
               <div
                 data-tina-field={tinaField(block, "body")}
-                className="font-sedan text-[16px] leading-relaxed md:flex md:flex-col md:justify-center md:text-[32px]"
+                className="font-sedan text-[16px] leading-tight md:flex md:flex-col md:justify-center md:text-[32px]"
               >
                 <TinaMarkdown
                   content={block.body}
