@@ -149,12 +149,9 @@ function DesignContent({ query, data, variables }: Props) {
                 />
               )}
               <span
-                className={`relative z-10 inline-flex flex-col items-center transition-colors duration-200 ${activeFilter === filter ? "text-white" : "text-black"}`}
+                className={`relative z-10 transition-colors duration-200 ${activeFilter === filter ? "text-white underline decoration-brand-orange decoration-2 underline-offset-2" : "text-black"}`}
               >
                 {filter === "byDoing" ? "By Doing" : "By Knowing"}
-                <span
-                  className={`mt-0.5 h-[2px] w-full rounded-[8px] bg-brand-orange transition-opacity duration-200 ${activeFilter === filter ? "opacity-100" : "opacity-0"}`}
-                />
               </span>
             </button>
           ))}
