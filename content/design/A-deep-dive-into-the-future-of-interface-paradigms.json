@@ -96,6 +96,18 @@
       "_template": "image"
     },
     {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "GROWTH NEEDS A BIGGER PALETTE\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "As the brand evolved, the existing colour no longer felt capable of carrying the growing ambitions of the business. We needed something with greater confidence and presence—something that could unify packaging, digital communication, retail environments, and future extensions of the brand without losing the familiarity people already associated with Salad Days.\n\nThe answer wasn't replacement. It was refinement.\n\nWhile the teal remained at the center of the identity, the broader colour system required a more significant evolution.\n",
+      "_template": "header"
+    },
+    {
       "width": "narrow",
       "images": [
         {
@@ -106,6 +118,35 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780396074/salad_days_soup_exunkt.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780396141/salad_days_all_product_cwa7aw.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "DESIGNING FOR FLEXIBILITY\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Consumer brands live across an enormous range of touchpoints. Menus, packaging, social media, campaigns, merchandise, seasonal launches, and promotional materials all compete for attention. Relying too heavily on a single colour can eventually create repetition rather than recognition.\n\nThe challenge was to build a system that felt cohesive without becoming predictable.\n\nBy introducing a complementary palette, we created a framework that allowed the brand to communicate with greater flexibility while maintaining a consistent visual voice. The objective wasn't variety for the sake of variety. It was creating a system capable of growing alongside the brand.\n",
+      "_template": "header"
     }
   ]
 }
