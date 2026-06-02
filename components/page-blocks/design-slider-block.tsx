@@ -2,7 +2,7 @@
 
 import { useInView, useReducedMotion } from "motion/react";
 import { BlurUpImage } from "@/components/shared/blur-up-image";
-import { formatDesignDate } from "@/components/design";
+import { renderDesignDate } from "@/components/design";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { tinaField } from "tinacms/dist/react";
@@ -226,7 +226,7 @@ function DesignCard({
           {(design.date || design.category) ? (
             <p className="font-space-grotesk text-xs md:text-[18px] mt-4 uppercase leading-tight tracking-wide text-black">
               {design.date ? (
-                <span>{formatDesignDate(design.date)}</span>
+                <span className="normal-case">{renderDesignDate(design.date)}</span>
               ) : null}
               {design.date && design.category ? " · " : null}
               {design.category ? (

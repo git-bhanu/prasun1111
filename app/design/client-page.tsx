@@ -8,7 +8,6 @@ import { VideoBlock } from "@/components/blocks/video-block";
 import {
   DesignListCard,
   DesignListGrid,
-  formatDesignDate,
 } from "@/components/design";
 import { Icon } from "@/components/icons";
 import { ActionButton } from "@/components/shared/action-button";
@@ -20,7 +19,7 @@ import type {
 } from "@/tina/__generated__/types";
 import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTina } from "tinacms/dist/react";
 import { type Components, TinaMarkdown } from "tinacms/dist/rich-text";
 
@@ -217,6 +216,23 @@ function DesignContent({ query, data, variables }: Props) {
   );
 }
 
+function renderDesignDate(iso: string): React.ReactNode {
+  try {
+    const d = new Date(iso);
+    const day = d.getUTCDate();
+    const suffix =
+      day === 1 || day === 21 || day === 31 ? 'st'
+      : day === 2 || day === 22 ? 'nd'
+      : day === 3 || day === 23 ? 'rd'
+      : 'th';
+    const month = d.toLocaleString('en-GB', { month: 'long', timeZone: 'UTC' });
+    const year = d.getUTCFullYear();
+    return <>{day}<sup>{suffix}</sup> <span className="uppercase">{month}</span> {year}</>;
+  } catch {
+    return iso;
+  }
+}
+
 function blockWrapperClass(width: string, verticalPadding: string) {
   switch (width) {
     case "full":
@@ -252,7 +268,7 @@ function DetailPanel({
         <div className="px-4 pt-8 pb-4 md:px-[10svw] md:pt-20 shrink-0">
           {(design.date || design.category) && (
             <p className="font-space-grotesk text-[12px] md:text-[16px] font-normal leading-none uppercase tracking-normal mb-4">
-              {design.date && formatDesignDate(design.date)}
+              {design.date && <span className="normal-case">{renderDesignDate(design.date)}</span>}
               {design.date && design.category && " · "}
               {design.category && (
                 <strong className="font-semibold text-black">

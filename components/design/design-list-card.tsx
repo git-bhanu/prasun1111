@@ -2,6 +2,7 @@
 
 import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { cn } from '@/lib/utils';
+import React from 'react';
 import { type Components, TinaMarkdown } from 'tinacms/dist/rich-text';
 
 function formatDesignDate(iso: string | null | undefined): string | null {
@@ -19,7 +20,24 @@ function formatDesignDate(iso: string | null | undefined): string | null {
   }
 }
 
-export { formatDesignDate };
+function renderDesignDate(iso: string): React.ReactNode {
+  try {
+    const d = new Date(iso);
+    const day = d.getUTCDate();
+    const suffix =
+      day === 1 || day === 21 || day === 31 ? 'st'
+      : day === 2 || day === 22 ? 'nd'
+      : day === 3 || day === 23 ? 'rd'
+      : 'th';
+    const month = d.toLocaleString('en-GB', { month: 'long', timeZone: 'UTC' });
+    const year = d.getUTCFullYear();
+    return <>{day}<sup>{suffix}</sup> <span className="uppercase">{month}</span> {year}</>;
+  } catch {
+    return iso;
+  }
+}
+
+export { formatDesignDate, renderDesignDate };
 
 const richComponents: Components<object> = {
   p: (props) => <span className='block'>{props?.children}</span>,
@@ -83,7 +101,7 @@ export function DesignListCard({ design, onClick, sizes }: DesignListCardProps) 
       <div className='px-4 py-4 md:p-6'>
         {(design.date || design.category) && (
           <p className='font-space-grotesk text-xs uppercase leading-tight tracking-wide text-black mt-2'>
-            {design.date && <span>{formatDesignDate(design.date)}</span>}
+            {design.date && <span className='normal-case'>{renderDesignDate(design.date)}</span>}
             {design.date && design.category && ' · '}
             {design.category && <strong className='font-semibold text-black'>{design.category.title}</strong>}
           </p>
