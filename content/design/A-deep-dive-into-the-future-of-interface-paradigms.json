@@ -8,14 +8,20 @@
   "accentColor": "#F0F9FB",
   "blocks": [
     {
-      "level": "h2",
+      "level": "h3",
       "font": "sedan",
       "heading": "Some projects arrive exactly when you expect them to. *Others take their time. *The rebranding of Salad Days belonged firmly in the *second category.*\n",
       "_template": "header"
     },
     {
       "level": "h3",
-      "heading": "Long before there was a formal brief, there was a *friendship.* Over the course of more than three years, countless conversations revolved around the brand, what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
+      "heading": "Long before there was a formal brief, there was a *friendship.* Over the course of more than <ref n=\"02\"/> three years, countless conversations revolved around the brand, what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
+      "annotations": [
+        {
+          "id": "01",
+          "text": "The work started years before the timeline did."
+        }
+      ],
       "_template": "header"
     },
     {
@@ -23,19 +29,16 @@
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780321717/6JAM6JKM_Product__Salad_Days_mmpuco.jpg"
-        },
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780321874/BeFunky-collage_0_kheswr.jpg"
         }
       ],
       "_template": "image"
     },
     {
       "level": "h3",
-      "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation<ref n=\"01\"/> of a conversation that had been unfolding for years.\n",
+      "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation<ref n=\"02\"/> of a conversation that had been unfolding for years.\n",
       "annotations": [
         {
-          "id": "01",
+          "id": "02",
           "text": "Meaningful creative work often begins long before a contract is signed, taking shape through conversations, observations, shared experiences, and accumulated understanding."
         }
       ],
