@@ -22,7 +22,7 @@ export function ImageBlock({ block }: Props) {
   const aspectClass = block.orientation === 'portrait' ? 'aspect-[9/16]' : 'aspect-video';
 
   return (
-    <div className="flex flex-col gap-8 md:flex-row">
+    <div className="flex flex-col gap-4 md:flex-row md:gap-8">
       {images.map((img, i) => (
         <div key={i} className={`relative ${aspectClass} min-w-0 flex-1 overflow-hidden`}>
           <BlurUpImage
