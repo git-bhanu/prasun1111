@@ -420,7 +420,7 @@ function FilmMeta({ film }: { film: Film }) {
                 i < left.length - 1 && "border-b border-white/[0.15] mr-4",
               )}
             >
-              <p className="font-space-grotesk text-[10px] md:text-[12px] uppercase tracking-widest text-white/50">
+              <p className="font-space-grotesk text-[10px] md:text-[12px] uppercase text-white/50">
                 {f.label}
               </p>
               <p className="mt-3 font-space-grotesk text-[14px] md:text-xl uppercase text-white">
