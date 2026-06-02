@@ -87,15 +87,6 @@
       "_template": "header"
     },
     {
-      "width": "narrow",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319583/Salad_Days_0.4_jpsagq.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
       "level": "h6",
       "font": "space-grotesk",
       "heading": "GROWTH NEEDS A BIGGER PALETTE\n",
