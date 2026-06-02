@@ -166,7 +166,7 @@ function FilmDetail({ film }: { film: Film }) {
 
         {hasHeaderVideo && (
           <div className="px-4 pt-6 pb-8">
-            <FilmHeaderVideo film={film} awards={awards} />
+            <FilmHeaderVideo film={film} />
           </div>
         )}
       </div>
@@ -241,7 +241,7 @@ function FilmDetail({ film }: { film: Film }) {
           </div>
         </div>
 
-        {hasHeaderVideo && <FilmHeaderVideo film={film} awards={awards} />}
+        {hasHeaderVideo && <FilmHeaderVideo film={film} />}
       </div>
 
       {/* Blocks */}
@@ -327,10 +327,8 @@ function FilmDetail({ film }: { film: Film }) {
 
 function FilmHeaderVideo({
   film,
-  awards,
 }: {
   film: Film;
-  awards: AwardItem[];
 }) {
   const [playing, setPlaying] = useState(false);
 
@@ -389,21 +387,6 @@ function FilmHeaderVideo({
           {watchButton()}
         </div>
 
-        {/* Awards overlay inside video at bottom-left */}
-        {awards.length > 0 && !playing && (
-          <div className="absolute bottom-5 left-5 z-10 flex flex-wrap items-center gap-3">
-            {awards.map((award, i) => (
-              <BlurUpImage
-                key={i}
-                src={award.image!}
-                alt={award.alt ?? ""}
-                height={40}
-                width={100}
-                className="w-[100px] md:w-[150px] object-contain"
-              />
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Mobile: watch button full-width below video */}
