@@ -94,8 +94,7 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
 
   useEffect(() => {
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
+      document.documentElement.style.overflow = '';
     };
   }, []);
 

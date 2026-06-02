@@ -29,9 +29,7 @@ export function useOverlayAnimation({ backdropRef, closeBtnRef, panelRef, animat
 
     const skip = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.overflow = 'hidden';
-    if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+    document.documentElement.style.overflow = 'hidden';
 
     if (skip) {
       gsap.set(panel, animation === 'slide-up' ? { y: 0, autoAlpha: 1 } : { autoAlpha: 1 });
@@ -62,8 +60,7 @@ export function useOverlayAnimation({ backdropRef, closeBtnRef, panelRef, animat
         if (panel) gsap.set(panel, { autoAlpha: 0 });
         if (backdrop) gsap.set(backdrop, { autoAlpha: 0 });
         if (closeBtn) gsap.set(closeBtn, { autoAlpha: 0 });
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
+        document.documentElement.style.overflow = '';
         isOpenRef.current = false;
         onComplete();
       };

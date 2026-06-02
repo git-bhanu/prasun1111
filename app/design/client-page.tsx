@@ -108,8 +108,7 @@ function DesignContent({ query, data, variables }: Props) {
 
   useEffect(() => {
     return () => {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
+      document.documentElement.style.overflow = "";
     };
   }, []);
 
