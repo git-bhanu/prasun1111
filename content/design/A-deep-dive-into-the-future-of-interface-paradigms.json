@@ -14,6 +14,12 @@
       "_template": "header"
     },
     {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "SOME CONVERSATIONS TAKE LONGER\n",
+      "_template": "header"
+    },
+    {
       "level": "h3",
       "heading": "Long before there was a formal brief, there was a *friendship.* Over the course of more than <ref n=\"02\"/> three years, countless conversations revolved around the brand, what it stood for, how people perceived it, and where it could go next. Every now and then those conversations turned into small collaborations, but the larger question of reimagining the brand always remained somewhere in the background.\n",
       "annotations": [
@@ -34,6 +40,12 @@
       "_template": "image"
     },
     {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "A BRAND PEOPLE ALREADY LOVED\n",
+      "_template": "header"
+    },
+    {
       "level": "h3",
       "heading": "So when the opportunity finally arrived, it didn't feel like the beginning of a new project. It felt like the continuation<ref n=\"02\"/> of a conversation that had been unfolding for years.\n",
       "annotations": [
@@ -50,9 +62,10 @@
       "_template": "twoColumnText"
     },
     {
-      "desktopSpace": "48",
-      "mobileSpace": "32",
-      "_template": "space"
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "A TEAL QUESTION\n",
+      "_template": "header"
     },
     {
       "level": "h3",
@@ -86,10 +99,10 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780320784/Salad_Days_0.4-33_jojxkf.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780394966/salad_days_croissant_u61jng.jpg"
         },
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780320788/Salad_Days_0.4-34_bsincc.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780394994/salad_days_roll_sleeve_mms9ym.jpg"
         }
       ],
       "_template": "image"
