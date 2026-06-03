@@ -99,36 +99,6 @@
       "_template": "header"
     },
     {
-      "width": "narrow",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780394966/salad_days_croissant_u61jng.jpg"
-        },
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780394994/salad_days_roll_sleeve_mms9ym.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
-      "width": "narrow",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780396074/salad_days_soup_exunkt.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
-      "width": "full",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780396141/salad_days_all_product_cwa7aw.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
       "level": "h6",
       "font": "space-grotesk",
       "heading": "DESIGNING FOR FLEXIBILITY\n",
@@ -286,6 +256,41 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780394966/salad_days_croissant_u61jng.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780394994/salad_days_roll_sleeve_mms9ym.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780396074/salad_days_soup_exunkt.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780396141/salad_days_all_product_cwa7aw.jpg"
+        }
+      ],
+      "_template": "image"
     }
-  ]
+  ],
+  "seo": {
+    "metaTitle": "You can control everything, but not the right time.",
+    "metaDescription": "After years of conversations, the Salad Days rebrand was ready to launch. This is the story of evolving a beloved brand and discovering that some ideas simply have to wait for their moment.",
+    "ogImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780392143/salad_days_all_product_fbdcrq.jpg"
+  }
 }
