@@ -208,6 +208,18 @@
       "_template": "image"
     },
     {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475882/ssa-60_ub3a1k.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475886/ssa-59_uq36ni.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "level": "h3",
       "heading": "Those are often the most satisfying changes to make.\n\nAs rewarding as the strategic work was, the most enjoyable part of the project emerged elsewhere.\n\nThe *illustration* system.\n",
       "_template": "header"
@@ -253,18 +265,9 @@
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780470654/Salad_Days_vv_vrrvrw.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
-      "width": "narrow",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780394966/salad_days_croissant_u61jng.jpg"
         },
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780394994/salad_days_roll_sleeve_mms9ym.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475578/Salad_Days_0.6-32_c9qbu4.jpg"
         }
       ],
       "_template": "image"
@@ -273,7 +276,10 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780396074/salad_days_soup_exunkt.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475556/Salad_Days_0.6-39_n7bxs4.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475487/Salad_Days_0.6-40_prwiff.jpg"
         }
       ],
       "_template": "image"
@@ -291,7 +297,22 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475123/salad_days_bowl_sleeve_sjixwl.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475619/Salad_Days_0.6-35_jgxy3r.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475628/Salad_Days_0.6-36_qm3jh4.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475672/Salad_Days_0.6-33_homo9j.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475677/Salad_Days_0.6-34_aywwix.jpg"
         }
       ],
       "_template": "image"
