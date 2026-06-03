@@ -78,15 +78,6 @@
       "_template": "header"
     },
     {
-      "width": "narrow",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780405777/Salad_Days_0.1_n2zahg.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
       "level": "h6",
       "font": "space-grotesk",
       "heading": "GROWTH NEEDS A BIGGER PALETTE\n",
@@ -158,6 +149,15 @@
       "_template": "header"
     },
     {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780405777/Salad_Days_0.1_n2zahg.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "level": "h3",
       "font": "sedan",
       "heading": "For a moment, we assumed this would be where most of the work lived.\n\nAfter all, logos tend to become the centerpiece of any rebranding conversation. Yet the deeper we looked, the more we realized that *recognition was not the problem.* The existing mark already carried equity. People knew it. They trusted it. They associated it with the brand.\n\nWhat it needed was *refinement.*\n",
@@ -182,6 +182,20 @@
       "_template": "image"
     },
     {
+      "leftColumn": "*Over the last decade, simplification has become a dominant trend in identity design. In many cases, that approach makes perfect sense.*\n",
+      "rightColumn": "But Salad Days is not a technology platform or a purely functional service. It is a brand built around \\*habits, routines, choices, and a lifestyle \\*people actively choose to participate in.\n\nThat relationship called for *warmth.*\n\nIt called for *character.*\n\nAnd it called for a little more personality than extreme simplification would allow.\n\nThe modifications themselves were subtle. Most customers will likely never notice them consciously. Yet branding often operates in that space between observation and feeling. Small adjustments to proportion, rhythm, and form can influence perception long before someone understands why.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780476341/ww_a5mukp.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "width": "narrow",
       "images": [
         {
@@ -192,11 +206,6 @@
         }
       ],
       "_template": "image"
-    },
-    {
-      "leftColumn": "*Over the last decade, simplification has become a dominant trend in identity design. In many cases, that approach makes perfect sense.*\n",
-      "rightColumn": "But Salad Days is not a technology platform or a purely functional service. It is a brand built around \\*habits, routines, choices, and a lifestyle \\*people actively choose to participate in.\n\nThat relationship called for *warmth.*\n\nIt called for *character.*\n\nAnd it called for a little more personality than extreme simplification would allow.\n\nThe modifications themselves were subtle. Most customers will likely never notice them consciously. Yet branding often operates in that space between observation and feeling. Small adjustments to proportion, rhythm, and form can influence perception long before someone understands why.\n",
-      "_template": "twoColumnText"
     },
     {
       "width": "narrow",
