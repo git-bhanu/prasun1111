@@ -3,16 +3,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 const pageCopy = {
-  installations: {
-    eyebrow: 'Collection',
-    title: 'Installations',
-    description: 'Installation projects will live here. This page currently exists to validate route-to-route transitions.',
-  },
-  design: {
-    eyebrow: 'Collection',
-    title: 'Design',
-    description: 'Design work will live here. This page currently exists to validate route-to-route transitions.',
-  },
   shop: {
     eyebrow: 'Utility',
     title: 'Shop',
