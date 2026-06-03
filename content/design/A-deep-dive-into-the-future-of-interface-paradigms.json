@@ -154,13 +154,43 @@
     {
       "level": "h6",
       "font": "space-grotesk",
+      "heading": "FINDING A FORM\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "While the existing identity had a logotype, it did not have a dedicated symbol.\n\nThat works for many brands, but as we explored the future of Salad Days, it became clear that the brand needed a form that could communicate alongside the wordmark. A strong symbol creates memory in a different way. It can live independently, become a visual shorthand, and build recognition across multiple touchpoints.\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "The challenge was finding a form that wasn't merely decorative or directly representational. We wanted something that could connect to the broader lifestyle and values associated with the brand.\n",
+      "rightColumn": "After extensive exploration, we found inspiration in the unique fruit, flower, and seed form of the Indian Shaal tree (Shorea robusta). What attracted us was its ability to hold multiple meanings simultaneously.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780469987/Salad_Daysqq_wgkh6z.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "The form is dynamic and organic. It references *nature, growth, and nourishment.* At the same time, it subtly resembles a human figure seated in meditation, reflecting balance, mindfulness, and well-being. Within its construction emerged a droplet-like negative space, almost resembling a nectar or essence held within the form.\n\nThe result is a *symbol that feels rooted yet contemporary.* It provides a strong anchor for the visual language and expands the brand's ability to communicate without relying solely on words.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
       "heading": "WHEN RECOGNITION ISN'T THE PROBLEM\n",
       "_template": "header"
     },
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "For a moment, we assumed this would be where most of the work lived.\n\nAfter all, logos tend to become the centerpiece of any rebranding conversation. Yet the deeper we looked, the more we realized that *recognition was not the problem.* The existing mark already carried equity. People knew it. They trusted it. They associated it with the brand.\n\nWhat it needed was* refinement.*\n",
+      "heading": "For a moment, we assumed this would be where most of the work lived.\n\nAfter all, logos tend to become the centerpiece of any rebranding conversation. Yet the deeper we looked, the more we realized that *recognition was not the problem.* The existing mark already carried equity. People knew it. They trusted it. They associated it with the brand.\n\nWhat it needed was *refinement.*\n",
       "_template": "header"
     },
     {
@@ -176,7 +206,7 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780406759/Salad_Days_sa_zumw2t.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780469737/Salad_Days_sa_o3bofd.jpg"
         }
       ],
       "_template": "image"
@@ -199,11 +229,6 @@
       "_template": "twoColumnText"
     },
     {
-      "level": "h3",
-      "heading": "Those are often the most satisfying changes to make.\n\nAs rewarding as the strategic work was, the most enjoyable part of the project emerged elsewhere.\n\nThe *illustration* system.\n",
-      "_template": "header"
-    },
-    {
       "width": "narrow",
       "images": [
         {
@@ -211,6 +236,11 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "Those are often the most satisfying changes to make.\n\nAs rewarding as the strategic work was, the most enjoyable part of the project emerged elsewhere.\n\nThe *illustration* system.\n",
+      "_template": "header"
     },
     {
       "level": "h6",
@@ -247,6 +277,15 @@
         }
       ],
       "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780470654/Salad_Days_vv_vrrvrw.jpg"
+        }
+      ],
+      "_template": "image"
     }
   ]
 }
