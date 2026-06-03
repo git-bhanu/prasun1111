@@ -195,7 +195,7 @@
     },
     {
       "leftColumn": "*Over the last decade, simplification has become a dominant trend in identity design. In many cases, that approach makes perfect sense.*\n",
-      "rightColumn": "But Salad Days is not a technology platform or a purely functional service. It is a brand built around *habits, routines, choices, and a lifestyle *people actively choose to participate in.\n\nThat relationship called for *warmth.*\n\nIt called for *character.*\n\nAnd it called for a little more personality than extreme simplification would allow.\n\nThe modifications themselves were subtle. Most customers will likely never notice them consciously. Yet branding often operates in that space between observation and feeling. Small adjustments to proportion, rhythm, and form can influence perception long before someone understands why.\n",
+      "rightColumn": "But Salad Days is not a technology platform or a purely functional service. It is a brand built around \\*habits, routines, choices, and a lifestyle \\*people actively choose to participate in.\n\nThat relationship called for *warmth.*\n\nIt called for *character.*\n\nAnd it called for a little more personality than extreme simplification would allow.\n\nThe modifications themselves were subtle. Most customers will likely never notice them consciously. Yet branding often operates in that space between observation and feeling. Small adjustments to proportion, rhythm, and form can influence perception long before someone understands why.\n",
       "_template": "twoColumnText"
     },
     {
@@ -279,10 +279,61 @@
       "_template": "image"
     },
     {
-      "width": "full",
+      "width": "narrow",
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780396141/salad_days_all_product_cwa7aw.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475123/salad_days_bowl_sleeve_sjixwl.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "READY, BUT NOT RELEASED\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "For all intents and purposes, the rebrand was ready.\n\n*Which is where the story takes an unexpected turn. Because despite the work being complete, the project remains unpublished.*\n\nAs discussions expanded beyond design and into larger business considerations, investors and stakeholders arrived at a decision that was difficult, but understandable. The implementation would be paused until the timing aligned with broader business objectives and future growth plans.\n\nAnd so the work waits.\n\nNot because it isn't ready.\n\nNot because anyone lost confidence in it.\n\nSimply because timing matters.\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "*Designers often like to believe that good ideas succeed on the strength of the idea itself. *\n",
+      "rightColumn": "But brands exist within businesses, and businesses operate within realities that extend far beyond design. Market conditions, growth strategies, investments, and timing all influence when an idea enters the world.\n\nSometimes the most important decision is not what to launch.\n\nIt's when. The rebranding of Salad Days exists today as a complete system waiting patiently for its moment. The thinking is done. The work is done. The excitement remains very much alive.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475327/a-48_tvfheq.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475334/a-50_r5vcci.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "*All that's left is time.*\n\nAnd perhaps that was the most valuable lesson the project had to offer.\n\nYou can control the process. You can control the craft. You can control the execution.\n\n*But the right time has a way of choosing itself.*\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475370/a-49_kv15mo.jpg"
         }
       ],
       "_template": "image"
