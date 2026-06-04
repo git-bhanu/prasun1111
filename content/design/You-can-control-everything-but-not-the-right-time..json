@@ -79,6 +79,15 @@
       "_template": "header"
     },
     {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780405777/Salad_Days_0.1_n2zahg.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "level": "h6",
       "font": "space-grotesk",
       "heading": "GROWTH NEEDS A BIGGER PALETTE\n",
@@ -150,15 +159,6 @@
       "_template": "header"
     },
     {
-      "width": "narrow",
-      "images": [
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780405777/Salad_Days_0.1_n2zahg.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
       "level": "h3",
       "font": "sedan",
       "heading": "For a moment, we assumed this would be where most of the work lived.\n\nAfter all, logos tend to become the centerpiece of any rebranding conversation. Yet the deeper we looked, the more we realized that *recognition was not the problem.* The existing mark already carried equity. People knew it. They trusted it. They associated it with the brand.\n\nWhat it needed was *refinement.*\n",
@@ -191,15 +191,6 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780476341/ww_a5mukp.jpg"
-        }
-      ],
-      "_template": "image"
-    },
-    {
-      "width": "narrow",
-      "images": [
-        {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780405929/Salad_Days_-54_my6j94.jpg"
         },
         {
@@ -212,7 +203,10 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319583/Salad_Days_0.4_jpsagq.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475882/ssa-60_ub3a1k.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475886/ssa-59_uq36ni.jpg"
         }
       ],
       "_template": "image"
@@ -221,10 +215,16 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475882/ssa-60_ub3a1k.jpg"
-        },
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780476341/ww_a5mukp.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780475886/ssa-59_uq36ni.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780319583/Salad_Days_0.4_jpsagq.jpg"
         }
       ],
       "_template": "image"
