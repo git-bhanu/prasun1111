@@ -1,10 +1,102 @@
 {
-  "title": "Where innovation meets artistic expression.",
-  "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778493248/Frame_373_xnkgvx.jpg",
-  "cardImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780064587/Frame_370_azlsxm.png",
+  "title": "How big should the *logo* be?\n",
+  "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png",
+  "cardImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png",
   "date": "2026-05-05T14:27:56.411Z",
   "category": "content/tags/Design/identity-design.json",
-  "designType": "byDoing",
+  "designType": "byKnowing",
   "description": "Their initial agreement reflected an openness to possibilities, but not the level of commitment needed to carry a full branding project through.\n",
-  "accentColor": "#F5F5E5"
+  "accentColor": "#F5F5E5",
+  "blocks": [
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "1.0 A SMALL ANALOGY\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Let me begin with a small *analogy *that can help anyone easily understand how to decide the size of a *logo.*\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "Many of us, if given the option, wouldn’t mind having a small round glass bowl with a single goldfish happily swimming inside it, placed neatly on our work desk. The gentle movement of the fish calms the mind and helps the brain transition smoothly from one task to another. You drop a little food into the bowl once in the morning and once in the evening. The gentle movement of the fish calms the mind and helps the brain transition smoothly from one task to another. \n",
+      "rightColumn": "You drop a little food into the bowl once in the morning and once in the evening. Over time, you notice the fish is happy — and growing. That growth makes you happy too. You feel good because you’ve invested a little time and care into nurturing a life. And watching something thrive around you naturally brings joy to kind people.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "2.0 THE MOMENT OF GROWTH\n",
+      "_template": "header"
+    },
+    {
+      "leftColumn": "But one day you start thinking: \n\n*“If it keeps growing at this rate, I might need a bigger bowl.”*\n",
+      "rightColumn": "Some people may hesitate because buying a bigger bowl feels like another investment. Others won’t mind at all — after all, it’s a small price to pay for the happiness the fish brings.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "3.0 TWO POSSIBLE OUTCOMES\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*1. You decide to get a bigger bowl. *\n\nThe fish continues to grow and still moves gracefully within the larger space, remaining healthy and happy.\n",
+      "rightColumn": "*2. You don’t get a bigger bowl. *\n\nSurprisingly, the fish adapts. It simply stops growing. It maintains the same size and continues its gentle, happy movement within the limited space it has.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h3",
+      "heading": "In either situation, no one wants the fish to die. Whether it’s emotional connection, the time and care invested, or the quiet presence it holds in your mind — or all of these together — we naturally want it to live and flourish.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "4.0 THE DESIGN TRANSLATION\n",
+      "_template": "header"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*Now think of your logo in the same way. The logo is the fish.*\n",
+      "rightColumn": "The facade board, website header, or visiting card is the bowl. No matter how big you want your logo (your fish) to be, what truly matters is the space around it — the visual breathing room that allows it to “swim” comfortably.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "level": "h3",
+      "heading": "As long as your logo has enough space around it — a clear, balanced visual movement — it will look healthy, elegant, and alive. Give it that breathing space, and your fish won’t die.\n",
+      "_template": "header"
+    }
+  ]
 }
