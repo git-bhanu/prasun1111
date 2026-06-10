@@ -43,7 +43,13 @@
     },
     {
       "level": "h3",
-      "heading": "*Before formally taking on the project, the first question was not about creativity—it was about time. There was an immense amount to be accomplished within an incredibly compressed timeline.*\n",
+      "heading": "*Before formally taking on the project, the first question was not about creativity—it was about time. There was an immense amount to be accomplished within an incredibly compressed timeline.* <ref n=\"01\"/>\n",
+      "annotations": [
+        {
+          "id": "01",
+          "text": "20 days to launch. Every decision, from strategy to execution, had to happen in parallel."
+        }
+      ],
       "_template": "header"
     },
     {
@@ -126,7 +132,13 @@
     },
     {
       "level": "h3",
-      "heading": "I was fortunate to have unwavering support from *Ayush Singh* from the PMDIndia *Team,* whose dedication and involvement helped bring the installation to completion.\n\nThe installation itself was titled ‘*The Winds of Change.’*\n",
+      "heading": "I was fortunate to have unwavering support from *Ayush Singh* from the PMDIndia *Team,* whose dedication and involvement helped bring the installation to completion.<ref n=\"02\"/>\n\nThe installation itself was titled ‘*The Winds of Change.’*\n",
+      "annotations": [
+        {
+          "id": "02",
+          "text": "11 days in. A major milestone was behind us, but the finish line still felt distant."
+        }
+      ],
       "_template": "header"
     },
     {
@@ -154,7 +166,13 @@
     },
     {
       "level": "h3",
-      "heading": "*Simultaneously, the branding work reached completion. *The identity system, visual language, and communication framework were developed within an incredibly demanding timeline. The response from both teams was encouraging, particularly toward the identity mark, which became the central element tying the entire initiative together.\n\nWhat made the experience memorable was not that everything came together perfectly.\n\nIt was that everything came together at all.\n\nWithin roughly two weeks, an idea had become a brand, an installation, a launch event, and a shared experience.\n",
+      "heading": "*Simultaneously, the branding work reached completion.*<ref n=\"03\"/> With three days remaining, the branding work finally crossed the finish line. The identity system, visual language, and communication framework were developed within an incredibly demanding timeline. The response from both teams was encouraging, particularly toward the identity mark, which became the central element tying the entire initiative together.\n\nWhat made the experience memorable was not that everything came together perfectly.\n\nIt was that everything came together at all.\n\nWithin roughly two weeks, an idea had become a brand, an installation, a launch event, and a shared experience.\n",
+      "annotations": [
+        {
+          "id": "03",
+          "text": "Three days remained. For the first time, the project felt ready."
+        }
+      ],
       "_template": "header"
     },
     {
@@ -174,7 +192,7 @@
     },
     {
       "level": "h3",
-      "heading": "The inauguration at Bikaner House, New Delhi brought together representatives from UNESCO, Royal Enfield, government bodies, artists, artisans, and cultural practitioners from across the Himalayan region. People representing music, weaving, food, craft, storytelling, and tradition stood together within the very space we had spent days imagining.\n\n*The satisfaction wasn't in hearing that people liked the work. *It was looking around the room and seeing the very people whose stories had inspired the project standing beside it. Artisans, musicians, cultural practitioners, and representatives from across the Himalayan region had all become part of the same moment.\n\nThat's when the project felt *complete.*\n",
+      "heading": "The inauguration at Bikaner House, New Delhi brought together representatives from UNESCO, Royal Enfield, government bodies, artists, artisans, and cultural practitioners from across the Himalayan region. People representing music, weaving, food, craft, storytelling, and tradition stood together within the very space we had spent days imagining.\n\n*The satisfaction wasn't in hearing that people liked the work.* It was looking around the room and seeing the very people whose stories had inspired the project standing beside it. Artisans, musicians, cultural practitioners, and representatives from across the Himalayan region had all become part of the same moment.\n\nThat's when the project felt *complete.*\n",
       "_template": "header"
     },
     {
@@ -210,6 +228,7 @@
       "_template": "image"
     },
     {
+      "heading": "",
       "_template": "header"
     },
     {
