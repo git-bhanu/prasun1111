@@ -1,13 +1,13 @@
 {
-  "title": "Royal Enfield × UNESCO\n",
+  "title": "UNESCO x Royal Enfield\n",
   "sortOrder": 2,
   "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781076151/royal_enfield_05-scaled-1-2048x1091_qxqxpv.jpg",
-  "cardImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781076155/royal_enfield_05-scaled-1-2048x1091_ojckpb.jpg",
+  "cardImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781078979/THE_upload_2_ap9lbt.jpg",
   "date": "2026-03-04T14:35:57.406Z",
-  "category": "content/tags/Design/Brand-Identity.json",
+  "category": "content/tags/Design/identity-design.json",
   "designType": "byDoing",
   "description": "As a branding designer and visual artist, it is rare to find a project that demands equal attention from both disciplines. When that opportunity comes through two clients you deeply respect—in this case Royal Enfield and UNESCO—it feels almost unreal.\n",
-  "accentColor": "#ffe2e0",
+  "accentColor": "#dbe7ff",
   "blocks": [
     {
       "level": "h6",
@@ -36,7 +36,7 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781078349/THE_upload_obdm0n.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781080786/THE_upload_jukvuy.jpg"
         }
       ],
       "_template": "image"
@@ -77,6 +77,62 @@
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781078752/THE_upload_1_qothtd.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "At the same time, an art installation was being developed for the launch event.\n\nThe challenge was immense. Within a matter of days, we had to conceptualise, create, and execute an installation inspired by the indigenous art, craft, and cultural narratives of the Himalayan region.\n\nNine helmets and six motorcycle tanks became our canvas.\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781079514/project-himalayan-art-installation-04_fxowry.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781079495/THE_upload_3_aovfz7.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781080440/THE_upload_4_tstgxq.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h6",
+      "heading": "THE HIMALAYAS AS A STARTING POINT\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Each piece was inspired by a different aspect of the region—its visual traditions, its landscapes, its people, and its stories. Some artworks drew directly from indigenous motifs, while others attempted to capture the spirit of the Himalayas from a broader, more contemplative perspective.\n\nEvery surface became a journey.\n\nIf not a journey through geography, then a journey through time.\n\nFor days, the project consumed every waking hour. Sketching, painting, refining, and problem-solving became a continuous cycle. *What finally emerged across my worktable was not merely a collection of painted objects, but a series of narratives brought to life through form and colour.*\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "EVERY SURFACE BECAME A JOURNEY\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "I was fortunate to have unwavering support from *Ayush Singh* from the PMDIndia *Team,* whose dedication and involvement helped bring the installation to completion.\n\nThe installation itself was titled ‘*The Winds of Change.’*\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781080708/THE_upload_5_qacrre.jpg"
         }
       ],
       "_template": "image"
