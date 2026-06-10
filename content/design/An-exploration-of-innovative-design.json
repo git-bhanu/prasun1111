@@ -178,6 +178,27 @@
       "_template": "header"
     },
     {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781087641/TGHE_A-33_wsuxe5.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781087661/TGHE_A-34_hyz1jb.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781087465/33_fd0faf.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "_template": "header"
     },
     {
