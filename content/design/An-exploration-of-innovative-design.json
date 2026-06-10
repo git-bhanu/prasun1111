@@ -137,6 +137,18 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781086083/TGHE-30_bnymtg.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781086112/TGHE-31_jj6siq.jpg"
+        }
+      ],
+      "_template": "image"
     }
   ]
 }
