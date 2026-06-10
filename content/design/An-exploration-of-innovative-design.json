@@ -68,7 +68,7 @@
       "_template": "image"
     },
     {
-      "leftColumn": "*Designing for emotion requires a different kind of responsibility. *\n",
+      "leftColumn": "*Designing for emotion requires a different kind of responsibility.*\n",
       "rightColumn": "Beyond research and strategy, it demands empathy. It requires time to pause, reflect, and connect with the people whose stories are being represented. More than satisfying UNESCO or Royal Enfield, it needed to feel authentic to the communities whose heritage was being celebrated.\n",
       "_template": "twoColumnText"
     },
@@ -83,7 +83,7 @@
     },
     {
       "level": "h3",
-      "heading": "At the same time, an art installation was being developed for the launch event.\n\nThe challenge was immense. Within a matter of days, we had to conceptualise, create, and execute an installation inspired by the indigenous art, craft, and cultural narratives of the Himalayan region.\n\nNine helmets and six motorcycle tanks became our canvas.\n",
+      "heading": "At the same time, an art installation was to be developed for the launch event.\n\nThe challenge was immense. Within a matter of days, we had to conceptualise, create, and execute an installation inspired by the indigenous art, craft, and cultural narratives of the Himalayan region.\n\nNine helmets and six motorcycle tanks became our canvas.\n",
       "_template": "header"
     },
     {
@@ -194,6 +194,17 @@
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781087465/33_fd0faf.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781093126/TGHE_X-36_faadb6.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781093131/TGHE_X-35_ftxjt8.jpg"
         }
       ],
       "_template": "image"
