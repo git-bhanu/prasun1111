@@ -130,6 +130,40 @@
       "_template": "header"
     },
     {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781086083/TGHE-30_bnymtg.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781086112/TGHE-31_jj6siq.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "Beyond the artwork, there were practical challenges to solve. Custom structures had to be designed to support the pieces, spatial compositions had to be planned, and every element had to come together seamlessly before the event opened its doors.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "TWO TIMELINES MOVING AT ONCE\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "*Simultaneously, the branding work reached completion. *The identity system, visual language, and communication framework were developed within an incredibly demanding timeline. The response from both teams was encouraging, particularly toward the identity mark, which became the central element tying the entire initiative together.\n\nWhat made the experience memorable was not that everything came together perfectly.\n\nIt was that everything came together at all.\n\nWithin roughly two weeks, an idea had become a brand, an installation, a launch event, and a shared experience.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE MOMENT EVERYTHING BECAME REAL\n",
+      "_template": "header"
+    },
+    {
       "width": "narrow",
       "images": [
         {
@@ -139,13 +173,29 @@
       "_template": "image"
     },
     {
-      "width": "narrow",
+      "level": "h3",
+      "heading": "The inauguration at Bikaner House, New Delhi brought together representatives from UNESCO, Royal Enfield, government bodies, artists, artisans, and cultural practitioners from across the Himalayan region. People representing music, weaving, food, craft, storytelling, and tradition stood together within the very space we had spent days imagining.\n\n*The satisfaction wasn't in hearing that people liked the work. *It was looking around the room and seeing the very people whose stories had inspired the project standing beside it. Artisans, musicians, cultural practitioners, and representatives from across the Himalayan region had all become part of the same moment.\n\nThat's when the project felt *complete.*\n",
+      "_template": "header"
+    },
+    {
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE LESSON STAYED LONGER THAN THE EVENT\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "And perhaps that is what this project taught me.\n\nOpportunities often arrive disguised as impossible timelines, overwhelming responsibilities, and challenges that seem larger than your capacity.\n\nCommitment is what transforms them into realities.\n\nToday, as the programme continues to grow year after year, I look back at those intense days with gratitude. Not because the work was difficult, but because it reminded me that some opportunities deserve everything you can give them.\n\nThe satisfaction, of course, is when they all love it. The satisfaction is that we could pull it off and the satisfaction is that it's entering its 4th year of this program, and today's is bigger than was imagined, by all of us.\n",
+      "_template": "header"
+    },
+    {
+      "width": "full",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781086083/TGHE-30_bnymtg.jpg"
-        },
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781086112/TGHE-31_jj6siq.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781087254/32-32_ag9kun.jpg"
         }
       ],
       "_template": "image"
