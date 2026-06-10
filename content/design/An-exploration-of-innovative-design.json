@@ -10,7 +10,76 @@
   "accentColor": "#ffe2e0",
   "blocks": [
     {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "A PROJECT THAT DEMANDED MORE THAN DESIGN\n",
       "_template": "header"
+    },
+    {
+      "level": "h2",
+      "font": "sedan",
+      "heading": "What This Project Taught Me About Opportunity & Commitment\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "WHEN THE BRIEF FEELS IMPOSSIBLE\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "As a branding designer and visual artist, it is rare to find a project that *demands equal attention from both disciplines.* When that opportunity comes through two clients you deeply respect—in this case Royal Enfield and UNESCO—it feels almost unreal.\n\nThe Great Himalayan Exploration was a programme focused on documenting and celebrating the rich Intangible Cultural Heritage (ICH) of the Himalayan region while promoting sustainable tourism and cultural preservation.\n\nThe *opportunity* itself was *extraordinary.*\n\nThe commitment it demanded was even greater.\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781078349/THE_upload_obdm0n.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "level": "h3",
+      "heading": "*Before formally taking on the project, the first question was not about creativity—it was about time. There was an immense amount to be accomplished within an incredibly compressed timeline.*\n",
+      "_template": "header"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "DESIGNING FOR SOMETHING YOU CAN'T SELL\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "On one side was the responsibility of creating a brand identity and communication system for something that wasn't a product, a service, or a company. It was an idea. An emotion. A celebration of traditions, crafts, music, stories, food, and ways of life that have been passed down through generations across the Himalayan landscape.\n",
+      "_template": "header"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781077926/royal_enfield_05-scaled-1-2048x1091_qxmuyn.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "leftColumn": "*Designing for emotion requires a different kind of responsibility. *\n",
+      "rightColumn": "Beyond research and strategy, it demands empathy. It requires time to pause, reflect, and connect with the people whose stories are being represented. More than satisfying UNESCO or Royal Enfield, it needed to feel authentic to the communities whose heritage was being celebrated.\n",
+      "_template": "twoColumnText"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1781078752/THE_upload_1_qothtd.jpg"
+        }
+      ],
+      "_template": "image"
     }
   ]
 }
