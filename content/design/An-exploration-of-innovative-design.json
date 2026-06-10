@@ -7,5 +7,10 @@
   "category": "content/tags/Design/Brand-Identity.json",
   "designType": "byDoing",
   "description": "As a branding designer and visual artist, it is rare to find a project that demands equal attention from both disciplines. When that opportunity comes through two clients you deeply respect—in this case Royal Enfield and UNESCO—it feels almost unreal.\n",
-  "accentColor": "#ef4438"
+  "accentColor": "#ffe2e0",
+  "blocks": [
+    {
+      "_template": "header"
+    }
+  ]
 }
