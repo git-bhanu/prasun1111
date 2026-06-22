@@ -130,10 +130,10 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
     if (!canNavigate) return null;
     return (
       <div className={cn('flex items-center gap-3', className)}>
-        <IconCircleButton onClick={goToPrev} aria-label='Previous image'>
+        <IconCircleButton onClick={goToNext} aria-label='Previous image'>
           <Icon name='keyboardBackspace' color='currentColor' className='rotate-180' aria-hidden='true' />
         </IconCircleButton>
-        <IconCircleButton onClick={goToNext} aria-label='Next image'>
+        <IconCircleButton onClick={goToPrev} aria-label='Next image'>
           <Icon name='keyboardBackspace' color='currentColor' aria-hidden='true' />
         </IconCircleButton>
       </div>
