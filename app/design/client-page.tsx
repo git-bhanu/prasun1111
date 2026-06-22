@@ -263,7 +263,7 @@ function DetailPanel({
 
   return (
     <>
-      <div className="flex flex-col md:h-[calc(100svh-50px)]">
+      <div>
         <div className="px-4 pt-8 pb-4 md:px-[10svw] md:pt-20 shrink-0">
           {(design.date || design.category) && (
             <p className="font-space-grotesk text-[12px] md:text-[16px] font-normal leading-none uppercase tracking-normal mb-4">
@@ -298,8 +298,8 @@ function DetailPanel({
         <div className="mx-4 md:mx-[10svw] border-b border-black/10" />
 
         {design.image && (
-          <div className="mt-6 w-full px-4 md:px-[10svw] md:flex-1 md:min-h-0">
-            <div className="relative aspect-[16/9] md:aspect-auto md:w-full md:h-full overflow-hidden bg-neutral-100">
+          <div className="mt-6 w-full px-4 md:px-[10svw]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100">
               <BlurUpImage
                 src={design.image}
                 alt={design.imageAlt ?? design._sys.filename}
