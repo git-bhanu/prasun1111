@@ -42,7 +42,6 @@ function extractYouTubeId(url: string): string | null {
   return match?.[1] ?? null;
 }
 
-
 type Film = {
   __typename?: string;
   id?: string;
@@ -325,11 +324,7 @@ function FilmDetail({ film }: { film: Film }) {
   );
 }
 
-function FilmHeaderVideo({
-  film,
-}: {
-  film: Film;
-}) {
+function FilmHeaderVideo({ film }: { film: Film }) {
   const [playing, setPlaying] = useState(false);
 
   const videoId = film.youtubeUrl ? extractYouTubeId(film.youtubeUrl) : null;
@@ -386,7 +381,6 @@ function FilmHeaderVideo({
         <div className="absolute left-5 top-5 z-10 hidden md:block">
           {watchButton()}
         </div>
-
       </div>
 
       {/* Mobile: watch button full-width below video */}
@@ -433,7 +427,7 @@ function FilmMeta({ film }: { film: Film }) {
         <div>
           {right.map((f) => (
             <div key={f.label} className="py-4 pl-4">
-              <p className="font-space-grotesk text-[10px] md:text-[12px] uppercase tracking-widest text-white/50">
+              <p className="font-space-grotesk text-[10px] md:text-[12px] uppercase text-white/50">
                 {f.label}
               </p>
               <p className="mt-3 font-space-grotesk text-[14px] md:text-xl uppercase text-white">
