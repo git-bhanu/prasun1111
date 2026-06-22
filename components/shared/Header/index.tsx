@@ -19,7 +19,23 @@ import { MenuLink } from './menu-link';
 
 export default function Header() {
   const [menuExpanded, setMenuExpanded] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const { brand, primaryLinks, utilityLinks, meta } = useSiteSettings();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        setHeaderHidden(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        setHeaderHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!menuExpanded) {
@@ -39,7 +55,11 @@ export default function Header() {
   }, [menuExpanded]);
 
   return (
-    <header className='p-4 md:p-0'>
+    <motion.header
+      className='sticky top-0 z-50 bg-white p-4 md:p-0 dark:bg-black'
+      animate={{ y: headerHidden && !menuExpanded ? '-100%' : 0 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div className='font-s flex flex-col gap-y-4'>
         <div className='flex flex-col gap-y-4'>
           <DesktopPrimaryNav brand={brand} links={primaryLinks} menuExpanded={menuExpanded} onToggle={() => setMenuExpanded((current) => !current)} />
@@ -51,7 +71,7 @@ export default function Header() {
 
         <CenterMenuPanel menuExpanded={menuExpanded} links={utilityLinks} meta={meta} onNavigate={() => setMenuExpanded(false)} />
       </div>
-    </header>
+    </motion.header>
   );
 }
 
