@@ -23,6 +23,7 @@ export default function WritingsClientPage({ query, data, variables }: Props) {
   const writings = (tinaData.writingConnection.edges ?? [])
     .map((e) => e?.node)
     .filter((n): n is NonNullable<WritingNode> => n != null)
+    .filter((n, i, arr) => arr.findIndex((m) => m._sys.filename === n._sys.filename) === i)
     .sort((a, b) => {
       if (!a.date || !b.date) return 0;
       return new Date(b.date).getTime() - new Date(a.date).getTime();
