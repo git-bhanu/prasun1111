@@ -364,7 +364,7 @@ function DetailPanel({
                 return (
                   <div
                     key={`${block.__typename}-${i}`}
-                    className={blockWrapperClass(b.width ?? "narrow", "py-4")}
+                    className={blockWrapperClass(b.width ?? "narrow", "py-2 md:py-4")}
                   >
                     <ImageBlock block={b} />
                   </div>
