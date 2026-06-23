@@ -94,10 +94,10 @@
     {
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778844192/aLayer_1_dj7aqx.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782209468/Ram_03_l90kmz.jpg"
         },
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778844227/bLayer_1_pljz0l.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782209485/Ram_04_rrfh9t.jpg"
         }
       ],
       "_template": "image"
@@ -147,13 +147,13 @@
     },
     {
       "width": "narrow",
-      "orientation": "portrait",
+      "orientation": "landscape",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830365/Layer_1_az74tx.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782209516/Ram_05_te6elx.jpg"
         },
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778830419/Layer_1_t3cd1c.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782209526/Ram_06_wdppxd.jpg"
         }
       ],
       "_template": "image"
