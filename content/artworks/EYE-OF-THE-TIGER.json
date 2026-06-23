@@ -318,6 +318,26 @@
       "_template": "twoColumnText"
     },
     {
+      "desktopSpace": "48",
+      "mobileSpace": "32",
+      "_template": "space"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210534/Biodiversity_Booklet_3_oj0pgr.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210537/Biodiversity_Booklet_2_isj5ba.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210543/Biodiversity_Booklet_gsj5s6.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "width": "full",
       "images": [
         {
