@@ -318,6 +318,15 @@
       "_template": "twoColumnText"
     },
     {
+      "width": "full",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090192/Tiger_Full_n4svea.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "desktopSpace": "48",
       "mobileSpace": "32",
       "_template": "space"
@@ -326,22 +335,19 @@
       "width": "wide",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210534/Biodiversity_Booklet_3_oj0pgr.jpg"
-        },
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210537/Biodiversity_Booklet_2_isj5ba.jpg"
-        },
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210543/Biodiversity_Booklet_gsj5s6.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210639/Biodiversity_Booklet_3_lqgo67.jpg"
         }
       ],
       "_template": "image"
     },
     {
-      "width": "full",
+      "width": "wide",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1779090192/Tiger_Full_n4svea.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210537/Biodiversity_Booklet_2_isj5ba.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210543/Biodiversity_Booklet_gsj5s6.jpg"
         }
       ],
       "_template": "image"
