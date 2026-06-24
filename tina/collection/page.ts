@@ -20,6 +20,12 @@ const heroStatementBlock: Template = {
         toolbar: ['bold', 'italic', 'raw'],
       },
     },
+    {
+      type: 'datetime',
+      label: 'Consulting Since',
+      name: 'consultingSince',
+      description: 'Start date for the consulting elapsed-time display.',
+    },
   ],
 };
 
