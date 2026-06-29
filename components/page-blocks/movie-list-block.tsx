@@ -127,12 +127,14 @@ function MovieActions({
       dataTinaField={tinaField(movie, 'watchFilmLabel')}
     />
   );
+  const readMoreHref = movie.filmRef ? '/films' : (movie.readMoreHref ?? undefined);
   const readMoreButton = (
     <ActionButton
       color='black'
       icon='error'
       label={movie.readMoreLabel}
-      onClick={() => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
+      href={readMoreHref}
+      onClick={readMoreHref ? undefined : () => window.dispatchEvent(new Event(ANNOUNCEMENT_OVERLAY_EVENT))}
       fullWidth={fullWidth}
       dataTinaField={tinaField(movie, 'readMoreLabel')}
     />

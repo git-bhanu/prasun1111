@@ -811,6 +811,12 @@ const movieListBlock: Template = {
           name: 'mobileImageAlt',
         },
         {
+          type: 'reference',
+          label: 'Film Reference',
+          name: 'filmRef',
+          collections: ['film'],
+        },
+        {
           type: 'string',
           label: 'Read More Label',
           name: 'readMoreLabel',
