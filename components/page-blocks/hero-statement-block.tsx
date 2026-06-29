@@ -76,7 +76,7 @@ function ConsultingTimer({ since }: { since: string }) {
   }, [since]);
 
   return (
-    <p className="mt-6 md:mt-10 text-[10px] md:text-xs font-medium font-space-grotesk uppercase tracking-[0.32em] text-text-grey leading-relaxed md:leading-normal">
+    <p className="mt-12 md:mt-20 text-[10px] md:text-xs font-medium font-space-grotesk uppercase tracking-[0.32em] text-text-grey leading-relaxed md:leading-normal">
       Consulting brands since last{" "}
       <span className="block sm:inline text-brand-blue">
         {elapsed.years} {elapsed.years === 1 ? "year" : "years"},{" "}
