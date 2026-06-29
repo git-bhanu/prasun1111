@@ -112,19 +112,19 @@ function ArtworkQuoteBreak({
     <div className="bg-black px-8 py-16 my-[48px] sm:px-10 md:px-[58px] md:py-24">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2">
         {leftText && (
-          <div className="font-sedan text-[20px] text-white md:text-[48px]">
+          <div className="font-sedan text-[20px] leading-normal text-white md:text-[48px]">
             <TinaMarkdown content={leftText} components={richComponents} />
           </div>
         )}
         {(rightText || rightTextFootnote) && (
           <div className="space-y-6">
             {rightText && (
-              <div className="font-sedan text-sm text-white md:text-[32px]">
+              <div className="font-sedan text-sm leading-normal text-white md:text-[32px]">
                 <TinaMarkdown content={rightText} components={richComponents} />
               </div>
             )}
             {rightTextFootnote && (
-              <div className="font-space-grotesk mt-6 md:mt-12 text-[12px] md:text-[24px] uppercase tracking-widest text-white">
+              <div className="font-space-grotesk mt-6 md:mt-12 text-[12px] leading-normal md:text-[24px] uppercase tracking-widest text-white">
                 <TinaMarkdown
                   content={rightTextFootnote}
                   components={richComponents}
