@@ -77,7 +77,7 @@ export function InstallationDetails({
             </p>
             <p
               className={cn(
-                "mt-3 font-space-grotesk text-[14px] md:text-xl leading-[1.35] uppercase",
+                "mt-1 font-space-grotesk text-[14px] md:text-xl leading-[1.35] uppercase",
                 dark && "text-[20px] text-white",
               )}
             >
