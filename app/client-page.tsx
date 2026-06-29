@@ -47,7 +47,7 @@ export default function ClientPage(props: ClientPageProps) {
             return (
               <FeaturedSliderBlock
                 key={`${block.__typename}-${index}`}
-                block={block}
+                block={block as any}
               />
             );
           case "PageBlocksInstallationSlider":

@@ -8,6 +8,7 @@ import { tinaField } from "tinacms/dist/react";
 
 import { Icon, IconCircleButton } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import { richTextToPlain } from "@/lib/seo";
 import type { PageBlocksFeaturedSlider } from "@/tina/__generated__/types";
 import { SectionMasthead } from "../shared/section-masthead";
 import Link from "next/link";
@@ -40,7 +41,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   const { sliders } = useSiteSettings();
   const slides =
     block.slides?.filter((slide): slide is FeaturedSliderSlide =>
-      Boolean(slide?.title),
+      Boolean(slide?.artworkRef || slide?.installationRef || slide?.filmRef || slide?.designRef || slide?.writingRef),
     ) ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -74,6 +75,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   }
 
   const activeSlide = slides[activeIndex] ?? slides[0];
+  const slideInfo = resolveSlideInfo(activeSlide);
   const canNavigate = slides.length > 1;
   const desktopMedia = getSlideMedia(activeSlide, "desktop");
   const mobileMedia = getSlideMedia(activeSlide, "mobile");
@@ -103,7 +105,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   const renderMedia = (variant: MediaVariant, media: SlideMedia) => (
     <AnimatePresence initial={false} mode="sync">
       <motion.div
-        key={`${variant}-${activeIndex}-${media.src ?? activeSlide.title}`}
+        key={`${variant}-${activeIndex}-${media.src ?? activeIndex}`}
         className="absolute inset-0"
         initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -209,7 +211,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
                   data-tina-field={tinaField(activeSlide, "eyebrow")}
                 >
                   <SectionMasthead
-                    index="01"
+                    index={slideInfo.index}
                     title={activeSlide.eyebrow}
                     size="sm"
                     color="black"
@@ -217,7 +219,7 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
                 </div>
               ) : null}
 
-              <FeaturedSlideTitle slide={activeSlide} />
+              <FeaturedSlideTitle {...slideInfo} />
             </motion.div>
           </AnimatePresence>
           <div className="flex justify-start pt-0 md:pt-9">
@@ -229,18 +231,65 @@ export function FeaturedSliderBlock({ block }: FeaturedSliderBlockProps) {
   );
 }
 
-function FeaturedSlideTitle({ slide }: { slide: FeaturedSliderSlide }) {
+function resolveSlideInfo(slide: FeaturedSliderSlide): { title: string; href: string | null; tinaFieldAttr: string | undefined; index: string } {
+  if (slide.artworkRef) {
+    const slug = slide.artworkRef.slug ?? slide.artworkRef._sys.filename;
+    return {
+      title: slide.artworkRef.title,
+      href: `/artworks?artwork=${slug.toLowerCase()}`,
+      tinaFieldAttr: tinaField(slide.artworkRef as any, 'title'),
+      index: '01',
+    };
+  }
+  if (slide.installationRef) {
+    const slug = slide.installationRef.slug ?? slide.installationRef._sys.filename;
+    return {
+      title: slide.installationRef.title,
+      href: `/installations?installation=${encodeURIComponent(slug.toLowerCase())}`,
+      tinaFieldAttr: tinaField(slide.installationRef as any, 'title'),
+      index: '02',
+    };
+  }
+  if (slide.filmRef) {
+    return {
+      title: richTextToPlain(slide.filmRef.title),
+      href: '/films',
+      tinaFieldAttr: tinaField(slide.filmRef as any, 'title'),
+      index: '03',
+    };
+  }
+  if (slide.designRef) {
+    const slug = slide.designRef.slug ?? slide.designRef._sys.filename;
+    return {
+      title: richTextToPlain(slide.designRef.title),
+      href: `/design?design=${encodeURIComponent(slug.toLowerCase())}`,
+      tinaFieldAttr: tinaField(slide.designRef as any, 'title'),
+      index: '04',
+    };
+  }
+  if (slide.writingRef) {
+    return {
+      title: slide.writingRef.titleSections?.[0]?.text ?? '',
+      href: `/writings/${slide.writingRef._sys.filename}`,
+      tinaFieldAttr: tinaField(slide.writingRef as any, 'titleSections'),
+      index: '05',
+    };
+  }
+  return { title: '', href: null, tinaFieldAttr: undefined, index: '01' };
+}
+
+function FeaturedSlideTitle({ title, href, tinaFieldAttr }: { title: string; href: string | null; tinaFieldAttr?: string }) {
   const className = 'font-sedan text-[22px] leading-tight text-black md:text-[32px]';
-  if (slide.href) {
+  if (href) {
     return (
-      <Link href={slide.href} className={className} data-tina-field={tinaField(slide, 'title')}>
-        {slide.title}
+      <Link href={href} className={className} data-tina-field={tinaFieldAttr}>
+        {title}
       </Link>
     );
   }
   return (
-    <h2 className={className} data-tina-field={tinaField(slide, 'title')}>
-      {slide.title}
+    <h2 className={className} data-tina-field={tinaFieldAttr}>
+      {title}
     </h2>
   );
 }
@@ -276,7 +325,7 @@ function getSlideMedia(
   if (isVideo) {
     return {
       src: videoUrl,
-      alt: imageAlt || slide.title,
+      alt: imageAlt || slide.eyebrow || '',
       poster,
       isVideo,
       field:
@@ -286,7 +335,7 @@ function getSlideMedia(
 
   return {
     src: image,
-    alt: imageAlt || slide.title,
+    alt: imageAlt || slide.eyebrow || '',
     poster: null,
     isVideo: false,
     field: getImageField(slide, isMobile),

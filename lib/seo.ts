@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 
 export function richTextToPlain(content: unknown): string {
-  if (!content || typeof content !== 'object') return '';
-  const node = content as { value?: string; children?: unknown[] };
+  if (!content) return '';
+  if (typeof content === 'string') return content;
+  if (typeof content !== 'object') return '';
+  const node = content as { text?: string; value?: string; children?: unknown[] };
+  if (node.text) return node.text;
   if (node.value) return node.value;
   if (Array.isArray(node.children)) return node.children.map(richTextToPlain).join('');
   return '';

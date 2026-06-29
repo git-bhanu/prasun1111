@@ -175,31 +175,49 @@ const featuredSliderBlock: Template = {
       list: true,
       ui: {
         itemProps: (item) => {
-          return { label: item?.title || item?.eyebrow || 'Featured slide' };
+          return { label: item?.eyebrow || 'Featured slide' };
         },
         defaultItem: {
           eyebrow: 'ARTWORKS',
-          title: 'The eye belongs to the tiger',
           desktopAssetType: 'image',
           mobileAssetType: 'image',
         },
       },
       fields: [
         {
+          type: 'reference',
+          label: 'Artwork',
+          name: 'artworkRef',
+          collections: ['artwork'],
+        },
+        {
+          type: 'reference',
+          label: 'Installation',
+          name: 'installationRef',
+          collections: ['installation'],
+        },
+        {
+          type: 'reference',
+          label: 'Film',
+          name: 'filmRef',
+          collections: ['film'],
+        },
+        {
+          type: 'reference',
+          label: 'Design',
+          name: 'designRef',
+          collections: ['design'],
+        },
+        {
+          type: 'reference',
+          label: 'Writing',
+          name: 'writingRef',
+          collections: ['writing'],
+        },
+        {
           type: 'string',
           label: 'Eyebrow',
           name: 'eyebrow',
-        },
-        {
-          type: 'string',
-          label: 'Title',
-          name: 'title',
-          required: true,
-        },
-        {
-          type: 'string',
-          label: 'Link',
-          name: 'href',
         },
         {
           type: 'string',
