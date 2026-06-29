@@ -141,7 +141,7 @@ function DetailItem({
       </p>
       <p
         className={cn(
-          "mt-1 font-space-grotesk text-[14px] md:text-xl",
+          "mt-1 font-space-grotesk text-[14px] md:text-xl leading-normal",
           dark && "text-[20px] text-white",
         )}
       >
