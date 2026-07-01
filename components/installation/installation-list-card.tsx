@@ -3,9 +3,8 @@
 import { Icon, IconCircleButton } from '@/components/icons';
 import { ActionButton } from '@/components/shared/action-button';
 import { cn } from '@/lib/utils';
-import gsap from 'gsap';
 import { BlurUpImage } from '@/components/shared/blur-up-image';
-import { type RefObject, useCallback, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 import { InstallationDetails } from './installation-details';
 
@@ -47,47 +46,37 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
   const [activeIndex, setActiveIndex] = useState(0);
   const canNavigate = slides.length > 1;
 
-  const mobileSlideRef = useRef<HTMLDivElement>(null);
-  const desktopSlideRef = useRef<HTMLDivElement>(null);
-
-  const navigate = useCallback(
-    (newIndex: number) => {
-      const targets = [mobileSlideRef.current, desktopSlideRef.current].filter(Boolean) as HTMLElement[];
-      const skip = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (targets.length === 0 || skip) {
-        setActiveIndex(newIndex);
-        return;
-      }
-
-      gsap.to(targets, {
-        opacity: 0,
-        duration: 0.2,
-        ease: 'power2.in',
-        onComplete: () => {
-          setActiveIndex(newIndex);
-          gsap.to(targets, { opacity: 1, duration: 0.3, ease: 'power2.out' });
-        },
-      });
-    },
-    [],
-  );
+  const navigate = useCallback((newIndex: number) => {
+    setActiveIndex(newIndex);
+  }, []);
 
   const goToPrev = () => navigate(activeIndex === 0 ? slides.length - 1 : activeIndex - 1);
   const goToNext = () => navigate(activeIndex === slides.length - 1 ? 0 : activeIndex + 1);
 
   const renderSlideContent = (sizes: string) => {
     if (hasSlider) {
-      const slide = slides[activeIndex] ?? slides[0];
       return (
-        <BlurUpImage
-          src={slide.src!}
-          alt={slide.alt || installation.title}
-          fill
-          sizes={sizes}
-          className='object-cover'
-          data-tina-field={tinaField(tinaSource as any, 'listingImages')}
-        />
+        <>
+          {slides.map((slide, i) => (
+            <div
+              key={slide.src ?? i}
+              className={cn(
+                'absolute inset-0 transition-opacity duration-300',
+                i === activeIndex ? 'opacity-100' : 'opacity-0 pointer-events-none',
+              )}
+              aria-hidden={i !== activeIndex}
+            >
+              <BlurUpImage
+                src={slide.src!}
+                alt={slide.alt || installation.title}
+                fill
+                sizes={sizes}
+                className='object-cover'
+                data-tina-field={i === activeIndex ? tinaField(tinaSource as any, 'listingImages') : undefined}
+              />
+            </div>
+          ))}
+        </>
       );
     }
     if (showVideo) {
@@ -120,8 +109,8 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
     return <div className='absolute inset-0 bg-neutral-200' />;
   };
 
-  const renderSlide = (sizes: string, ref: RefObject<HTMLDivElement>) => (
-    <div ref={ref} className='absolute inset-0'>
+  const renderSlide = (sizes: string) => (
+    <div className='absolute inset-0'>
       {renderSlideContent(sizes)}
     </div>
   );
@@ -171,7 +160,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
       {/* Mobile */}
       <div className='md:hidden'>
         <div className='relative aspect-[16/9] w-full overflow-hidden bg-neutral-200'>
-          {renderSlide('100vw', mobileSlideRef)}
+          {renderSlide('100vw')}
         </div>
 
         <div className='pt-4 pb-8'>
@@ -207,7 +196,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
         </div>
 
         <div className='relative aspect-[16/9] overflow-hidden bg-neutral-200'>
-          {renderSlide('60vw', desktopSlideRef)}
+          {renderSlide('60vw')}
           {canNavigate && <div className='absolute bottom-4 right-4 z-10'>{renderControls()}</div>}
         </div>
       </div>
