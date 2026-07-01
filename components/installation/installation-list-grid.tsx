@@ -82,19 +82,19 @@ function InstallationQuoteBreak({ leftText, rightText, rightTextFootnote }: Omit
     <div className='my-[48px] bg-black px-8 py-16 sm:px-10 md:px-[58px] md:py-24'>
       <div className='mx-auto grid max-w-7xl grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2'>
         {leftText && (
-          <div className='font-sedan text-[20px] leading-normal text-white md:text-[48px]'>
+          <div className='font-sedan text-[24px] leading-[1.2em] text-white md:text-[48px]'>
             <TinaMarkdown content={leftText} components={richComponents} />
           </div>
         )}
         {(rightText || rightTextFootnote) && (
           <div className='space-y-6'>
             {rightText && (
-              <div className='font-sedan text-sm leading-normal text-white md:text-[32px]'>
+              <div className='font-sedan text-[16px] leading-[1.2em] text-white md:text-[32px]'>
                 <TinaMarkdown content={rightText} components={richComponents} />
               </div>
             )}
             {rightTextFootnote && (
-              <div className='font-space-grotesk mt-6 text-[12px] leading-normal uppercase tracking-widest text-white md:mt-12 md:text-[24px]'>
+              <div className='font-space-grotesk mt-6 md:mt-12 text-[12px] leading-[1.2em] md:text-[18px] uppercase text-white'>
                 <TinaMarkdown content={rightTextFootnote} components={richComponents} />
               </div>
             )}
