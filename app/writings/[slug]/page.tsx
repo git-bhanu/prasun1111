@@ -7,6 +7,20 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import WritingDetailClientPage from './client-page';
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  try {
+    const result = await client.queries.writingConnection({ first: 1000 });
+    return (result.data.writingConnection.edges ?? [])
+      .map((e) => e?.node?._sys.filename)
+      .filter((f): f is string => f != null)
+      .map((filename) => ({ slug: filename }));
+  } catch {
+    return [];
+  }
+}
+
 type Props = { params: Promise<{ slug: string }> };
 
 type WritingNode = NonNullable<NonNullable<WritingConnectionQuery['writingConnection']['edges']>[number]>['node'];
