@@ -10,11 +10,13 @@ import { Icon } from "@/components/icons";
 import { BlurUpImage } from "@/components/shared/blur-up-image";
 import { WritingListItem } from "@/components/writings/writing-list-item";
 import { WritingTitle } from "@/components/writings/writing-title";
+import { consumePendingArrowRect, hasPendingArrowRect } from "@/lib/writing-nav-state";
 import type {
   WritingConnectionQuery,
   WritingQuery,
   WritingQueryVariables,
 } from "@/tina/__generated__/types";
+import { animate, motion, useMotionValue } from "motion/react";
 import { useRouter } from "next/navigation";
 import { useTina } from "tinacms/dist/react";
 
@@ -78,11 +80,19 @@ export default function WritingDetailClientPage({
   const { data: tinaData } = useTina({ query, data, variables });
   const writing = tinaData.writing;
   const router = useRouter();
+  const slug = writing._sys.filename;
 
   const tagLabels = (writing.tags ?? []).filter((t): t is string => Boolean(t));
 
   const otherWritingsRef = useRef<HTMLDivElement>(null);
   const [btnVisible, setBtnVisible] = useState(true);
+  // Start hidden when a pending arrow rect exists — revealed after useEffect (post-paint, post-snapshot)
+  const [btnReady, setBtnReady] = useState(!hasPendingArrowRect());
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const motionX = useMotionValue(0);
+  const motionY = useMotionValue(0);
+  const motionScaleX = useMotionValue(1);
+  const motionScaleY = useMotionValue(1);
 
   useEffect(() => {
     const el = otherWritingsRef.current;
@@ -95,30 +105,62 @@ export default function WritingDetailClientPage({
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const from = consumePendingArrowRect();
+    const btn = btnRef.current;
+    if (from && btn) {
+      const to = btn.getBoundingClientRect();
+      const dx = from.x - to.x + (from.width - to.width) / 2;
+      const dy = from.y - to.y + (from.height - to.height) / 2;
+      const sx = from.width / to.width;
+      const sy = from.height / to.height;
+      motionX.set(dx);
+      motionY.set(dy);
+      motionScaleX.set(sx);
+      motionScaleY.set(sy);
+      // Reveal at arrow position then spring to natural — runs after view-transition snapshot
+      setBtnReady(true);
+      animate(motionX, 0, { type: 'spring', stiffness: 380, damping: 32 });
+      animate(motionY, 0, { type: 'spring', stiffness: 380, damping: 32 });
+      animate(motionScaleX, 1, { type: 'spring', stiffness: 380, damping: 32 });
+      animate(motionScaleY, 1, { type: 'spring', stiffness: 380, damping: 32 });
+    }
+  }, [motionX, motionY, motionScaleX, motionScaleY]);
+
   return (
     <>
-      <button
+      <motion.button
+        ref={btnRef}
         type="button"
-        onClick={() => router.back()}
+        onClick={() => router.push('/writings')}
         aria-label="Back to writings"
-        className={`fixed right-4 top-[220px] z-[101] flex w-10 h-10 md:w-14 md:h-14 cursor-pointer items-center justify-center rounded-full bg-brand-orange md:right-[66px] md:top-[225px] transition-opacity duration-300 ${btnVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        style={{
+          x: motionX,
+          y: motionY,
+          scaleX: motionScaleX,
+          scaleY: motionScaleY,
+          opacity: btnReady && btnVisible ? 1 : 0,
+          pointerEvents: btnReady && btnVisible ? 'auto' : 'none',
+          transition: 'opacity 0.25s',
+        }}
+        className="fixed right-4 top-[220px] z-[101] flex w-10 h-10 md:w-14 md:h-14 cursor-pointer items-center justify-center rounded-full bg-brand-orange md:right-[66px] md:top-[225px]"
       >
         <Icon name="pinchInZoom" size={20} color="#fff" />
-      </button>
+      </motion.button>
       <article className="w-full">
         <div className="px-4 pt-8 md:px-[58px] md:pt-12">
           {(writing.date || tagLabels.length > 0) && (
-            <div className="mb-6 flex items-center gap-1 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]">
+            <div className="mb-6 flex items-baseline gap-1 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]">
               {writing.date && (
-                <span className="font-normal text-black">
+                <span className="shrink-0 whitespace-nowrap font-normal text-black">
                   {renderWritingDate(writing.date)}
                 </span>
               )}
               {writing.date && tagLabels.length > 0 && (
-                <span className="font-normal text-black/50">·</span>
+                <span className="shrink-0 font-normal text-black/50">·</span>
               )}
               {tagLabels.length > 0 && (
-                <strong className="font-bold text-black">
+                <strong className="leading-[1.2em] font-bold text-black">
                   {tagLabels.join(" / ")}
                 </strong>
               )}

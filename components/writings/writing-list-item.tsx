@@ -1,15 +1,18 @@
-import { Icon } from "@/components/icons";
-import { WritingTitle } from "@/components/writings/writing-title";
-import type { WritingConnectionQuery } from "@/tina/__generated__/types";
-import Link from "next/link";
+'use client';
+import { Icon } from '@/components/icons';
+import { WritingTitle } from '@/components/writings/writing-title';
+import { setPendingArrowRect } from '@/lib/writing-nav-state';
+import type { WritingConnectionQuery } from '@/tina/__generated__/types';
+import Link from 'next/link';
+import { useRef } from 'react';
 
 type WritingNode = NonNullable<
-  NonNullable<WritingConnectionQuery["writingConnection"]["edges"]>[number]
->["node"];
+  NonNullable<WritingConnectionQuery['writingConnection']['edges']>[number]
+>['node'];
 
 type Props = {
   slug: string;
-  titleSections: NonNullable<NonNullable<WritingNode>["titleSections"]>;
+  titleSections: NonNullable<NonNullable<WritingNode>['titleSections']>;
   date?: string | null;
   tags?: (string | null)[] | null;
   visualsCount?: number | null;
@@ -24,14 +27,14 @@ function parseDateParts(iso: string | null | undefined) {
     const day = d.getUTCDate();
     const suffix =
       day === 1 || day === 21 || day === 31
-        ? "st"
+        ? 'st'
         : day === 2 || day === 22
-          ? "nd"
+          ? 'nd'
           : day === 3 || day === 23
-            ? "rd"
-            : "th";
+            ? 'rd'
+            : 'th';
     const month = d
-      .toLocaleString("en-GB", { month: "long", timeZone: "UTC" })
+      .toLocaleString('en-GB', { month: 'long', timeZone: 'UTC' })
       .toUpperCase();
     const year = d.getUTCFullYear();
     return { day, suffix, month, year };
@@ -51,54 +54,59 @@ export function WritingListItem({
 }: Props) {
   const dateParts = parseDateParts(date);
   const tagLabels = (tags ?? []).filter((t): t is string => Boolean(t));
+  const arrowRef = useRef<HTMLSpanElement>(null);
+
+  function handleClick() {
+    if (arrowRef.current) {
+      setPendingArrowRect(arrowRef.current.getBoundingClientRect());
+    }
+  }
 
   return (
     <Link
       href={`/writings/${slug}`}
-      className={linkClassName ?? "group block px-4 md:px-[58px]"}
+      className={linkClassName ?? 'group block px-4 md:px-[58px]'}
+      onClick={handleClick}
     >
       <div className="py-8 md:py-10">
-        {/* meta line */}
-        <div className="mb-6 flex items-center gap-1 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]">
+        <div className="mb-6 flex items-baseline gap-1 font-space-grotesk text-[11px] uppercase leading-none tracking-normal md:gap-8 md:text-[18px]">
           {dateParts && (
-            <span className="font-normal text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue">
+            <span className="shrink-0 whitespace-nowrap font-normal text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue">
               {dateParts.day}
-              <sup className="text-[0.65em]">{dateParts.suffix}</sup>{" "}
+              <sup className="text-[0.65em]">{dateParts.suffix}</sup>{' '}
               {dateParts.month} {dateParts.year}
             </span>
           )}
           {dateParts && tagLabels.length > 0 && (
-            <span className="font-normal text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue">
+            <span className="shrink-0 font-normal text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue">
               ·
             </span>
           )}
           {tagLabels.length > 0 && (
-            <strong className="font-bold text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue">
-              {tagLabels.join(" / ")}
+            <strong className="leading-[1.2em] font-bold text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue">
+              {tagLabels.join(' / ')}
             </strong>
           )}
         </div>
 
-        {/* title row — arrow aligns to title baseline */}
         <div className="flex items-end justify-between gap-6">
           <h2 className="text-[36px] leading-[1.05] tracking-[-0.01em] text-black transition-colors duration-300 ease-in-out group-hover:text-brand-blue sm:text-[60px] md:text-[76px]">
             <WritingTitle sections={titleSections} />
           </h2>
-          <span className="mb-[0.05em] shrink-0">
+          <span ref={arrowRef} className="mb-[0.05em] shrink-0">
             <Icon
               name="outbound"
               size={48}
-              className="block w-12 h-12 md:w-[72px] md:h-[72px] group-hover:hidden"
+              className="block h-12 w-12 group-hover:hidden md:h-[72px] md:w-[72px]"
             />
             <Icon
               name="outboundHover"
               size={48}
-              className="hidden w-12 h-12 md:w-[72px] md:h-[72px] group-hover:block"
+              className="hidden h-12 w-12 group-hover:block md:h-[72px] md:w-[72px]"
             />
           </span>
         </div>
 
-        {/* pills */}
         {(visualsCount != null || readingType) && (
           <div className="mt-6 flex flex-wrap items-center gap-2">
             {visualsCount != null && (
