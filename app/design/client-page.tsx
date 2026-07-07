@@ -62,8 +62,8 @@ function DesignContent({ query, data, variables }: Props) {
     () => searchParams?.get("design") ?? null,
   );
   const [displayDesign, setDisplayDesign] = useState<DesignNode | null>(null);
-  const [activeFilter, setActiveFilter] = useState<"byDoing" | "byKnowing">(
-    "byDoing",
+  const [activeFilter, setActiveFilter] = useState<"all" | "byDoing" | "byKnowing">(
+    "all",
   );
 
   useEffect(() => {
@@ -126,13 +126,13 @@ function DesignContent({ query, data, variables }: Props) {
     window.history.pushState({}, "", "/design");
   };
 
-  const filteredDesigns = designs.filter((d) => d.designType === activeFilter);
+  const filteredDesigns = activeFilter === "all" ? designs : designs.filter((d) => d.designType === activeFilter);
 
   return (
     <>
       <div className="px-4 mb-6 md:mb-12 pt-2 md:pt-6 md:px-[58px]">
         <div className="inline-flex rounded-[8px] bg-[#f0f0f0] p-1">
-          {(["byDoing", "byKnowing"] as const).map((filter) => (
+          {(["all", "byDoing", "byKnowing"] as const).map((filter) => (
             <button
               key={filter}
               type="button"
@@ -149,7 +149,7 @@ function DesignContent({ query, data, variables }: Props) {
               <span
                 className={`relative z-10 transition-colors duration-200 ${activeFilter === filter ? "text-white underline decoration-brand-orange decoration-2 underline-offset-2" : "text-black"}`}
               >
-                {filter === "byDoing" ? "By Doing" : "By Knowing"}
+                {filter === "all" ? "All" : filter === "byDoing" ? "By Doing" : "By Knowing"}
               </span>
             </button>
           ))}
