@@ -335,6 +335,18 @@
       "width": "wide",
       "images": [
         {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783499839/Tiger_01_pzhv8p.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783499844/Tiger_02_ufgqk9.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1782210639/Biodiversity_Booklet_3_lqgo67.jpg"
         }
       ],
