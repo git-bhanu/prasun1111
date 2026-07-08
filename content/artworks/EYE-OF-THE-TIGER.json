@@ -370,15 +370,15 @@
       "_template": "space"
     },
     {
+      "desktopSpace": "48",
+      "mobileSpace": "32",
+      "_template": "space"
+    },
+    {
       "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778525544/Biodiversity_The_Eye_Belongs_to_the_Tiger__1_uykbph.png",
       "youtubeUrl": "https://www.youtube.com/watch?v=v2qOG4145CU",
       "duration": "5MIN. 36SEC.",
       "_template": "video"
-    },
-    {
-      "desktopSpace": "48",
-      "mobileSpace": "32",
-      "_template": "space"
     }
   ]
 }
