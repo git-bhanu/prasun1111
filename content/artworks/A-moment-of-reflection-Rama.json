@@ -171,17 +171,6 @@
       "_template": "header"
     },
     {
-      "leftColumn": "In one version, I imagine him questioning his violence toward Shurpanakha; in another, he reflects on whether breaking Shiva’s bow was wrong. He might also question his willingness to believe in a golden deer after surviving in the jungle for nearly 14 years. Ultimately, he concludes that while Ravana’s kidnapping of Sita was wrong, the manner in which it was done was a far graver offense.\n",
-      "rightColumn": "By disguising himself as a sadhu, <ref n=\"02\"/> Ravana’s action became a dangerous template for ages to follow—where a perceived saint is a demon within. This is not just a wrong committed against one person, but an affront to society as a whole, inspiring a world where the guise of goodness is used to hide the intent to do harm.\n",
-      "annotations": [
-        {
-          "id": "02",
-          "text": "Inspired by a conversation between Shiva & Parvati, mentioned in Shiv Puraan."
-        }
-      ],
-      "_template": "twoColumnText"
-    },
-    {
       "width": "wide",
       "orientation": "portrait",
       "images": [
@@ -199,6 +188,17 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "leftColumn": "In one version, I imagine him questioning his violence toward Shurpanakha; in another, he reflects on whether breaking Shiva’s bow was wrong. He might also question his willingness to believe in a golden deer after surviving in the jungle for nearly 14 years. Ultimately, he concludes that while Ravana’s kidnapping of Sita was wrong, the manner in which it was done was a far graver offense.\n",
+      "rightColumn": "By disguising himself as a sadhu, <ref n=\"02\"/> Ravana’s action became a dangerous template for ages to follow—where a perceived saint is a demon within. This is not just a wrong committed against one person, but an affront to society as a whole, inspiring a world where the guise of goodness is used to hide the intent to do harm.\n",
+      "annotations": [
+        {
+          "id": "02",
+          "text": "Inspired by a conversation between Shiva & Parvati, mentioned in Shiv Puraan."
+        }
+      ],
+      "_template": "twoColumnText"
     },
     {
       "width": "wide",
