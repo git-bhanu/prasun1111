@@ -134,12 +134,6 @@
       "_template": "twoColumnText"
     },
     {
-      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778848578/Rama_Thumbnail_com3tq.jpg",
-      "youtubeUrl": "https://www.youtube.com/watch?v=uxmjRWVwX6A",
-      "duration": "1MIN. 42SEC.",
-      "_template": "video"
-    },
-    {
       "level": "h6",
       "font": "space-grotesk",
       "heading": "6.0 THE INCARNATION\n",
@@ -205,6 +199,51 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783500539/1_pvwmdo.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783500545/2_utwptk.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783500560/3_ffz2b6.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783500566/4_pwzbjy.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783500571/5_gxqhrz.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "wide",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783500615/Ram-_Media_akkzck.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783500620/Ram-_Media_02_tei0rx.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1778848578/Rama_Thumbnail_com3tq.jpg",
+      "youtubeUrl": "https://www.youtube.com/watch?v=uxmjRWVwX6A",
+      "duration": "1MIN. 42SEC.",
+      "_template": "video"
     }
   ]
 }
