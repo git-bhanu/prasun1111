@@ -145,6 +145,12 @@
         {}
       ],
       "_template": "image"
+    },
+    {
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784112887/Veins_Of_the_Tree_Thumbnail_pz7ey7.jpg",
+      "youtubeUrl": "https://youtu.be/4BnMJruY2tc?si=jj5iADwS6kd_Po-X",
+      "duration": "2MIN. 48SEC.",
+      "_template": "video"
     }
   ]
 }
