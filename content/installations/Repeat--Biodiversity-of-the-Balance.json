@@ -275,6 +275,12 @@
       "leftColumn": "*Time does not move in a straight line. It expands, contracts, repeats, and transforms.*\n",
       "rightColumn": "Each branch of evolution carries stories of survival, extinction, mutation, and rebirth. Through time, life continuously reshapes itself to endure changing realities.\n\nThe installation becomes a physical manifestation of this movement — where textures, forms, and structures reflect the silent evolution of existence itself.\n",
       "_template": "twoColumnText"
+    },
+    {
+      "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784102600/REPEAT_Youtube_Thumbnail_jku2yq.jpg",
+      "youtubeUrl": "https://youtu.be/NgS4UF-v91E?si=DX-EjE8pZ-Z459AE",
+      "duration": "6MIN. 45SEC.",
+      "_template": "video"
     }
   ]
 }
