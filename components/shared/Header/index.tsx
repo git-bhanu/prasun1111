@@ -25,11 +25,29 @@ export default function Header() {
   const [menuExpanded, setMenuExpanded] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const headerRef = useRef<HTMLElement | null>(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const { brand, primaryLinks, utilityLinks, meta } = useSiteSettings();
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const updateHeight = () => setHeaderHeight(el.offsetHeight);
+    updateHeight();
+
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      if (menuExpanded) {
+        lastScrollY.current = currentScrollY;
+        return;
+      }
       if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
         setHeaderHidden(true);
       } else if (currentScrollY < lastScrollY.current) {
@@ -39,27 +57,33 @@ export default function Header() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [menuExpanded]);
 
   useEffect(() => {
     if (!menuExpanded) {
       return;
     }
 
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const scrollY = window.scrollY;
+    const previousBodyPosition = document.body.style.position;
+    const previousBodyTop = document.body.style.top;
+    const previousBodyWidth = document.body.style.width;
 
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
 
     return () => {
-      document.body.style.overflow = previousBodyOverflow;
-      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.position = previousBodyPosition;
+      document.body.style.top = previousBodyTop;
+      document.body.style.width = previousBodyWidth;
+      window.scrollTo(0, scrollY);
     };
   }, [menuExpanded]);
 
   return (
     <motion.header
+      ref={headerRef}
       className="sticky top-0 z-50 bg-white p-4 md:p-0 dark:bg-black"
       animate={{ y: headerHidden && !menuExpanded ? "-100%" : 0 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -83,6 +107,7 @@ export default function Header() {
         </div>
 
         <CenterMenuPanel
+          topOffset={headerHeight}
           menuExpanded={menuExpanded}
           links={utilityLinks}
           meta={meta}
@@ -323,7 +348,6 @@ function CenterMenu({
           </div>
         </Link>
         <motion.button
-          layout
           type="button"
           aria-label={menuExpanded ? "Close menu" : "Open menu"}
           aria-expanded={menuExpanded}
@@ -342,19 +366,13 @@ function CenterMenu({
           >
             <AnimatePresence mode="wait" initial={false}>
               {menuExpanded ? (
-                <motion.span
-                  key="close"
-                  initial={{ opacity: 0, scale: 0.7 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-flex"
-                >
+                <span key="close" className="inline-flex">
                   <Icon
                     name="pinchInZoom"
                     size="var(--header-menu-icon-size)"
                     color="#fff"
                   />
-                </motion.span>
+                </span>
               ) : (
                 <motion.span
                   key="hamburger"
@@ -375,11 +393,13 @@ function CenterMenu({
 }
 
 function CenterMenuPanel({
+  topOffset,
   menuExpanded,
   links,
   meta,
   onNavigate,
 }: {
+  topOffset: number;
   menuExpanded: boolean;
   links: SiteNavigationLink[];
   meta: SiteSettings["meta"];
@@ -387,7 +407,6 @@ function CenterMenuPanel({
 }) {
   const pathname = usePathname();
   const previousPathnameRef = useRef(pathname);
-  const { showAnnouncementBanner } = useSiteSettings();
 
   useEffect(() => {
     if (menuExpanded && previousPathnameRef.current !== pathname) {
@@ -407,16 +426,12 @@ function CenterMenuPanel({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className={cn(
-            "fixed inset-x-0 bottom-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-white dark:bg-black px-5 py-6 md:px-0 md:py-4",
-            showAnnouncementBanner
-              ? "top-[90px] md:top-[140px]"
-              : "top-[106px] md:top-[140px]",
-          )}
+          style={{ top: topOffset }}
+          className="fixed inset-x-0 bottom-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-white dark:bg-black px-5 py-6 md:px-0 md:py-4"
         >
           <MenuMeta meta={meta} />
 
-          <div className="flex flex-1 items-center justify-center">
+          <div className="mt-10 flex md:mt-8">
             <nav aria-label="Expanded menu" className="w-full">
               <ul className="flex flex-col items-center gap-y-5">
                 {links.map((link) => (
