@@ -93,6 +93,17 @@
       "_template": "image"
     },
     {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "LOOK CLOSER\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Look closely, and you will discover fragments of many life forms—their bodies, textures, and characteristics woven into one another. Together, they represent the endless cycle of evolution, extinction, and regeneration.\n",
+      "_template": "header"
+    },
+    {
       "width": "wide",
       "images": [
         {
@@ -109,6 +120,18 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE INVISIBLE NETWORK\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "Biodiversity is not simply the coexistence of different species. It is the invisible network that connects them all. The richer and more complex this network becomes, the stronger and more resilient the ecosystem grows.\n",
+      "_template": "header"
     },
     {
       "width": "full",
@@ -129,6 +152,17 @@
       "_template": "image"
     },
     {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "LAYERS OF TIME\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "Perhaps this is how life has always moved.\n\nNot in straight lines.\n\nBut in layers.\n\nEach generation leaving behind something for the next. Each ending quietly becoming another beginning.\n",
+      "_template": "header"
+    },
+    {
       "width": "wide",
       "images": [
         {
@@ -136,6 +170,17 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "THE TREE REMAINS\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "heading": "*The tree remains. Not as a symbol of permanence, but as a reminder that life is always repeating itself.*\n",
+      "_template": "header"
     },
     {
       "width": "narrow",
@@ -148,6 +193,17 @@
         }
       ],
       "_template": "image"
+    },
+    {
+      "level": "h6",
+      "font": "space-grotesk",
+      "heading": "REFLECTION\n",
+      "_template": "header"
+    },
+    {
+      "level": "h2",
+      "heading": "Nothing truly disappears. It simply returns in another form.\n",
+      "_template": "header"
     },
     {
       "posterImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784112887/Veins_Of_the_Tree_Thumbnail_pz7ey7.jpg",
