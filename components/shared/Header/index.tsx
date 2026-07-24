@@ -431,7 +431,7 @@ function CenterMenuPanel({
         >
           <MenuMeta meta={meta} />
 
-          <div className="mt-10 flex md:mt-8">
+          <div className="flex flex-1 items-center justify-center">
             <nav aria-label="Expanded menu" className="w-full">
               <ul className="flex flex-col items-center gap-y-5">
                 {links.map((link) => (
