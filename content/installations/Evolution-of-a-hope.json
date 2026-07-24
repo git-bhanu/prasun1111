@@ -37,7 +37,7 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783603083/veins_of_the_tree11_xmfdyj.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784877012/4_sw4tdg.jpg"
         }
       ],
       "_template": "image"
@@ -126,7 +126,7 @@
       "width": "wide",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783603262/veins_of_the_tree5_le11hi.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784877300/5_hyxo8a.jpg"
         }
       ],
       "_template": "image"
@@ -136,14 +136,10 @@
       "images": [
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783603337/veins_of_the_tree7_o4g5tn.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784877389/2_o2psw2.jpg"
         }
-      ],
-      "_template": "image"
-    },
-    {
-      "width": "narrow",
-      "images": [
-        {}
       ],
       "_template": "image"
     },
