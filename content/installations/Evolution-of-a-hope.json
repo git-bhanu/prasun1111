@@ -78,6 +78,15 @@
       "_template": "header"
     },
     {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784890804/3_i3kaqm.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
       "level": "h3",
       "font": "sedan",
       "heading": "The tree stands as a witness to time. It carries the memory of countless lives that have appeared, disappeared, and returned in new forms. As organisms emerge from its surface, they do not merely grow on the tree—they gradually redefine it. With every new layer, every new species, every new trace of life, the tree itself becomes something different.\n",
@@ -125,7 +134,7 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1783603161/veins_of_the_tree6_gjtaiw.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784890705/Untitled-1_ss6ib6.jpg"
         }
       ],
       "_template": "image"
@@ -199,6 +208,15 @@
         },
         {
           "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784877389/2_o2psw2.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1784890765/7_j0b2bi.jpg"
         }
       ],
       "_template": "image"
