@@ -1,7 +1,7 @@
 {
   "title": "How big should the *logo* be?\n",
-  "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png",
-  "cardImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png",
+  "image": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1785753502/2_ovgmcw.jpg",
+  "cardImage": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1785753560/2_rn5ynk.jpg",
   "date": "2026-05-05T14:27:56.411Z",
   "category": "content/tags/Design/identity-design.json",
   "designType": "byKnowing",
@@ -17,11 +17,11 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "Let me begin with a small *analogy *that can help anyone easily understand how to decide the size of a *logo.*\n",
+      "heading": "Let me begin with a small *analogy* that can help anyone easily understand how to decide the size of a *logo.*\n",
       "_template": "header"
     },
     {
-      "leftColumn": "Many of us, if given the option, wouldn’t mind having a small round glass bowl with a single goldfish happily swimming inside it, placed neatly on our work desk. The gentle movement of the fish calms the mind and helps the brain transition smoothly from one task to another. You drop a little food into the bowl once in the morning and once in the evening. The gentle movement of the fish calms the mind and helps the brain transition smoothly from one task to another. \n",
+      "leftColumn": "Many of us, if given the option, wouldn’t mind having a small round glass bowl with a single goldfish happily swimming inside it, placed neatly on our work desk. The gentle movement of the fish calms the mind and helps the brain transition smoothly from one task to another. You drop a little food into the bowl once in the morning and once in the evening. The gentle movement of the fish calms the mind and helps the brain transition smoothly from one task to another.\n",
       "rightColumn": "You drop a little food into the bowl once in the morning and once in the evening. Over time, you notice the fish is happy — and growing. That growth makes you happy too. You feel good because you’ve invested a little time and care into nurturing a life. And watching something thrive around you naturally brings joy to kind people.\n",
       "_template": "twoColumnText"
     },
@@ -29,7 +29,7 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1785753577/1_m9crlk.jpg"
         }
       ],
       "_template": "image"
@@ -55,17 +55,14 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
-        },
-        {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1785753617/3_ln9o34.jpg"
         }
       ],
       "_template": "image"
     },
     {
-      "leftColumn": "*1. You decide to get a bigger bowl. *\n\nThe fish continues to grow and still moves gracefully within the larger space, remaining healthy and happy.\n",
-      "rightColumn": "*2. You don’t get a bigger bowl. *\n\nSurprisingly, the fish adapts. It simply stops growing. It maintains the same size and continues its gentle, happy movement within the limited space it has.\n",
+      "leftColumn": "\\*1. You decide to get a bigger bowl. \\*\n\nThe fish continues to grow and still moves gracefully within the larger space, remaining healthy and happy.\n",
+      "rightColumn": "\\*2. You don’t get a bigger bowl. \\*\n\nSurprisingly, the fish adapts. It simply stops growing. It maintains the same size and continues its gentle, happy movement within the limited space it has.\n",
       "_template": "twoColumnText"
     },
     {
@@ -83,7 +80,7 @@
       "width": "wide",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1780039905/FINAL_CROW_13502_rsi1tk.png"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1785753679/4_htnmuw.jpg"
         }
       ],
       "_template": "image"
