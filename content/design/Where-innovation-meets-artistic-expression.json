@@ -61,8 +61,8 @@
       "_template": "image"
     },
     {
-      "leftColumn": "\\*1. You decide to get a bigger bowl. \\*\n\nThe fish continues to grow and still moves gracefully within the larger space, remaining healthy and happy.\n",
-      "rightColumn": "\\*2. You don’t get a bigger bowl. \\*\n\nSurprisingly, the fish adapts. It simply stops growing. It maintains the same size and continues its gentle, happy movement within the limited space it has.\n",
+      "leftColumn": "*1. You decide to get a bigger bowl.*\n\nThe fish continues to grow and still moves gracefully within the larger space, remaining healthy and happy.\n",
+      "rightColumn": "*2. You don’t get a bigger bowl.*\n\nSurprisingly, the fish adapts. It simply stops growing. It maintains the same size and continues its gentle, happy movement within the limited space it has.\n",
       "_template": "twoColumnText"
     },
     {
