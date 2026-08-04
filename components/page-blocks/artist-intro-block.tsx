@@ -6,7 +6,6 @@ import { type Components, TinaMarkdown } from 'tinacms/dist/rich-text';
 
 import { Icon } from '@/components/icons';
 import { ActionButton } from '@/components/shared/action-button';
-import { cn } from '@/lib/utils';
 import type { PageBlocksArtistIntro } from '@/tina/__generated__/types';
 
 type ArtistIntroBlockProps = {
@@ -29,26 +28,18 @@ export function ArtistIntroBlock({ block }: ArtistIntroBlockProps) {
   }
 
   return (
-    <section className='w-full bg-black px-4 py-9 md:px-16 md:py-20'>
-      <div className='mx-auto w-full max-w-[1280px] text-white md:flex md:min-h-[308px] md:items-center md:justify-center md:gap-[128px]'>
-        <Portrait block={block} />
+    <section className='w-full bg-black text-white md:flex md:aspect-[1920/545] md:items-stretch'>
+      <Portrait block={block} />
 
-        <div className='mt-14 md:mt-0 md:w-[500px]'>
-          {socialLinks.length ? <SocialLinks links={socialLinks} className='mb-10 md:mb-12' /> : null}
+      <div className='flex h-full flex-col justify-center gap-10 px-4 py-9 md:w-1/2 md:shrink-0 md:gap-12 md:px-16 md:py-0'>
+        {socialLinks.length ? <SocialLinks links={socialLinks} /> : null}
 
-          <h2 className='font-sedan text-[20px] leading-[1.20] text-white md:text-[28px]' data-tina-field={tinaField(block, 'statement')}>
-            <TinaMarkdown content={block.statement} components={statementComponents} />
-          </h2>
+        <h2 className='font-sedan text-[20px] leading-[1.20] text-white md:text-[28px]' data-tina-field={tinaField(block, 'statement')}>
+          <TinaMarkdown content={block.statement} components={statementComponents} />
+        </h2>
 
-          <div className='mt-14 md:mt-12 md:w-fit'>
-            <ActionButton
-              color='white'
-              icon='articlePerson'
-              label={block.buttonLabel}
-              href={block.buttonHref}
-              dataTinaField={tinaField(block, 'buttonLabel')}
-            />
-          </div>
+        <div className='md:w-fit'>
+          <ActionButton color='white' icon='articlePerson' label={block.buttonLabel} href={block.buttonHref} dataTinaField={tinaField(block, 'buttonLabel')} />
         </div>
       </div>
     </section>
@@ -57,7 +48,7 @@ export function ArtistIntroBlock({ block }: ArtistIntroBlockProps) {
 
 function Portrait({ block }: ArtistIntroBlockProps) {
   return (
-    <div className='relative h-[272px] overflow-hidden bg-neutral-900 md:h-[272px] md:w-[570px]' data-tina-field={tinaField(block, 'image')}>
+    <div className='relative h-[272px] w-full overflow-hidden bg-neutral-900 md:h-full md:w-1/2' data-tina-field={tinaField(block, 'image')}>
       {block.image ? (
         <BlurUpImage
           src={block.image}
@@ -80,9 +71,9 @@ function Portrait({ block }: ArtistIntroBlockProps) {
   );
 }
 
-function SocialLinks({ links, className }: { links: ArtistIntroSocialLink[]; className?: string }) {
+function SocialLinks({ links }: { links: ArtistIntroSocialLink[] }) {
   return (
-    <div className={cn('flex flex-wrap gap-x-5 gap-y-4 font-space-grotesk text-[14px] uppercase leading-none md:gap-x-5 md:gap-y-3', className)}>
+    <div className='flex flex-wrap gap-x-5 gap-y-4 font-space-grotesk text-[14px] uppercase leading-none md:gap-x-5 md:gap-y-3'>
       {links.map((link, index) => {
         const content = (
           <>
