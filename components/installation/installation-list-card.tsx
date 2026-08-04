@@ -2,9 +2,11 @@
 
 import { Icon, IconCircleButton } from '@/components/icons';
 import { ActionButton } from '@/components/shared/action-button';
-import { cn } from '@/lib/utils';
 import { BlurUpImage } from '@/components/shared/blur-up-image';
-import { useCallback, useState } from 'react';
+import { useSiteSettings } from '@/components/site-settings-provider';
+import { cn } from '@/lib/utils';
+import { useInView, useReducedMotion } from 'motion/react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 import { InstallationDetails } from './installation-details';
 
@@ -39,16 +41,32 @@ export interface InstallationListCardProps {
 }
 
 export function InstallationListCard({ installation, tinaSource, onOpen }: InstallationListCardProps) {
+  const { sliders } = useSiteSettings();
   const slides = (installation.listingImages ?? []).filter((img): img is ListingImage => Boolean(img?.src));
   const hasSlider = slides.length > 0;
   const showVideo = !hasSlider && installation.backgroundType === 'video' && Boolean(installation.videoUrl);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const canNavigate = slides.length > 1;
+  const shouldReduceMotion = useReducedMotion();
+  const articleRef = useRef<HTMLElement>(null);
+  const isInView = useInView(articleRef, { amount: 0.4 });
 
   const navigate = useCallback((newIndex: number) => {
     setActiveIndex(newIndex);
   }, []);
+
+  useEffect(() => {
+    if (!canNavigate || shouldReduceMotion || !isInView) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((currentIndex) => (currentIndex === slides.length - 1 ? 0 : currentIndex + 1));
+    }, sliders.autoplaySeconds * 1000);
+
+    return () => window.clearInterval(timer);
+  }, [canNavigate, shouldReduceMotion, isInView, slides.length, sliders.autoplaySeconds]);
 
   const goToPrev = () => navigate(activeIndex === 0 ? slides.length - 1 : activeIndex - 1);
   const goToNext = () => navigate(activeIndex === slides.length - 1 ? 0 : activeIndex + 1);
@@ -60,10 +78,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
           {slides.map((slide, i) => (
             <div
               key={slide.src ?? i}
-              className={cn(
-                'absolute inset-0 transition-opacity duration-300',
-                i === activeIndex ? 'opacity-100' : 'opacity-0 pointer-events-none',
-              )}
+              className={cn('absolute inset-0 transition-opacity duration-300', i === activeIndex ? 'opacity-100' : 'opacity-0 pointer-events-none')}
               aria-hidden={i !== activeIndex}
             >
               <BlurUpImage
@@ -109,11 +124,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
     return <div className='absolute inset-0 bg-neutral-200' />;
   };
 
-  const renderSlide = (sizes: string) => (
-    <div className='absolute inset-0'>
-      {renderSlideContent(sizes)}
-    </div>
-  );
+  const renderSlide = (sizes: string) => <div className='absolute inset-0'>{renderSlideContent(sizes)}</div>;
 
   const renderControls = (className?: string) => {
     if (!canNavigate) return null;
@@ -131,15 +142,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
 
   const renderButtons = (fullWidth?: boolean) => (
     <div className={cn('flex gap-2', fullWidth && 'flex-col')}>
-      {installation.readMoreLabel && (
-        <ActionButton
-          color='black'
-          icon='error'
-          label={installation.readMoreLabel}
-          onClick={onOpen}
-          fullWidth={fullWidth}
-        />
-      )}
+      {installation.readMoreLabel && <ActionButton color='black' icon='error' label={installation.readMoreLabel} onClick={onOpen} fullWidth={fullWidth} />}
       {installation.watchFilmLabel && (
         <ActionButton
           color='orange'
@@ -156,12 +159,10 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
   );
 
   return (
-    <article className='w-full'>
+    <article ref={articleRef} className='w-full'>
       {/* Mobile */}
       <div className='md:hidden'>
-        <div className='relative aspect-[16/9] w-full overflow-hidden bg-neutral-200'>
-          {renderSlide('100vw')}
-        </div>
+        <div className='relative aspect-[16/9] w-full overflow-hidden bg-neutral-200'>{renderSlide('100vw')}</div>
 
         <div className='pt-4 pb-8'>
           {renderControls('mt-1 mb-5')}
@@ -183,10 +184,7 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
       <div className='hidden md:grid md:grid-cols-[2fr_3fr]'>
         <div className='flex flex-col justify-between pr-16'>
           <div>
-            <h2
-              className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase text-black'
-              data-tina-field={tinaField(tinaSource as any, 'title')}
-            >
+            <h2 className='font-space-grotesk text-[36px] font-bold leading-[1.1] uppercase text-black' data-tina-field={tinaField(tinaSource as any, 'title')}>
               {installation.title}
             </h2>
             <InstallationDetails source={installation} tinaSource={tinaSource} className='mt-8 border-t border-black/20 pt-6' />
