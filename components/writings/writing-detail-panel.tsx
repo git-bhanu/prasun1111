@@ -5,6 +5,7 @@ import { ImageBlock } from '@/components/blocks/image-block';
 import { SpaceBlock } from '@/components/blocks/space-block';
 import { TwoColumnTextBlock } from '@/components/blocks/two-column-text-block';
 import { VideoBlock } from '@/components/blocks/video-block';
+import { CommentsSection } from '@/components/comments/comments-section';
 import { Icon } from '@/components/icons';
 import { BlurUpImage } from '@/components/shared/blur-up-image';
 import { WritingListItem } from '@/components/writings/writing-list-item';
@@ -168,6 +169,7 @@ export function WritingDetailPanel({ writing, relatedWritings, onWritingClick }:
           </div>
         </div>
       )}
+      <CommentsSection pageSlug={`writings/${writing._sys.filename}`} />
     </article>
   );
 }

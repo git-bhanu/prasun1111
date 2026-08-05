@@ -7,13 +7,14 @@ import { ImageBlock } from '@/components/blocks/image-block';
 import { SpaceBlock } from '@/components/blocks/space-block';
 import { TwoColumnTextBlock } from '@/components/blocks/two-column-text-block';
 import { VideoBlock } from '@/components/blocks/video-block';
+import { CommentsSection } from '@/components/comments/comments-section';
 import { Icon } from '@/components/icons';
 import { ActionButton } from '@/components/shared/action-button';
+import { BlurUpImage } from '@/components/shared/blur-up-image';
+import { CopyToast } from '@/components/shared/copy-toast';
 import { SectionMasthead } from '@/components/shared/section-masthead';
 import { useOverlayAnimation } from '@/hooks/use-overlay-animation';
 import type { ArtworkConnectionQuery, ArtworkConnectionQueryVariables } from '@/tina/__generated__/types';
-import { BlurUpImage } from '@/components/shared/blur-up-image';
-import { CopyToast } from '@/components/shared/copy-toast';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTina } from 'tinacms/dist/react';
@@ -276,6 +277,7 @@ function DetailPanel({
       <div className='mt-10 flex justify-center px-6 pb-10'>
         <ActionButton color='white' icon='arrowUpwardAlt' label='Back to Top' onClick={scrollToTop} className='bg-surface-grey' />
       </div>
+      <CommentsSection pageSlug={`artworks/${(artwork.slug ?? artwork._sys.filename).toLowerCase()}`} />
     </>
   );
 }

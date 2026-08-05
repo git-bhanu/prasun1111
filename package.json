@@ -5,12 +5,15 @@
   "scripts": {
     "dev": "TINA_LOCAL=true tinacms dev -c \"next dev --turbopack\"",
     "build": "tinacms build && rm -f \"tina/__generated__/client.ts\" && next build",
-    "build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && rm -f \"tina/__generated__/client.ts\" && TINA_LOCAL=true next build",
+    "build-local": "bash scripts/tina-local-build.sh",
     "build:netlify": "NODE_OPTIONS=--max-old-space-size=4096 pnpm run build",
     "start": "tinacms build && rm -f \"tina/__generated__/client.ts\" && next start",
     "export": "npm run build && next export",
     "lint": "biome lint",
-    "dev:build": "next build"
+    "dev:build": "next build",
+    "pages:dev": "pnpm build-local && npx wrangler@3 pages dev out",
+    "d1:migrate:local": "npx wrangler@3 d1 migrations apply prasun1111-comments --local",
+    "d1:migrate:remote": "npx wrangler@3 d1 migrations apply prasun1111-comments --remote"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

@@ -1,23 +1,18 @@
-"use client";
+'use client';
 
-import * as motion from "motion/react-client";
-import Link from "next/link";
+import * as motion from 'motion/react-client';
+import Link from 'next/link';
 
-import { Icon, type IconName } from "@/components/icons";
-import { cn } from "@/lib/utils";
+import { Icon, type IconName } from '@/components/icons';
+import { cn } from '@/lib/utils';
 
-export type ActionButtonVariant = "solid" | "ghost";
-export type ActionButtonColor =
-  | "black"
-  | "orange"
-  | "blue"
-  | "white"
-  | "outlined";
+export type ActionButtonVariant = 'solid' | 'ghost';
+export type ActionButtonColor = 'black' | 'orange' | 'blue' | 'white' | 'outlined';
 
 const buttonHover = {
   y: -1,
   scale: 1.01,
-  boxShadow: "0 18px 40px rgba(0, 0, 0, 0.18)",
+  boxShadow: '0 18px 40px rgba(0, 0, 0, 0.18)',
 };
 
 const buttonTap = {
@@ -26,64 +21,60 @@ const buttonTap = {
 };
 
 const buttonTransition = {
-  type: "spring",
+  type: 'spring',
   stiffness: 420,
   damping: 28,
   mass: 0.7,
 } as const;
 
-const solidColors: Record<ActionButtonColor, { button: string; icon: string }> =
-  {
-    black: {
-      button: "bg-black text-white hover:bg-black/95",
-      icon: "text-white",
-    },
-    orange: {
-      button: "bg-brand-orange text-white hover:bg-brand-orange/95",
-      icon: "text-white",
-    },
-    blue: {
-      button: "bg-brand-blue text-white hover:bg-brand-blue/95",
-      icon: "text-white",
-    },
-    white: {
-      button: "bg-white text-black hover:bg-white/95",
-      icon: "text-black",
-    },
-    outlined: {
-      button: "bg-[#F9F9F9] text-black hover:bg-black/95 hover:text-white",
-      icon: "",
-    },
-  };
-
-const ghostColors: Record<
-  ActionButtonColor,
-  { text: string; icon: string; circle: string }
-> = {
+const solidColors: Record<ActionButtonColor, { button: string; icon: string }> = {
   black: {
-    text: "text-black",
-    icon: "text-black",
-    circle: "group-hover:bg-black group-hover:text-white",
+    button: 'bg-black text-white hover:bg-black/95',
+    icon: 'text-white',
   },
   orange: {
-    text: "text-brand-orange",
-    icon: "text-brand-orange",
-    circle: "group-hover:bg-brand-orange group-hover:text-white",
+    button: 'bg-brand-orange text-white hover:bg-brand-orange/95',
+    icon: 'text-white',
   },
   blue: {
-    text: "text-brand-blue",
-    icon: "text-brand-blue",
-    circle: "group-hover:bg-brand-blue group-hover:text-white",
+    button: 'bg-brand-blue text-white hover:bg-brand-blue/95',
+    icon: 'text-white',
   },
   white: {
-    text: "text-white",
-    icon: "text-white",
-    circle: "group-hover:bg-white group-hover:text-black",
+    button: 'bg-white text-black hover:bg-white/95',
+    icon: 'text-black',
   },
   outlined: {
-    text: "text-black",
-    icon: "text-black",
-    circle: "group-hover:bg-black group-hover:text-white",
+    button: 'bg-[#F9F9F9] text-black hover:bg-black/95 hover:text-white',
+    icon: '',
+  },
+};
+
+const ghostColors: Record<ActionButtonColor, { text: string; icon: string; circle: string }> = {
+  black: {
+    text: 'text-black',
+    icon: 'text-black',
+    circle: 'group-hover:bg-black group-hover:text-white',
+  },
+  orange: {
+    text: 'text-brand-orange',
+    icon: 'text-brand-orange',
+    circle: 'group-hover:bg-brand-orange group-hover:text-white',
+  },
+  blue: {
+    text: 'text-brand-blue',
+    icon: 'text-brand-blue',
+    circle: 'group-hover:bg-brand-blue group-hover:text-white',
+  },
+  white: {
+    text: 'text-white',
+    icon: 'text-white',
+    circle: 'group-hover:bg-white group-hover:text-black',
+  },
+  outlined: {
+    text: 'text-black',
+    icon: 'text-black',
+    circle: 'group-hover:bg-black group-hover:text-white',
   },
 };
 
@@ -91,7 +82,7 @@ export interface ActionButtonProps {
   variant?: ActionButtonVariant;
   color?: ActionButtonColor;
   icon?: IconName;
-  iconPosition?: "left" | "right";
+  iconPosition?: 'left' | 'right';
   label?: string | null;
   subLabel?: string | null;
   href?: string | null;
@@ -100,13 +91,14 @@ export interface ActionButtonProps {
   onClick?: () => void;
   className?: string;
   dataTinaField?: string;
+  disabled?: boolean;
 }
 
 export function ActionButton({
-  variant = "solid",
-  color = "black",
+  variant = 'solid',
+  color = 'black',
   icon,
-  iconPosition = "left",
+  iconPosition = 'left',
   label,
   subLabel,
   href,
@@ -115,56 +107,38 @@ export function ActionButton({
   onClick,
   className,
   dataTinaField,
+  disabled = false,
 }: ActionButtonProps) {
   if (!label) return null;
 
-  if (variant === "ghost") {
+  if (variant === 'ghost') {
     const g = ghostColors[color];
 
     const renderGhostIcon = () => {
       if (!icon) return null;
       return (
         <span
-          className={cn(
-            "inline-flex size-10 shrink-0 items-center justify-center rounded-full transition-colors duration-200",
-            g.icon,
-            g.circle,
-          )}
-          aria-hidden="true"
+          className={cn('inline-flex size-10 shrink-0 items-center justify-center rounded-full transition-colors duration-200', g.icon, g.circle)}
+          aria-hidden='true'
         >
-          <Icon name={icon} size={16} color="currentColor" />
+          <Icon name={icon} size={16} color='currentColor' />
         </span>
       );
     };
 
     const ghostContent = (
       <>
-        {iconPosition === "left" ? renderGhostIcon() : null}
-        <span
-          className={cn(
-            "font-space-grotesk text-[11px] uppercase leading-none cursor-pointer",
-            g.text,
-          )}
-        >
-          {label}
-        </span>
-        {iconPosition === "right" ? renderGhostIcon() : null}
+        {iconPosition === 'left' ? renderGhostIcon() : null}
+        <span className={cn('font-space-grotesk text-[11px] uppercase leading-none cursor-pointer', g.text)}>{label}</span>
+        {iconPosition === 'right' ? renderGhostIcon() : null}
       </>
     );
 
-    const ghostClassName = cn(
-      "group inline-flex self-start items-center gap-2",
-      className,
-    );
+    const ghostClassName = cn('group inline-flex self-start items-center gap-2', className);
 
     if (href) {
       return (
-        <Link
-          href={href}
-          target={target}
-          className={ghostClassName}
-          data-tina-field={dataTinaField}
-        >
+        <Link href={href} target={target} className={ghostClassName} data-tina-field={dataTinaField}>
           {ghostContent}
         </Link>
       );
@@ -172,9 +146,10 @@ export function ActionButton({
 
     return (
       <button
-        type="button"
-        onClick={onClick}
-        className={ghostClassName}
+        type='button'
+        disabled={disabled}
+        onClick={disabled ? undefined : onClick}
+        className={cn(ghostClassName, disabled && 'opacity-40 cursor-not-allowed')}
         data-tina-field={dataTinaField}
       >
         {ghostContent}
@@ -187,57 +162,38 @@ export function ActionButton({
   const renderIcon = () => {
     if (!icon) return null;
     return (
-      <span
-        className={cn(
-          "inline-flex shrink-0 items-center justify-center md:size-[24px]",
-          solidColors[color].icon,
-        )}
-        aria-hidden="true"
-      >
-        <Icon name={icon} size={24} color="currentColor" />
+      <span className={cn('inline-flex shrink-0 items-center justify-center md:size-[24px]', solidColors[color].icon)} aria-hidden='true'>
+        <Icon name={icon} size={24} color='currentColor' />
       </span>
     );
   };
 
   const content = (
     <>
-      {iconPosition === "left" ? renderIcon() : null}
+      {iconPosition === 'left' ? renderIcon() : null}
       <span>{label}</span>
       {subLabel ? (
-        <span className="inline-flex items-center gap-2 text-[10px] md:text-[14px]">
-          <span className="size-1 rounded-full bg-current" aria-hidden="true" />
+        <span className='inline-flex items-center gap-2 text-[10px] md:text-[14px]'>
+          <span className='size-1 rounded-full bg-current' aria-hidden='true' />
           {subLabel}
         </span>
       ) : null}
-      {iconPosition === "right" ? renderIcon() : null}
+      {iconPosition === 'right' ? renderIcon() : null}
     </>
   );
 
   const solidClassName = cn(
-    "cursor-pointer items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px] overflow-visible",
-    fullWidth ? "flex w-full" : "inline-flex w-full md:w-auto",
+    'cursor-pointer items-center justify-center gap-3 md:gap-2 rounded-[10px] font-space-grotesk text-[14px] leading-none uppercase transition-colors md:rounded-[8px] py-[16px] px-[32px] md:text-[20px] overflow-visible',
+    fullWidth ? 'flex w-full' : 'inline-flex w-full md:w-auto',
     solidColors[color].button,
-    className,
+    className
   );
-  const motionClassName = cn(
-    "transform-gpu rounded-[10px] md:rounded-[8px]",
-    fullWidth ? "flex w-full" : "inline-flex w-full md:w-auto",
-  );
+  const motionClassName = cn('transform-gpu rounded-[10px] md:rounded-[8px]', fullWidth ? 'flex w-full' : 'inline-flex w-full md:w-auto');
 
   if (href) {
     return (
-      <motion.span
-        className={motionClassName}
-        whileHover={buttonHover}
-        whileTap={buttonTap}
-        transition={buttonTransition}
-      >
-        <Link
-          href={href}
-          target={target}
-          className={solidClassName}
-          data-tina-field={dataTinaField}
-        >
+      <motion.span className={motionClassName} whileHover={buttonHover} whileTap={buttonTap} transition={buttonTransition}>
+        <Link href={href} target={target} className={solidClassName} data-tina-field={dataTinaField}>
           {content}
         </Link>
       </motion.span>
@@ -246,12 +202,13 @@ export function ActionButton({
 
   return (
     <motion.button
-      type="button"
-      onClick={onClick}
-      className={solidClassName}
+      type='button'
+      disabled={disabled}
+      onClick={disabled ? undefined : onClick}
+      className={cn(solidClassName, disabled && 'opacity-40 cursor-not-allowed pointer-events-none')}
       data-tina-field={dataTinaField}
-      whileHover={buttonHover}
-      whileTap={buttonTap}
+      whileHover={disabled ? undefined : buttonHover}
+      whileTap={disabled ? undefined : buttonTap}
       transition={buttonTransition}
     >
       {content}
