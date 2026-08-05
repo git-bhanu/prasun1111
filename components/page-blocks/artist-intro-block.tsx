@@ -31,7 +31,7 @@ export function ArtistIntroBlock({ block }: ArtistIntroBlockProps) {
     <section className='w-full bg-black text-white md:flex md:aspect-[1920/545] md:items-stretch'>
       <Portrait block={block} />
 
-      <div className='flex h-full flex-col justify-center gap-10 px-4 py-9 md:w-1/2 md:shrink-0 md:gap-12 md:px-16 md:py-0'>
+      <div className='flex h-full flex-col justify-center gap-10 px-4 py-9 md:w-[35%] md:shrink-0 md:gap-12 md:px-16 md:py-0'>
         {socialLinks.length ? <SocialLinks links={socialLinks} /> : null}
 
         <h2 className='font-sedan text-[20px] leading-[1.20] text-white md:text-[28px]' data-tina-field={tinaField(block, 'statement')}>
@@ -48,7 +48,7 @@ export function ArtistIntroBlock({ block }: ArtistIntroBlockProps) {
 
 function Portrait({ block }: ArtistIntroBlockProps) {
   return (
-    <div className='relative h-[272px] w-full overflow-hidden bg-neutral-900 md:h-full md:w-1/2' data-tina-field={tinaField(block, 'image')}>
+    <div className='relative h-[272px] w-full overflow-hidden bg-neutral-900 md:h-full md:w-[65%]' data-tina-field={tinaField(block, 'image')}>
       {block.image ? (
         <BlurUpImage
           src={block.image}
