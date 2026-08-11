@@ -4,11 +4,15 @@ import { useEffect, useRef, useState } from 'react';
 
 import { ActionButton } from '@/components/shared/action-button';
 import { TextField } from '@/components/shared/text-field';
+import { cn } from '@/lib/utils';
 
 declare global {
   interface Window {
     turnstile?: {
-      render: (container: HTMLElement, options: { sitekey: string; callback: (token: string) => void }) => string;
+      render: (
+        container: HTMLElement,
+        options: { sitekey: string; appearance?: 'always' | 'execute' | 'interaction-only'; callback: (token: string) => void }
+      ) => string;
       reset: (widgetId?: string) => void;
     };
   }
@@ -18,11 +22,12 @@ export interface CommentFormProps {
   pageSlug: string;
   parentId?: number | null;
   onSubmitted: () => void;
+  dark?: boolean;
 }
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function CommentForm({ pageSlug, parentId = null, onSubmitted }: CommentFormProps) {
+export function CommentForm({ pageSlug, parentId = null, onSubmitted, dark = false }: CommentFormProps) {
   const [authorName, setAuthorName] = useState('');
   const [authorEmail, setAuthorEmail] = useState('');
   const [body, setBody] = useState('');
@@ -41,6 +46,7 @@ export function CommentForm({ pageSlug, parentId = null, onSubmitted }: CommentF
       if (!siteKey || !window.turnstile || !widgetContainerRef.current) return;
       widgetIdRef.current = window.turnstile.render(widgetContainerRef.current, {
         sitekey: siteKey,
+        appearance: 'interaction-only',
         callback: (token) => {
           turnstileTokenRef.current = token;
         },
@@ -101,7 +107,7 @@ export function CommentForm({ pageSlug, parentId = null, onSubmitted }: CommentF
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col gap-4'>
-      <TextField label='Name' name='author_name' value={authorName} onChange={setAuthorName} maxLength={80} required />
+      <TextField label='Name' name='author_name' value={authorName} onChange={setAuthorName} maxLength={80} required dark={dark} />
       <TextField
         type='email'
         label='Email Address'
@@ -110,15 +116,18 @@ export function CommentForm({ pageSlug, parentId = null, onSubmitted }: CommentF
         onChange={setAuthorEmail}
         maxLength={254}
         error={isEmailValid ? null : 'Enter a valid email address.'}
+        dark={dark}
       />
       <div className='flex flex-col gap-2'>
         <span className='flex items-baseline justify-between'>
           <label htmlFor='body' className='font-space-grotesk text-[12px] font-bold uppercase leading-none tracking-normal text-[#D9D9D9]'>
             Thoughts
           </label>
-          <span className='font-space-grotesk text-[11px] uppercase tracking-[0.08em] text-black/30'>{1000 - body.length} characters remaining</span>
+          <span className={cn('font-space-grotesk text-[11px] uppercase tracking-[0.08em]', dark ? 'text-white/30' : 'text-black/30')}>
+            {1000 - body.length} characters remaining
+          </span>
         </span>
-        <div className='flex flex-col rounded-[8px] border-[0.5px] border-black/15 bg-white'>
+        <div className={cn('flex flex-col rounded-[8px] border-[0.5px]', dark ? 'border-white/15 bg-white/5' : 'border-black/15 bg-white')}>
           <textarea
             id='body'
             name='body'
@@ -126,12 +135,15 @@ export function CommentForm({ pageSlug, parentId = null, onSubmitted }: CommentF
             maxLength={1000}
             required
             onChange={(e) => setBody(e.target.value)}
-            className='h-[190px] w-full resize-none overflow-y-auto rounded-t-[8px] bg-transparent p-4 font-space-grotesk text-[20px] font-normal leading-[1.2] tracking-normal text-black outline-none transition-colors focus:border-black'
+            className={cn(
+              'h-[190px] w-full resize-none overflow-y-auto rounded-t-[8px] bg-transparent p-4 font-space-grotesk text-[20px] font-normal leading-[1.2] tracking-normal outline-none transition-colors',
+              dark ? 'text-white focus:border-white/40' : 'text-black focus:border-black'
+            )}
           />
           <div className='flex justify-end p-4 pt-3'>
             <ActionButton
               variant='solid'
-              color='black'
+              color={dark ? 'white' : 'black'}
               icon='arrowCircleUp'
               label={status === 'submitting' ? 'Posting…' : 'Post comment'}
               disabled={status === 'submitting' || !isFormValid}

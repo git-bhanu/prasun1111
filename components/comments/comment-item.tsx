@@ -38,6 +38,7 @@ export interface CommentItemData {
 export interface CommentItemProps {
   comment: CommentItemData;
   replies: CommentItemData[];
+  dark?: boolean;
 }
 
 function useCommentLike(comment: CommentItemData) {
@@ -73,70 +74,95 @@ function useCommentLike(comment: CommentItemData) {
   return { liked, likesCount, toggleLike };
 }
 
-function LikeButton({ liked, likesCount, onToggle }: { liked: boolean; likesCount: number; onToggle: () => void }) {
+function formatTimestamp(createdAt: string) {
+  return formatDistanceToNow(new Date(`${createdAt}Z`), { addSuffix: true });
+}
+
+function LikeButton({ liked, likesCount, onToggle, dark }: { liked: boolean; likesCount: number; onToggle: () => void; dark?: boolean }) {
   return (
     <button
       type='button'
       onClick={onToggle}
-      className='flex cursor-pointer items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-[13px] text-black/70 hover:border-black/20'
+      className={cn(
+        'flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-[13px]',
+        dark ? 'border-white/15 text-white/70 hover:border-white/30' : 'border-black/10 text-black/70 hover:border-black/20'
+      )}
     >
-      <Heart size={16} className={cn(liked ? 'fill-brand-orange text-brand-orange' : 'text-black/50')} />
+      <Heart size={16} className={cn(liked ? 'fill-brand-orange text-brand-orange' : dark ? 'text-white/40' : 'text-black/50')} />
       <span>{likesCount === 0 ? 'Be the first to like' : likesCount}</span>
     </button>
   );
 }
 
-function CommentAuthor({ comment }: { comment: CommentItemData }) {
+function CommentMeta({
+  liked,
+  likesCount,
+  onToggle,
+  comment,
+  dark,
+}: { liked: boolean; likesCount: number; onToggle: () => void; comment: CommentItemData; dark?: boolean }) {
   return (
-    <div className='flex items-center gap-3'>
-      <div className='flex items-center gap-2 rounded-xl border border-black/10 p-2'>
-        <span className='font-space-grotesk text-[16px] font-bold uppercase text-black'>{comment.author_name}</span>
-        {comment.is_author_reply ? <span className='font-space-grotesk text-[13px] font-bold uppercase text-brand-orange'>Author</span> : null}
-      </div>
-      <span className='font-space-grotesk text-[12px] uppercase tracking-wide text-[#D9D9D9]'>
-        {formatDistanceToNow(new Date(`${comment.created_at}Z`), { addSuffix: true })}
+    <div className='mt-4 flex items-center justify-between gap-3'>
+      <LikeButton liked={liked} likesCount={likesCount} onToggle={onToggle} dark={dark} />
+      <span className={cn('shrink-0 font-space-grotesk text-[12px] uppercase tracking-wide md:hidden', dark ? 'text-white/30' : 'text-[#D9D9D9]')}>
+        {formatTimestamp(comment.created_at)}
       </span>
     </div>
   );
 }
 
-function CommentReply({ comment }: { comment: CommentItemData }) {
-  const { liked, likesCount, toggleLike } = useCommentLike(comment);
-
+function CommentAuthor({ comment, dark }: { comment: CommentItemData; dark?: boolean }) {
   return (
-    <div className='mt-4 border-l-2 border-brand-orange pl-4'>
-      <CommentAuthor comment={comment} />
-      <p className='mt-2 text-[15px] leading-7 text-black'>{comment.body}</p>
-      <div className='mt-2'>
-        <LikeButton liked={liked} likesCount={likesCount} onToggle={toggleLike} />
+    <div className='flex items-center gap-3'>
+      <div className={cn('flex items-center gap-2 rounded-xl border p-2', dark ? 'border-white/15' : 'border-black/10')}>
+        <span className={cn('font-space-grotesk text-[12px] font-bold uppercase md:text-[16px]', dark ? 'text-white' : 'text-black')}>
+          {comment.author_name}
+        </span>
+        {comment.is_author_reply ? <span className='font-space-grotesk text-[8px] font-bold uppercase text-brand-orange md:text-[13px]'>Author</span> : null}
       </div>
+      <span className={cn('hidden font-space-grotesk text-[12px] uppercase tracking-wide md:inline-block', dark ? 'text-white/30' : 'text-[#D9D9D9]')}>
+        {formatTimestamp(comment.created_at)}
+      </span>
     </div>
   );
 }
 
-export function CommentItem({ comment, replies }: CommentItemProps) {
+function CommentReply({ comment, dark }: { comment: CommentItemData; dark?: boolean }) {
   const { liked, likesCount, toggleLike } = useCommentLike(comment);
 
   return (
-    <div className='rounded-2xl border border-black/10 bg-white p-6'>
+    <div className='mt-4 border-l-2 border-brand-orange pl-4'>
+      <CommentAuthor comment={comment} dark={dark} />
+      <p className={cn('mt-2 text-[14px] leading-7 md:text-[15px]', dark ? 'text-white/80' : 'text-black')}>{comment.body}</p>
+      <CommentMeta liked={liked} likesCount={likesCount} onToggle={toggleLike} comment={comment} dark={dark} />
+    </div>
+  );
+}
+
+export function CommentItem({ comment, replies, dark }: CommentItemProps) {
+  const { liked, likesCount, toggleLike } = useCommentLike(comment);
+
+  return (
+    <div className={cn('rounded-2xl border p-3 md:p-6', dark ? 'border-white/15 bg-transparent' : 'border-black/10 bg-white')}>
       <div className='flex items-center gap-3'>
-        <CommentAuthor comment={comment} />
+        <CommentAuthor comment={comment} dark={dark} />
         {comment.is_pinned ? (
           <span
             aria-label='Pinned comment'
             title='Pinned comment'
-            className='ml-auto flex size-9 shrink-0 items-center justify-center rounded-full border border-black/10 text-black/40'
+            className={cn(
+              'ml-auto flex size-9 shrink-0 items-center justify-center rounded-full border',
+              dark ? 'border-white/15 text-white/40' : 'border-black/10 text-black/40'
+            )}
           >
             <Pin size={16} fill='currentColor' />
           </span>
         ) : null}
       </div>
-      <p className='mt-4 text-[15px] leading-7 text-black'>{comment.body}</p>
-      <div className='mt-4'>
-        <LikeButton liked={liked} likesCount={likesCount} onToggle={toggleLike} />
-      </div>
+      <p className={cn('mt-4 text-[14px] leading-7 md:text-[15px]', dark ? 'text-white/80' : 'text-black')}>{comment.body}</p>
+      <CommentMeta liked={liked} likesCount={likesCount} onToggle={toggleLike} comment={comment} dark={dark} />
       {replies.map((reply) => (
-        <CommentReply key={reply.id} comment={reply} />
+        <CommentReply key={reply.id} comment={reply} dark={dark} />
       ))}
     </div>
   );

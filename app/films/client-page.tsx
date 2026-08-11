@@ -236,12 +236,8 @@ function FilmDetail({ film }: { film: Film }) {
         </div>
       )}
 
-      <div className=' flex justify-center bg-black px-6 pb-10'>
-        <ActionButton color='white' icon='arrowUpwardAlt' label='Back to Top' onClick={scrollToTop} />
-      </div>
-
-      <div className='bg-white'>
-        <CommentsSection pageSlug='films' />
+      <div className='bg-black'>
+        <CommentsSection pageSlug='films' dark onBackToTop={scrollToTop} />
       </div>
     </div>
   );

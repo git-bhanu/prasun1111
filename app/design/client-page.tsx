@@ -333,10 +333,7 @@ function DetailPanel({
         </div>
       )}
 
-      <div className='mt-6 flex justify-center px-6 pb-10'>
-        <ActionButton color='white' icon='arrowUpwardAlt' label='Back to Top' onClick={scrollToTop} className='bg-surface-grey' />
-      </div>
-      <CommentsSection pageSlug={`design/${designSlug(design)}`} />
+      <CommentsSection pageSlug={`design/${designSlug(design)}`} onBackToTop={scrollToTop} />
     </>
   );
 }
