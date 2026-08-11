@@ -12,8 +12,8 @@
     "lint": "biome lint",
     "dev:build": "next build",
     "pages:dev": "pnpm build-local && npx wrangler@3 pages dev out",
-    "d1:migrate:local": "npx wrangler@3 d1 migrations apply prasun1111-comments --local",
-    "d1:migrate:remote": "npx wrangler@3 d1 migrations apply prasun1111-comments --remote"
+    "d1:migrate:local": "npx wrangler@3 d1 migrations apply prasun1111-comments-test --local",
+    "d1:migrate:remote": "npx wrangler@3 d1 migrations apply prasun1111-comments-test --remote"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

@@ -4,6 +4,6 @@ compatibility_date = "2024-09-23"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "prasun1111-comments"
-database_id = "04c895d0-9bfb-44f8-9754-5a365a547735"
+database_name = "prasun1111-comments-test"
+database_id = "9359b0c5-a637-4ff5-9cf3-ee4c24ff3e77"
 migrations_dir = "migrations"
