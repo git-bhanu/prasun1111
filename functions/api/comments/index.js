@@ -38,19 +38,71 @@ async function verifyTurnstile(token, secret, remoteIp) {
   return result.success === true;
 }
 
+const PAGE_SIZE = 4;
+
 async function listComments(url, env) {
   const pageSlug = url.searchParams.get('page');
   if (!isValidPageSlug(pageSlug)) {
     return jsonResponse({ error: 'invalid page' }, 400);
   }
 
-  const { results } = await env.DB.prepare(
-    'SELECT id, page_slug, parent_id, author_name, body, is_author_reply, created_at FROM comments WHERE page_slug = ? AND status = ? ORDER BY created_at ASC'
+  const pageNum = Math.max(1, Math.min(100000, Number.parseInt(url.searchParams.get('pageNum'), 10) || 1));
+
+  const pinned = await env.DB.prepare(
+    'SELECT id, page_slug, parent_id, author_name, body, is_author_reply, is_pinned, likes_count, created_at FROM comments WHERE page_slug = ? AND status = ? AND is_pinned = 1'
   )
     .bind(pageSlug, 'approved')
+    .first();
+
+  let pinnedReplies = [];
+  if (pinned) {
+    const { results } = await env.DB.prepare(
+      'SELECT id, page_slug, parent_id, author_name, body, is_author_reply, is_pinned, likes_count, created_at FROM comments WHERE status = ? AND parent_id = ? ORDER BY created_at ASC'
+    )
+      .bind('approved', pinned.id)
+      .all();
+    pinnedReplies = results;
+  }
+
+  const { count: nonPinnedCount } = await env.DB.prepare(
+    'SELECT COUNT(*) as count FROM comments WHERE page_slug = ? AND status = ? AND parent_id IS NULL AND is_pinned = 0'
+  )
+    .bind(pageSlug, 'approved')
+    .first();
+
+  // Pinned comment fills one of the PAGE_SIZE slots on page 1 only, so the
+  // remaining non-pinned rows fetched (and their offset) shift by one slot.
+  const pinnedSlot = pinned ? 1 : 0;
+  const nonPinnedLimit = pageNum === 1 ? PAGE_SIZE - pinnedSlot : PAGE_SIZE;
+  const nonPinnedOffset = pageNum === 1 ? 0 : PAGE_SIZE - pinnedSlot + (pageNum - 2) * PAGE_SIZE;
+  const total = nonPinnedCount + pinnedSlot;
+
+  const { results: topLevel } = await env.DB.prepare(
+    'SELECT id, page_slug, parent_id, author_name, body, is_author_reply, is_pinned, likes_count, created_at FROM comments WHERE page_slug = ? AND status = ? AND parent_id IS NULL AND is_pinned = 0 ORDER BY created_at ASC LIMIT ? OFFSET ?'
+  )
+    .bind(pageSlug, 'approved', nonPinnedLimit, nonPinnedOffset)
     .all();
 
-  return jsonResponse({ comments: results }, 200);
+  let replies = [];
+  const topLevelIds = topLevel.map((c) => c.id);
+  if (topLevelIds.length > 0) {
+    const placeholders = topLevelIds.map(() => '?').join(',');
+    const { results } = await env.DB.prepare(
+      `SELECT id, page_slug, parent_id, author_name, body, is_author_reply, is_pinned, likes_count, created_at FROM comments WHERE status = ? AND parent_id IN (${placeholders}) ORDER BY created_at ASC`
+    )
+      .bind('approved', ...topLevelIds)
+      .all();
+    replies = results;
+  }
+
+  return jsonResponse(
+    {
+      pinned: pinned && pageNum === 1 ? { ...pinned, replies: pinnedReplies } : null,
+      comments: [...topLevel, ...replies],
+      pagination: { page: pageNum, pageSize: PAGE_SIZE, total, totalPages: Math.max(1, Math.ceil(total / PAGE_SIZE)) },
+    },
+    200
+  );
 }
 
 async function submitComment(request, env) {
@@ -77,7 +129,7 @@ async function submitComment(request, env) {
   if (authorEmail.length > 0 && !isValidEmail(authorEmail)) {
     return jsonResponse({ error: 'invalid author_email' }, 400);
   }
-  if (body.length < 1 || body.length > 2000) {
+  if (body.length < 1 || body.length > 1000) {
     return jsonResponse({ error: 'invalid body' }, 400);
   }
 

@@ -3,11 +3,9 @@ import { CommentItem } from '@/components/comments/comment-item';
 
 export interface CommentListProps {
   comments: CommentItemData[];
-  pageSlug: string;
-  onReplySubmitted: () => void;
 }
 
-export function CommentList({ comments, pageSlug, onReplySubmitted }: CommentListProps) {
+export function CommentList({ comments }: CommentListProps) {
   const topLevel = comments.filter((c) => c.parent_id === null);
   const repliesByParent = new Map<number, CommentItemData[]>();
   for (const c of comments) {
@@ -22,16 +20,9 @@ export function CommentList({ comments, pageSlug, onReplySubmitted }: CommentLis
   }
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-2'>
       {topLevel.map((comment) => (
-        <CommentItem
-          key={comment.id}
-          comment={comment}
-          replies={repliesByParent.get(comment.id) ?? []}
-          pageSlug={pageSlug}
-          onReplySubmitted={onReplySubmitted}
-          allowReply
-        />
+        <CommentItem key={comment.id} comment={comment} replies={repliesByParent.get(comment.id) ?? []} />
       ))}
     </div>
   );
