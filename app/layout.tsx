@@ -57,7 +57,6 @@ export default async function RootLayout({
           height={4}
           shadow={false}
         />
-        <FaviconAnimator />
         <BaseLayout
           siteSettingsQuery={siteSettings.query}
           siteSettingsData={siteSettings.data}
