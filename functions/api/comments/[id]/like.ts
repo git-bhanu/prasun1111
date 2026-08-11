@@ -1,8 +1,14 @@
-function jsonResponse(body, status) {
+import type { PagesContext } from '../../../_shared/types';
+
+function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
 }
 
-export async function onRequest(context) {
+interface LikePayload {
+  liked?: unknown;
+}
+
+export async function onRequest(context: PagesContext<{ id: string }>) {
   const { request, env, params } = context;
   if (request.method !== 'POST') return new Response('Not found', { status: 404 });
 
@@ -11,7 +17,7 @@ export async function onRequest(context) {
     return jsonResponse({ error: 'invalid id' }, 400);
   }
 
-  let payload;
+  let payload: LikePayload;
   try {
     payload = await request.json();
   } catch {
@@ -25,7 +31,7 @@ export async function onRequest(context) {
   const delta = payload.liked ? 1 : -1;
   const row = await env.DB.prepare("UPDATE comments SET likes_count = MAX(0, likes_count + ?) WHERE id = ? AND status = 'approved' RETURNING likes_count")
     .bind(delta, id)
-    .first();
+    .first<{ likes_count: number }>();
 
   if (!row) return jsonResponse({ error: 'not found' }, 404);
 

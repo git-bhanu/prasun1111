@@ -1,18 +1,20 @@
+import type { Env } from './types';
+
 const COOKIE_NAME = 'dashboard_session';
 const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
-async function importKey(secret) {
+async function importKey(secret: string) {
   return crypto.subtle.importKey('raw', new TextEncoder().encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign', 'verify']);
 }
 
-function base64UrlEncode(bytes) {
+function base64UrlEncode(bytes: Uint8Array) {
   return btoa(String.fromCharCode(...bytes))
     .replace(/\+/g, '-')
     .replace(/\//g, '_')
     .replace(/=+$/, '');
 }
 
-function base64UrlDecode(str) {
+function base64UrlDecode(str: string) {
   const padded = str
     .replace(/-/g, '+')
     .replace(/_/g, '/')
@@ -20,7 +22,7 @@ function base64UrlDecode(str) {
   return Uint8Array.from(atob(padded), (c) => c.charCodeAt(0));
 }
 
-export async function createSessionCookie(env) {
+export async function createSessionCookie(env: Env) {
   const payload = JSON.stringify({ exp: Date.now() + SESSION_TTL_MS });
   const payloadB64 = base64UrlEncode(new TextEncoder().encode(payload));
   const key = await importKey(env.ADMIN_PASSWORD);
@@ -34,14 +36,14 @@ export function clearSessionCookie() {
   return `${COOKIE_NAME}=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0`;
 }
 
-function readCookie(request, name) {
+function readCookie(request: Request, name: string) {
   const header = request.headers.get('Cookie');
   if (!header) return null;
   const match = header.split('; ').find((c) => c.startsWith(`${name}=`));
   return match ? match.slice(name.length + 1) : null;
 }
 
-export async function verifySession(request, env) {
+export async function verifySession(request: Request, env: Env) {
   const token = readCookie(request, COOKIE_NAME);
   if (!token) return false;
   const [payloadB64, sigB64] = token.split('.');

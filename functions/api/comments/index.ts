@@ -1,6 +1,8 @@
+import type { CommentRow, Env, PagesContext } from '../../_shared/types';
+
 const COMMENTABLE_CATEGORIES = ['artworks', 'installations', 'films', 'design', 'writings'];
 
-function isValidPageSlug(pageSlug) {
+function isValidPageSlug(pageSlug: string | null): pageSlug is string {
   if (typeof pageSlug !== 'string' || pageSlug.length < 1 || pageSlug.length > 200) return false;
   const slashIndex = pageSlug.indexOf('/');
   const category = slashIndex === -1 ? pageSlug : pageSlug.slice(0, slashIndex);
@@ -10,19 +12,19 @@ function isValidPageSlug(pageSlug) {
   return true;
 }
 
-function isValidEmail(email) {
+function isValidEmail(email: string) {
   if (email.length > 254) return false;
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function jsonResponse(body, status) {
+function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), {
     status,
     headers: { 'Content-Type': 'application/json' },
   });
 }
 
-async function verifyTurnstile(token, secret, remoteIp) {
+async function verifyTurnstile(token: string, secret: string, remoteIp: string | null) {
   if (!token) return false;
   const form = new URLSearchParams();
   form.set('secret', secret);
@@ -34,41 +36,42 @@ async function verifyTurnstile(token, secret, remoteIp) {
     body: form,
   });
   if (!res.ok) return false;
-  const result = await res.json();
+  const result = (await res.json()) as { success: boolean };
   return result.success === true;
 }
 
 const PAGE_SIZE = 4;
 
-async function listComments(url, env) {
+async function listComments(url: URL, env: Env) {
   const pageSlug = url.searchParams.get('page');
   if (!isValidPageSlug(pageSlug)) {
     return jsonResponse({ error: 'invalid page' }, 400);
   }
 
-  const pageNum = Math.max(1, Math.min(100000, Number.parseInt(url.searchParams.get('pageNum'), 10) || 1));
+  const pageNum = Math.max(1, Math.min(100000, Number.parseInt(url.searchParams.get('pageNum') ?? '', 10) || 1));
 
   const pinned = await env.DB.prepare(
     'SELECT id, page_slug, parent_id, author_name, body, is_author_reply, is_pinned, likes_count, created_at FROM comments WHERE page_slug = ? AND status = ? AND is_pinned = 1'
   )
     .bind(pageSlug, 'approved')
-    .first();
+    .first<CommentRow>();
 
-  let pinnedReplies = [];
+  let pinnedReplies: CommentRow[] = [];
   if (pinned) {
     const { results } = await env.DB.prepare(
       'SELECT id, page_slug, parent_id, author_name, body, is_author_reply, is_pinned, likes_count, created_at FROM comments WHERE status = ? AND parent_id = ? ORDER BY created_at ASC'
     )
       .bind('approved', pinned.id)
-      .all();
+      .all<CommentRow>();
     pinnedReplies = results;
   }
 
-  const { count: nonPinnedCount } = await env.DB.prepare(
+  const nonPinnedCountRow = await env.DB.prepare(
     'SELECT COUNT(*) as count FROM comments WHERE page_slug = ? AND status = ? AND parent_id IS NULL AND is_pinned = 0'
   )
     .bind(pageSlug, 'approved')
-    .first();
+    .first<{ count: number }>();
+  const nonPinnedCount = nonPinnedCountRow?.count ?? 0;
 
   // Pinned comment fills one of the PAGE_SIZE slots on page 1 only, so the
   // remaining non-pinned rows fetched (and their offset) shift by one slot.
@@ -81,9 +84,9 @@ async function listComments(url, env) {
     'SELECT id, page_slug, parent_id, author_name, body, is_author_reply, is_pinned, likes_count, created_at FROM comments WHERE page_slug = ? AND status = ? AND parent_id IS NULL AND is_pinned = 0 ORDER BY created_at ASC LIMIT ? OFFSET ?'
   )
     .bind(pageSlug, 'approved', nonPinnedLimit, nonPinnedOffset)
-    .all();
+    .all<CommentRow>();
 
-  let replies = [];
+  let replies: CommentRow[] = [];
   const topLevelIds = topLevel.map((c) => c.id);
   if (topLevelIds.length > 0) {
     const placeholders = topLevelIds.map(() => '?').join(',');
@@ -91,7 +94,7 @@ async function listComments(url, env) {
       `SELECT id, page_slug, parent_id, author_name, body, is_author_reply, is_pinned, likes_count, created_at FROM comments WHERE status = ? AND parent_id IN (${placeholders}) ORDER BY created_at ASC`
     )
       .bind('approved', ...topLevelIds)
-      .all();
+      .all<CommentRow>();
     replies = results;
   }
 
@@ -105,8 +108,17 @@ async function listComments(url, env) {
   );
 }
 
-async function submitComment(request, env) {
-  let payload;
+interface SubmitCommentPayload {
+  page_slug?: unknown;
+  author_name?: unknown;
+  author_email?: unknown;
+  body?: unknown;
+  parent_id?: unknown;
+  turnstileToken?: unknown;
+}
+
+async function submitComment(request: Request, env: Env) {
+  let payload: SubmitCommentPayload;
   try {
     payload = await request.json();
   } catch {
@@ -117,7 +129,7 @@ async function submitComment(request, env) {
   const authorName = typeof payload.author_name === 'string' ? payload.author_name.trim() : '';
   const authorEmail = typeof payload.author_email === 'string' ? payload.author_email.trim() : '';
   const body = typeof payload.body === 'string' ? payload.body.trim() : '';
-  const parentId = Number.isInteger(payload.parent_id) ? payload.parent_id : null;
+  const parentId = Number.isInteger(payload.parent_id) ? (payload.parent_id as number) : null;
   const turnstileToken = typeof payload.turnstileToken === 'string' ? payload.turnstileToken : '';
 
   if (!isValidPageSlug(pageSlug)) {
@@ -148,7 +160,7 @@ async function submitComment(request, env) {
   return jsonResponse(insert, 201);
 }
 
-export async function onRequest(context) {
+export async function onRequest(context: PagesContext) {
   const { request, env } = context;
   const url = new URL(request.url);
 

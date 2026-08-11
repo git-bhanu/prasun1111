@@ -1,10 +1,15 @@
-import { createSessionCookie } from '../../_shared/dashboard-auth.js';
+import { createSessionCookie } from '../../_shared/dashboard-auth';
+import type { PagesContext } from '../../_shared/types';
 
-export async function onRequest(context) {
+interface LoginPayload {
+  password?: unknown;
+}
+
+export async function onRequest(context: PagesContext) {
   const { request, env } = context;
   if (request.method !== 'POST') return new Response('Not found', { status: 404 });
 
-  let payload;
+  let payload: LoginPayload;
   try {
     payload = await request.json();
   } catch {

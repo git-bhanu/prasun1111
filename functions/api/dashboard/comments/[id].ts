@@ -1,10 +1,16 @@
-import { verifySession } from '../../../_shared/dashboard-auth.js';
+import { verifySession } from '../../../_shared/dashboard-auth';
+import type { PagesContext } from '../../../_shared/types';
 
-function jsonResponse(body, status) {
+function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
 }
 
-export async function onRequest(context) {
+interface PatchPayload {
+  pinned?: unknown;
+  status?: unknown;
+}
+
+export async function onRequest(context: PagesContext<{ id: string }>) {
   const { request, env, params } = context;
   if (!(await verifySession(request, env))) {
     return jsonResponse({ error: 'unauthorized' }, 401);
@@ -21,7 +27,7 @@ export async function onRequest(context) {
   }
 
   if (request.method === 'PATCH') {
-    let payload;
+    let payload: PatchPayload;
     try {
       payload = await request.json();
     } catch {
@@ -30,7 +36,7 @@ export async function onRequest(context) {
 
     if (typeof payload.pinned === 'boolean') {
       if (payload.pinned) {
-        const row = await env.DB.prepare('SELECT page_slug FROM comments WHERE id = ?').bind(id).first();
+        const row = await env.DB.prepare('SELECT page_slug FROM comments WHERE id = ?').bind(id).first<{ page_slug: string }>();
         if (!row) return jsonResponse({ error: 'not found' }, 404);
         await env.DB.batch([
           env.DB.prepare('UPDATE comments SET is_pinned = 0 WHERE page_slug = ?').bind(row.page_slug),
