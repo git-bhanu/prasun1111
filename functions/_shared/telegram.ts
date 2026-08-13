@@ -91,12 +91,14 @@ export async function notifyNewComment(env: Env, origin: string, comment: NewCom
   if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) return;
 
   const text = [
-    '\u{1F195} <b>New comment</b>',
-    `<b>${escapeHtml(comment.author_name)}</b> on ${escapeHtml(pageLabel(comment.page_slug))}`,
+    '<b>New Comment</b>',
     '',
-    escapeHtml(comment.body),
+    `<b>${escapeHtml(comment.author_name)}</b>`,
+    escapeHtml(pageLabel(comment.page_slug)),
     '',
-    `\u{1F550} ${formatIst(comment.created_at)}`,
+    `<blockquote>${escapeHtml(comment.body)}</blockquote>`,
+    '',
+    formatIst(comment.created_at),
   ].join('\n');
 
   const replyMarkup = {
@@ -136,7 +138,7 @@ export async function editRejectedMessage(
   await callTelegram(env, 'editMessageText', {
     chat_id: chatId,
     message_id: messageId,
-    text: `${originalText}\n\n❌ <b>Rejected</b>`,
+    text: `${originalText}\n\n<b>Status:</b> Rejected`,
     parse_mode: 'HTML',
     reply_markup: { inline_keyboard: viewButton ? [[viewButton]] : [] },
   }).catch((err) => console.error('telegram edit failed', err));
