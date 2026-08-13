@@ -104,7 +104,7 @@ export function CommentsSection({ pageSlug, onBackToTop, dark }: CommentsSection
       {isEmpty ? (
         <div className='flex flex-col items-center gap-[40px] py-4 text-center'>
           <div className='flex flex-col items-center gap-6'>
-            <Icon name='commentEmpty' size={64} />
+            <Icon name='commentEmpty' size={64} color={dark ? '#1A1A1A' : '#F9F9F9'} />
             <div className='flex flex-col gap-[14px]'>
               <p
                 className={cn(
@@ -221,13 +221,7 @@ export function CommentsSection({ pageSlug, onBackToTop, dark }: CommentsSection
         </>
       )}
 
-      <ActionButton
-        color={dark ? 'black' : 'white'}
-        icon='arrowUpwardAlt'
-        label='Back to Top'
-        onClick={scrollToTop}
-        className={cn('self-center', dark ? 'bg-white/10 hover:bg-white/15' : 'bg-surface-grey')}
-      />
+      <ActionButton color='black' icon='arrowUpwardAlt' label='Back to Top' onClick={scrollToTop} className='self-center bg-[#1A1A1A] hover:bg-[#1A1A1A]/90' />
 
       {composerOpen ? (
         <CommentModal
