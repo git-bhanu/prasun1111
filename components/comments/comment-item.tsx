@@ -85,7 +85,7 @@ function LikeButton({ liked, likesCount, onToggle, dark }: { liked: boolean; lik
       onClick={onToggle}
       className={cn(
         'flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-[13px]',
-        dark ? 'border-white/15 text-white/70 hover:border-white/30' : 'border-black/10 text-black/70 hover:border-black/20'
+        dark ? 'border-white/15 text-white/70 hover:border-white/30' : 'border-[#F6F6F6] text-black/70 hover:border-black/20'
       )}
     >
       <Heart size={16} className={cn(liked ? 'fill-brand-orange text-brand-orange' : dark ? 'text-white/40' : 'text-black/50')} />
@@ -102,7 +102,7 @@ function CommentMeta({
   dark,
 }: { liked: boolean; likesCount: number; onToggle: () => void; comment: CommentItemData; dark?: boolean }) {
   return (
-    <div className='mt-4 flex items-center justify-between gap-3'>
+    <div className='mt-5 flex items-center justify-between gap-3'>
       <LikeButton liked={liked} likesCount={likesCount} onToggle={onToggle} dark={dark} />
       <span className={cn('shrink-0 font-space-grotesk text-[12px] uppercase tracking-wide md:hidden', dark ? 'text-white/30' : 'text-[#D9D9D9]')}>
         {formatTimestamp(comment.created_at)}
@@ -114,7 +114,7 @@ function CommentMeta({
 function CommentAuthor({ comment, dark }: { comment: CommentItemData; dark?: boolean }) {
   return (
     <div className='flex items-center gap-3'>
-      <div className={cn('flex items-center gap-2 rounded-xl border p-2', dark ? 'border-white/15' : 'border-black/10')}>
+      <div className={cn('flex items-center gap-2 rounded-lg border p-4', dark ? 'border-white/15' : 'border-black/25')}>
         <span className={cn('font-space-grotesk text-[12px] font-bold uppercase md:text-[16px]', dark ? 'text-white' : 'text-black')}>
           {comment.author_name}
         </span>
@@ -131,7 +131,7 @@ function CommentReply({ comment, dark }: { comment: CommentItemData; dark?: bool
   const { liked, likesCount, toggleLike } = useCommentLike(comment);
 
   return (
-    <div className='mt-4 border-l-2 border-brand-orange pl-4'>
+    <div className='mt-4 border-l-2 border-brand-orange pl-6'>
       <CommentAuthor comment={comment} dark={dark} />
       <p className={cn('mt-2 text-[14px] leading-7 md:text-[15px]', dark ? 'text-white/80' : 'text-black')}>{comment.body}</p>
       <CommentMeta liked={liked} likesCount={likesCount} onToggle={toggleLike} comment={comment} dark={dark} />
@@ -143,7 +143,7 @@ export function CommentItem({ comment, replies, dark }: CommentItemProps) {
   const { liked, likesCount, toggleLike } = useCommentLike(comment);
 
   return (
-    <div className={cn('rounded-2xl border p-3 md:p-6', dark ? 'border-white/15 bg-transparent' : 'border-black/10 bg-white')}>
+    <div className={cn('rounded-lg border p-3', dark ? 'border-white/15 bg-transparent' : 'border-black/25 bg-white')}>
       <div className='flex items-center gap-3'>
         <CommentAuthor comment={comment} dark={dark} />
         {comment.is_pinned ? (
@@ -152,7 +152,7 @@ export function CommentItem({ comment, replies, dark }: CommentItemProps) {
             title='Pinned comment'
             className={cn(
               'ml-auto flex size-9 shrink-0 items-center justify-center rounded-full border',
-              dark ? 'border-white/15 text-white/40' : 'border-black/10 text-black/40'
+              dark ? 'border-white/15 text-white/40' : 'border-black/25 text-black/40'
             )}
           >
             <Pin size={16} fill='currentColor' />
