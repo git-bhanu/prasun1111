@@ -5,26 +5,38 @@ function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
 }
 
+const PAGE_SIZE = 20;
+
 async function listAllComments(url: URL, env: Env) {
   const pageSlug = url.searchParams.get('page');
   const status = url.searchParams.get('status');
+  const sort = url.searchParams.get('sort');
+  const pageNum = Math.max(1, Number.parseInt(url.searchParams.get('pageNum') ?? '', 10) || 1);
 
-  let query = 'SELECT id, page_slug, parent_id, author_name, author_email, body, status, is_author_reply, is_pinned, created_at FROM comments WHERE 1=1';
+  let whereClause = ' WHERE 1=1';
   const params: string[] = [];
   if (pageSlug) {
-    query += ' AND page_slug LIKE ?';
+    whereClause += ' AND page_slug LIKE ?';
     params.push(`${pageSlug}%`);
   }
   if (status) {
-    query += ' AND status = ?';
+    whereClause += ' AND status = ?';
     params.push(status);
   }
-  query += ' ORDER BY created_at DESC';
+
+  const countRow = await env.DB.prepare(`SELECT COUNT(*) as count FROM comments${whereClause}`)
+    .bind(...params)
+    .first<{ count: number }>();
+  const total = countRow?.count ?? 0;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  const orderClause = sort === 'liked' ? ' ORDER BY likes_count DESC, created_at DESC' : ' ORDER BY created_at DESC';
+  const query = `SELECT id, page_slug, parent_id, author_name, author_email, body, status, is_author_reply, is_pinned, likes_count, created_at FROM comments${whereClause}${orderClause} LIMIT ? OFFSET ?`;
 
   const { results } = await env.DB.prepare(query)
-    .bind(...params)
+    .bind(...params, PAGE_SIZE, (pageNum - 1) * PAGE_SIZE)
     .all();
-  return jsonResponse({ comments: results }, 200);
+  return jsonResponse({ comments: results, pagination: { page: pageNum, pageSize: PAGE_SIZE, total, totalPages } }, 200);
 }
 
 interface AuthorReplyPayload {
@@ -47,7 +59,7 @@ async function createAuthorReply(request: Request, env: Env) {
   const body = typeof payload.body === 'string' ? payload.body.trim() : '';
   const parentId = Number.isInteger(payload.parent_id) ? (payload.parent_id as number) : null;
 
-  if (pageSlug.length < 1 || authorName.length < 1 || authorName.length > 80 || body.length < 1 || body.length > 1000) {
+  if (pageSlug.length < 1 || authorName.length < 1 || body.length < 1 || body.length > 1000) {
     return jsonResponse({ error: 'invalid payload' }, 400);
   }
 

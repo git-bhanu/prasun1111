@@ -17,6 +17,12 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+const URL_PATTERN = /(https?:\/\/|www\.|\b[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.[a-z]{2,}\b)/i;
+
+function containsUrl(text: string) {
+  return URL_PATTERN.test(text);
+}
+
 function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), {
     status,
@@ -136,13 +142,19 @@ async function submitComment(request: Request, env: Env) {
     return jsonResponse({ error: 'invalid page' }, 400);
   }
   if (authorName.length < 1 || authorName.length > 80) {
-    return jsonResponse({ error: 'invalid author_name' }, 400);
+    return jsonResponse({ error: 'Enter a name between 1 and 80 characters.' }, 400);
+  }
+  if (containsUrl(authorName)) {
+    return jsonResponse({ error: 'Links are not allowed in the name field.' }, 400);
   }
   if (authorEmail.length > 0 && !isValidEmail(authorEmail)) {
     return jsonResponse({ error: 'invalid author_email' }, 400);
   }
   if (body.length < 1 || body.length > 1000) {
-    return jsonResponse({ error: 'invalid body' }, 400);
+    return jsonResponse({ error: 'Comment must be between 1 and 1000 characters.' }, 400);
+  }
+  if (containsUrl(body)) {
+    return jsonResponse({ error: 'Links are not allowed in comments.' }, 400);
   }
 
   const remoteIp = request.headers.get('CF-Connecting-IP');
