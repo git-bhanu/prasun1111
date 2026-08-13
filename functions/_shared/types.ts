@@ -20,12 +20,16 @@ export interface Env {
   DB: D1Database;
   ADMIN_PASSWORD: string;
   TURNSTILE_SECRET_KEY: string;
+  TELEGRAM_BOT_TOKEN?: string;
+  TELEGRAM_CHAT_ID?: string;
+  TELEGRAM_WEBHOOK_SECRET?: string;
 }
 
 export interface PagesContext<Params extends Record<string, string> = Record<string, string>> {
   request: Request;
   env: Env;
   params: Params;
+  waitUntil: (promise: Promise<unknown>) => void;
 }
 
 export interface CommentRow {

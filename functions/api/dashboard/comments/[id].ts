@@ -1,3 +1,4 @@
+import { setCommentStatus } from '../../../_shared/comments';
 import { verifySession } from '../../../_shared/dashboard-auth';
 import type { PagesContext } from '../../../_shared/types';
 
@@ -51,7 +52,7 @@ export async function onRequest(context: PagesContext<{ id: string }>) {
     if (payload.status !== 'approved' && payload.status !== 'rejected') {
       return jsonResponse({ error: 'invalid status' }, 400);
     }
-    await env.DB.prepare('UPDATE comments SET status = ? WHERE id = ?').bind(payload.status, id).run();
+    await setCommentStatus(env, id, payload.status);
     return jsonResponse({ ok: true }, 200);
   }
 

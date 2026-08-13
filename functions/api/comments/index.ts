@@ -1,3 +1,4 @@
+import { notifyNewComment } from '../../_shared/telegram';
 import type { CommentRow, Env, PagesContext } from '../../_shared/types';
 
 const COMMENTABLE_CATEGORIES = ['artworks', 'installations', 'films', 'design', 'writings'];
@@ -123,7 +124,7 @@ interface SubmitCommentPayload {
   turnstileToken?: unknown;
 }
 
-async function submitComment(request: Request, env: Env) {
+async function submitComment(request: Request, env: Env, origin: string, waitUntil: (promise: Promise<unknown>) => void) {
   let payload: SubmitCommentPayload;
   try {
     payload = await request.json();
@@ -167,17 +168,21 @@ async function submitComment(request: Request, env: Env) {
     "INSERT INTO comments (page_slug, parent_id, author_name, author_email, body, status, is_author_reply) VALUES (?, ?, ?, ?, ?, 'approved', 0) RETURNING id, page_slug, parent_id, author_name, body, is_author_reply, created_at"
   )
     .bind(pageSlug, parentId, authorName, authorEmail.length > 0 ? authorEmail : null, body)
-    .first();
+    .first<{ id: number; page_slug: string; author_name: string; body: string; created_at: string }>();
+
+  if (insert) {
+    waitUntil(notifyNewComment(env, origin, insert));
+  }
 
   return jsonResponse(insert, 201);
 }
 
 export async function onRequest(context: PagesContext) {
-  const { request, env } = context;
+  const { request, env, waitUntil } = context;
   const url = new URL(request.url);
 
   if (request.method === 'GET') return listComments(url, env);
-  if (request.method === 'POST') return submitComment(request, env);
+  if (request.method === 'POST') return submitComment(request, env, url.origin, waitUntil);
 
   return new Response('Not found', { status: 404 });
 }
