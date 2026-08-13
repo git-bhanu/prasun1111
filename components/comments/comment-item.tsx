@@ -114,11 +114,11 @@ function CommentMeta({
 function CommentAuthor({ comment, dark }: { comment: CommentItemData; dark?: boolean }) {
   return (
     <div className='flex items-center gap-3'>
-      <div className={cn('flex items-center gap-2 rounded-lg border p-4', dark ? 'border-white/15' : 'border-black/25')}>
-        <span className={cn('font-space-grotesk text-[12px] font-bold uppercase md:text-[16px]', dark ? 'text-white' : 'text-black')}>
+      <div className={cn('flex items-start gap-2 rounded-lg border p-4', dark ? 'border-white/15' : 'border-black/25')}>
+        <span className={cn('font-space-grotesk text-[12px] font-bold uppercase leading-none md:text-[16px]', dark ? 'text-white' : 'text-black')}>
           {comment.author_name}
         </span>
-        {comment.is_author_reply ? <span className='font-space-grotesk text-[8px] font-bold uppercase text-brand-orange md:text-[13px]'>Author</span> : null}
+        {comment.is_author_reply ? <span className='font-space-grotesk text-[8px] font-bold uppercase leading-none text-brand-orange'>Author</span> : null}
       </div>
       <span className={cn('hidden font-space-grotesk text-[12px] uppercase tracking-wide md:inline-block', dark ? 'text-white/30' : 'text-[#D9D9D9]')}>
         {formatTimestamp(comment.created_at)}

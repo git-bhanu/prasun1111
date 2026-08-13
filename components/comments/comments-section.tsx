@@ -26,13 +26,13 @@ interface PinnedComment extends CommentItemData {
 function CommentsToggle({ hidden, onClick, dark }: { hidden: boolean; onClick: () => void; dark?: boolean }) {
   const ToggleIcon = hidden ? Eye : EyeOff;
   return (
-    <div className='flex w-full items-center gap-4'>
+    <div className='relative left-1/2 flex w-screen -translate-x-1/2 items-center gap-4 px-[5svw] md:px-[10svw]'>
       <span className={cn('h-px flex-1', dark ? 'bg-white/10' : 'bg-black/10')} />
       <button
         type='button'
         onClick={onClick}
         className={cn(
-          'flex shrink-0 cursor-pointer items-center gap-2 rounded-full border px-4 py-2 font-space-grotesk text-[20px] font-normal leading-none tracking-normal',
+          'flex shrink-0 cursor-pointer items-center gap-2 rounded-full border px-8 py-4 font-space-grotesk text-[20px] font-normal uppercase leading-none tracking-normal',
           dark ? 'border-white/15 bg-transparent text-white' : 'border-black/10 bg-white text-black'
         )}
       >
@@ -73,6 +73,7 @@ export function CommentsSection({ pageSlug, onBackToTop, dark }: CommentsSection
 
   useEffect(() => {
     if (hidden) return;
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     const el = contentRef.current;
     if (!el) return;
     gsap.fromTo(el, { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
@@ -83,12 +84,6 @@ export function CommentsSection({ pageSlug, onBackToTop, dark }: CommentsSection
   const handleToggle = () => {
     if (hidden) {
       setHidden(false);
-      requestAnimationFrame(() => {
-        const el = sectionRef.current;
-        if (!el) return;
-        const top = el.getBoundingClientRect().top + window.scrollY - 96;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
       return;
     }
 
