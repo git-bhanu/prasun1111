@@ -1,3 +1,4 @@
+import { isAccessConfigured, verifyAccessJwt } from './cloudflare-access';
 import type { Env } from './types';
 
 const COOKIE_NAME = 'dashboard_session';
@@ -44,6 +45,10 @@ function readCookie(request: Request, name: string) {
 }
 
 export async function verifySession(request: Request, env: Env) {
+  if (isAccessConfigured(env)) {
+    return (await verifyAccessJwt(request, env)) !== null;
+  }
+
   const token = readCookie(request, COOKIE_NAME);
   if (!token) return false;
   const [payloadB64, sigB64] = token.split('.');

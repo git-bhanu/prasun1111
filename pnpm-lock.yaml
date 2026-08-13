@@ -44,6 +44,9 @@ importers:
       gsap:
         specifier: ^3.15.0
         version: 3.15.0
+      jose:
+        specifier: ^6.2.8
+        version: 6.2.8
       lottie-react:
         specifier: ^2.4.1
         version: 2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -6025,6 +6028,9 @@ packages:
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
+
+  jose@6.2.8:
+    resolution: {integrity: sha512-Bsdjwm3Qsd/P0jR+BHDe3LytDfY7WBq2HmCCLIwuVRHMuEC9ae7/R474GIUdF1NgCyZjzVo/A9DOiOBtXq8ZoQ==}
 
   jotai-optics@0.4.0:
     resolution: {integrity: sha512-osbEt9AgS55hC4YTZDew2urXKZkaiLmLqkTS/wfW5/l0ib8bmmQ7kBXSFaosV6jDDWSp00IipITcJARFHdp42g==}
@@ -15041,6 +15047,8 @@ snapshots:
   jiti@1.21.6: {}
 
   jiti@2.6.1: {}
+
+  jose@6.2.8: {}
 
   jotai-optics@0.4.0(jotai@2.8.4(@types/react@18.3.26)(react@18.3.1))(optics-ts@2.4.1):
     dependencies:
