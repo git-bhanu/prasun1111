@@ -28,7 +28,7 @@ export function CommentModal({ pageSlug, onClose, onSubmitted, dark = false }: C
   const close = () => animateOut(onClose);
 
   return createPortal(
-    <div className='fixed inset-0 z-[100] flex items-center justify-center md:p-6'>
+    <div className='fixed inset-0 z-[150] flex items-center justify-center md:p-6'>
       <button
         ref={backdropRef}
         type='button'
@@ -55,7 +55,7 @@ export function CommentModal({ pageSlug, onClose, onSubmitted, dark = false }: C
         >
           <Icon name='pinchInZoom' size={24} color='#fff' />
         </button>
-        <div className='h-full overflow-y-auto rounded-t-2xl p-6 md:rounded-2xl md:p-8'>
+        <div className='h-full overflow-y-auto rounded-t-2xl p-[48px] md:rounded-2xl'>
           <h2 className={cn('font-space-grotesk text-[36px] font-bold uppercase leading-[36px] tracking-normal', dark ? 'text-white' : 'text-black')}>
             Let&apos;s start
             <br />a conversation
@@ -63,7 +63,7 @@ export function CommentModal({ pageSlug, onClose, onSubmitted, dark = false }: C
           <p className={cn('mt-2 font-sedan text-[24px] font-normal leading-none tracking-normal', dark ? 'text-white' : 'text-black')}>
             Leave a thought, question, or reflection.
           </p>
-          <div className='mt-6'>
+          <div className='mt-[72px]'>
             <CommentForm
               pageSlug={pageSlug}
               dark={dark}

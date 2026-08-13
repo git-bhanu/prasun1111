@@ -110,7 +110,7 @@ export function CommentForm({ pageSlug, parentId = null, onSubmitted, dark = fal
       <TextField label='Name' name='author_name' value={authorName} onChange={setAuthorName} maxLength={80} required dark={dark} />
       <TextField
         type='email'
-        label='Email Address'
+        label='Email Address (Optional)'
         name='author_email'
         value={authorEmail}
         onChange={setAuthorEmail}
