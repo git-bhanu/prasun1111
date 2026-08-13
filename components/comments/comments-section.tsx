@@ -107,21 +107,27 @@ export function CommentsSection({ pageSlug, onBackToTop, dark }: CommentsSection
   return (
     <section ref={sectionRef} className='mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-16 sm:px-10'>
       {isEmpty ? (
-        <div className='flex flex-col items-center gap-6 py-4 text-center'>
-          <h2
-            className={cn(
-              'self-stretch text-left font-space-grotesk text-[20px] font-bold uppercase leading-none tracking-normal md:text-center md:text-[32px]',
-              dark ? 'text-white' : 'text-black'
-            )}
-          >
-            Comments
-          </h2>
-          <Icon name='commentEmpty' size={64} />
-          <div className='flex flex-col gap-1'>
-            <p className={cn('font-space-grotesk text-[16px] font-bold uppercase md:text-[24px]', dark ? 'text-white' : 'text-black')}>No comments yet</p>
-            <p className={cn('font-space-grotesk text-[12px] md:text-[24px]', dark ? 'text-white/40' : 'text-black/40')}>
-              Be the first to share your perspective.
-            </p>
+        <div className='flex flex-col items-center gap-[40px] py-4 text-center'>
+          <div className='flex flex-col items-center gap-6'>
+            <Icon name='commentEmpty' size={64} />
+            <div className='flex flex-col gap-[14px]'>
+              <p
+                className={cn(
+                  'font-space-grotesk text-[16px] font-medium uppercase leading-none tracking-normal md:text-[24px]',
+                  dark ? 'text-white' : 'text-black'
+                )}
+              >
+                No comments yet
+              </p>
+              <p
+                className={cn(
+                  'font-space-grotesk text-[12px] font-normal leading-none tracking-normal md:text-[14px]',
+                  dark ? 'text-white/40' : 'text-[#666666]'
+                )}
+              >
+                Be the first to share your perspective.
+              </p>
+            </div>
           </div>
           <ActionButton variant='solid' color={dark ? 'white' : 'black'} icon='chatAddOn' label='Post a comment' onClick={() => setComposerOpen(true)} />
         </div>
