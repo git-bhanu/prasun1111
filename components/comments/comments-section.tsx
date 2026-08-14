@@ -32,7 +32,7 @@ function CommentsToggle({ hidden, onClick, dark }: { hidden: boolean; onClick: (
         type='button'
         onClick={onClick}
         className={cn(
-          'flex shrink-0 cursor-pointer items-center gap-2 rounded-full border px-8 py-4 font-space-grotesk text-[20px] font-normal uppercase leading-none tracking-normal',
+          'flex shrink-0 cursor-pointer items-center gap-2 rounded-full border px-8 py-4 font-space-grotesk text-[14px] font-normal uppercase leading-none tracking-normal md:text-[20px]',
           dark ? 'border-white/15 bg-transparent text-white' : 'border-black/10 bg-white text-black'
         )}
       >
@@ -221,7 +221,17 @@ export function CommentsSection({ pageSlug, onBackToTop, dark }: CommentsSection
         </>
       )}
 
-      <ActionButton color='black' icon='arrowUpwardAlt' label='Back to Top' onClick={scrollToTop} className='self-center bg-[#1A1A1A] hover:bg-[#1A1A1A]/90' />
+      {dark ? (
+        <ActionButton color='black' icon='arrowUpwardAlt' label='Back to Top' onClick={scrollToTop} className='self-center bg-[#1A1A1A] hover:bg-[#1A1A1A]/90' />
+      ) : (
+        <ActionButton
+          color={isEmpty || !hidden ? 'outlined' : 'black'}
+          icon='arrowUpwardAlt'
+          label='Back to Top'
+          onClick={scrollToTop}
+          className='self-center'
+        />
+      )}
 
       {composerOpen ? (
         <CommentModal

@@ -114,7 +114,7 @@ function CommentMeta({
 function CommentAuthor({ comment, dark }: { comment: CommentItemData; dark?: boolean }) {
   return (
     <div className='flex items-center gap-3'>
-      <div className={cn('flex items-start gap-2 rounded-lg border p-4', dark ? 'border-white/15' : 'border-black/25')}>
+      <div className={cn('flex items-start gap-2 rounded-lg border px-3 py-2 md:p-4', dark ? 'border-white/15' : 'border-black/25')}>
         <span className={cn('font-space-grotesk text-[12px] font-bold uppercase leading-none md:text-[16px]', dark ? 'text-white' : 'text-black')}>
           {comment.author_name}
         </span>
