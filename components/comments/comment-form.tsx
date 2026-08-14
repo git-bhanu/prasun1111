@@ -127,7 +127,7 @@ export function CommentForm({ pageSlug, parentId = null, onSubmitted, dark = fal
             {1000 - body.length} characters remaining
           </span>
         </span>
-        <div className={cn('flex flex-col rounded-[8px] border-[0.5px]', dark ? 'border-white/15 bg-white/5' : 'border-black/15 bg-white')}>
+        <div className={cn('flex flex-col rounded-[8px] border-[0.5px]', dark ? 'border-white/15 bg-white/5' : 'border-black/25 bg-white')}>
           <textarea
             id='body'
             name='body'
