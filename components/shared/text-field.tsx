@@ -32,10 +32,10 @@ export function TextField({
   dark = false,
 }: TextFieldProps) {
   const fieldClassName = cn(
-    'w-full rounded-[8px] border-[0.5px] p-3 font-space-grotesk text-[20px] font-normal leading-none tracking-normal outline-none transition-colors',
+    'w-full rounded-[8px] border-[0.5px] p-2 md:p-3 font-space-grotesk text-[16px] font-normal leading-none tracking-normal outline-none transition-colors md:text-[20px]',
     dark ? 'border-white/15 bg-white/5 text-white focus:border-white/40' : 'border-black/15 bg-white text-black focus:border-black',
-    as === 'input' && 'h-[74px]',
-    as === 'textarea' && 'min-h-[74px]',
+    as === 'input' && 'h-[50px] md:h-[74px]',
+    as === 'textarea' && 'min-h-[50px] md:min-h-[74px]',
     error && 'border-brand-orange'
   );
 

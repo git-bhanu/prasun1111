@@ -55,15 +55,22 @@ export function CommentModal({ pageSlug, onClose, onSubmitted, dark = false }: C
         >
           <Icon name='pinchInZoom' size={24} color='#fff' />
         </button>
-        <div className='h-full overflow-y-auto rounded-t-2xl p-[48px] md:rounded-2xl'>
-          <h2 className={cn('font-space-grotesk text-[36px] font-bold uppercase leading-[36px] tracking-normal', dark ? 'text-white' : 'text-black')}>
+        <div className='h-full overflow-y-auto rounded-t-2xl pt-12 px-4 pb-6 md:p-[48px] md:rounded-2xl'>
+          <h2
+            className={cn(
+              'font-space-grotesk text-[20px] font-bold uppercase leading-[1.2] tracking-normal md:text-[36px] md:leading-[36px]',
+              dark ? 'text-white' : 'text-black'
+            )}
+          >
             Let&apos;s start
             <br />a conversation
           </h2>
-          <p className={cn('mt-2 font-sedan text-[24px] font-normal leading-none tracking-normal', dark ? 'text-white' : 'text-black')}>
+          <p
+            className={cn('mt-2 font-sedan text-[16px] font-normal leading-none tracking-normal md:text-[24px]', dark ? 'text-white' : 'text-black')}
+          >
             Leave a thought, question, or reflection.
           </p>
-          <div className='mt-[72px]'>
+          <div className='mt-8 md:mt-[72px]'>
             <CommentForm
               pageSlug={pageSlug}
               dark={dark}

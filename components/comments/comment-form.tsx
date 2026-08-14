@@ -110,7 +110,7 @@ export function CommentForm({ pageSlug, parentId = null, onSubmitted, dark = fal
       <TextField label='Name' name='author_name' value={authorName} onChange={setAuthorName} maxLength={80} required dark={dark} />
       <TextField
         type='email'
-        label='Email Address (Optional)'
+        label='Email Address [ Optional ]'
         name='author_email'
         value={authorEmail}
         onChange={setAuthorEmail}
@@ -136,7 +136,7 @@ export function CommentForm({ pageSlug, parentId = null, onSubmitted, dark = fal
             required
             onChange={(e) => setBody(e.target.value)}
             className={cn(
-              'h-[190px] w-full resize-none overflow-y-auto rounded-t-[8px] bg-transparent p-4 font-space-grotesk text-[20px] font-normal leading-[1.2] tracking-normal outline-none transition-colors',
+              'h-[190px] w-full resize-none overflow-y-auto rounded-t-[8px] bg-transparent p-4 font-space-grotesk text-[16px] font-normal leading-[1.2] tracking-normal outline-none transition-colors md:text-[20px]',
               dark ? 'text-white focus:border-white/40' : 'text-black focus:border-black'
             )}
           />
