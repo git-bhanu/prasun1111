@@ -322,6 +322,8 @@ function DetailPanel({
         </div>
       )}
 
+      <CommentsSection pageSlug={`design/${designSlug(design)}`} onBackToTop={scrollToTop} />
+
       {otherDesigns.length > 0 && (
         <div className='mt-20 pt-10 px-4 pb-12 md:px-[10svw]'>
           <p className='font-space-grotesk text-[20px] md:text-[28px] font-bold uppercase tracking-wide text-black mb-8'>Related Content ↓</p>
@@ -332,8 +334,6 @@ function DetailPanel({
           </div>
         </div>
       )}
-
-      <CommentsSection pageSlug={`design/${designSlug(design)}`} onBackToTop={scrollToTop} />
     </>
   );
 }

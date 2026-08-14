@@ -144,6 +144,8 @@ export function WritingDetailPanel({ writing, relatedWritings, onWritingClick }:
         </div>
       )}
 
+      <CommentsSection pageSlug={`writings/${writing._sys.filename}`} />
+
       {relatedWritings.length > 0 && (
         <div className='mt-16'>
           <div className='px-4 md:px-[58px]'>
@@ -169,7 +171,6 @@ export function WritingDetailPanel({ writing, relatedWritings, onWritingClick }:
           </div>
         </div>
       )}
-      <CommentsSection pageSlug={`writings/${writing._sys.filename}`} />
     </article>
   );
 }
