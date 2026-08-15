@@ -2,4 +2,3 @@
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://content.tinajs.io https://identity.tinajs.io https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://assets.tina.io https://res.cloudinary.com; media-src 'self' https://res.cloudinary.com; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com https://res.cloudinary.com https://analytics-api-s.cloudinary.com https://video-analytics-api.cloudinary.com https://content.tinajs.io https://identity.tinajs.io https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com https://www.youtube.com https://identity.tinajs.io; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'
