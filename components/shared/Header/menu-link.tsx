@@ -23,6 +23,7 @@ export function MenuLink({ index, label, href, locked, source }: MenuLinkProps) 
   const handleClick = (e: React.MouseEvent) => {
     if (locked) {
       e.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
       window.dispatchEvent(new CustomEvent(ANNOUNCEMENT_OVERLAY_EVENT));
     }
   };
