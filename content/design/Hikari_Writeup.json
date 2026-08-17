@@ -12,7 +12,19 @@
     {
       "level": "h3",
       "font": "sedan",
-      "heading": "A branding project came in, and I had my first meeting with the founder, Mr Raghav Kohli, and the promoter, Mr Deepak Sahni. Deepak and I had worked together before on several brands, so there was already a shared understanding of how a brand story can help and inspire me.\n",
+      "heading": "A branding project came in, and I had my first meeting with the founder, *Mr Raghav Kohli*, and the promoter, *Mr Deepak Sahni*. Deepak and I had worked together before on several brands, so there was already a shared understanding of how a brand story can help and inspire me.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "The brand was a Japanese matcha tea brand. They wanted to call it HIKARI.\n",
+      "_template": "header"
+    },
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "The story was not simply about flavour or authenticity, even though the product was made with pure Japanese ingredients. *It wasn't about replacing a habit, or even about how matcha could become part of a luxury lifestyle.*\n",
       "_template": "header"
     }
   ]
