@@ -54,7 +54,7 @@ function WritingsContent({ query, data, variables }: Props) {
 
   const writings: NonNullable<WritingNode>[] = (tinaData.writingConnection.edges ?? [])
     .map((e) => e?.node)
-    .filter((n): n is NonNullable<WritingNode> => n != null)
+    .filter((n): n is NonNullable<WritingNode> => n != null && !n.archived)
     .filter((n, i, arr) => arr.findIndex((m) => m._sys.filename === n._sys.filename) === i)
     .sort((a, b) => {
       if (!a.date || !b.date) return 0;

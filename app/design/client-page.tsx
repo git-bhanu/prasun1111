@@ -64,7 +64,7 @@ function DesignContent({ query, data, variables }: Props) {
 
   const designs: DesignNode[] = (tinaData.designConnection.edges ?? [])
     .map((e) => e?.node)
-    .filter((n): n is DesignNode => n != null)
+    .filter((n): n is DesignNode => n != null && !n.archived)
     .sort((a, b) => {
       const aOrder = a.sortOrder ?? Number.MAX_SAFE_INTEGER;
       const bOrder = b.sortOrder ?? Number.MAX_SAFE_INTEGER;

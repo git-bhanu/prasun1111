@@ -1,11 +1,11 @@
 import type { Collection } from 'tinacms';
-import { seoField } from '../fields/seo';
 import { headerBlock } from '../blocks/header-block';
-import { HexColorInput } from '../fields/hex-color';
 import { imageBlock } from '../blocks/image-block';
 import { spaceBlock } from '../blocks/space-block';
 import { twoColumnTextBlock } from '../blocks/two-column-text-block';
 import { videoBlock } from '../blocks/video-block';
+import { HexColorInput } from '../fields/hex-color';
+import { seoField } from '../fields/seo';
 
 const Design: Collection = {
   name: 'design',
@@ -25,6 +25,12 @@ const Design: Collection = {
       name: 'sortOrder',
       label: 'Sort Order',
       description: 'Lower numbers appear first. Leave blank to sort to end.',
+    },
+    {
+      type: 'boolean',
+      name: 'archived',
+      label: 'Archived',
+      description: 'Hides this item from the site when enabled.',
     },
     {
       type: 'string',

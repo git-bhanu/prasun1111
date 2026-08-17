@@ -65,7 +65,7 @@ function InstallationsContent({ query, data, variables, quoteBreaks }: Props) {
 
   const installations: InstallationNode[] = (tinaData.installationConnection.edges ?? [])
     .map((e) => e?.node)
-    .filter((n): n is InstallationNode => n != null)
+    .filter((n): n is InstallationNode => n != null && !n.archived)
     .sort((a, b) => {
       const aOrder = a.sortOrder ?? Number.MAX_SAFE_INTEGER;
       const bOrder = b.sortOrder ?? Number.MAX_SAFE_INTEGER;

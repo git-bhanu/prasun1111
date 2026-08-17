@@ -1,10 +1,10 @@
 import type { Collection } from 'tinacms';
-import { seoField } from '../fields/seo';
 import { headerBlock } from '../blocks/header-block';
 import { imageBlock } from '../blocks/image-block';
 import { spaceBlock } from '../blocks/space-block';
 import { twoColumnTextBlock } from '../blocks/two-column-text-block';
 import { videoBlock } from '../blocks/video-block';
+import { seoField } from '../fields/seo';
 
 const Writing: Collection = {
   name: 'writing',
@@ -75,6 +75,12 @@ const Writing: Collection = {
       ],
     },
     { type: 'datetime', name: 'date', label: 'Date' },
+    {
+      type: 'boolean',
+      name: 'archived',
+      label: 'Archived',
+      description: 'Hides this item from the site when enabled.',
+    },
     { type: 'string', name: 'tags', label: 'Tags', list: true },
     { type: 'number', name: 'visualsCount', label: 'Visuals Count' },
     { type: 'string', name: 'readingType', label: 'Reading Type' },

@@ -44,6 +44,7 @@ type Film = {
   tagline?: TinaMarkdownContent | null;
   synopsis?: TinaMarkdownContent | null;
   awards?: Array<AwardItem | null> | null;
+  archived?: boolean | null;
   backgroundType?: string | null;
   heroImage?: string | null;
   heroVideo?: string | null;
@@ -77,7 +78,7 @@ export default function FilmsClientPage(props: Props) {
 
   const film = data.filmsPage?.featuredFilm;
 
-  if (!film) {
+  if (!film || film.archived) {
     return (
       <div className='flex flex-1 items-center justify-center py-24'>
         <p className='font-space-grotesk text-sm uppercase tracking-widest text-white/40'>No film selected.</p>

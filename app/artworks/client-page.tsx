@@ -66,7 +66,7 @@ function ArtworksContent({ query, data, variables, quoteBreaks }: Props) {
 
   const artworks: ArtworkNode[] = (tinaData.artworkConnection.edges ?? [])
     .map((e) => e?.node)
-    .filter((n): n is ArtworkNode => n != null)
+    .filter((n): n is ArtworkNode => n != null && !n.archived)
     .sort((a, b) => {
       const aOrder = a.sortOrder ?? Number.MAX_SAFE_INTEGER;
       const bOrder = b.sortOrder ?? Number.MAX_SAFE_INTEGER;
