@@ -138,7 +138,16 @@
       "width": "narrow",
       "images": [
         {
-          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1786961380/Hikari_Writeup-09_glu5h0.jpg"
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1786969382/Hikari-15_noqdwq.jpg"
+        }
+      ],
+      "_template": "image"
+    },
+    {
+      "width": "narrow",
+      "images": [
+        {
+          "src": "https://res.cloudinary.com/dkxfwnlbz/image/upload/v1786969958/Hikari-16_lmmu3e.jpg"
         }
       ],
       "_template": "image"
