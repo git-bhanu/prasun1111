@@ -19,6 +19,7 @@ type Props = {
   writing: NonNullable<WritingNode>;
   relatedWritings: NonNullable<WritingNode>[];
   onWritingClick: (slug: string) => void;
+  scrollToTop?: () => void;
 };
 
 function renderWritingDate(iso: string | null | undefined): React.ReactNode {
@@ -52,7 +53,7 @@ function blockWrapperClass(width: string, verticalPadding: string) {
   }
 }
 
-export function WritingDetailPanel({ writing, relatedWritings, onWritingClick }: Props) {
+export function WritingDetailPanel({ writing, relatedWritings, onWritingClick, scrollToTop }: Props) {
   const tagLabels = (writing.tags ?? []).filter((t): t is string => Boolean(t));
 
   return (
@@ -144,7 +145,7 @@ export function WritingDetailPanel({ writing, relatedWritings, onWritingClick }:
         </div>
       )}
 
-      <CommentsSection pageSlug={`writings/${writing._sys.filename}`} />
+      <CommentsSection pageSlug={`writings/${writing._sys.filename}`} onBackToTop={scrollToTop} />
 
       {relatedWritings.length > 0 && (
         <div className='mt-16'>

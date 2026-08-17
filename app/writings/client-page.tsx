@@ -141,7 +141,14 @@ function WritingsContent({ query, data, variables }: Props) {
         className='fixed inset-x-0 bottom-0 top-[50px] z-[100] overflow-y-auto rounded-t-2xl bg-white'
         style={{ opacity: 0, visibility: 'hidden', transform: 'translateY(100%)' }}
       >
-        {displayWriting && <WritingDetailPanel writing={displayWriting} relatedWritings={relatedWritings} onWritingClick={goTo} />}
+        {displayWriting && (
+          <WritingDetailPanel
+            writing={displayWriting}
+            relatedWritings={relatedWritings}
+            onWritingClick={goTo}
+            scrollToTop={() => detailScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })}
+          />
+        )}
       </div>
     </>
   );
