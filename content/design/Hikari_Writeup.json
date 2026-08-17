@@ -7,5 +7,13 @@
   "category": "content/tags/Design/Brand-Identity.json",
   "designType": "byDoing",
   "description": "A branding project came in, and I had my first meeting with the founder, Mr Raghav Kohli, and the promoter, Mr Deepak Sahni. Deepak and I had worked together before on several brands, so there was already a shared understanding of how a brand story can help and inspire me.\n",
-  "accentColor": "#e8ea16"
+  "accentColor": "#e8ea16",
+  "blocks": [
+    {
+      "level": "h3",
+      "font": "sedan",
+      "heading": "A branding project came in, and I had my first meeting with the founder, Mr Raghav Kohli, and the promoter, Mr Deepak Sahni. Deepak and I had worked together before on several brands, so there was already a shared understanding of how a brand story can help and inspire me.\n",
+      "_template": "header"
+    }
+  ]
 }
