@@ -124,7 +124,20 @@ export function InstallationListCard({ installation, tinaSource, onOpen }: Insta
     return <div className='absolute inset-0 bg-neutral-200' />;
   };
 
-  const renderSlide = (sizes: string) => <div className='absolute inset-0'>{renderSlideContent(sizes)}</div>;
+  const renderSlide = (sizes: string) => (
+    <div
+      className='absolute inset-0 cursor-pointer'
+      onClick={onOpen}
+      role='button'
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') onOpen();
+      }}
+      aria-label={`View ${installation.title}`}
+    >
+      {renderSlideContent(sizes)}
+    </div>
+  );
 
   const renderControls = (className?: string) => {
     if (!canNavigate) return null;
